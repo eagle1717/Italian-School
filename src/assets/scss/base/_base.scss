@@ -1,0 +1,453 @@
+body {
+  font-size: 16px;
+  //overflow: hidden;
+}
+img {
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+}
+a {
+  &:hover {
+    // color: $color_link_hover;
+  }
+}
+$ml: 398px;
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.c-tooltip {
+  position: fixed;
+  border: 1px solid $gray;
+  width: max-content;
+  background: #fff;
+  padding: 10px 15px;
+  z-index: 20;
+  @extend %text-small;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background: #fff;
+    left: 50%;
+    bottom: -4px;
+    width: 7px;
+    height: 7px;
+    transform: rotate(45deg) translateX(-50%);
+    -webkit-transform: rotate(45deg);
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-radius: 31%;
+  }
+}
+
+.c-calendar {
+  // .c-calendar__header
+
+  &__header {
+    @extend %df;
+    @extend %jcsb;
+    margin-bottom: rem(30);
+  }
+
+  // .c-calendar__title
+
+  &__title {
+    @extend %h3-title-bold;
+    color: $gray;
+  }
+
+  // .c-calendar__btns
+
+  &__btns {
+    @extend %df;
+    @extend %aic;
+    margin-right: rem(47);
+  }
+
+  // .c-calendar__btn
+
+  &__btn {
+    // .c-calendar__btns-left
+
+    &-left {
+    }
+    // .c-calendar__btns-right
+
+    &-right {
+    }
+  }
+  &__curator {
+    &-btns {
+      @extend %df;
+      @extend %aic;
+      justify-content: flex-end;
+      margin-bottom: -24px;
+      margin-left: auto;
+      &.mb-0 {
+        margin-bottom: 0;
+      }
+    }
+    &-btn {
+      width: rem(30);
+      height: rem(30);
+      transition: all 0.5s ease;
+      margin-right: 11px;
+      span,
+      svg path {
+        transition: all 0.5s ease;
+      }
+    }
+  }
+  &__change {
+    @extend %df;
+    @extend %aic;
+    @extend %jcc;
+    border: 1px solid $red;
+    border-radius: 2px;
+    margin-right: 39px;
+    &.active,
+    &:hover {
+      background-color: $red;
+      svg {
+        path {
+          fill: $white;
+        }
+      }
+    }
+  }
+  &__hour-mode {
+    @extend %df;
+    @extend %fdc;
+    @extend %jcc;
+    @extend %aic;
+    border: 2px solid $soft_gray;
+    span {
+      @extend %df;
+      margin-bottom: 5px;
+      width: rem(19);
+      height: 2px;
+      border-radius: 2px;
+      background-color: $soft_gray;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    &.active,
+    &:hover {
+      border-color: $green;
+      span {
+        background-color: $green;
+      }
+    }
+  }
+  &__day-mode {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 2px;
+    margin-right: 0;
+    span {
+      @extend %df;
+      width: 100%;
+      height: 100%;
+      border: 2px solid $soft_gray;
+    }
+    &.active,
+    &:hover {
+      span {
+        border-color: $green;
+      }
+    }
+  }
+  // .c-calendar__month-name
+
+  &__month-name {
+    @extend %h3-title-bold;
+    color: $black;
+    text-transform: capitalize;
+    margin-right: rem(25);
+    margin-left: rem(26);
+  }
+
+  &__wrap {
+    padding: rem(28) rem(48) rem(37) rem(47);
+    border-radius: 2px;
+    background-color: rgba(247, 247, 247, 1);
+  }
+
+  // .c-calendar__static-days
+
+  &__static-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: rem(15);
+  }
+
+  // .c-calendar__name-days
+
+  &__name-days {
+    @extend %df;
+    justify-content: flex-end;
+    padding: 0 20px 0px 0px;
+    @extend %text-middle;
+    color: $gray;
+  }
+
+  // .c-calendar__items
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    column-gap: rem(2);
+    row-gap: rem(2);
+    width: 100%;
+  }
+
+  // .c-calendar__item
+
+  &__item {
+    height: rem(95);
+    background-color: $white;
+    border-radius: 2px;
+    position: relative;
+    border: 1px solid transparent;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    &:hover {
+      border-color: $gray;
+      &.is_student {
+        .c-calendar__item-hover {
+          opacity: 1;
+        }
+      }
+    }
+    &.current-day {
+      .c-calendar__item-data {
+        color: $green;
+      }
+    }
+    &.disabled {
+      @extend %evt-none;
+      background-color: rgba($color: $white, $alpha: 0.5);
+      border-color: rgba($color: $soft_gray, $alpha: 0.2);
+      .c-calendar__item-data {
+        color: $soft_gray;
+      }
+    }
+    &.day-off {
+      @extend %df;
+      @extend %jcc;
+      @extend %aic;
+      // @extend %evt-none;
+      background-color: #fdefee;
+      border-color: $red;
+      .c-calendar {
+        &__item-data {
+          color: $red;
+        }
+      }
+    }
+    &.lesson {
+      background-color: #f1ffea;
+      border-color: $green;
+      &.disabled {
+        background-color: rgba($color: $white, $alpha: 0.5);
+        border-color: rgba($color: $soft_gray, $alpha: 0.2);
+        .c-calendar {
+          &__item-data {
+            color: $soft_gray;
+          }
+        }
+      }
+      .c-calendar {
+        &__item-data {
+          color: $green;
+        }
+      }
+    }
+    // .c-calendar__item_empty
+
+    &_empty {
+      background-color: transparent;
+      @extend %evt-none;
+    }
+  }
+
+  // .c-calendar__item-data
+
+  &__item-data {
+    position: absolute;
+    top: rem(12);
+    right: rem(17);
+    @extend %h3-title-bold;
+    color: $black;
+    @extend %evt-none;
+  }
+
+  // .c-calendar__item-hover
+
+  &__item-hover {
+    padding-top: rem(25);
+    transition: all 0.5s ease;
+    opacity: 0;
+    @extend %evt-none;
+  }
+
+  &__lesson-ico {
+    position: absolute;
+    bottom: rem(7);
+    left: rem(12);
+    img {
+      margin-bottom: -5px;
+    }
+    span {
+      @extend %text-small;
+      color: $gray;
+      margin-left: 5px;
+      margin-bottom: 10px;
+    }
+  }
+  // .c-calendar__item-hover-icon
+  &__icon-block {
+    position: relative;
+    transform: rotate(45deg);
+    width: rem(11);
+    height: rem(11);
+    span {
+      position: absolute;
+      top: rem(5);
+      left: 0;
+      @extend %db;
+      width: rem(11);
+      height: rem(2);
+      background-color: $red;
+      border-radius: 2px;
+      &:last-child {
+        transform: rotate(90deg);
+      }
+    }
+  }
+  &__item-hover-icon {
+    position: relative;
+    @extend %db;
+    width: rem(22);
+    height: rem(22);
+    border: 2px solid $green;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: rem(3);
+    span {
+      position: absolute;
+      top: 8px;
+      left: 5px;
+      @extend %db;
+      width: rem(8);
+      height: rem(2);
+      background-color: $green;
+      border-radius: 2px;
+      &:last-child {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  // .c-calendar__item-hover-text
+
+  &__item-hover-text {
+    @extend %text-small;
+    color: $green;
+    text-align: center;
+  }
+}
+.datepiker__calendar {
+  &.c-calendar {
+    &__wrap {
+      padding: 0;
+      background-color: $white;
+    }
+  }
+  .c-calendar {
+    &__wrap {
+      padding: 0;
+    }
+    &__name-days {
+      font-size: rem(7);
+    }
+    &__item {
+      width: rem(45);
+      height: rem(40);
+      border: 1px solid $dark_white;
+      &:hover {
+        border-color: $black;
+      }
+      &-data {
+        font-size: rem(9);
+        right: 7px;
+        top: 5px;
+      }
+    }
+  }
+}
+@include bp(1100px) {
+  .c-calendar {
+    width: 100%;
+    &__item {
+      height: 80px;
+    }
+  }
+}
+@include bp(766px) {
+  .datepiker__calendar {
+    .c-calendar {
+      &__item {
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+  .c-calendar {
+    &__wrap {
+      padding: 9px 17px 13px;
+    }
+    &__title {
+      font-size: rem(16);
+    }
+    &__btns {
+      margin-right: 0;
+    }
+    &__month-name {
+      font-size: rem(16);
+    }
+    &__name-days {
+      font-size: rem(7);
+      padding-right: 5px;
+    }
+    &__item {
+      width: 40px;
+      height: 40px;
+      &-data {
+        top: 4px;
+        right: 6px;
+        font-size: rem(8);
+      }
+    }
+    &__lesson-ico {
+      bottom: 4px;
+      left: 3px;
+      display: flex;
+      align-items: flex-end;
+      span {
+        display: inline-block;
+        font-size: rem(6);
+        margin-bottom: 0;
+        line-height: rem(9);
+      }
+      img {
+        width: rem(15);
+        margin-bottom: 0;
+      }
+    }
+  }
+}

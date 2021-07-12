@@ -1,0 +1,212 @@
+<template>
+  <nav class="navbar flex justify-between">
+    <div class="left-side flex">
+      <div class="logo">
+        <figure>
+          <a href="https://studiait.it/" target="_blank">
+            <img src="@/assets/logo.svg" alt="logo" />
+          </a>
+        </figure>
+      </div>
+      <div class="links-wrapper">
+        <div class="links-container">
+          <ul class="flex">
+            <li><a href="#">Обучение</a></li>
+            <li><a href="#">Материалы</a></li>
+            <li><a href="#">Грамматика</a></li>
+            <li><a href="#">Медиатека</a></li>
+            <li><a href="#">Презентации</a></li>
+            <li><a href="#">Блог</a></li>
+            <li><a href="#">О нас</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="right-side flex">
+      <div class="social-medias flex">
+        <div class="media-icon">
+          <a
+            href="https://www.youtube.com/channel/UC3lxE1YYZ_44gxc-gbuTZVQ/featured"
+            target="_blank"
+          >
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="0.5"
+                y="0.5"
+                width="26.7274"
+                height="26.7274"
+                rx="1.5"
+                stroke="#4B4B4B"
+              />
+              <path
+                d="M19.072 12.9975C19.7387 13.3824 19.7387 14.3446 19.072 14.7295L12.0097 18.807C11.343 19.1919 10.5097 18.7108 10.5097 17.941L10.5097 9.78606C10.5097 9.01626 11.343 8.53513 12.0097 8.92003L19.072 12.9975Z"
+                fill="#4B4B4B"
+              />
+            </svg>
+          </a>
+        </div>
+        <div class="media-icon">
+          <a
+            href="https://www.facebook.com/Studiait-103135241690668"
+            target="_blank"
+          >
+            <svg
+              width="29"
+              height="28"
+              viewBox="0 0 29 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="1.13623"
+                y="0.5"
+                width="26.7274"
+                height="26.7274"
+                rx="1.5"
+                stroke="#4B4B4B"
+              />
+              <path
+                d="M15.6654 22.0191V15.1326H17.9955L18.578 12.2632H15.6654V11.1154C15.6654 9.96769 16.2491 9.39381 17.413 9.39381H18.578V6.52441C17.9955 6.52441 17.2731 6.52441 16.2479 6.52441C14.1072 6.52441 12.7529 8.17776 12.7529 10.5416V12.2632H10.4229V15.1326H12.7529V22.0191H15.6654Z"
+                fill="#4B4B4B"
+              />
+            </svg>
+          </a>
+        </div>
+        <div class="media-icon">
+          <a href="https://www.instagram.com/studia.it/" target="_blank">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="0.772705"
+                y="0.5"
+                width="26.7274"
+                height="26.7274"
+                rx="1.5"
+                stroke="#4B4B4B"
+              />
+              <path
+                d="M14.1365 9.90848C11.9906 9.90848 10.2125 11.6559 10.2125 13.8324C10.2125 16.009 11.9599 17.7564 14.1365 17.7564C16.3131 17.7564 18.0604 15.9784 18.0604 13.8324C18.0604 11.6865 16.2824 9.90848 14.1365 9.90848ZM14.1365 16.3462C12.757 16.3462 11.6227 15.212 11.6227 13.8324C11.6227 12.4529 12.757 11.3187 14.1365 11.3187C15.516 11.3187 16.6503 12.4529 16.6503 13.8324C16.6503 15.212 15.516 16.3462 14.1365 16.3462Z"
+                fill="#4B4B4B"
+              />
+              <path
+                d="M18.2161 10.7056C18.7071 10.7056 19.1051 10.3075 19.1051 9.81655C19.1051 9.32555 18.7071 8.92752 18.2161 8.92752C17.7251 8.92752 17.327 9.32555 17.327 9.81655C17.327 10.3075 17.7251 10.7056 18.2161 10.7056Z"
+                fill="#4B4B4B"
+              />
+              <path
+                d="M20.5128 7.51764C19.7157 6.68993 18.5815 6.26074 17.2939 6.26074H10.9788C8.31174 6.26074 6.53369 8.03879 6.53369 10.7059V16.9903C6.53369 18.3085 6.96287 19.4428 7.82124 20.2705C8.64895 21.0676 9.75256 21.4661 11.0095 21.4661H17.2633C18.5815 21.4661 19.6851 21.0369 20.4821 20.2705C21.3099 19.4735 21.739 18.3392 21.739 17.021V10.7059C21.739 9.4183 21.3099 8.31469 20.5128 7.51764ZM20.3902 17.021C20.3902 17.9713 20.053 18.7377 19.5012 19.2589C18.9493 19.78 18.1829 20.0559 17.2633 20.0559H11.0095C10.0898 20.0559 9.32338 19.78 8.77157 19.2589C8.21977 18.7071 7.94386 17.9407 7.94386 16.9903V10.7059C7.94386 9.78618 8.21977 9.01978 8.77157 8.46797C9.29273 7.94682 10.0898 7.67092 11.0095 7.67092H17.3246C18.2443 7.67092 19.0107 7.94682 19.5625 8.49863C20.0836 9.05043 20.3902 9.81683 20.3902 10.7059V17.021Z"
+                fill="#4B4B4B"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="enter-to-account">
+        <button>Войти</button>
+      </div>
+    </div>
+  </nav>
+</template>
+<style lang="scss" scoped>
+%absolute {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.navbar {
+  height: 63px;
+  margin-top: 17px;
+  .left-side {
+    .links-wrapper {
+      margin-left: 49px;
+      position: relative;
+      .links-container {
+        height: 21px;
+        @extend %absolute;
+        a {
+          &:hover {
+            color: $green;
+          }
+        }
+        ul {
+          li {
+            margin-left: 24px;
+            font-family: "Circe";
+            font-style: normal;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+            color: rgba(37, 28, 28, 1);
+          }
+          li:nth-child(1) {
+            margin-left: 0px;
+          }
+        }
+      }
+    }
+  }
+  .right-side {
+    position: relative;
+    max-width: 245px;
+    width: 100%;
+    .social-medias {
+      @extend %absolute;
+      height: 27.73px;
+      .media-icon {
+        margin-left: 10px;
+        path,
+        rect {
+          transition: all 0.5s ease;
+        }
+
+        &:hover {
+          path {
+            fill: $green;
+            transition: all 0.5s ease;
+          }
+          rect {
+            stroke: $green;
+            transition: all 0.5s ease;
+          }
+        }
+      }
+      .media-icon:nth-child(1) {
+        margin-left: 0px;
+      }
+    }
+    button {
+      @extend %absolute;
+      left: auto;
+      margin-left: 38px;
+      border: 1px solid rgba(37, 28, 28, 1);
+      height: max-content;
+      @extend %simple-btn-gray;
+      width: 104px;
+      height: 45px;
+    }
+  }
+}
+</style>
+<style scoped>
+.flex {
+  display: flex;
+}
+.justify-between {
+  justify-content: space-between;
+}
+</style>

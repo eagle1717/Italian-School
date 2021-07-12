@@ -1,0 +1,98 @@
+// ================ Circe-Bold ================
+@include font_face(Circe-Bold, Circe-Bold);
+
+%bold {
+    font-family: 'Circe-Bold', sans-serif;
+}
+
+// ################ Circe-Bold ################
+
+// ================ Circe-Regular ==============
+@include font_face(Circe-Regular, Circe-Regular);
+
+%regular {
+    font-family: 'Circe-Regular', sans-serif;
+}
+// ################### Circe-Regular ###################
+
+// ================ Letter spasing
+%ls-3 {
+    letter-spacing: 0.03em;
+}
+
+%ls-5 {
+    letter-spacing: 0.05em;
+}
+
+// Headline/H1 Bold 40pt
+%h1-title {
+    @extend %bold;
+    font-size: rem(40);
+    line-height: rem(41);
+    @extend %ls-3;
+}
+
+// Headline/H2 Regular 30
+%h2-title-regular {
+    @extend %regular;
+    font-size: rem(30);
+    line-height: rem(34);
+    @extend %ls-3;
+}
+// Headline/H2 Bold 30
+%h2-title-bold {
+    @extend %bold;
+    font-size: rem(30);
+    line-height: rem(34);
+    @extend %ls-3;
+}
+
+// Headline/H3 Bold 20
+%h3-title-bold {
+  @extend %bold;
+  font-size: rem(20);
+  line-height: rem(21);
+  @extend %ls-3;
+}
+
+// Text/Main Bold 18pt
+%text-big {
+  @extend %bold;
+  font-size: rem(18);
+  line-height: rem(18);
+}
+
+// Text/Main Regular 16pt
+%text-middle {
+  @extend %regular;
+  font-size: rem(16);
+  line-height: rem(24);
+}
+
+// Text/Main Regular 14pt
+%text-small {
+  @extend %regular;
+  font-size: rem(14);
+  line-height: rem(20);
+}
+
+// Button/Main Bold 16pt
+%btn-text {
+  @extend %bold;
+  font-size: rem(16);
+  line-height: rem(21);
+}
+
+// Text/Main Regular 14 pt - Line spacing
+%text-small-big-line-height {
+  @extend %regular;
+  font-size: rem(14);
+  line-height: rem(20);
+}
+
+// Text/Main Regular 12 pt
+%text-very-small {
+  @extend %regular;
+  font-size: rem(12);
+  line-height: rem(12);
+}

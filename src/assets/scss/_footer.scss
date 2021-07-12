@@ -1,0 +1,251 @@
+.footer {
+    position: fixed;
+    bottom: 25px;
+    left: 0;
+    width: 100%;
+    // .footer__progressbar
+
+    &__progressbar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.28);
+        backdrop-filter: blur(91px);
+    }
+
+    // .footer__pregress-item
+
+    &__pregress-item {
+        width: 0;
+        height: 100%;
+        transition: all .3s ease;
+        background: linear-gradient(154.78deg, #8F00FF 23.97%, rgba(255, 0, 92, 0.92) 135.76%);
+    }
+
+    // .footer__wrapper
+
+    &__wrapper {
+        @extend %df;
+        @extend %aic;
+        @extend %jcsb;
+    }
+
+    // .footer__wrap
+
+    &__wrap {
+        // .footer__wrap_right
+        
+        &_right {
+            @extend %df;
+            @extend %aic;
+        }
+
+        // .footer__wrap_left
+
+        &_left {
+        }
+    }
+
+    // .footer__social
+
+    &__social {
+        @extend %df;
+        margin-right: 83px;
+    }
+
+    // .footer__soc-item
+
+    &__soc-item {
+        margin-right: 12px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    // .footer__soc-link
+
+    &__soc-link {
+        @extend %df;
+        @extend %aic;
+        @extend %jcc;
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        background-color: $white;
+        transition: all .3s ease;
+        opacity: 1;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    // .footer__coc-icon
+
+    &__coc-icon {
+        
+        // .footer__coc-icon_instagramm
+
+        &_instagramm {
+            width: 19px;
+            height: 19px;
+        }
+
+        // .footer__coc-icon_fb
+
+        &_fb {
+            width: 9px;
+            height: 19px;
+            margin-left: 5px;
+        }
+
+        // .footer__coc-icon_telegram
+
+        &_telegram {
+            width: 16px;
+            height: 13px;
+        }
+
+        // .footer__coc-icon_vk
+
+        &_vk {
+            width: 12px;
+            height: 15px;
+        }
+    }
+
+    // .footer__users
+
+    &__users {
+        position: relative;
+        @extend %df;
+        @extend %aic;
+        @extend %big-button;
+        width: 153px;
+        height: 50px;
+        background: none;
+        box-shadow: none;
+        cursor: default;
+        &:hover {
+            background: linear-gradient(113.57deg, #8F00FF 23.97%, rgba(255, 0, 92, 0.92) 135.76%);
+            box-shadow: none;
+            .footer__user-tooltip {
+                opacity: 1;
+            }
+        }
+    }
+
+    // .footer__user-icon
+
+    &__user-icon {
+        @extend %db;
+        width: 22px;
+        height: 22px;
+    }
+
+    // .footer__user-quanity
+
+    &__user-quanity {
+        @extend %op-bold;
+        @extend %fz-18;
+        @extend %lh-28;
+        @extend %ls-05;
+        color: $white;
+        margin-left: 11px;
+    }
+
+    // .footer__user-tooltip
+
+    &__user-tooltip {
+        @extend %tooltip;
+        bottom: 70px;
+        width: 193px;
+        opacity: 0;
+        &:after,
+        &:before {
+            top: 100%;
+            left: 50%;
+            bottom: auto;
+            right: auto;    
+        }
+        &:after {
+            border-bottom-color: transparent;
+            border-top-color: $white;
+            border-width: 9px;
+            margin-left: -9px;
+        }
+        &:before {
+            border-bottom-color: transparent;
+            border-top-color: $black;
+            margin-right: auto;
+            margin-left: -7px;
+            top: 101.4%;
+        }
+    }
+
+    // .footer__arrows
+
+    &__arrows {
+        @extend %df;
+        @extend %aic;
+    }
+
+    // .footer__arr
+
+    &__arr {
+        @extend %df;
+        @extend %aic;
+        @extend %jcc;
+        width: 66px;
+        height: 66px;
+        background: rgba(255, 255, 255, 0.108);
+        backdrop-filter: blur(64px);
+        border-radius: 2px;
+        @extend %evt-all;
+        &.hide {
+            opacity: 0;
+            @extend %evt-none;
+        }
+        // .footer__arr_left
+
+        &_left {
+            margin-right: 10px;
+        }
+
+        // .footer__arr_right
+
+        &_right {
+        }
+    }
+
+    // .footer__arr-icon
+
+    &__arr-icon {
+        width: 29px;
+        height: 22px;
+        @extend %evt-none;
+    }
+}
+.container {
+}
+.progress {
+}
+.icon {
+}
+.icon-instagramm {
+}
+.black {
+}
+.icon-fb {
+}
+.icon-telegram {
+}
+.icon-vk {
+}
+.icon-arr-left {
+}
+.white {
+}
+.icon-arr-right {
+}

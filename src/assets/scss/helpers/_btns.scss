@@ -1,0 +1,179 @@
+%btn-main-green {
+  @extend %btn-text;
+  height: 50px;
+  background-color: $green;
+  color: #fff;
+  padding-left: 36px;
+  padding-right: 36px;
+  text-align: left;
+  border-radius: 2px;
+}
+%btn-danger {
+  @extend %regular;
+  padding: 12.5px 48px;
+  border: 1px solid $red;
+  border-radius: 2px;
+  background: $red;
+  font-size: rem(14);
+  color: $white;
+}
+%btn-dark-red {
+  background: #d62a20;
+}
+%btn-border-danger {
+  @extend %regular;
+  padding: 8px 48px;
+  border: 1px solid $red;
+  border-radius: 2px;
+  font-size: rem(14);
+  color: $red;
+}
+
+%btn-border-grey {
+  @extend %btn-text;
+  padding: 6px 25px;
+  border: 1px solid #d8d8d8;
+  border-radius: 2px;
+}
+%btn-border-black {
+  @extend %btn-text;
+  padding: 6px 25px;
+  border: 1px solid #4b4b4b;
+  border-radius: 2px;
+}
+%btn-border-grey2 {
+  @extend %btn-text;
+  padding: 13px 30px;
+  border: 1px solid #d8d8d8;
+  border-radius: 2px;
+}
+%btn-border-green {
+  @extend %btn-text;
+  padding: 14.5px 48px;
+  border: 1px solid $green;
+  border-radius: 2px;
+  color: $green;
+}
+%btn-all-green {
+  @extend %btn-text;
+  padding: 14.5px 48px;
+  border-radius: 2px;
+  background-color: $green;
+  color: $white;
+}
+%btn-reg-text {
+  @extend %text-middle;
+  width: 100%;
+  height: 50px;
+  padding-left: 50px;
+  padding-right: 35px;
+  border: 1px solid #d8d8d8;
+  border-radius: 2px;
+}
+
+// ==> Normal Extends
+%simple-btn {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %btn-text;
+  width: 232px;
+  height: 50px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  transition: all 0.5s ease;
+}
+
+%simple-btn-green {
+  @extend %simple-btn;
+  background-color: $green;
+  color: $white;
+  border-color: $green;
+  &:hover {
+    background-color: $white;
+    color: $green;
+  }
+}
+
+%simple-btn-white {
+  @extend %simple-btn;
+  background-color: $white;
+  color: $green;
+  border-color: $green;
+  &:hover {
+    background-color: $green;
+    color: $white;
+  }
+}
+%simple-btn-gray {
+  @extend %simple-btn;
+  background-color: $white;
+  color: $black;
+  border-color: $gray;
+  &:hover {
+    color: $green;
+    background-color: transparent;
+    border-color: $green;
+  }
+}
+
+%simple-btn-red-fill {
+  @extend %simple-btn;
+  background-color: $red;
+  border-color: $red;
+  color: $white;
+  &:hover {
+    background-color: $white;
+    color: $red;
+  }
+}
+
+%simple-btn-red-border {
+  @extend %simple-btn;
+  background-color: $white;
+  border-color: $red;
+  color: $red;
+  &:hover {
+    color: $white;
+    background-color: $red;
+  }
+}
+
+%close-modal-btn {
+  @extend %db;
+  width: rem(16);
+  height: rem(16);
+  position: relative;
+  margin-top: -4px;
+  span {
+    position: absolute;
+    right: 7px;
+    top: -2px;
+    @extend %db;
+    width: 2px;
+    height: 20px;
+    border-radius: 2px;
+    background-color: $gray;
+    transform: rotate(45deg);
+    &:last-child {
+      transform: rotate(-45deg);
+      right: 7px;
+      top: -2px;
+    }
+  }
+}
+%simple-btn-green-border {
+  @extend %simple-btn;
+  background-color: $white;
+  color: $green;
+  border-color: $green;
+  &:hover {
+    color: $white;
+    background-color: $green;
+    border-color: $green;
+  }
+}
+%btn-darkgreen {
+  background-color: #2e8e00 !important;
+  color: $white !important;
+}

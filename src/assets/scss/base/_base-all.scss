@@ -1,0 +1,13 @@
+@import './reset';
+@import './sprite';
+@import './fonts';
+@import './grid';
+@import './base';
+@import './slider';
+.list-enter-active, .list-leave-active {
+  transition: all .5s;
+}
+.list-enter, .list-leave-to /* .list-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(50px);
+}

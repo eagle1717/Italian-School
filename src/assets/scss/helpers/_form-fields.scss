@@ -1,0 +1,10 @@
+%simple-select {
+  position: relative;
+  z-index: 2;
+  width: 191px;
+  height: 35px;
+  border-radius: 2px;
+  border: 1px solid $soft_gray;
+  background-color: $white;
+  cursor: pointer;
+}
