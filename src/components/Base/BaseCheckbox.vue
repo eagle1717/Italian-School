@@ -1,5 +1,9 @@
 <template>
-  <div class="c-checkbox">
+  <div
+    class="c-checkbox"
+    v-tooltip="{ text: 'Отправить Д/З на проверку' }"
+    title="fsa"
+  >
     <input
       :id="`checkbox_${id}`"
       class="c-checkbox__input"
@@ -7,6 +11,7 @@
       :value="value"
       @change="update"
       v-if="!value"
+      @click="sendHomework"
     />
     <input
       :id="`checkbox_${id}`"
@@ -22,6 +27,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "BaseCheckbox",
   props: {
@@ -41,8 +47,12 @@ export default {
     this.id = this._uid;
   },
   methods: {
+    ...mapMutations(["SHOW_MODAL"]),
     update(value) {
       this.$emit("input", value);
+    },
+    sendHomework() {
+      this.SHOW_MODAL("homework");
     }
   }
 };

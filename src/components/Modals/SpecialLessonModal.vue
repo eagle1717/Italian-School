@@ -2,7 +2,7 @@
   <BaseModal class="c-special-modal-main">
     <div class="c-special-modal" v-if="notSendYet">
       <div class="c-special-modal__wrap c-special-modal__wrap_top">
-        <h2 class="c-special-modal__title">Анкета специального занятия</h2>
+        <h2 class="c-special-modal__title margin-from-close-button">Анкета специального занятия</h2>
       </div>
       <div class="c-special-modal__wrap c-special-modal__wrap_teacher">
         <StudentModalCard :photo="user_photo" :name="user_name" />

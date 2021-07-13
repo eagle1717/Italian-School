@@ -90,11 +90,16 @@
   color: $white;
   border-color: $green;
   &:hover {
-    background-color: $white;
-    color: $green;
+    background-color: #2e8e00;
+    color: $white;
+    border-color: transparent;
   }
 }
-
+%btn-darkgreen {
+  background-color: #2e8e00;
+  color: $white;
+  border-color: transparent;
+}
 %simple-btn-white {
   @extend %simple-btn;
   background-color: $white;
@@ -172,8 +177,4 @@
     background-color: $green;
     border-color: $green;
   }
-}
-%btn-darkgreen {
-  background-color: #2e8e00 !important;
-  color: $white !important;
 }

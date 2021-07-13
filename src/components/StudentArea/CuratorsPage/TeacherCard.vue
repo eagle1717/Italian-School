@@ -39,7 +39,7 @@
       <div class="teacher__arrow">
         <BaseIcon name="arrow-down"></BaseIcon>
       </div>
-      <div class="teacher__contest">
+      <div class="teacher__contest" v-click-outside="show_contest">
         <div class="teacher__contest-icon" @click.stop="show_contest">
           <span></span>
           <span></span>
@@ -104,7 +104,11 @@
 
 <script>
 import { mapMutations } from "vuex";
+import ClickOutside from "vue-click-outside";
 export default {
+  directives: {
+    ClickOutside
+  },
   props: {
     hideContentOnClick: {
       type: Boolean,
@@ -151,6 +155,7 @@ export default {
     },
     show_full_card() {
       if (this.hideContentOnClick) {
+        this.show_contest_menu = false;
         return (this.show_full_of_card = !this.show_full_of_card);
       }
       return;
@@ -185,7 +190,7 @@ export default {
   @extend %df;
   @extend %jcsb;
   width: 100%;
-  height: 362px;
+  height: 100%;
   max-height: 362px;
   background-color: #f7f7f7;
   border-radius: 2px;
@@ -196,6 +201,8 @@ export default {
   cursor: pointer;
   position: relative;
   justify-content: initial;
+  padding-bottom: 34px;
+  max-height: 100%;
   &.hide {
     max-height: 144px;
     .teacher {
@@ -217,7 +224,7 @@ export default {
     &.open {
       max-height: 100%;
       cursor: default;
-
+      padding-bottom: 34px;
       .teacher {
         &__text {
           max-height: 100%;

@@ -6,7 +6,7 @@
     >
       <h2 class="c-login-modal__title">Вход</h2>
       <BaseInputText
-        class="c-login-modal__field"
+        class="c-login-modal__field text-field-input"
         icon="email"
         placeholder="Ваша почта"
         v-model="email"
@@ -62,7 +62,8 @@ export default {
       // console.log(!this.email.match(/^[0-9a-z-.]+@[0-9a-z-]{2,}\.[a-z]{2,}$/i))
       if (
         this.email.length === 0 ||
-        !this.email.match(/^[0-9a-z-.]+@[0-9a-z-]{2,}\.[a-z]{2,}$/i)
+        this.email.trim().length === 0 ||
+        !this.email.match(/^\S+@\S+\.\S+$/)
       ) {
         this.error_email = true;
         this.error_message = "Некорректный email";
@@ -107,10 +108,9 @@ export default {
 
 <style lang="scss">
 .v-login {
-  padding-top: rem(100);
+  margin-top: $mt;
   &__form {
     margin: 0 auto;
-    padding-top: rem(78);
   }
 }
 .c-login-modal {
@@ -182,9 +182,6 @@ export default {
   &__forgot-password {
     @extend %text-big;
     color: $red;
-    &:hover {
-      opacity: 0.8;
-    }
   }
 }
 </style>

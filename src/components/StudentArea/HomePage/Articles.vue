@@ -28,23 +28,29 @@ export default {
     return {
       articles: [
         {
+          id: 1,
           image: "/img/ill/slider/slider-item1.jpeg",
           desc:
             "Ad ipsum mollit duis eiusmod nisi quis ullamco <br>Ad ipsum mollit duis",
-          date: "12 февраля 2020"
+          date: "12 февраля 2020",
+          link: "https://github.com"
         },
 
         {
+          id: 2,
           image: "/img/ill/slider/slider-item3.jpeg",
           desc:
             "Ad ipsum mollit duis eiusmod nisi quis ullamco <br>Ad ipsum mollit duis",
-          date: "12 февраля 2020"
+          date: "12 февраля 2020",
+          link: "https://github.com"
         },
         {
+          id: 3,
           image: "/img/ill/slider/slider-item3.jpeg",
           desc:
             "Ad ipsum mollit duis eiusmod nisi quis ullamco <br>Ad ipsum mollit duis",
-          date: "12 февраля 2020"
+          date: "12 февраля 2020",
+          link: "https://github.com"
         }
       ]
     };

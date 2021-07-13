@@ -36,6 +36,14 @@ const routes = [
     }
   },
   {
+    path: "/confirm-registration",
+    name: "ConfirmRegistration",
+    component: () => import("@/views/StudentArea/Auth/ConfirmRegistration"),
+    meta: {
+      layout: "Empty"
+    }
+  },
+  {
     path: "/home",
     name: "HomePage",
     component: () => import("@/views/StudentArea/HomePage/HomePage")
@@ -59,7 +67,10 @@ const routes = [
   {
     path: "/quiz",
     name: "Qviz",
-    component: () => import("@/views/StudentArea/Auth/Qviz.vue")
+    component: () => import("@/views/StudentArea/Auth/Qviz.vue"),
+    meta: {
+      layout: 'NoContent'
+    }
   },
   {
     path: "/teachers",
@@ -142,6 +153,17 @@ const routes = [
     name: "Calendar",
     component: () => import("@/views/StudentArea/CalendarPage/Calendar"),
   },
+  // teacher
+  {
+    path: "/home2",
+    name: 'Home2',
+    component: () => import("@/views/TeacherArea/HomePage")
+  },
+  {
+    path: "/homework",
+    name: "HomeWork",
+    component: () => import("@/views/TeacherArea/HomeWork")
+  }
 ];
 
 const router = new VueRouter({

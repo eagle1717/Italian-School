@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import CircleProgress from "@/components/CircleProgress";
+import CircleProgress from "@/components/StudentArea/LevelPage/CircleProgress";
 export default {
   name: "ModalUserLevel",
   components: {

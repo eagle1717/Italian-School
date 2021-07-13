@@ -8,7 +8,7 @@
       />
       <template>
         <div class="c-help__content">
-          <transition-group name="list" tag="ul">
+          <transition-group name="list" tag="ul" class="list-ul">
             <li v-for="(question, index) in questions" :key="question.id">
               <Accordion
                 :image="question.image"
@@ -36,35 +36,35 @@ export default {
         {
           id: 0,
           desc:
-            "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
+            "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat...Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
           title: "Как пользоваться Studia.it?",
           image: "/img/ill/faq/how-to-use.svg"
         },
         {
           id: 1,
           desc:
-            "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
+            "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat...Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
           title: "Что такое Studia.it?",
           image: "/img/ill/faq/what-is-it.svg"
         },
         {
           id: 2,
           desc:
-            "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
+            "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat...Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
           title: "Как повышать уровень?",
           image: "/img/ill/faq/how-to-up-lavel.svg"
         },
         {
           id: 3,
           desc:
-            "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
+            "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat...Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
           title: "Хочу работать у вас преподователем! Куда мне писать?",
           image: "/img/ill/faq/i-want-work.svg"
         },
         {
           id: 4,
           desc:
-            "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
+            "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat...Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
           title: "Забыл пароль, что делать?",
           image: "/img/ill/faq/password.svg"
         }
@@ -87,6 +87,7 @@ export default {
   &__message-btn {
     width: rem(179);
     height: 35px;
+    font-weight: 700;
   }
   &__not-found {
     /*<!--@extend  %df;-->*/

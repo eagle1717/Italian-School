@@ -92,7 +92,7 @@ export default {
   }
   &__notifer {
     position: absolute;
-    bottom: -22px;
+    bottom: -13px;
     @extend %text-very-small;
     color: $red;
     left: 0;
@@ -106,7 +106,6 @@ export default {
 
     span {
       @extend %df;
-      /*width: 50%;*/
       border-radius: 2px;
       height: 100%;
       background-color: $green;
@@ -154,15 +153,13 @@ export default {
       // position: absolute;
       // top: 50%;
       // right: 21px;
-      background-image: url($img_dir+"icons/eye-pass.svg");
+      background-image: url($img_dir+"icons/hide-pass.svg");
       @extend %bg-reset;
-      //   width: 19;
-      // height: 12px;
       width: rem(19);
       height: rem(12);
       margin-left: rem(3);
       &--show {
-        background-image: url($img_dir+"icons/hide-pass.svg");
+        background-image: url($img_dir+"icons/eye-pass.svg");
       }
     }
   }

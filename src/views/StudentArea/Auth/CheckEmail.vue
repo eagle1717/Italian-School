@@ -7,16 +7,18 @@
         Если вы не получили наше письмо, проверьте папку «Спам».
       </p>
       <h2 class="c-check-email__content-question">Всё ещё нет?</h2>
-      <p class="c-check-email__content-send">Отправить повторно</p>
+      <p class="c-check-email__content-send">
+        <a href="#">Отправить повторно</a>
+      </p>
     </div>
   </div>
 </template>
 
 <style lang="scss">
 .c-check-email {
+  margin-top: $mt;
   padding: rem(20) rem(116) 0 rem(114);
   height: 70%;
-
   &__login {
     @extend %df;
     @extend %jcfe;
@@ -34,6 +36,7 @@
     @extend %fdc;
     height: 100%;
     width: rem(309);
+    margin: auto;
 
     &-tag {
       @extend %h2-title-regular;
@@ -56,9 +59,6 @@
       @extend %text-middle;
       color: $green;
       cursor: pointer;
-      &:hover {
-        opacity: 0.8;
-      }
     }
   }
 }

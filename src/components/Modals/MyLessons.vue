@@ -4,7 +4,11 @@
       <div class="c-my-lessons__container">
         <div class="c-my-lessons__header">
           <div class="c-my-lessons__header-holder-info">
-            <h2 class="c-my-lessons__header-holder-info-title">Ваши занятия</h2>
+            <h2
+              class="c-my-lessons__header-holder-info-title margin-from-close-button"
+            >
+              Ваши занятия
+            </h2>
           </div>
           <div class="c-my-lessons__header-holder-option">
             <router-link
@@ -31,9 +35,6 @@
         </div>
       </div>
     </div>
-    <div class="c-my-lessons">
-      <Homework />
-    </div>
   </BaseModal>
 </template>
 
@@ -53,8 +54,8 @@ export default {
           },
           homework_link: "#",
           lesson_link: "#",
-          is_homework_done: false,
-          id: 1,
+          is_homework_done: true,
+          id: 2,
           curator: {
             name: "Tomothy Murphy",
             photo: "user.svg"
@@ -67,8 +68,8 @@ export default {
           },
           homework_link: "#",
           lesson_link: "#",
-          is_homework_done: true,
-          id: 2,
+          is_homework_done: false,
+          id: 1,
           curator: {
             name: "Tomothy Murphy",
             photo: "user.svg"
@@ -83,7 +84,7 @@ export default {
 <style lang="scss">
 .c-my-lessons {
   @extend %pagept;
-  padding-top: 44px;
+  padding-top: 36px;
   padding-left: 60px;
   &__modal {
     width: 705px;

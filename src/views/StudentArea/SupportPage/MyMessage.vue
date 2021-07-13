@@ -46,6 +46,7 @@
             :description="message.description"
             :date="message.date"
             :title="message.title"
+            :isAnswered="message.isAnswer"
             :is-answer="message.messages"
             :messages="message.messages"
           />

@@ -112,7 +112,7 @@ export default {
     @extend %text-very-small;
     color: $red;
     left: 0;
-    bottom: -25px;
+    bottom: -13px;
   }
   &.error {
     border-color: $red;

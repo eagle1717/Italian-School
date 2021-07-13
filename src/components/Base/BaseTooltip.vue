@@ -14,7 +14,10 @@
         >
         <span>
           <img src="@/assets/img/time.svg" alt="" />
-          <span>{{ lesson && lesson.teacher && lesson.full_from }} - {{ lesson && lesson.teacher && lesson.full_to }}</span>
+          <span
+            >{{ lesson && lesson.teacher && lesson.full_from }} -
+            {{ lesson && lesson.teacher && lesson.full_to }}</span
+          >
         </span>
       </div>
     </div>

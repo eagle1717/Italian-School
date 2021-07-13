@@ -4,7 +4,7 @@
       <h3 class="c-user-level__title">
         Ваш уровень
       </h3>
-      <template>
+      <template v-if="isCheckLevel">
         <p class="c-user-level__text">
           Ваш уровень не<br />
           подтвержден
@@ -13,28 +13,61 @@
           Выбрать уровень
         </router-link>
       </template>
+      <template v-else>
+        <img
+          :src="require(`@/assets/img/ill/level/${levels.a1.img}.svg`)"
+          :alt="levels.a1.text"
+        />
+      </template>
     </div>
-    <div class="c-user-level__wrap c-user-level__wrap_right">
-      <p class="c-user-level__wrap-item">Грамматика</p>
-      <img src="@/assets/percentage.svg" />
-      <!-- <CircleProgress :percent="user.level.grammar_percent" /> -->
-    </div>
-    <div class="c-user-level__wrap c-user-level__wrap_right">
-      <p class="c-user-level__wrap-item">Лексика</p>
-      <img src="@/assets/percentage.svg" />
-      <!-- <CircleProgress :percent="user.level.vocabulary_percent" /> -->
+    <div class="flex">
+      <div
+        class="c-user-level__wrap c-user-level__wrap_right grammar-percentage"
+      >
+        <p class="c-user-level__wrap-item">Грамматика</p>
+        <CircleProgress :percent="percentage" />
+      </div>
+      <div
+        class="c-user-level__wrap c-user-level__wrap_right leksik-percentage"
+      >
+        <p class="c-user-level__wrap-item">Лексика</p>
+        <CircleProgress :percent="percentage" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-// import CircleProgress from "../CircleProgress";
+import CircleProgress from "@/components/StudentArea/LevelPage/CircleProgress";
 import { mapState } from "vuex";
 export default {
-  // components: { CircleProgress },
+  components: { CircleProgress },
   data() {
     return {
-      isCheckLevel: false
+      isCheckLevel: true,
+      levels: {
+        a1: {
+          text: "A1",
+          img: "a1"
+        },
+        a2: {
+          text: "A2",
+          img: "a2"
+        },
+        b1: {
+          text: "B1",
+          img: "b1"
+        },
+        b2: {
+          text: "B2",
+          img: "b2"
+        },
+        c1: {
+          text: "C1",
+          img: "c1"
+        }
+      },
+      percentage: 68
     };
   },
   computed: {
@@ -52,6 +85,8 @@ export default {
   width: rem(430);
   border: 1px solid #4b4b4b;
   border-radius: 2px;
+  padding-left: 33;
+  padding-right: 33px;
   .c-user-level__wrap_left {
     padding-top: 5px;
   }
@@ -61,7 +96,7 @@ export default {
     margin-bottom: 11px;
   }
   &__wrap-item {
-    margin-bottom: 23px;
+    margin-bottom: 5px;
   }
   &__text {
     @extend %text-small-big-line-height;
@@ -76,8 +111,13 @@ export default {
   &__wrap {
     &-item {
       @extend %text-small;
+      color: #4b4b4b;
     }
   }
+}
+.leksik-percentage {
+  margin-left: 20px;
+  text-align: center;
 }
 @include bp(1360px) {
   .c-user-level {

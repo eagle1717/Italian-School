@@ -75,12 +75,13 @@ export default {
   margin-top: 13px;
   height: 144px;
   padding: rem(30) rem(35);
-  transition: max-height 0.5s ease;
   overflow: hidden;
   cursor: pointer;
+  transition: height 0.5s ease-in;
   &.open {
-    max-height: 100%;
-    /*height: auto;*/
+    height: 100%;
+    padding-bottom: 34px;
+    transition: height 0.5s ease-in;
     .c-accordion__hide-text {
       max-height: 100%;
       height: auto;

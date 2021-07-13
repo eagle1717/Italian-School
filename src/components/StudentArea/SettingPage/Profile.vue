@@ -228,6 +228,7 @@
         </div>
       </div>
     </div>
+    <Notifications />
   </div>
 </template>
 
@@ -235,9 +236,10 @@
 import { mapGetters, mapMutations } from "vuex";
 import { check_form_data } from "@/mixins/mixins.js";
 import BasePhoneInput from "@/components/Base/BasePhoneInput";
+import Notifications from "@/components/Notifications.vue";
 export default {
   name: "Profile",
-  components: { BasePhoneInput },
+  components: { BasePhoneInput, Notifications },
   mixins: [check_form_data],
   data() {
     return {
@@ -524,6 +526,9 @@ export default {
     @extend %df;
     @extend %jcfs;
     @extend %aic;
+  }
+  .c-profile__close-btn {
+    display: none;
   }
   &__holder-social {
     position: relative;

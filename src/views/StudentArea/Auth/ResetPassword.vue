@@ -7,8 +7,7 @@
         </h2>
         <form @submit.prevent="onSubmit" class="c-reset-password__form">
           <BaseInputPassword
-            class="c-reset-password__form-field"
-            :showProgress="true"
+            class="c-reset-password__form-field text-field-input"
             placeholder="Новый пароль"
             v-model="old_password"
             :error="error_old_pass"
@@ -17,6 +16,8 @@
             placeholder="Повторите пароль"
             v-model="new_password"
             :error="error_new_pass"
+            :showProgress="true"
+            :error_message="error_password_message"
           />
           <button class="c-reset-password__save-password">
             Сохранить пароль
@@ -35,17 +36,26 @@ export default {
       old_password: null,
       new_password: null,
       error_old_pass: false,
-      error_new_pass: false
+      error_new_pass: false,
+      error_password_message: null
     };
   },
   methods: {
     onSubmit() {
       if (this.old_password && this.new_password) {
-        if (
-          this.old_password.length < 6 &&
-          this.new_password.length < 6 &&
-          this.old_password !== this.new_password
-        ) {
+        if (this.old_password.length === 0 || this.old_password.length < 6) {
+          this.error_old_pass = true;
+          this.error_password_message =
+            "Ненадежный пароль (Используйте символы A-z, 0-9)";
+          setTimeout(() => {
+            this.error_password = false;
+            this.error_password_message = null;
+          }, 2000);
+          return;
+        } else if (this.old_password !== this.new_password) {
+          this.error_password_message = "Пароли не совпадают!";
+        }
+        {
           this.error_old_pass = true;
           this.error_new_pass = true;
           setTimeout(() => {
@@ -63,12 +73,12 @@ export default {
         }, 3000);
         return;
       }
-      const sendingData = {
-        new_password: this.new_password,
-        remember_token: this.$route.params.token
-      };
+      // const sendingData = {
+      //   new_password: this.new_password,
+      //   remember_token: this.$route.params.token
+      // };
 
-      this.$store.dispatch("auth/reset_password", sendingData);
+      // this.$store.dispatch("auth/reset_password", sendingData);
     }
   }
 };
@@ -76,15 +86,27 @@ export default {
 
 <style lang="scss">
 .c-reset-password {
+  margin-top: $mt;
   &__container {
     max-width: rem(1035);
-    margin: 0 auto;
-    @extend %h100;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
+    .c-input-password__field-show-icon {
+      position: absolute;
+      right: 28.5px;
+    }
+    .c-input-password {
+      border-radius: 2px;
+      input {
+        &::placeholder {
+          letter-spacing: normal;
+        }
+      }
+    }
   }
 
   &__content {
-    height: calc(100vh - 64px);
     margin: 0 auto;
     @extend %df;
     @extend %jcc;

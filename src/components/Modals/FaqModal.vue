@@ -1,6 +1,6 @@
 <template>
   <div class="fq-mod">
-    <BaseModal>
+    <BaseModal class="modal-faqq">
       <div class="c-faq-modal">
         <div class="c-faq-modal__container">
           <div class="c-faq-modal__content">
@@ -116,9 +116,11 @@ export default {
 </script>
 
 <style lang="scss">
+.modal-faqq {
+  width: 705px !important;
+}
 .c-faq-modal {
   @extend %pagept;
-
   .nazvaniye {
     border-radius: 2px;
     input {
@@ -181,6 +183,7 @@ export default {
   &__container {
     max-width: 640px;
     @extend %m0a;
+    margin-top: 20px;
   }
   &__content {
     padding-top: 5px;

@@ -10,25 +10,7 @@ nav.navigation.left-nav( :class="{ show: isHidden }")
     .nav__logo-soc
       a(href="https://studiait.it/", target="_blank")
         img(src="@/assets/logo.svg", alt="Logotype")
-      ul.nav__social
-        li.nav__social-item
-          a.nav__social-link(
-            href="https://www.youtube.com/channel/UC3lxE1YYZ_44gxc-gbuTZVQ/featured",
-            target="_blank"
-          )
-            BaseIcon(name="play-ico", width="13", height="13")
-        li.nav__social-item
-          a.nav__social-link(
-            href="https://www.facebook.com/Studiait-103135241690668",
-            target="_blank"
-          )
-            BaseIcon(name="fb", width="8", height="15")
-        li.nav__social-item
-          a.nav__social-link(
-            href="https://www.instagram.com/studia.it/",
-            target="_blank"
-          )
-            BaseIcon(name="insta", width="15", height="15")
+      BaseMedias
     // Navigation user
     <router-link :to="{ name: 'HomePage' }" class="nav__user">
       figure.nav__user-photo
@@ -54,7 +36,7 @@ nav.navigation.left-nav( :class="{ show: isHidden }")
           span.nav__menu-text {{ itm.name }}
         </router-link>
       li.nav__menu-item
-        button.nav__menu-link()
+        button.nav__menu-link.svg
           svg(
             style="margin-right: 25px",
             width="12",
@@ -182,6 +164,11 @@ export default {
   }
 }
 .nav {
+  .social-medias {
+    position: relative !important;
+    margin: 0px !important;
+    margin-bottom: 5px !important;
+  }
   &__logo-soc {
     @extend %df;
     @extend %jcsb;
@@ -324,6 +311,13 @@ export default {
       &:hover {
         span {
           color: $green;
+        }
+        svg {
+          transition: all 0.5s ease;
+          path {
+            stroke: $green;
+            transition: all 0.5s ease;
+          }
         }
       }
     }

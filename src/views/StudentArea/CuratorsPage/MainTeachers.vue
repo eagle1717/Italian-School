@@ -1,11 +1,11 @@
 <template>
   <div class="teachers wrapper-main-teacher">
-    <!-- <div class="teachers__wrap teachers__wrap_title">
+    <div class="teachers__wrap teachers__wrap_title">
       <figure class="teachers__title-img">
         <img src="/img/ill/calendar.svg" alt="Title icon" />
       </figure>
       <h1 class="teachers__title">Выбери своего первого преподавателя!</h1>
-    </div> -->
+    </div>
     <div class="filters">
       <button class="teachers__my">
         <span>Мои преподаватели</span>
@@ -26,7 +26,7 @@
       </div>
     </div>
     <Notifications />
-    <transition-group name="transform">
+    <transition-group name="transform" class="transform">
       <Video
         v-if="this.$store.state.activeModal === 'video'"
         :key="'video'"

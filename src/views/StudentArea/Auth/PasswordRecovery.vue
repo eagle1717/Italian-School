@@ -6,7 +6,7 @@
       </h2>
       <div class="v-pass-recovery__input">
         <BaseInputText
-          class="v-pass-recovery__field"
+          class="v-pass-recovery__field text-field-input"
           icon="email"
           placeholder="Ваша почта"
           v-model="email"
@@ -60,9 +60,9 @@ export default {
 
 <style lang="scss">
 .v-pass-recovery {
-  padding-top: 178px;
+  margin-top: $mt;
   &__form {
-    width: 311px;
+    width: min-content;
     margin: 0 auto;
   }
   &__title {

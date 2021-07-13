@@ -49,7 +49,7 @@
     </div>
 
     <router-link
-      class="failed failed-button-wrapper btn-class"
+      class="failed failed-button-wrapper failed"
       to="/"
       v-else-if="currentInformation.status === 'failed'"
     >
@@ -57,7 +57,7 @@
     </router-link>
     <router-link
       class="success-button-package btn-status-wrapper btn-class"
-      to="/"
+      to="/home"
       v-else-if="
         currentInformation.lesson === 'пакета' &&
           currentInformation.status === 'success'
@@ -158,6 +158,18 @@ export default {
   margin-left: $ml;
   .btn-class {
     position: absolute;
+    @extend %simple-btn-green;
+    width: 131px;
+  }
+  .failed {
+    @extend %simple-btn-red-fill;
+    position: absolute;
+    width: 182px;
+    padding: 0px;
+    &:hover {
+      background-color: #d62a20;
+      color: white;
+    }
   }
   %btnStatus {
     border-radius: 2px;
@@ -166,13 +178,6 @@ export default {
   }
   .failed-button-wrapper {
     margin-top: 30px;
-  }
-  .failed {
-    @extend %btnStatus;
-    background-color: rgba(239, 64, 54, 1);
-    &:hover {
-      @extend %btn-dark-red;
-    }
   }
 }
 .btn-status-wrapper {

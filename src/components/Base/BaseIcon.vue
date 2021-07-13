@@ -1,6 +1,6 @@
 <template lang="pug">
   svg( class="icon" :class="className" :width="width" :height="height")
-    use(v-bind="{ 'xlink:href': 'sprite.svg#' + name }")
+    use(v-bind="{ 'xlink:href': '/sprite.svg#' + name }")
 </template>
 
 <script>

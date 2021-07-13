@@ -23,9 +23,13 @@
           Уведомления
         </h2>
         <template v-if="notifications">
-          <template>
-            <Notification />
-          </template>
+          <Notifications
+            v-for="notification in notificationsData"
+            :key="notification.id"
+            :img="notification.img"
+            :text="notification.text"
+            :linkText="notification.linkText"
+          />
         </template>
       </div>
     </template>
@@ -43,13 +47,12 @@
 </template>
 
 <script>
-import UserLevel from "@/components/StudentArea/LevelPage/LevelCard.vue";
-import Promotion from "@/components/StudentArea/HomePage/Promotion.vue";
-import SpecialOffer from "@/components/StudentArea/HomePage/SpecialOffer.vue";
-import Notification from "@/components/StudentArea/SettingPage/Notification.vue";
+import UserLevel from "@/components/StudentArea/LevelPage/LevelCard";
+import Promotion from "@/components/StudentArea/HomePage/Promotion";
+import SpecialOffer from "@/components/StudentArea/HomePage/SpecialOffer";
+import Notifications from "@/components/Notification";
 import Articles from "@/components/StudentArea/HomePage/Articles";
 import VideoSlider from "@/components/StudentArea/HomePage/VideoSlider";
-import TeacherDashboard from "@/components/StudentArea/HomePage/TeacherDashboard";
 import { show_lesson_modal_mixin } from "@/mixins/mixins.js";
 import { mapGetters } from "vuex";
 export default {
@@ -58,15 +61,40 @@ export default {
   components: {
     VideoSlider,
     Articles,
-    Notification,
+    Notifications,
     UserLevel,
     Promotion,
-    SpecialOffer,
-    TeacherDashboard
+    SpecialOffer
   },
   data() {
     return {
-      lessons: []
+      lessons: [],
+      notificationsData: [
+        {
+          img: "NotificationLesson.svg",
+          text:
+            "<div>Занятие с <a href='#' class='teacher-name'>Анна Батьковна</a> начнется через 30 минут.</div>",
+          linkText: "<a href='https://google.com'>Перейти</a>"
+        },
+        {
+          img: "NotificationLesson.svg",
+          text:
+            "<div>Занятие с <a href='#' class='teacher-name'>Анна Батьковна</a> начнется через 30 минут.</div>",
+          linkText: "<a href='https://google.com'>Перейти</a>"
+        },
+        {
+          img: "NotificationLesson.svg",
+          text:
+            "<div>Занятие с <a href='#' class='teacher-name'>Анна Батьковна</a> начнется через 30 минут.</div>",
+          linkText: "<a href='https://google.com'>Перейти</a>"
+        },
+        {
+          img: "NotificationLesson.svg",
+          text:
+            "<div>Занятие с <a href='#' class='teacher-name'>Анна Батьковна</a> начнется через 30 минут.</div>",
+          linkText: "<a href='https://google.com'>Перейти</a>"
+        },
+      ]
     };
   },
   computed: {

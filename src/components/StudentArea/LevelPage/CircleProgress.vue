@@ -25,6 +25,7 @@
         fill="transparent"
         :stroke="color"
         stroke-width="3"
+        stroke-linecap="round"
         :stroke-dasharray="`${percent} ${100 - percent}`"
         stroke-dashoffset="100"
       ></circle>
@@ -51,13 +52,14 @@ export default {
 
 <style lang="scss">
 .c-circle-progress {
-  width: rem(63);
-  height: rem(63);
   @extend %regular;
   @extend %text-small;
   position: relative;
+  width: 75px;
+  height: 75px;
   &__percent {
     @extend %absolute-center;
+    color: #4b4b4b;
   }
 }
 </style>

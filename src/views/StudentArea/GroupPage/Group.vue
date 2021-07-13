@@ -6,18 +6,24 @@
         <router-link :to="{ name: 'Webinars' }">Вебинары</router-link>
       </div>
     </div>
-    <GroupModal v-if="$store.state.openTeacherInfo" />
   </div>
 </template>
-<script>
-import GroupModal from "./GroupModal.vue";
-export default {
-  components: {
-    GroupModal
-  }
-};
-</script>
 <style lang="scss">
+.current-status {
+  font-size: 14px;
+  line-height: 20px;
+  color: $black;
+  height: min-content;
+  .status-img {
+    img {
+      width: 23px;
+      height: 23px;
+    }
+  }
+  .status-text {
+    margin-left: 5px;
+  }
+}
 .wr-up {
   margin-left: $ml;
   padding-left: 30px;
@@ -26,23 +32,46 @@ export default {
   margin-left: $ml;
 }
 .group-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+  column-count: 2;
+  width: min-content;
+  margin-top: 25px;
   .group-card {
+    display: inline-block;
+    box-sizing: border-box;
     cursor: pointer;
     background: #f7f7f7;
     border-radius: 2px;
     padding: 30px;
-    display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin: 30px;
-    display: block;
+    margin: 15px;
     box-sizing: border-box;
     text-align: center;
     margin-left: 0px;
     width: 431px;
+    height: 100%;
+    position: relative;
+    .current-status {
+      position: absolute;
+      left: 21px;
+      top: 21.5px;
+      font-size: 14px;
+      line-height: 20px;
+      color: $black;
+      height: min-content;
+      .status-img {
+        img {
+          width: 23px;
+          height: 23px;
+        }
+      }
+      .status-text {
+        margin-left: 5px;
+      }
+    }
     img {
       width: 87px;
       height: 87px;
@@ -300,9 +329,4 @@ export default {
 .group-card {
   height: min-content;
 }
-// .gr-cont:nth-child(even) {
-//   .group-card {
-//     margin-right: 0px !important;
-//   }
-// }
 </style>

@@ -7,12 +7,9 @@ img {
   width: inherit;
   height: inherit;
 }
-a {
-  &:hover {
-    // color: $color_link_hover;
-  }
-}
+
 $ml: 398px;
+$mt: 91px;
 .overflow-hidden {
   overflow: hidden;
 }
@@ -22,8 +19,9 @@ $ml: 398px;
   border: 1px solid $gray;
   width: max-content;
   background: #fff;
-  padding: 10px 15px;
-  z-index: 20;
+  padding: 5px;
+  border-radius: 2px;
+  z-index: 1000;
   @extend %text-small;
 
   &::before {

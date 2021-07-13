@@ -9,14 +9,14 @@
         Для доступа к функциям личного кабинета необходимо зарегистрироваться.
       </p>
       <BaseInputText
-        class="c-register-modal__field"
+        class="c-register-modal__field text-field-input"
         icon="user"
         placeholder="Ваше имя"
         v-model="first_name"
         :error="error_name"
       />
       <BaseInputText
-        class="c-register-modal__field"
+        class="c-register-modal__field text-field-input"
         icon="email"
         placeholder="Ваша почта"
         v-model="email"
@@ -39,12 +39,10 @@
 </template>
 
 <script>
-// import DefaultNavBar from "@/components/Navbars/DefaultNavBar";
 import { mapMutations } from "vuex";
 
 export default {
   name: "Registration",
-  // components: {DefaultNavBar}
   data() {
     return {
       first_name: "",
@@ -74,8 +72,8 @@ export default {
         registerData.first_name = this.first_name;
       }
       if (
-        this.email.length === 0 ||
-        !this.email.match(/^[0-9a-z-.]+@[0-9a-z-]{2,}\.[a-z]{2,}$/i)
+        this.email.trim().length === 0 ||
+        !this.email.match(/^\S+@\S+\.\S+$/)
       ) {
         this.error_email = true;
         this.error_email_message = "Некорректный email";
@@ -99,11 +97,11 @@ export default {
       } else {
         registerData.password = this.password;
       }
-
       this.$store
         .dispatch("auth/register", registerData)
         .then(() => {
           this.SHOW_MODAL("check");
+          this.$router.push({ name: "ConfirmRegistration" });
         })
         .catch(statusCode => {
           if (statusCode === 422) {
@@ -125,7 +123,7 @@ export default {
 .v-registration {
   @extend %df;
   @extend %jcc;
-  padding-top: rem(100);
+  margin-top: $mt;
 }
 .c-register-modal {
   &__field {

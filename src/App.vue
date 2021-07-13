@@ -1,7 +1,7 @@
 <template>
   <component :is="layout" :class="{ 'overflow-hidden': activeModal }">
     <router-view />
-    <transition-group name="transform">
+    <transition-group name="transform" class="transform2">
       <FaqModal v-if="activeModal === 'faq'" :key="'faq'" />
       <Video v-if="activeModal === 'video'" :key="'video'" />
       <MyLessons
@@ -53,7 +53,8 @@ import Homework from "@/components/Modals/Homework";
 import ReservationLessonModal from "@/components/Modals/ReservationLessonModal";
 import LoadingPreloader from "./components/LoadingPreloader";
 import HelpChatModal from "./components/StudentArea/HelpPage/HelpChatModal";
-import GroupModal from "./components/Modals/GroupModal";
+import GroupModal from "@/views/StudentArea/GroupPage/GroupModal";
+import NoContent from "@/components/Layout/NoContent";
 export default {
   components: {
     HelpChatModal,
@@ -68,7 +69,8 @@ export default {
     CertificateModal,
     Video,
     ReservationLessonModal,
-    GroupModal
+    GroupModal,
+    NoContent
   },
   computed: {
     ...mapState(["activeModal", "loading", "auth", "modalData"]),
@@ -89,32 +91,41 @@ export default {
     checkAdapt() {
       return window.innerWidth < 1100;
     }
-    // changeRole() {
-    //   this.CHANGE_ROLE(this.select_val);
-    // }
-  },
-  // beforeCreate() {
-  //   this.$store.dispatch("set_loading", true);
-  // },
-  created() {
-    // const { token } = this.auth.auth;
-    // if (token) {
-    //   this.$store
-    //     .dispatch("user/set_user_data")
-    //     .then(() => {
-    //       this.$store.dispatch("set_loading", false);
-    //     })
-    //     .catch(() => {
-    //       localStorage.removeItem("user-token");
-    //       this.$store.dispatch("set_loading", false);
-    //     });
-    // }
-    // this.$store.dispatch("set_loading", false);
   }
 };
 </script>
 
 <style lang="scss">
+  .c-tooltip {
+    position: fixed;
+    border: 1px solid $gray;
+    width: max-content;
+    background: #fff;
+    padding: 1px 5px;
+    z-index: 20;
+    @extend %text-small;
+
+    &::before {
+      content: "";
+      position: absolute;
+      background: #fff;
+      left: 50%;
+      bottom: -4px;
+      width: 7px;
+      height: 7px;
+      transform: rotate(45deg) translateX(-50%);
+      -webkit-transform: rotate(45deg);
+      border-bottom: 1px solid;
+      border-right: 1px solid;
+      border-radius: 31%;
+    }
+  }
+body {
+  font-family: Circe !important;
+}
+.margin-from-close-button {
+  margin-left: 32px !important;
+}
 .faq {
   @extend %simple-btn-red-border;
   width: 147px !important;
@@ -123,6 +134,14 @@ export default {
 }
 .second-special-modal {
   padding-top: 127px;
+}
+.text-field-input {
+  .c-input__wrap-field {
+    padding-right: 40px;
+  }
+}
+button {
+  font-weight: 700 !important;
 }
 .msg {
   @extend %simple-btn-red-border;
@@ -197,5 +216,14 @@ export default {
   svg {
     color: $green !important;
   }
+}
+.flex {
+  display: flex !important;
+}
+.justify-between {
+  justify-content: space-between !important;
+}
+body {
+  overflow: visible !important;
 }
 </style>

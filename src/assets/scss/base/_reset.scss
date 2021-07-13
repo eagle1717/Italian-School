@@ -9,7 +9,13 @@ html {
   position: relative;
 }
 
-div, p, form, input, a, span, button {
+div,
+p,
+form,
+input,
+a,
+span,
+button {
   box-sizing: border-box;
 }
 
@@ -113,7 +119,6 @@ sup {
 }
 
 a {
-
   &:before,
   &:after {
     box-sizing: border-box;
@@ -198,30 +203,30 @@ table {
 
 //-------------------------------------------------reset*/
 /*--------------Style for highlight text----------------*/
-ul, 
+ul,
 li {
   display: block;
   padding: 0;
   margin: 0;
 }
 
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
   margin-bottom: 0;
   margin-top: 0;
 }
-a, 
-a:hover, 
+a,
+a:hover,
 a:active {
   text-decoration: none;
 }
 
-a, 
-button, 
+a,
+button,
 input {
   cursor: pointer;
   transition: all 0.5s ease;
@@ -237,15 +242,21 @@ button {
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   -webkit-appearance: none;
-  
+
   &::-moz-focus-inner {
     border: 0;
     padding: 0;
   }
 }
 
-input, input:hover, input:focus, input:active,
-button, button:hover, button:focus, button:active {
+input,
+input:hover,
+input:focus,
+input:active,
+button,
+button:hover,
+button:focus,
+button:active {
   outline: none;
   cursor: pointer;
 }
@@ -254,30 +265,30 @@ textarea {
 }
 /*--------------Style for scroll bar----------------*/
 ::-webkit-scrollbar-button {
-// background-image:url('');
-background-repeat:no-repeat;
-width:5px;
-height:0px
+  // background-image:url('');
+  background-repeat: no-repeat;
+  width: 5px;
+  height: 0px;
 }
 ::-webkit-scrollbar-track {
-background-color:transparent;
+  background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
--webkit-border-radius: 0px;
-border-radius: 0px;
-background-color: $green;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  background-color: $green;
 }
-::-webkit-scrollbar-thumb:hover{
-background-color: $green;
+::-webkit-scrollbar-thumb:hover {
+  background-color: $green;
 }
-::-webkit-resizer{
-// background-image:url('');
-background-repeat:no-repeat;
-width:4px;
-height:0px
+::-webkit-resizer {
+  // background-image:url('');
+  background-repeat: no-repeat;
+  width: 4px;
+  height: 0px;
 }
-::-webkit-scrollbar{
-width: 4px;
+::-webkit-scrollbar {
+  width: 4px;
 }
 /*--------------Style for plaseholder----------------*/
 @include placeholder($gray, 1);

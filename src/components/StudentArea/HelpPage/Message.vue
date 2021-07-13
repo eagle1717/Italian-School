@@ -55,12 +55,15 @@ export default {
     },
     messages: {
       type: Array
+    },
+    isAnswered: {
+      type: Boolean,
+      required: true
     }
   },
   data() {
     return {
-      isOpen: false,
-      isAnswered: false
+      isOpen: false
     };
   },
   methods: {

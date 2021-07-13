@@ -5,7 +5,6 @@
       :lessons="lessons"
       :daysOff="daysOff"
     />
-    <MyLessons />
   </div>
 </template>
 

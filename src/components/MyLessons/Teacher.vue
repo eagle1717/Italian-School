@@ -27,7 +27,9 @@
       </div>
     </div>
     <div
-      :class="{ 'c-teacher__about--disabled': isDisabled }"
+      :class="{
+        'c-teacher__about--disabled': homework_link && is_homework_done
+      }"
       class="c-teacher__about"
     >
       <a
@@ -87,11 +89,6 @@ export default {
       type: String
     }
   },
-  data() {
-    return {
-      isDisabled: false
-    };
-  }
 };
 </script>
 

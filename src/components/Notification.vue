@@ -1,23 +1,15 @@
 <template>
   <div>
-    <div
-      class="c-notification"
-      v-for="(notification, key) in notifications"
-      :key="key"
-    >
+    <div class="c-notification">
       <div class="c-notification__wrapper">
         <div class="c-notification__wrapper-info">
           <img
             class="c-notification__wrapper-info-picture"
-            src="/img/ill/notifications/notification-classes.svg"
+            :src="require(`@/assets/notifications/${img}`)"
             alt="notification"
           />
           <div>
-            <p>
-              Занятие с
-              <span class="teacher-name">{{ notification.teacherName }}</span>
-              начнется через {{ notification.time }} минут.
-            </p>
+            <p v-html="text"></p>
           </div>
         </div>
         <div class="c-notification__wrapper-link">
@@ -25,7 +17,7 @@
             class="c-notification__wrapper-link-item flex"
             href=""
             target="_blank"
-            ><div>Перейти к занятию</div>
+            ><div v-html="linkText"></div>
             <div class="arrow-wrapper-link">
               <img src="/img/icons/arrow-right.svg" alt="arrow-right" />
             </div>
@@ -35,35 +27,24 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
-  name: "Notification",
-  data() {
-    return {
-      notifications: [
-        {
-          teacherName: "Анна Батьковна",
-          time: "30"
-        },
-        {
-          teacherName: "Анна Батьковна",
-          time: "60"
-        },
-        {
-          teacherName: "Анна Батьковна",
-          time: "60"
-        },
-        {
-          teacherName: "Анна Батьковна",
-          time: "60"
-        }
-      ]
-    };
+  props: {
+    img: {
+      type: String,
+      required: true
+    },
+    text: {
+      type: String,
+      required: true
+    },
+    linkText: {
+      type: String,
+      required: true
+    }
   }
 };
 </script>
-
 <style lang="scss">
 .c-notification {
   width: 100%;

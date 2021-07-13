@@ -2,125 +2,122 @@
   <div id="enter-content-wrapper">
     <TopNavbar />
     <div class="main">
-      <div>
-        <div class="container">
-          <div class="hello-page__first" v-show="current === 'hello'">
-            <div class="hello-page__left">
-              <h2>Ciao!<br />Хочешь изучать <br />итальянский язык с нами?</h2>
-              <p>Сначала расскажи немного о себе!</p>
-              <button class="btn-main-green" @click="next('gender')">
-                Вперед!
-              </button>
+      <div class="container">
+        <div class="hello-page__first" v-show="current === 'hello'">
+          <div class="hello-page__left">
+            <h2>Ciao!<br />Хочешь изучать <br />итальянский язык с нами?</h2>
+            <p>Сначала расскажи немного о себе!</p>
+            <button class="btn-main-green" @click="next('gender')">
+              Вперед!
+            </button>
+          </div>
+          <div class="hello-page__right">
+            <img src="/img/ill/quiz/main-ill.svg" alt="" />
+          </div>
+        </div>
+        <div class="hello-page__second" v-show="current === 'gender'">
+          <h2>Кто ты?</h2>
+          <div class="hello-page__human">
+            <div
+              class="hello-page__human-item"
+              :class="{ active: gender == 'man' }"
+              @click="choiceGender('man')"
+            >
+              <img src="/img/ill/quiz/reg-male.svg" alt="" />
+              <img src="/img/ill/quiz/reg-male-hover.svg" alt="" />
+              <h3>Мужчина</h3>
             </div>
-            <div class="hello-page__right">
-              <img src="/img/ill/quiz/main-ill.svg" alt="" />
+            <div
+              class="hello-page__human-item"
+              :class="{ active: gender == 'woman' }"
+              @click="choiceGender('woman')"
+            >
+              <img src="/img/ill/quiz/reg-girl.svg" alt="" />
+              <img src="/img/ill/quiz/reg-girl-hover.svg" alt="" />
+              <h3>Женщина</h3>
+            </div>
+            <div
+              class="hello-page__human-item cot"
+              :class="{ active: gender == 'cat' }"
+              @click="choiceGender('cat')"
+            >
+              <img src="/img/ill/quiz/reg-cat.svg" alt="" />
+              <img src="/img/ill/quiz/reg-cat-hover.svg" alt="" />
+              <h3>Кот</h3>
             </div>
           </div>
-          <div class="hello-page__second" v-show="current === 'gender'">
-            <h2>Кто ты?</h2>
-            <div class="hello-page__human">
-              <div
-                class="hello-page__human-item"
-                :class="{ active: gender == 'man' }"
-                @click="choiceGender('man')"
-              >
-                <img src="/img/ill/quiz/reg-male.svg" alt="" />
-                <img src="/img/ill/quiz/reg-male-hover.svg" alt="" />
-                <h3>Мужчина</h3>
-              </div>
-              <div
-                class="hello-page__human-item"
-                :class="{ active: gender == 'woman' }"
-                @click="choiceGender('woman')"
-              >
-                <img src="/img/ill/quiz/reg-girl.svg" alt="" />
-                <img src="/img/ill/quiz/reg-girl-hover.svg" alt="" />
-                <h3>Женщина</h3>
-              </div>
-              <div
-                class="hello-page__human-item"
-                :class="{ active: gender == 'cat' }"
-                @click="choiceGender('cat')"
-              >
-                <img src="/img/ill/quiz/reg-cat.svg" alt="" />
-                <img src="/img/ill/quiz/reg-cat-hover.svg" alt="" />
-                <h3>Кот</h3>
-              </div>
-            </div>
-            <button class="btn-main-green countinue" @click="next('why')">
+          <button class="btn-main-green countinue" @click="next('why')">
+            Продолжить
+          </button>
+        </div>
+        <div class="hello-page__three" v-show="current === 'why'">
+          <div class="hello-page__left2">
+            <h2>Зачем тебе язык?</h2>
+            <ul>
+              <li>
+                <label class="hello-page__checkbox">
+                  <input
+                    type="radio"
+                    name="why"
+                    v-model="why"
+                    checked="checked"
+                    value="Хочу общаться с итальянцами"
+                  />
+                  <div class="hello-page__checkbox-text">
+                    Хочу общаться с итальянцами
+                  </div>
+                </label>
+              </li>
+              <li>
+                <label class="hello-page__checkbox">
+                  <input
+                    type="radio"
+                    name="why"
+                    v-model="why"
+                    value="Нужен по работе"
+                  />
+                  <div class="hello-page__checkbox-text">Нужен по работе</div>
+                </label>
+              </li>
+              <li>
+                <label class="hello-page__checkbox">
+                  <input
+                    type="radio"
+                    name="why"
+                    v-model="why"
+                    value="Хочу говорить по-итальянски в поездках"
+                  />
+                  <div class="hello-page__checkbox-text">
+                    Хочу говорить по-итальянски в поездках
+                  </div>
+                </label>
+              </li>
+              <li>
+                <label class="hello-page__checkbox">
+                  <input
+                    type="radio"
+                    name="why"
+                    v-model="why"
+                    value="Красивый язык, хочу попробовать поучить"
+                  />
+                  <div class="hello-page__checkbox-text last">
+                    Красивый язык, хочу попробовать поучить
+                  </div>
+                </label>
+              </li>
+            </ul>
+            <button class="btn-main-green countinue" @click="next('reg')">
               Продолжить
             </button>
           </div>
-          <div class="hello-page__three" v-show="current === 'why'">
-            <div class="hello-page__left">
-              <h2>Зачем тебе язык?</h2>
-              <ul>
-                <li>
-                  <label class="hello-page__checkbox">
-                    <input
-                      type="radio"
-                      name="why"
-                      v-model="why"
-                      checked="checked"
-                      value="Хочу общаться с итальянцами"
-                    />
-                    <div class="hello-page__checkbox-text">
-                      Хочу общаться с итальянцами
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label class="hello-page__checkbox">
-                    <input
-                      type="radio"
-                      name="why"
-                      v-model="why"
-                      value="Нужен по работе"
-                    />
-                    <div class="hello-page__checkbox-text">Нужен по работе</div>
-                  </label>
-                </li>
-                <li>
-                  <label class="hello-page__checkbox">
-                    <input
-                      type="radio"
-                      name="why"
-                      v-model="why"
-                      value="Хочу говорить по-итальянски в поездках"
-                    />
-                    <div class="hello-page__checkbox-text">
-                      Хочу говорить по-итальянски в поездках
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label class="hello-page__checkbox">
-                    <input
-                      type="radio"
-                      name="why"
-                      v-model="why"
-                      value="Красивый язык, хочу попробовать поучить"
-                    />
-                    <div class="hello-page__checkbox-text">
-                      Красивый язык, хочу попробовать поучить
-                    </div>
-                  </label>
-                </li>
-              </ul>
-              <button class="btn-main-green countinue" @click="next('reg')">
-                Продолжить
-              </button>
-            </div>
-            <div class="hello-page__right">
-              <img src="/img/ill/quiz/language.svg" alt="" />
-            </div>
+          <div class="hello-page__right">
+            <img src="/img/ill/quiz/language.svg" alt="" />
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 import TopNavbar from "@/components/Navbars/TopNavbar.vue";
 export default {
@@ -157,10 +154,6 @@ export default {
   width: 1180px;
   margin: auto;
 }
-body {
-  overflow: visible !important;
-}
-
 img {
   max-width: 100%;
 }
@@ -169,16 +162,8 @@ img {
   @extend %df;
   @extend %jcc;
   @extend %aic;
-  width: 100%;
-  margin-top: 58px;
   justify-content: initial !important;
   margin-left: 133px;
-}
-
-.container {
-  margin-right: auto;
-  margin-left: auto;
-  width: 856px;
 }
 .btn-main-green {
   @extend %simple-btn-green;
@@ -228,10 +213,14 @@ img {
   width: 431px;
   margin-right: 130px;
 }
-
-.hello-page__first h2 {
-  @extend %h2-title-bold;
-  margin-bottom: 20px;
+.hello-page__first {
+  width: 100%;
+  max-width: 839px;
+  margin-top: 58px;
+  h2 {
+    @extend %h2-title-bold;
+    margin-bottom: 20px;
+  }
 }
 
 .hello-page__first p {
@@ -242,6 +231,12 @@ img {
 .hello-page__second {
   @extend %df;
   @extend %fdc;
+  width: 100%;
+  max-width: 503px;
+  margin-top: 91px;
+  button {
+    margin-top: 25px;
+  }
 }
 
 .hello-page__second h2 {
@@ -254,11 +249,13 @@ img {
 }
 
 .hello-page__human-item {
-  margin-right: 70px;
-  width: 120px;
+  margin-right: 73px;
   text-align: center;
-  margin-bottom: 32px;
   position: relative;
+  width: 120px;
+  &.cot {
+    margin-right: 0px;
+  }
 }
 
 .hello-page__human-item img {
@@ -324,19 +321,20 @@ img {
   color: $green;
 }
 
-.hello-page__three h2 {
-  @extend %h2-title-bold;
-  margin-bottom: 28px;
+.hello-page__three {
+  width: 100%;
+  max-width: 857px;
+  margin-top: 91px;
+  h2 {
+    @extend %h2-title-bold;
+    margin-bottom: 23.5px;
+  }
 }
 
 .hello-page__three ul,
 .hello-page__four ul {
   @extend %text-big;
 }
-
-.hello-page__checkbox {
-}
-
 .hello-page__checkbox input {
   position: absolute;
   appearance: none;
@@ -352,6 +350,9 @@ img {
   background-size: 24px;
   background-repeat: no-repeat;
   transition: 0.15s all ease;
+  &.last {
+    margin-bottom: 0px;
+  }
 }
 
 .hello-page__checkbox input:checked ~ .hello-page__checkbox-text {
@@ -360,7 +361,7 @@ img {
 }
 
 .hello-page__three button {
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .hello-page__four h2 {
