@@ -96,30 +96,30 @@ export default {
 </script>
 
 <style lang="scss">
-  .c-tooltip {
-    position: fixed;
-    border: 1px solid $gray;
-    width: max-content;
-    background: #fff;
-    padding: 1px 5px;
-    z-index: 20;
-    @extend %text-small;
+.c-tooltip {
+  position: fixed;
+  border: 1px solid $gray;
+  width: max-content;
+  background: #fff;
+  padding: 1px 5px;
+  z-index: 20;
+  @extend %text-small;
 
-    &::before {
-      content: "";
-      position: absolute;
-      background: #fff;
-      left: 50%;
-      bottom: -4px;
-      width: 7px;
-      height: 7px;
-      transform: rotate(45deg) translateX(-50%);
-      -webkit-transform: rotate(45deg);
-      border-bottom: 1px solid;
-      border-right: 1px solid;
-      border-radius: 31%;
-    }
+  &::before {
+    content: "";
+    position: absolute;
+    background: #fff;
+    left: 50%;
+    bottom: -4px;
+    width: 7px;
+    height: 7px;
+    transform: rotate(45deg) translateX(-50%);
+    -webkit-transform: rotate(45deg);
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-radius: 31%;
   }
+}
 body {
   font-family: Circe !important;
 }

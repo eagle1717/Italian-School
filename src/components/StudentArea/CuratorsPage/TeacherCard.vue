@@ -23,7 +23,7 @@
           <span>Посмотреть видео</span>
         </button>
         <router-link
-          class="teacher__btn-lesson curator-buttons"
+          class="teacher__btn-lesson curator-buttons makeLessonBtn"
           :to="{ name: 'TeacherPage', params: { id: curator_id } }"
         >
           <span>Назначить занятие</span>
@@ -185,7 +185,6 @@ export default {
   border-radius: 2px;
   padding: 30px 25px 0 31px;
   overflow: hidden;
-  transition: max-height 0.5s ease;
   cursor: pointer;
   position: relative;
   justify-content: initial;
@@ -239,6 +238,7 @@ export default {
   }
   max-height: 144px;
   &__text {
+    max-height: 60px;
     p:nth-child(even) {
       margin-top: 20px;
     }
@@ -266,7 +266,6 @@ export default {
     &-middle {
       max-width: 362px;
       margin-top: 12px;
-      max-height: 60px;
       overflow: hidden;
       margin-left: 67px;
     }
@@ -318,7 +317,6 @@ export default {
     @extend %text-small-big-line-height;
     color: $gray;
     max-height: 100%;
-    transition: max-height 0.5s ease;
   }
 
   &__contest {
@@ -355,7 +353,6 @@ export default {
       background-color: $white;
       border-radius: 2px;
       opacity: 0;
-      transition: all 0.5s ease;
       pointer-events: none;
       padding-top: 18px;
       span {

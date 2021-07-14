@@ -159,6 +159,13 @@ export default {
   .teacher__arrow {
     display: none;
   }
+  .teacher__itm-middle {
+    max-height: 100% !important;
+    overflow: visible;
+  }
+  .makeLessonBtn {
+    display: none;
+  }
   &__header {
     margin-bottom: rem(32);
   }

@@ -123,9 +123,9 @@
 </template>
 
 <script>
-import TimeSlider from "../TimeSlider";
-import BaseSelect from "../Base/BaseSelect";
-import BaseTextArea from "../Base/BaseTextArea";
+import TimeSlider from "@/components/TimeSlider";
+import BaseSelect from "@/components/Base/BaseSelect";
+import BaseTextArea from "@/components/Base/BaseTextArea";
 import { curator_mixins } from "@/mixins/mixins.js";
 import $http from "@/service/index.js";
 import { loadStripe } from "@stripe/stripe-js";

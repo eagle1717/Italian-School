@@ -11,12 +11,15 @@
         class="quest"
       />
       <router-link
-        to="/help"
+        :to="{ name: 'Help' }"
         class="c-help__message-btn faq"
         v-if="$route.name === 'MyMessage'"
         >FAQ</router-link
       >
-      <router-link to="/my-message" class="c-help__message-btn msg" v-else
+      <router-link
+        :to="{ name: 'MyMessage' }"
+        class="c-help__message-btn msg"
+        v-else
         >Мои сообщения</router-link
       >
     </div>

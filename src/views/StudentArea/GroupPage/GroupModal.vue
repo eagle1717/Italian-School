@@ -5,7 +5,9 @@
         <div class="c-video__content">
           <div class="top-side">
             <div class="c-video__header">
-              <h2 class="c-video__header-teacher2 kurs-prepoda margin-from-close-button">
+              <h2
+                class="c-video__header-teacher2 kurs-prepoda margin-from-close-button"
+              >
                 Курс преподавателя
               </h2>
             </div>
@@ -231,6 +233,7 @@ export default {
     height: max-content;
     padding: 30px;
     transition: all 0.5s ease;
+    cursor: pointer;
     .teacher2__arrow {
       .icon {
         width: 11px;

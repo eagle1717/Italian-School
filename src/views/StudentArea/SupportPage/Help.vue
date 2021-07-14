@@ -77,6 +77,7 @@ export default {
 <style lang="scss">
 .c-help__content {
   margin-top: 11px;
+  transition: all 0.5s ease-in;
 }
 .c-help {
   padding-top: rem(35);

@@ -79,7 +79,7 @@ const routes = [
     props: true,
   },
   {
-    path: "/teacher/:id",
+    path: "/teachers/:id",
     name: "TeacherPage",
     props: true,
     component: () => import("@/views/StudentArea/CuratorsPage/TeacherPage"),
@@ -106,13 +106,13 @@ const routes = [
     }
   },
   {
-    path: "/help",
+    path: "/support",
     name: "Help",
     props: true,
     component: () => import("@/views/StudentArea/SupportPage/Help"),
   },
   {
-    path: "/my-message",
+    path: "/support/my-message",
     name: "MyMessage",
     props: true,
     component: () => import("@/views/StudentArea/SupportPage/MyMessage"),

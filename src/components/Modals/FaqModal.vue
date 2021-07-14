@@ -1,46 +1,44 @@
 <template>
-  <div class="fq-mod">
-    <BaseModal class="modal-faqq">
-      <div class="c-faq-modal">
-        <div class="c-faq-modal__container">
-          <div class="c-faq-modal__content">
-            <h2 class="c-faq-modal__title">Напишите нам!</h2>
-            <p class="c-faq-modal__description">
-              Мы постоянно совершенствуем нашу школу и хотим, чтобы она была
-              удобной, а обучение эффективным. Присылайте нам свои отзывы,
-              замечания, комментарии <br />и пожелания. Хорошие тоже можно!
-            </p>
-            <form @submit.prevent="submit_ticket" class="c-faq-modal__form">
-              <BaseInputText
-                class="nazvaniye"
-                placeholder="Название"
-                v-model="name"
-                :error="error_name"
+  <BaseModal class="modal-faqq">
+    <div class="c-faq-modal">
+      <div class="c-faq-modal__container">
+        <div class="c-faq-modal__content">
+          <h2 class="c-faq-modal__title">Напишите нам!</h2>
+          <p class="c-faq-modal__description">
+            Мы постоянно совершенствуем нашу школу и хотим, чтобы она была
+            удобной, а обучение эффективным. Присылайте нам свои отзывы,
+            замечания, комментарии <br />и пожелания. Хорошие тоже можно!
+          </p>
+          <form @submit.prevent="submit_ticket" class="c-faq-modal__form">
+            <BaseInputText
+              class="nazvaniye"
+              placeholder="Название"
+              v-model="name"
+              :error="error_name"
+            />
+            <BaseSelect
+              class="c-faq-modal__select"
+              v-model="type"
+              :options="options"
+              placeholder="Тема"
+              :error="error_type"
+            />
+            <div class="c-faq-modal__form-ta">
+              <BaseTextArea
+                class="text-area"
+                placeholder="Ваш вопрос?..."
+                v-model="question"
+                :error="error_question"
               />
-              <BaseSelect
-                class="c-faq-modal__select"
-                v-model="type"
-                :options="options"
-                placeholder="Тема"
-                :error="error_type"
-              />
-              <div class="c-faq-modal__form-ta">
-                <BaseTextArea
-                  class="text-area"
-                  placeholder="Ваш вопрос?..."
-                  v-model="question"
-                  :error="error_question"
-                />
-              </div>
-              <button class="c-faq-modal__form-submit">
-                Задать вопрос в поддержку
-              </button>
-            </form>
-          </div>
+            </div>
+            <button class="c-faq-modal__form-submit">
+              Задать вопрос в поддержку
+            </button>
+          </form>
         </div>
       </div>
-    </BaseModal>
-  </div>
+    </div>
+  </BaseModal>
 </template>
 
 <script>
