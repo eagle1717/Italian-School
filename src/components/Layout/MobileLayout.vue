@@ -17,7 +17,6 @@
       :class="{ show: show_overlay }"
       @click="hide_overlay"
     ></div>
-    <Notifications />
   </div>
 </template>
 
@@ -25,13 +24,11 @@
 import NavBar from "@/components/Navbars/NavBar.vue";
 import MobileNavigation from "@/components/Navbars/MobileNavigation";
 import { mapState } from "vuex";
-import Notifications from "../Notifications";
 import DefaultNavBar from "@/components/Navbars/DefaultNavBar";
 export default {
   name: "MobileLayout",
   components: {
     DefaultNavBar,
-    Notifications,
     MobileNavigation,
     NavBar
   },
@@ -61,5 +58,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped></style>

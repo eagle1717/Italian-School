@@ -38,7 +38,7 @@ export default {
         },
 
         {
-          image: "/img/ill/slider/slider-item3.jpeg",
+          image: "/img/ill/slider/slider-item2.jpeg",
           icon: "/img/ill/slider/play.svg"
         },
         {

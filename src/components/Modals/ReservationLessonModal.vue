@@ -3,20 +3,21 @@
     <div class="c-reservation-lesson-modal">
       <div class="c-reservation-lesson-modal__container">
         <div class="c-reservation-lesson-modal__header">
+          <!--          <span class="c-reservation-lesson-modal__close">X</span>-->
           <p class="c-reservation-lesson-modal__title">Запланировать занятие</p>
         </div>
         <div class="c-reservation-lesson-modal__teacher">
           <div class="c-reservation-lesson-modal__teacher-credentials">
             <div class="c-reservation-lesson-modal__teacher-avatar">
-              <template>
-                <img
-                  :src="require(`@/assets/img/users/photos/${curator.photo}`)"
-                  alt=""
-                />
+              <template v-if="user_photo">
+                <img :src="user_photo" :alt="curator_name" />
+              </template>
+              <template v-else>
+                <img src="img/ill/default-photo.svg" :alt="curator_name" />
               </template>
             </div>
             <div class="c-reservation-lesson-modal__teacher-name">
-              <p>{{ curator.name }}</p>
+              <p>{{ curator_name }}</p>
             </div>
           </div>
           <div class="c-reservation-lesson-modal__teacher-time">
@@ -36,7 +37,7 @@
                 Стоимость:
               </p>
               <p class="c-reservation-lesson-modal__teacher-time-price">
-                30 000 p.
+                {{ price }}&nbsp;€
               </p>
             </div>
           </div>
@@ -70,7 +71,7 @@
             {{ btn.name }}
           </button>
         </div>
-        <template>
+        <template v-if="checkMobile">
           <TimeSlider
             class="c-reservation-lesson-modal__time-slider"
             v-model="time"
@@ -78,7 +79,7 @@
             :reservedTime="reserved_times"
           />
         </template>
-        <template>
+        <template v-else>
           <ul class="c-reservation-lesson-modal__list">
             <li
               v-for="(time, index) of mobile_time"
@@ -125,9 +126,14 @@
 import TimeSlider from "../TimeSlider";
 import BaseSelect from "../Base/BaseSelect";
 import BaseTextArea from "../Base/BaseTextArea";
-import { mapActions } from "vuex";
+import { curator_mixins } from "@/mixins/mixins.js";
+import $http from "@/service/index.js";
+import { loadStripe } from "@stripe/stripe-js";
+import { mapActions, mapGetters } from "vuex";
+// import moment from 'moment'
 export default {
   name: "ReservationLessonModal",
+  mixins: [curator_mixins],
   components: { BaseTextArea, BaseSelect, TimeSlider },
   props: {
     day: {
@@ -182,18 +188,6 @@ export default {
       activeMobileTime: {
         from: null,
         to: null
-      },
-      time: {
-        from: "18:00",
-        to: "18:30"
-      },
-      homework_link: "#",
-      lesson_link: "#",
-      is_homework_done: true,
-      id: 2,
-      curator: {
-        name: "Tomothy Murphy",
-        photo: "user.svg"
       }
     };
   },
@@ -203,6 +197,134 @@ export default {
       this.activeMobileTime.from = from;
       this.activeMobileTime.to = to;
       console.log(this.activeMobileTime);
+    },
+    reservLesson(id) {
+      const slug = this.lesson_types.filter(l => l.id === id)[0].slug;
+      const duration = this.balance.find(b => b.lesson_type_id === id);
+      const SendingData = {
+        day: this.day,
+        full_from: `${this.day} ${this.time.from.time}:00`,
+        full_to: `${this.day} ${this.time.to.time}:00`,
+        teacher: this.curator.id,
+        description: this.lesson_description,
+        lesson_type: slug,
+        lesson_type_id: id,
+        price: this.price * 100,
+        time: duration.lessonDuration
+      };
+      this.$store.dispatch("set_loading", true);
+      $http
+        .create_lesson(SendingData)
+        .then(() => {
+          this.$store.dispatch("user/get_lessons").then(() => {
+            this.$router.push({ name: "Calendar" });
+            this.$store.dispatch("set_loading", false);
+            // this.$store.dispatch("show_reservation_lesson_modal", {
+            //   data: { date: this.day },
+            //   modal_name: "lessons-modal"
+            // });
+          });
+        })
+        .catch(({ response }) => {
+          const { status } = response;
+          if (status === 400) {
+            this.$store.dispatch("error_handler", {
+              type: "danger",
+              text: "Время уже занято. Попробуйте другое"
+            });
+            return;
+          } else if (status === 422) {
+            this.$store.dispatch("error_handler", {
+              type: "danger",
+              text: "Заполните все поля!"
+            });
+            return;
+          }
+          this.$store.dispatch("error_handler", {
+            type: "danger",
+            text: "Не удалось назначить занятие! Попробуйте еще раз."
+          });
+        });
+    },
+    async create_lesson() {
+      const lessonType = this.lesson_types.filter(
+        l => l.slug === this.lessonType
+      )[0].id;
+      const slug = this.lesson_types.filter(l => l.slug === this.lessonType)[0]
+        .slug;
+      const SendingData = {
+        day: this.day,
+        full_from: `${this.day} ${this.time.from.time}:00`,
+        full_to: `${this.day} ${this.time.to.time}:00`,
+        teacher: this.curator.id,
+        description: this.lesson_description,
+        lesson_type_slug: slug,
+        lesson_type_id: lessonType,
+        price: this.price * 100,
+        time: this.activeTime
+      };
+      const { publicKey, sessionId } = await this.makeCheckoutOneLesson(
+        SendingData
+      );
+      const stripe = await loadStripe(publicKey);
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+
+      if (error) {
+        console.log(error);
+      }
+    }
+  },
+  computed: {
+    ...mapGetters("user", ["balance"]),
+    ...mapGetters(["lesson_types"]),
+    availableLessons() {
+      if (this.balance && this.balance.length) {
+        return this.lesson_types.filter(l =>
+          this.balance
+            .filter(bal => bal.lessonQty > 0)
+            .some(b => l.id === b.lesson_type_id)
+        );
+      }
+      return [];
+    },
+    checkMobile() {
+      return window.innerWidth > 1100;
+    },
+    price() {
+      let type;
+      for (let key in this.curator_about) {
+        if (key === this.lessonType) {
+          type = this.curator_about[key];
+        }
+      }
+      return (this.activeTime / 10) * type;
+    },
+    mobile_time() {
+      let times = [];
+      let started = 0;
+      let step = this.activeTime;
+      let workTimes = ["9:00", "18:00"];
+
+      // Пока используем генератор
+      for (
+        let i = +workTimes[0].split(":")[0];
+        i < +workTimes[1].split(":")[0] + 1;
+        i++
+      ) {
+        for (; started < 60; started += step) {
+          // const started_plus_step = started + step;
+          // const time = `${i}:${started === 0 ? '00' : (started < 10 ? '0' + started : started)} -
+          //               ${i}:${started_plus_step >= 60 ? '00' : (started_plus_step < 10 ? '0' + started_plus_step : started_plus_step) + 5}`
+          // console.log(started_plus_step)
+          times.push(
+            `${i}:${
+              started === 0 ? "00" : started < 10 ? "0" + started : started
+            }`
+          );
+        }
+        started = 0;
+      }
+      return times;
     }
   },
   created() {
@@ -241,10 +363,7 @@ export default {
     @extend %df;
     @extend %jcsb;
     padding: 30px;
-    background: #f7f7f7;
-    border-radius: 2px;
-    width: 678px;
-    height: 171px;
+    background: $dark_white;
     margin-top: 32px;
 
     &-name p {
@@ -297,13 +416,11 @@ export default {
     @extend %df;
     @extend %jcsb;
     margin: 40px 0;
+
     &-type {
-      width: 371px;
+      width: 55%;
     }
-    .c-reservation-lesson-modal__select-item {
-      height: 55px;
-      padding-top: 10px;
-    }
+
     &-time {
       width: 41%;
     }
@@ -331,10 +448,7 @@ export default {
     &-btn {
       @extend %btn-text;
       @extend %btn-all-green;
-      padding: 14.5px 20px;
-      &:hover {
-        @extend %btn-darkgreen;
-      }
+      padding: 10px 50px;
     }
   }
   &__list {

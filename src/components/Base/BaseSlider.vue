@@ -39,13 +39,13 @@
         </button>
       </div>
     </div>
-    <transition-group
+    <div
       tag="div"
       class="c-slider__wrapper"
       :name="back ? 'slideback' : 'slide'"
     >
       <slot v-for="slide in activeSlides" :slide="slide"></slot>
-    </transition-group>
+    </div>
   </div>
 </template>
 

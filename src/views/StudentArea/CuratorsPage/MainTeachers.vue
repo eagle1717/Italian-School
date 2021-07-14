@@ -25,7 +25,6 @@
         ></TeacherCard>
       </div>
     </div>
-    <Notifications />
     <transition-group name="transform" class="transform">
       <Video
         v-if="this.$store.state.activeModal === 'video'"
@@ -41,11 +40,9 @@
 <script>
 import Video from "@/components/Modals/Video";
 import TeacherCard from "@/components/StudentArea/CuratorsPage/TeacherCard.vue";
-import Notifications from "@/components/Notifications";
 
 export default {
   components: {
-    Notifications,
     TeacherCard,
     Video
   },

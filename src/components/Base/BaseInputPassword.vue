@@ -1,29 +1,26 @@
 <template>
-  <div class="c-input-password" :class="{ error: error }">
-    <BaseIcon name="pass" class="c-input-password__field-icon" />
-    <!--    <img-->
-    <!--      class="c-input-password__field-icon"-->
-    <!--      src="/img/icons/pass.svg"-->
-    <!--      alt="lock"-->
-    <!--    />-->
-    <input
-      class="c-input-password__field"
-      :type="type"
-      :placeholder="placeholder"
-      v-model="val"
-      @input="changeValue"
-    />
-    <div
-      class="c-input-password__field-show-icon"
-      :class="{ 'c-input-password__field-show-icon--show': isShow }"
-      @click.stop="toggleShow"
-    ></div>
-    <template v-if="showProgress">
-      <div class="c-input-password__progress">
-        <span :style="{ width: security_password }"></span>
-      </div>
-    </template>
-    <template v-if="error_message">
+  <div class="c-input-wrapper">
+    <div class="c-input-password" :class="{ error: error }">
+      <BaseIcon name="pass" class="c-input-password__field-icon" />
+      <input
+        class="c-input-password__field"
+        :type="type"
+        :placeholder="placeholder"
+        v-model="val"
+        @input="changeValue"
+      />
+      <div
+        class="c-input-password__field-show-icon"
+        :class="{ 'c-input-password__field-show-icon--show': isShow }"
+        @click.stop="toggleShow"
+      ></div>
+      <template v-if="showProgress">
+        <div class="c-input-password__progress">
+          <span :style="{ width: security_password }"></span>
+        </div>
+      </template>
+    </div>
+    <template v-if="error_message" class="error-message-wrapper">
       <div class="c-input-password__notifer">
         {{ error_message }}
       </div>
@@ -90,12 +87,14 @@ export default {
   .c-input__field {
     padding-left: 0px;
   }
+  .error-message-wrapper {
+    display: block;
+  }
   &__notifer {
-    position: absolute;
-    bottom: -13px;
     @extend %text-very-small;
     color: $red;
-    left: 0;
+    margin-top: 10px;
+    text-align: center;
   }
   &__progress {
     position: absolute;
@@ -103,7 +102,6 @@ export default {
     bottom: -8px;
     width: 100%;
     height: 4px;
-
     span {
       @extend %df;
       border-radius: 2px;

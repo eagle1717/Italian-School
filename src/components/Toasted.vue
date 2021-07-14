@@ -1,19 +1,15 @@
 <template>
   <div class="c-notifications-alert">
     <ul>
-      <li
-        class="c-notification-alert__list"
-        :key="notification.uuid"
-        v-for="notification in notificationAlerts"
-      >
+      <li class="c-notification-alert__list">
         <div class="c-notification-alert__holder">
-          <img :src="getTypeImg(notification.type)" alt="icon notification" />
-          <span>{{ notification.text }}</span>
+          <img :src="require(`@/assets/toasted/${typeRequest}.svg`)" alt="" />
+          <span>{{ text }}</span>
         </div>
         <div class="c-notification-alert__holder">
           <button
             class="c-notification-alert__close"
-            @click="remove_notification(notification.uuid)"
+            @click="remove_notification(_id)"
           >
             <svg
               width="22"
@@ -52,6 +48,26 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "Notifications",
+  data() {
+    return {
+      img: "alert-great"
+    };
+  },
+  props: {
+    text: {
+      type: String,
+      required: true
+    },
+    typeRequest: {
+      type: String,
+      required: true
+    }
+  },
+  methods: {
+    remove_notification(_id) {
+      this.$store.dispatch("notifications/remove_notification", _id);
+    }
+  },
   watch: {
     notificationAlerts(notifications) {
       for (const notification of notifications) {
@@ -66,23 +82,6 @@ export default {
   },
   computed: {
     ...mapGetters("notifications", ["notificationAlerts"])
-  },
-  methods: {
-    getTypeImg(type) {
-      switch (type) {
-        case "success":
-          return "/img/ill/notifications/alert-great.svg";
-        case "warning":
-          return "/img/ill/notifications/alert-simple-chat.svg";
-        case "danger":
-          return "/img/ill/notifications/alert-danger.svg";
-        default:
-          throw Error("Not found type");
-      }
-    },
-    remove_notification(uuid) {
-      this.$store.dispatch("notifications/remove_notification", uuid);
-    }
   }
 };
 </script>
@@ -105,6 +104,7 @@ export default {
   }
 }
 .c-notification-alert {
+  position: relative;
   &__list {
     position: fixed;
     bottom: 0;
@@ -115,7 +115,7 @@ export default {
     @extend %jcsb;
     @extend %aic;
     width: calc(100vw - 393px);
-    padding: 20px;
+    padding: 20px 40px;
   }
 
   &__holder {
@@ -124,6 +124,8 @@ export default {
     @extend %aic;
     @extend %text-middle;
     color: $gray;
+    margin-right: 80px;
+    padding: absolute;
   }
 
   &__holder img {

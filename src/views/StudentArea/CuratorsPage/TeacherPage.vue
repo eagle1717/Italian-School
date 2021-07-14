@@ -1,7 +1,7 @@
 <template>
   <div class="c-teacher-page">
     <div class="c-teacher-page__header">
-      <router-link :to="{ name: 'HomePage' }" class="c-teacher-page__back">
+      <router-link :to="{ name: 'Teachers' }" class="c-teacher-page__back">
         <div class="inline-block">
           <svg
             width="8"
@@ -39,18 +39,15 @@
         @click="calendarEvent"
       />
     </div>
-    <Notifications />
   </div>
 </template>
 
 <script>
 import TeacherCard from "@/components/StudentArea/CuratorsPage/TeacherCard.vue";
 import { mapMutations } from "vuex";
-import Notifications from "@/components/Notifications";
 export default {
   name: "TeacherPage",
   components: {
-    Notifications,
     TeacherCard
   },
   data() {

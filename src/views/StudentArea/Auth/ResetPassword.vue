@@ -54,6 +54,9 @@ export default {
           return;
         } else if (this.old_password !== this.new_password) {
           this.error_password_message = "Пароли не совпадают!";
+          setTimeout(() => {
+            this.error_password_message = null;
+          }, 3000);
         }
         {
           this.error_old_pass = true;
@@ -87,6 +90,9 @@ export default {
 <style lang="scss">
 .c-reset-password {
   margin-top: $mt;
+  .c-reset-password__form-field {
+    margin-bottom: 0px;
+  }
   &__container {
     max-width: rem(1035);
     margin-left: auto;

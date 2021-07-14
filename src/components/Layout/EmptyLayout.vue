@@ -7,17 +7,15 @@
       :class="{ show: show_overlay }"
       @click="hide_overlay"
     ></div>
-    <Notifications class="emppty-layout-notifer" />
   </div>
 </template>
 
 <script>
 import DefaultNavBar from "@/components/Navbars/DefaultNavBar";
 import { mapState } from "vuex";
-import Notifications from "../Notifications";
 export default {
   name: "EmptyLayout",
-  components: { Notifications, DefaultNavBar },
+  components: { DefaultNavBar },
   computed: {
     ...mapState(["show_overlay"])
   },

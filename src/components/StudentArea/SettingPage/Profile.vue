@@ -228,7 +228,6 @@
         </div>
       </div>
     </div>
-    <Notifications />
   </div>
 </template>
 
@@ -236,10 +235,9 @@
 import { mapGetters, mapMutations } from "vuex";
 import { check_form_data } from "@/mixins/mixins.js";
 import BasePhoneInput from "@/components/Base/BasePhoneInput";
-import Notifications from "@/components/Notifications.vue";
 export default {
   name: "Profile",
-  components: { BasePhoneInput, Notifications },
+  components: { BasePhoneInput },
   mixins: [check_form_data],
   data() {
     return {

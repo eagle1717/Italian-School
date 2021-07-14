@@ -5,7 +5,9 @@ import store from "./store";
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
 import "./directives";
-import './assets/index.css'
+import './assets/index.css';
+// import Toasted from 'vue-toasted';
+// Vue.use(Toasted)
 const requireComponent = require.context(
   "./components/Base",
   false,

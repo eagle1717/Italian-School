@@ -1,114 +1,108 @@
 <template>
-  <div
-    class="teacher"
-    :class="{ hide: !show_full_of_card }"
-    @click="show_full_card"
-  >
-    <div class="teacher__itm-left">
-      <figure class="teacher__user">
-        <div class="teacher__user-img">
-          <template>
-            <img
-              :src="require(`@/assets/img/users/photos/${curator_photo}`)"
-              alt=""
-            />
-          </template>
-        </div>
-        <figcaption class="teacher__user-info">
-          <h3 class="teacher__user-name">{{ curator_name }}</h3>
-          <p class="teacher__user-nation">{{ curator_nation }}</p>
-        </figcaption>
-      </figure>
-      <button
-        class="teacher__btn-video curator-buttons"
-        @click.stop="open_teacher_modal"
-      >
-        <span>Посмотреть видео</span>
-      </button>
-      <router-link
-        class="teacher__btn-lesson curator-buttons"
-        :to="{ name: 'TeacherPage', params: { id: curator_id } }"
-      >
-        <span>Назначить занятие</span>
-      </router-link>
-    </div>
-    <div class="teacher__itm-middle">
-      <p class="teacher__text" v-html="curator_short_description"></p>
-    </div>
-    <div class="teacher__itm-right">
-      <div class="teacher__arrow">
-        <BaseIcon name="arrow-down"></BaseIcon>
+  <div class="up-teacher-wrapper" :class="{ hide: !show_full_of_card }">
+    <div class="teacher" @click="show_full_card">
+      <div class="teacher__itm-left">
+        <figure class="teacher__user">
+          <div class="teacher__user-img">
+            <template>
+              <img
+                :src="require(`@/assets/img/users/photos/${curator_photo}`)"
+                alt=""
+              />
+            </template>
+          </div>
+          <figcaption class="teacher__user-info">
+            <h3 class="teacher__user-name">{{ curator_name }}</h3>
+            <p class="teacher__user-nation">{{ curator_nation }}</p>
+          </figcaption>
+        </figure>
+        <button
+          class="teacher__btn-video curator-buttons"
+          @click.stop="open_teacher_modal"
+        >
+          <span>Посмотреть видео</span>
+        </button>
+        <router-link
+          class="teacher__btn-lesson curator-buttons"
+          :to="{ name: 'TeacherPage', params: { id: curator_id } }"
+        >
+          <span>Назначить занятие</span>
+        </router-link>
       </div>
-      <div class="teacher__contest" v-click-outside="show_contest">
-        <div class="teacher__contest-icon" @click.stop="show_contest">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <ul class="teacher__contest-menu" :class="{ show: show_contest_menu }">
-          <li class="teacher__contest-itm">
-            <button class="teacher__contest-btn" @click.stop="addFavorite">
-              <figure class="teacher__contest-ico">
-                <svg
-                  class="teacher__contest-icon-heart"
-                  width="14"
-                  height="12"
-                  viewBox="0 0 14 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M7.19161 0.415026C7.82372 0.10283 8.37514 -8.51155e-07 9.23058 9.66652e-06C11.4197 0.00915731 13.04 1.8721 13.04 4.24515C13.04 6.05646 12.0391 7.80614 10.1748 9.49804C9.19624 10.3861 7.9468 11.265 7.052 11.7325L6.54004 12L6.02808 11.7325C5.13327 11.265 3.88384 10.3861 2.90526 9.49804C1.04094 7.80614 0.0400391 6.05646 0.0400391 4.24515C0.0400391 1.84671 1.64521 0 3.85409 0C4.67884 0 5.25855 0.112555 5.90293 0.434143C6.12728 0.546107 6.33806 0.678915 6.53411 0.832208C6.73802 0.669811 6.95758 0.530612 7.19161 0.415026ZM9.38451 8.61141C11.0228 7.12466 11.8582 5.66422 11.8582 4.24515C11.8582 2.49763 10.7285 1.19876 9.22813 1.19248C8.54145 1.19248 8.1626 1.26313 7.71118 1.48608C7.4335 1.62323 7.18715 1.80837 6.97226 2.04364L6.54142 2.51536L6.10663 2.04735C5.89647 1.82114 5.65368 1.64012 5.37898 1.50303C4.91393 1.27094 4.50984 1.19248 3.85409 1.19248C2.33492 1.19248 1.22186 2.47304 1.22186 4.24515C1.22186 5.66422 2.0573 7.12466 3.69557 8.61141C4.58875 9.42199 5.73702 10.232 6.54004 10.657C7.34306 10.232 8.49133 9.42199 9.38451 8.61141Z"
-                    fill="#39B100"
-                  ></path>
-                </svg>
-              </figure>
-              <span class="teacher__contest-text">В “Мои преподаватели”</span>
-            </button>
-          </li>
-          <li class="teacher__contest-itm">
-            <button class="teacher__contest-btn" @click.stop="blockCurator">
-              <figure class="teacher__contest-ico">
-                <svg
-                  class="teacher__contest-icon-eye"
-                  width="18"
-                  height="13"
-                  viewBox="0 0 18 13"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M13.2484 2.01735C11.9317 1.34367 10.4001 0.959961 8.78 0.959961C4.00603 0.959961 0 4.29178 0 8.5571C0 8.83325 0.223858 9.0571 0.5 9.0571C0.776142 9.0571 1 8.83325 1 8.5571C1 4.98314 4.40814 1.95996 8.78 1.95996C10.1389 1.95996 11.4046 2.25202 12.5038 2.76191L13.2484 2.01735ZM14.9467 3.14748L14.2372 3.85698C15.6786 5.06445 16.56 6.73955 16.56 8.5571C16.56 8.83325 16.7839 9.0571 17.06 9.0571C17.3361 9.0571 17.56 8.83325 17.56 8.5571C17.56 6.41843 16.5528 4.51444 14.9467 3.14748ZM9.70439 5.56136C9.41539 5.45866 9.10423 5.40275 8.78 5.40275C7.25569 5.40275 6.02 6.63845 6.02 8.16275C6.02 8.48698 6.07591 8.79815 6.1786 9.08714L7.02184 8.24391C7.02062 8.21701 7.02 8.18995 7.02 8.16275C7.02 7.19073 7.80798 6.40275 8.78 6.40275C8.8072 6.40275 8.83426 6.40337 8.86116 6.40459L9.70439 5.56136ZM10.4594 7.63475L11.2209 6.87329C11.4246 7.25815 11.54 7.69698 11.54 8.16275C11.54 9.68706 10.3043 10.9228 8.78 10.9228C8.31422 10.9228 7.87539 10.8074 7.49053 10.6036L8.252 9.84218C8.41868 9.89453 8.59604 9.92275 8.78 9.92275C9.75202 9.92275 10.54 9.13478 10.54 8.16275C10.54 7.9788 10.5118 7.80143 10.4594 7.63475Z"
-                    fill="#EF4036"
-                  ></path>
-                  <path
-                    d="M15.2199 1.45996L4.17993 12.5"
-                    stroke="#EF4036"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                </svg>
-              </figure>
-              <span class="teacher__contest-text">Скрыть преподавателя</span>
-            </button>
-          </li>
-        </ul>
+      <div class="teacher__itm-middle">
+        <p class="teacher__text" v-html="curator_short_description"></p>
       </div>
+      <div class="teacher__itm-right">
+        <div class="teacher__arrow">
+          <BaseIcon name="arrow-down"></BaseIcon>
+        </div>
+      </div>
+    </div>
+    <div class="teacher__contest">
+      <div class="teacher__contest-icon" @click="show_contest">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="teacher__contest-menu" :class="{ show: show_contest_menu }">
+        <li class="teacher__contest-itm">
+          <button class="teacher__contest-btn" @click.stop="addFavorite">
+            <figure class="teacher__contest-ico">
+              <svg
+                class="teacher__contest-icon-heart"
+                width="14"
+                height="12"
+                viewBox="0 0 14 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M7.19161 0.415026C7.82372 0.10283 8.37514 -8.51155e-07 9.23058 9.66652e-06C11.4197 0.00915731 13.04 1.8721 13.04 4.24515C13.04 6.05646 12.0391 7.80614 10.1748 9.49804C9.19624 10.3861 7.9468 11.265 7.052 11.7325L6.54004 12L6.02808 11.7325C5.13327 11.265 3.88384 10.3861 2.90526 9.49804C1.04094 7.80614 0.0400391 6.05646 0.0400391 4.24515C0.0400391 1.84671 1.64521 0 3.85409 0C4.67884 0 5.25855 0.112555 5.90293 0.434143C6.12728 0.546107 6.33806 0.678915 6.53411 0.832208C6.73802 0.669811 6.95758 0.530612 7.19161 0.415026ZM9.38451 8.61141C11.0228 7.12466 11.8582 5.66422 11.8582 4.24515C11.8582 2.49763 10.7285 1.19876 9.22813 1.19248C8.54145 1.19248 8.1626 1.26313 7.71118 1.48608C7.4335 1.62323 7.18715 1.80837 6.97226 2.04364L6.54142 2.51536L6.10663 2.04735C5.89647 1.82114 5.65368 1.64012 5.37898 1.50303C4.91393 1.27094 4.50984 1.19248 3.85409 1.19248C2.33492 1.19248 1.22186 2.47304 1.22186 4.24515C1.22186 5.66422 2.0573 7.12466 3.69557 8.61141C4.58875 9.42199 5.73702 10.232 6.54004 10.657C7.34306 10.232 8.49133 9.42199 9.38451 8.61141Z"
+                  fill="#39B100"
+                ></path>
+              </svg>
+            </figure>
+            <span class="teacher__contest-text">В “Мои преподаватели”</span>
+          </button>
+        </li>
+        <li class="teacher__contest-itm">
+          <button class="teacher__contest-btn" @click.stop="blockCurator">
+            <figure class="teacher__contest-ico">
+              <svg
+                class="teacher__contest-icon-eye"
+                width="18"
+                height="13"
+                viewBox="0 0 18 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M13.2484 2.01735C11.9317 1.34367 10.4001 0.959961 8.78 0.959961C4.00603 0.959961 0 4.29178 0 8.5571C0 8.83325 0.223858 9.0571 0.5 9.0571C0.776142 9.0571 1 8.83325 1 8.5571C1 4.98314 4.40814 1.95996 8.78 1.95996C10.1389 1.95996 11.4046 2.25202 12.5038 2.76191L13.2484 2.01735ZM14.9467 3.14748L14.2372 3.85698C15.6786 5.06445 16.56 6.73955 16.56 8.5571C16.56 8.83325 16.7839 9.0571 17.06 9.0571C17.3361 9.0571 17.56 8.83325 17.56 8.5571C17.56 6.41843 16.5528 4.51444 14.9467 3.14748ZM9.70439 5.56136C9.41539 5.45866 9.10423 5.40275 8.78 5.40275C7.25569 5.40275 6.02 6.63845 6.02 8.16275C6.02 8.48698 6.07591 8.79815 6.1786 9.08714L7.02184 8.24391C7.02062 8.21701 7.02 8.18995 7.02 8.16275C7.02 7.19073 7.80798 6.40275 8.78 6.40275C8.8072 6.40275 8.83426 6.40337 8.86116 6.40459L9.70439 5.56136ZM10.4594 7.63475L11.2209 6.87329C11.4246 7.25815 11.54 7.69698 11.54 8.16275C11.54 9.68706 10.3043 10.9228 8.78 10.9228C8.31422 10.9228 7.87539 10.8074 7.49053 10.6036L8.252 9.84218C8.41868 9.89453 8.59604 9.92275 8.78 9.92275C9.75202 9.92275 10.54 9.13478 10.54 8.16275C10.54 7.9788 10.5118 7.80143 10.4594 7.63475Z"
+                  fill="#EF4036"
+                ></path>
+                <path
+                  d="M15.2199 1.45996L4.17993 12.5"
+                  stroke="#EF4036"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </figure>
+            <span class="teacher__contest-text">Скрыть преподавателя</span>
+          </button>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
 import { mapMutations } from "vuex";
-import ClickOutside from "vue-click-outside";
 export default {
-  directives: {
-    ClickOutside
-  },
   props: {
     hideContentOnClick: {
       type: Boolean,
@@ -147,15 +141,10 @@ export default {
   },
   methods: {
     show_contest() {
-      if (this.user_role === "default") {
-        this.$store.dispatch("show_modal", "register");
-        return;
-      }
       this.show_contest_menu = !this.show_contest_menu;
     },
     show_full_card() {
       if (this.hideContentOnClick) {
-        this.show_contest_menu = false;
         return (this.show_full_of_card = !this.show_full_of_card);
       }
       return;
@@ -186,15 +175,14 @@ export default {
 </script>
 
 <style lang="scss">
-.teacher {
-  @extend %df;
-  @extend %jcsb;
+.up-teacher-wrapper {
+  margin-bottom: 15px;
+  position: relative;
   width: 100%;
   height: 100%;
   max-height: 362px;
   background-color: #f7f7f7;
   border-radius: 2px;
-  margin-bottom: 15px;
   padding: 30px 25px 0 31px;
   overflow: hidden;
   transition: max-height 0.5s ease;
@@ -203,60 +191,84 @@ export default {
   justify-content: initial;
   padding-bottom: 34px;
   max-height: 100%;
+  .teacher {
+    justify-content: initial;
+  }
+  .teacher__itm-right {
+    height: min-content;
+    position: absolute !important;
+    right: 0;
+    top: 42px;
+  }
   &.hide {
-    max-height: 144px;
+    .teacher__arrow {
+      transform: rotate(180deg);
+    }
+    .teacher__itm-middle {
+      max-height: 60px;
+      overflow: hidden;
+    }
+  }
+  .teacher__arrow {
+    margin-right: 69px;
+    .icon {
+      width: 16px;
+      height: 10px;
+      fill: transparent;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transform: rotate(180deg);
+      stroke: green;
+      color: green;
+    }
+  }
+  .teacher__contest {
+    position: absolute;
+    right: 24px;
+    top: 0px;
+    z-index: 1000;
+    @extend %df;
+    top: 42px;
+  }
+}
+.up-teacher-wrapper.hide {
+  .icon {
+    transform: rotate(180deg);
+    stroke: #251c1c !important;
+  }
+  max-height: 144px;
+  &__text {
+    p:nth-child(even) {
+      margin-top: 20px;
+    }
+  }
+
+  &.open {
+    max-height: 100%;
+    cursor: default;
+    padding-bottom: 34px;
     .teacher {
       &__text {
-        max-height: 60px;
-        overflow: hidden;
-        p:nth-child(even) {
-          margin-top: 20px;
-        }
-      }
-      &__arrow {
-        .icon {
-          transform: rotate(0);
-          stroke: #251c1c;
-        }
-      }
-    }
-
-    &.open {
-      max-height: 100%;
-      cursor: default;
-      padding-bottom: 34px;
-      .teacher {
-        &__text {
-          max-height: 100%;
-          // overflow: hidden;
-        }
+        max-height: 100%;
+        // overflow: hidden;
       }
     }
   }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
+}
+.teacher {
+  @extend %df;
+  @extend %jcsb;
   &__itm {
     &-left {
       width: 260px;
     }
     &-middle {
       max-width: 362px;
-      margin-right: 43px;
       margin-top: 12px;
+      max-height: 60px;
+      overflow: hidden;
       margin-left: 67px;
-    }
-
-    &-right {
-      @extend %df;
-      position: absolute;
-      right: 24px;
-      top: 42px;
-      .teacher__contest-icon {
-        padding-top: 8px;
-      }
     }
   }
 
@@ -309,22 +321,7 @@ export default {
     transition: max-height 0.5s ease;
   }
 
-  &__arrow {
-    .icon {
-      width: 11px;
-      height: 10px;
-      fill: transparent;
-      stroke: $green;
-      stroke-width: 2px;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      transform: rotate(180deg);
-    }
-  }
-
   &__contest {
-    position: relative;
-
     &-icon {
       cursor: pointer;
       margin-left: 39px;
@@ -398,7 +395,9 @@ export default {
     }
   }
 }
-
+.teacher__itm-middle {
+  max-height: 100%;
+}
 @include bp(1100px) {
   .teacher {
     &__itm-middle {
@@ -416,7 +415,7 @@ export default {
     height: auto;
     max-height: 1000px;
 
-    &.hide {
+    .hide {
       max-height: 90px;
     }
 

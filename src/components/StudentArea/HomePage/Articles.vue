@@ -38,7 +38,7 @@ export default {
 
         {
           id: 2,
-          image: "/img/ill/slider/slider-item3.jpeg",
+          image: "/img/ill/slider/slider-item2.jpeg",
           desc:
             "Ad ipsum mollit duis eiusmod nisi quis ullamco <br>Ad ipsum mollit duis",
           date: "12 февраля 2020",

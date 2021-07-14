@@ -1,32 +1,44 @@
 <template>
-  <div class="c-setting">
-    <div class="c-setting__container">
-      <h2 class="c-setting__title c-setting__title1">Настройка профиля</h2>
-      <Profile />
-      <div class="c-setting__notification">
-        <h2 class="c-setting__title c-setting__title2">
-          Настройки уведомлений
-        </h2>
-        <Notification />
+  <div>
+    <div class="c-setting">
+      <div class="c-setting__container">
+        <h2 class="c-setting__title c-setting__title1">Настройка профиля</h2>
+        <Profile />
+        <div class="c-setting__notification">
+          <h2 class="c-setting__title c-setting__title2">
+            Настройки уведомлений
+          </h2>
+          <Notification />
+        </div>
       </div>
     </div>
+    <Toasted
+      text="Изменения успешно сохранены."
+      typeRequest="warning"
+      class="toasted"
+    />
   </div>
 </template>
 
 <script>
 import Profile from "@/components/StudentArea/SettingPage/Profile";
 import Notification from "@/components/StudentArea/SettingPage/Notification";
+import Toasted from "@/components/Toasted";
 
 export default {
   name: "SettingPage",
   components: {
     Notification,
+    Toasted,
     Profile
   }
 };
 </script>
 
 <style lang="scss">
+.toasted {
+  margin-left: $ml;
+}
 .c-setting {
   margin-left: $ml;
   margin-bottom: 91px;

@@ -117,6 +117,7 @@ export default {
   &__error {
     @extend %text-very-small;
     color: $red;
+    text-align: center;
   }
 
   &__field {
