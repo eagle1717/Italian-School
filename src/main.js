@@ -29,18 +29,5 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
-  created() {
-    if (localStorage.getItem("user-token")) {
-      store
-        .dispatch("user/set_user_data", null)
-        .then(() => {
-          router.push({ name: "HomePage" });
-        })
-        .catch(() => {
-          store.dispatch("auth/logout");
-          router.push({ name: "login" });
-        });
-    }
-  },
   render: h => h(App)
 }).$mount("#app");

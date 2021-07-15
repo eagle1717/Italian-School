@@ -11,7 +11,7 @@
       </figure>
       <h2 class="c-student-modal__name" v-html="name"></h2>
     </div>
-    <!-- <template v-if="lessonData">
+    <template v-if="lessonData">
       <ul class="c-student-modal__time">
         <li class="c-student-modal__time-item">
           <h3 class="c-student-modal__time-title">
@@ -30,7 +30,7 @@
           </div>
         </li>
       </ul>
-    </template> -->
+    </template>
   </div>
 </template>
 

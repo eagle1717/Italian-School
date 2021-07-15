@@ -10,6 +10,8 @@
         :date="modalData.date"
       />
       <Homework v-if="activeModal === 'homework'" :key="'homework'" />
+      <!-- <StudentProfile :key="'StudentProfile'" /> -->
+      <!-- <LessonWithStudent :key="'LessonWithStudent'" /> -->
       <SpecialLessonModal
         v-if="activeModal === 'special-lesson'"
         :key="'special-lesson'"
@@ -55,6 +57,8 @@ import LoadingPreloader from "./components/LoadingPreloader";
 import HelpChatModal from "./components/StudentArea/HelpPage/HelpChatModal";
 import GroupModal from "@/views/StudentArea/GroupPage/GroupModal";
 import NoContent from "@/components/Layout/NoContent";
+import StudentProfile from "@/views/TeacherArea/StudentProfile";
+import LessonWithStudent from "@/views/TeacherArea/LessonWithStudent";
 export default {
   components: {
     HelpChatModal,
@@ -70,7 +74,9 @@ export default {
     Video,
     ReservationLessonModal,
     GroupModal,
-    NoContent
+    NoContent,
+    StudentProfile,
+    LessonWithStudent
   },
   computed: {
     ...mapState(["activeModal", "loading", "auth", "modalData"]),

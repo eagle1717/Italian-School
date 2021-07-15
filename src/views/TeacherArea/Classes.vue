@@ -2,7 +2,7 @@
   <div class="v-teacher-homeworks">
     <template v-if="students.length >= 0">
       <div class="homework-navigation-bar flex justify-between">
-        <h1 class="v-teacher-homeworks__title">Compiti di casa</h1>
+        <h1 class="v-teacher-homeworks__title">Nuove lezioni</h1>
         <div class="v-students__wrapper-selects">
           <BaseSelect :options="selectOptions" v-model="selectVal" />
         </div>
@@ -13,7 +13,7 @@
           v-for="(it, key) in students"
           :key="key"
         >
-          <div class="c-student__user-data" @click="showUser(it.userId)">
+          <div class="c-student__user-data" @click="showUserModal">
             <figure class="c-student__photo">
               <template v-if="it.photo">
                 <img
@@ -21,7 +21,7 @@
                   :alt="it.name"
                 />
               </template>
-              <template>
+              <template v-else>
                 <img src="img/ill/default-photo.svg" :alt="it.name" />
               </template>
             </figure>
@@ -29,25 +29,19 @@
               <h2 class="c-student__name">{{ it.name }} {{ it.surname }}</h2>
               <template>
                 <p class="c-student__data">
-                  Ha caricato il compito
+                  Richiede la lezione il {{ it.lessonDate }} marzo alle
+                  {{ it.lessonTime }}
                 </p>
               </template>
             </div>
           </div>
-          <template
-            v-if="
-              it.link_to_homework !== '' &&
-                it.is_homework_done &&
-                !it.checkHomeWork
-            "
-          >
+          <template v-if="!it.link_to_lesson">
             <a
-              @click="check_homework"
-              :href="it.link_to_homework"
-              class="c-student__btn c-student__btn_red"
+              @click="openModal"
+              class="c-student__btn c-student__btn_green"
               target="_blank"
             >
-              <span>Correggere</span>
+              <span>Aggiungere link</span>
               <svg
                 width="9"
                 height="16"
@@ -65,30 +59,6 @@
               </svg>
             </a>
           </template>
-        </div>
-      </div>
-    </template>
-    <template v-else>
-      <div class="v-teacher-homeworks__wrap v-teacher-homeworks__wrap_users">
-        <div class="v-teacher-homeworks__empty">
-          <h1 class="v-teacher-homeworks__title">Compiti di casa</h1>
-          <div class="v-teacher-homeworks__wrapper no-tasks">
-            <figure class="v-teacher-homeworks__ill">
-              <img src="@/assets/exam.svg" alt="" />
-            </figure>
-            <div class="v-teacher-homeworks__content">
-              <h3 class="v-teacher-homeworks__em-title">
-                Nessun nuovo compito
-              </h3>
-              <p class="v-teacher-homeworks__em-text">
-                Esse anim quis laborum occaecat consequat. Ex aute aliquip qui
-                sint. Elit enim in do velit nisi irure commodo esse voluptate
-                deserunt est fugiat nostrud.Esse anim quis laborum occaecat
-                consequat. Ex aute aliquip qui sint. Elit enim in do velit nisi
-                irure commodo esse voluptate deserunt est fugiat nostrud.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </template>
@@ -122,40 +92,36 @@ export default {
       photo: "",
       name: "",
       surname: "",
-      isHomework: false,
-      checkHomeWork: false,
-      link_to_homework: "",
-      is_homework_done: false,
+      lessonDate: "",
+      lessonTime: "",
+      link_to_lesson: "",
       students: [
         {
           userId: 1,
           photo: "user2",
           name: "Ника",
           surname: "Ларингова",
-          isHomework: true,
-          checkHomeWork: true,
-          link_to_homework: "https://google.com",
-          is_homework_done: true
+          lessonDate: "24 marzo",
+          lessonTime: "18:00",
+          link_to_lesson: "afs"
         },
         {
           userId: 2,
           photo: "user2",
           name: "Ника",
           surname: "Ларингова",
-          isHomework: true,
-          checkHomeWork: false,
-          link_to_homework: "https://google.com",
-          is_homework_done: true
+          lessonDate: "24 marzo",
+          lessonTime: "18:00",
+          link_to_lesson: ""
         },
         {
           userId: 3,
           photo: "user2",
           name: "Ника",
           surname: "Ларингова",
-          isHomework: true,
-          checkHomeWork: false,
-          link_to_homework: "https://google.com",
-          is_homework_done: true
+          lessonDate: "24 marzo",
+          lessonTime: "18:00",
+          link_to_lesson: ""
         }
       ]
     };
@@ -171,6 +137,9 @@ export default {
     // Получает id занятия id
     showUserModal() {
       this.SHOW_MODAL("student-modal");
+    },
+    openModal() {
+      alert("ds");
     },
     // Получает id юзера id
     showLessonModal() {

@@ -252,9 +252,12 @@ export const student_card_functions = {
       return this.isPassed;
     },
     is_disabled() {
-      return this.link_to_lesson
-        ? !(this.link_to_homework && this.is_homework_done)
-        : false;
+      // return this.link_to_lesson
+      //   ? !(this.link_to_homework && this.is_homework_done)
+      //   : false;
+      if (this.link_to_homework == "" && this.is_homework_done == false) {
+        return true
+      }
     },
     display_date() {
       return moment(this.lessonDate, "YYYY-MM-DD")

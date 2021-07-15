@@ -7,7 +7,7 @@
       <BaseSelect
         :isImagesOptions="true"
         :options="levelOptions"
-        v-model="selectCurrent"
+        v-model="level"
       />
     </div>
     <div class="c-modal-level__progress">
@@ -37,7 +37,6 @@ export default {
   },
   data() {
     return {
-      selectCurrent: 'A1',
       levelOptions: [
         {
           val: "A1",

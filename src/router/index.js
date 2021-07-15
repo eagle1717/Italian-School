@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "@/store";
+import Home2 from "@/views/TeacherArea/HomePage";
 Vue.use(VueRouter);
 const routes = [
   {
@@ -157,13 +158,28 @@ const routes = [
   {
     path: "/home2",
     name: 'Home2',
-    component: () => import("@/views/TeacherArea/HomePage")
+    component: Home2,
   },
   {
     path: "/homework",
     name: "HomeWork",
     component: () => import("@/views/TeacherArea/HomeWork")
-  }
+  },
+  {
+    path: "/students",
+    name: "Students",
+    component: () => import("@/views/TeacherArea/Students")
+  },
+  {
+    path: "/classes",
+    name: "Classes",
+    component: () => import("@/views/TeacherArea/Classes")
+  },
+  {
+    path: "/calendar2",
+    name: "Calendar2",
+    component: () => import("@/components/Calendars/TimelineWeekCalendar")
+  },
 ];
 
 const router = new VueRouter({
