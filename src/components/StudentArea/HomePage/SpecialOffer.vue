@@ -73,7 +73,6 @@ export default {
         bottom: rem(20);
       }
     }
-    // margin-top: rem(50);
   }
   &__image {
     width: 70%;
@@ -113,8 +112,9 @@ export default {
     width: rem(212);
     height: rem(35);
     margin-top: rem(120);
-    left: 50%;
-    margin-left: -106px;
+    left: 0;
+    right: 0;
+    margin: auto;
     &:hover {
       @extend %btn-darkgreen;
     }

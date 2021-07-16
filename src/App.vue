@@ -10,8 +10,14 @@
         :date="modalData.date"
       />
       <Homework v-if="activeModal === 'homework'" :key="'homework'" />
-      <!-- <StudentProfile :key="'StudentProfile'" /> -->
-      <!-- <LessonWithStudent :key="'LessonWithStudent'" /> -->
+      <StudentProfile
+        :key="'student-profile'"
+        v-if="activeModal === 'student-profile'"
+      />
+      <LessonWithStudent
+        :key="'lesson-with-student'"
+        v-if="activeModal === 'lesson-with-student'"
+      />
       <SpecialLessonModal
         v-if="activeModal === 'special-lesson'"
         :key="'special-lesson'"
@@ -44,6 +50,7 @@
 <script>
 import { mapState, mapMutations } from "vuex";
 import DefaultLayout from "@/components/Layout/DefaultLayout";
+import Default2Layout from "@/components/Layout/Default2Layout";
 import EmptyLayout from "@/components/Layout/EmptyLayout";
 import MobileLayout from "@/components/Layout/MobileLayout";
 import FaqModal from "@/components/Modals/FaqModal";
@@ -76,7 +83,8 @@ export default {
     GroupModal,
     NoContent,
     StudentProfile,
-    LessonWithStudent
+    LessonWithStudent,
+    Default2Layout
   },
   computed: {
     ...mapState(["activeModal", "loading", "auth", "modalData"]),
@@ -102,6 +110,9 @@ export default {
 </script>
 
 <style lang="scss">
+.c-default-layout.app {
+  padding-left: 398px;
+}
 .c-tooltip {
   position: fixed;
   border: 1px solid $gray;
@@ -126,9 +137,9 @@ export default {
     border-radius: 31%;
   }
 }
-body {
-  font-family: Circe !important;
-}
+// * {
+//   font-family: "Circe";
+// }
 .margin-from-close-button {
   margin-left: 32px !important;
 }

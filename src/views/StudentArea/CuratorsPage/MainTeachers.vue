@@ -97,15 +97,13 @@ export default {
 
 <style lang="scss">
 .wrapper-main-teacher {
-  margin-left: $ml;
+  margin: 0 auto;
   .teachers__wrap {
     width: 892px;
   }
 }
 .teachers {
-  padding-left: 30px;
   width: 892px;
-  width: 100%;
   padding-top: 0px !important;
   margin-top: 40px;
   &__not-found {

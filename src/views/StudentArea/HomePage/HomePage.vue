@@ -136,13 +136,9 @@ export default {
 </script>
 
 <style lang="scss">
-#home-page-wrapper {
-  margin-left: $ml;
-}
 .c-home {
-  padding-left: rem(30);
   padding-top: rem(20);
-  max-width: rem(920);
+  width: rem(892);
   padding-bottom: 50px;
   margin: 0 auto;
   &__header {

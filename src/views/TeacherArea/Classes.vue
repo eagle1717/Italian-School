@@ -1,67 +1,67 @@
 <template>
-  <div class="v-teacher-homeworks">
-    <template v-if="students.length >= 0">
-      <div class="homework-navigation-bar flex justify-between">
-        <h1 class="v-teacher-homeworks__title">Nuove lezioni</h1>
-        <div class="v-students__wrapper-selects">
-          <BaseSelect :options="selectOptions" v-model="selectVal" />
+  <div class="v-teacher-classess">
+    <div class="entire-teacher-class">
+      <template v-if="students.length >= 0">
+        <div class="classes-navigation-bar flex justify-between">
+          <h1 class="v-teacher-classess__title">Nuove lezioni</h1>
         </div>
-      </div>
-      <div id="wr-stud-card">
-        <div
-          class="flex justify-between"
-          v-for="(it, key) in students"
-          :key="key"
-        >
-          <div class="c-student__user-data" @click="showUserModal">
-            <figure class="c-student__photo">
-              <template v-if="it.photo">
-                <img
-                  :src="require(`@/assets/${it.photo}.svg`)"
-                  :alt="it.name"
-                />
-              </template>
-              <template v-else>
-                <img src="img/ill/default-photo.svg" :alt="it.name" />
-              </template>
-            </figure>
-            <div class="c-student__name-data">
-              <h2 class="c-student__name">{{ it.name }} {{ it.surname }}</h2>
-              <template>
-                <p class="c-student__data">
-                  Richiede la lezione il {{ it.lessonDate }} marzo alle
-                  {{ it.lessonTime }}
-                </p>
-              </template>
+        <div id="wr-stud-card">
+          <div
+            class="flex justify-between c-student"
+            :class="{ disabled: it.link_to_lesson }"
+            v-for="(it, key) in students"
+            :key="key"
+          >
+            <div class="c-student__user-data">
+              <figure class="c-student__photo">
+                <template v-if="it.photo">
+                  <img
+                    :src="require(`@/assets/${it.photo}.svg`)"
+                    :alt="it.name"
+                  />
+                </template>
+                <template v-else>
+                  <img src="img/ill/default-photo.svg" :alt="it.name" />
+                </template>
+              </figure>
+              <div class="c-student__name-data">
+                <h2 class="c-student__name">{{ it.name }} {{ it.surname }}</h2>
+                <template>
+                  <p class="c-student__data">
+                    Richiede la lezione il {{ it.lessonDate }} marzo alle
+                    {{ it.lessonTime }}
+                  </p>
+                </template>
+              </div>
             </div>
-          </div>
-          <template v-if="!it.link_to_lesson">
-            <a
-              @click="openModal"
-              class="c-student__btn c-student__btn_green"
-              target="_blank"
-            >
-              <span>Aggiungere link</span>
-              <svg
-                width="9"
-                height="16"
-                viewBox="0 0 9 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            <template v-if="it.link_to_lesson == ''">
+              <a
+                @click="openModal"
+                class="c-student__btn c-student__btn_green"
+                target="_blank"
               >
-                <path
-                  d="M1 1L8 8L1 15"
-                  stroke="#EF4036"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </a>
-          </template>
+                <span>Aggiungere link</span>
+                <svg
+                  width="9"
+                  height="16"
+                  viewBox="0 0 9 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L8 8L1 15"
+                    stroke="#EF4036"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </template>
+          </div>
         </div>
-      </div>
-    </template>
+      </template>
+    </div>
   </div>
 </template>
 <script>
@@ -69,7 +69,7 @@ import { mapMutations, mapGetters } from "vuex";
 import Student from "./Student.vue";
 import { get_curator_users } from "@/mixins/mixins.js";
 export default {
-  name: "TeacherHomeWork",
+  name: "Teacherclasses",
   components: {
     Student
   },
@@ -103,7 +103,7 @@ export default {
           surname: "Ларингова",
           lessonDate: "24 marzo",
           lessonTime: "18:00",
-          link_to_lesson: "afs"
+          link_to_lesson: ""
         },
         {
           userId: 2,
@@ -112,7 +112,7 @@ export default {
           surname: "Ларингова",
           lessonDate: "24 marzo",
           lessonTime: "18:00",
-          link_to_lesson: ""
+          link_to_lesson: "https://google.com"
         },
         {
           userId: 3,
@@ -121,7 +121,7 @@ export default {
           surname: "Ларингова",
           lessonDate: "24 marzo",
           lessonTime: "18:00",
-          link_to_lesson: ""
+          link_to_lesson: "https://google.com"
         }
       ]
     };
@@ -134,28 +134,27 @@ export default {
   },
   methods: {
     ...mapMutations(["SHOW_MODAL"]),
-    // Получает id занятия id
-    showUserModal() {
-      this.SHOW_MODAL("student-modal");
-    },
     openModal() {
-      alert("ds");
-    },
-    // Получает id юзера id
-    showLessonModal() {
-      this.SHOW_MODAL("new-teacher-lesson");
+      this.SHOW_MODAL("lesson-with-student");
     }
   }
 };
 </script>
 
 <style lang="scss">
-.v-teacher-homeworks {
+.v-teacher-classess {
   @extend %pagept;
-  max-width: rem(892);
-  margin-left: $ml;
+  margin: 0 auto;
   padding-top: 42px;
-  .homework-navigation-bar {
+  width: 892px;
+  padding-left: 0px;
+  #wr-stud-card {
+    margin-top: 32px;
+  }
+  .c-student {
+    padding: 15px 30px 15px 15px;
+  }
+  .classes-navigation-bar {
     align-items: center;
     .select {
       width: 183px;
@@ -176,9 +175,6 @@ export default {
   }
   .no-tasks {
     margin-top: 66px;
-  }
-  #wr-stud-card {
-    margin-top: 25px;
   }
   .student-card-wrapper {
     margin-bottom: 13px;
@@ -220,14 +216,14 @@ export default {
   }
 }
 @include bp(1100px) {
-  .v-teacher-homeworks {
+  .v-teacher-classess {
     padding: 50px 0 0 0;
     max-width: 750px;
     margin: 0 auto;
   }
 }
 @include bp(766px) {
-  .v-teacher-homeworks {
+  .v-teacher-classess {
     max-width: 320px;
     &__wrapper {
       flex-direction: column;

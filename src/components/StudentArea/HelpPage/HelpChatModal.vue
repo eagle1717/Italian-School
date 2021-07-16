@@ -203,7 +203,7 @@ export default {
       @extend %input-reset;
       @extend %text-small-big-line-height;
       color: $gray;
-      padding-left: 30px;
+      ;
     }
     button {
       width: 42px;

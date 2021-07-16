@@ -1,24 +1,31 @@
 <template>
-  <div class="c-history-item">
-    <figure class="c-history-item__img">
-      <img :src="`img/ill/history-lessons/${iconName}.svg`" :alt="iconName" />
-    </figure>
-    <div class="c-history-item__content">
-      <h3 class="c-history-item__title">
-        <template v-if="isClassic">
-          Классическое занятие
-        </template>
-        <template v-else>
-          Повышение уровня владения языком
-        </template>
-      </h3>
-      <div class="c-history-item__duration">
-        <template v-if="isClassic">
-          Длительность: <span> {{ duration }} мин. </span>
-        </template>
-        <template v-else>
-          Уровень: <span> {{ iconName.toUpperCase() }} </span>
-        </template>
+  <div class="c-history-item flex justify-between">
+    <div class="flex">
+      <div>
+        <figure class="c-history-item__img">
+          <img
+            :src="`img/ill/history-lessons/${iconName}.svg`"
+            :alt="iconName"
+          />
+        </figure>
+      </div>
+      <div class="c-history-item__content">
+        <h3 class="c-history-item__title">
+          <template v-if="isClassic">
+            Lezione standard
+          </template>
+          <template v-else>
+            Ha raggiunto il livello
+          </template>
+        </h3>
+        <div class="c-history-item__duration">
+          <template v-if="isClassic">
+            Durata: <span> {{ duration }} min </span>
+          </template>
+          <template v-else>
+            <span> Livello {{ iconName.toUpperCase() }} </span>
+          </template>
+        </div>
       </div>
     </div>
     <div class="c-history-item__date">
@@ -91,9 +98,7 @@ export default {
   &__date {
     @extend %text-small-big-line-height;
     color: $gray;
-    position: absolute;
-    bottom: 23px;
-    right: 13px;
+    margin-right: 13px;
   }
 }
 @include bp(766px) {

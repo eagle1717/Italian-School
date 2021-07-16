@@ -81,9 +81,8 @@ export default {
 }
 .c-help {
   padding-top: rem(35);
-  padding-left: rem(30);
-  max-width: rem(892);
-  margin-left: $ml;
+  width: rem(892);
+  margin: 0 auto;
   margin-bottom: 50px;
   &__message-btn {
     width: rem(179);

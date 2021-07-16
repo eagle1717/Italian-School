@@ -32,9 +32,9 @@ export default {
 
 <style lang="scss">
 .c-promotion-page {
-  padding-left: rem(15);
   padding-top: rem(10);
-  margin-left: $ml;
+  margin: 0 auto;
+  width: 946px;
 
   &__header {
     margin-bottom: rem(83);

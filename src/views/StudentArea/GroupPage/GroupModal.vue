@@ -25,7 +25,6 @@
                           :src="
                             require(`@/assets/img/users/photos/${curatorInformation.photo}.svg`)
                           "
-                          alt=""
                         />
                       </template>
                     </div>
@@ -185,6 +184,14 @@ export default {
   max-width: 705px !important;
   width: 100% !important;
   padding: 0px;
+  font-family: "Circe Regular", sans-serif !important;
+  font-style: normal !important;
+  .main-description2 {
+    margin-bottom: 20px;
+  }
+  .status-text {
+    line-height: 25px;
+  }
   hr {
     margin: 30px 0px;
   }
@@ -428,6 +435,8 @@ export default {
     .btn-green {
       transition: all 0.5s ease;
       border-radius: 2px;
+      @extend %simple-btn-green;
+      width: 217px;
       &:hover {
         transition: all 0.5s ease;
         @extend %btn-darkgreen;

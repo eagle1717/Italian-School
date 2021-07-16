@@ -3,7 +3,7 @@
     <div class="c-calendar-week__wrap">
       <div class="c-calendar-week__static-days">
         <div
-          v-for="staticDay in is_curator ? staticDaysIT : staticDays"
+          v-for="staticDay in checkPath"
           :key="staticDay"
           class="c-calendar-week__name-days"
         >
@@ -94,6 +94,7 @@
 
 <script>
 import moment from "moment";
+import { mapState } from "vuex";
 // import CalendarTooltip from "@/components/CalendarTooltip";
 export default {
   components: {
@@ -176,6 +177,14 @@ export default {
     }
   },
   computed: {
+    ...mapState(["activeModal"]),
+    checkPath() {
+      if (this.activeModal === "student-profile") {
+        return this.staticDaysIT;
+      } else {
+        return this.staticDays;
+      }
+    },
     month() {
       return this.dateContext.format("MMMM");
     },

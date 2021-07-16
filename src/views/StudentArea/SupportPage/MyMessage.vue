@@ -147,14 +147,15 @@ export default {
 <style lang="scss">
 .c-my-message {
   @extend %pagept;
-  margin-left: $ml;
+  margin: 0 auto;
   margin-bottom: 50px;
+  padding-left: 0px;
   .c-faq__content {
     margin-left: 20px;
     padding-top: 38px;
   }
   &__container {
-    max-width: 892px;
+    width: 892px;
     @extend %m0a;
   }
   input {

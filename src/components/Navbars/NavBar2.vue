@@ -1,6 +1,5 @@
 <template lang="pug">
-nav.navigation.left-nav#student( :class="{ show: isHidden }")
- div.entire-nav
+nav.navigation.left-nav#teacher( :class="{ show: isHidden }")
   template(v-if="isHidden")
     .mobile-nav__burger
       button.mobile-nav__btn.active(@click="hideNavigation")
@@ -12,7 +11,6 @@ nav.navigation.left-nav#student( :class="{ show: isHidden }")
       a(href="https://studiait.it/", target="_blank")
         img(src="@/assets/logo.svg", alt="Logotype")
       BaseMedias
-    // Navigation user
     <router-link :to="{ name: 'HomePage' }" class="nav__user">
       figure.nav__user-photo
         template
@@ -22,10 +20,9 @@ nav.navigation.left-nav#student( :class="{ show: isHidden }")
         template
           img.notification-icon(src="@/assets/img/notification.svg")
     </router-link>
-    // Navigation menu
     ul.nav__menu
       li.nav__menu-item(
-        v-for="itm of menu_student",
+        v-for="itm of menu_teacher",
         :key="itm.name",
         :class="'nav__menu-item_' + itm.name.toLowerCase().split(' ')[0]"
       )
@@ -36,43 +33,13 @@ nav.navigation.left-nav#student( :class="{ show: isHidden }")
             img(:src="itm.icon", :alt="itm.name")
           span.nav__menu-text {{ itm.name }}
         </router-link>
-    template
-    <div class="text-bg-wrapper">
-      <div class="text-bg">
-       <h4>Ищешь что-то особенное?</h4>
-      </div>
-    </div>
-    <div>
-        <router-link class="nav__menu-link" id="support-link" :to="{name: menu2.route }">
-          figure.nav__menu-icon
-            img(:src="menu2.icon", :alt="menu2.name")
-          span.nav__menu-text {{ menu2.name }}
-        </router-link>
-    </div>
-      li.nav__menu-item
-        button.nav__menu-link.svg
-          svg(
-            style="margin-right: 25px",
-            width="12",
-            height="9",
-            viewBox="0 0 12 9",
-            fill="none",
-            xmlns="http://www.w3.org/2000/svg"
-          )
-            path(
-              d="M11 4.5L1 4.5M1 4.5L4.5 1M1 4.5L4.5 8",
-              stroke="#251C1C",
-              stroke-width="2",
-              stroke-linecap="round",
-              stroke-linejoin="round"
-            )
-          span.nav__menu-text Выйти
-    </div>
-      // Navigation offer
-      .nav__offer()
-        <router-link :to="{name: 'SpecialOfferPage'}" class="nav__offer-img">
-          img(src="@/assets/NavCat.svg", alt="Offer illustration")
-        </router-link>
+      li.nav__menu-item.exit
+        <button class="nav__menu-link.svg">
+        <div class="inline-block">
+        img(src="@/assets/close4.svg", alt="Logotype")
+        </div>
+          span.nav__menu-text.inline-block Uscire
+          </button>
 </template>
 
 <script>
@@ -84,34 +51,29 @@ export default {
   },
   data() {
     return {
-      username: "Дмитрий <br/> Релик",
-      menu_student: [
+      username: "Tomothy <br/> Murphy",
+      menu_teacher: [
         {
-          icon: "/img/ill/group.svg",
-          name: "Групповые занятия",
-          route: "Group"
+          icon: "/img/ill/teacher/lessons.svg",
+          name: "Lezioni",
+          route: "Lezioni"
         },
         {
-          icon: "/img/ill/teachers.svg",
-          name: "Преподаватели",
-          route: "Teachers"
+          icon: "/img/ill/teacher/homework.svg",
+          name: "Compiti",
+          route: "Compiti"
         },
         {
-          icon: "/img/ill/calendar.svg",
-          name: "Мой календарь",
-          route: "Calendar"
+          icon: "/img/ill/teacher/students.svg",
+          name: "Studenti",
+          route: "Studenti"
         },
         {
-          icon: "/img/ill/settings.svg",
-          name: "Настройки",
-          route: "SettingPage"
+          icon: "/img/ill/teacher/calendar.svg",
+          name: "Calendario",
+          route: "Calendario"
         }
-      ],
-      menu2: {
-        icon: "/img/ill/help.svg",
-        name: "Поддержка",
-        route: "Help"
-      }
+      ]
     };
   },
   logout() {
@@ -124,74 +86,62 @@ export default {
 </script>
 
 <style lang="scss">
-.navigation.left-nav#student {
+.navigation.left-nav#teacher {
   position: fixed;
   top: 0;
   left: 0;
   width: 398px;
-  height: 100%;
-  overflow: hidden;
-  border-right: 1px solid $black;
+  height: 100vh;
   background-color: $white;
-  z-index: 99;
+  border-right: 1px solid $black;
+  padding-left: 120px;
   padding-top: 17px;
-  .entire-nav {
-    position: relative;
-    height: max-content;
-    padding-left: 120px;
+  z-index: 99;
+  overflow-y: scroll;
+  .inline-block {
+    display: inline-block;
   }
-  .text-bg-wrapper {
-    // position: absolute;
-    z-index: 1000;
-    left: 25%;
+  .exit {
+    position: absolute;
+    bottom: 27px;
+    left: 0;
     right: 0;
-  }
-  #support-link {
-    img {
-      width: 27px;
-      height: 18px;
-      margin-right: 14px;
+    margin: auto;
+    width: max-content;
+    line-height: 21px;
+    span {
+      margin-left: 5px;
+      color: $black;
+      font-size: 16px;
+      font-weight: 700;
     }
   }
-  .text-bg {
-    background-image: url("~@/assets/textBg.svg");
-    width: 222px;
-    margin-top: 27px;
-    margin-bottom: 59.12px;
-    height: 66px;
-    background-repeat: no-repeat;
-    z-index: 1000;
-    position: relative;
-    margin-left: -16px;
-    h4 {
-      position: absolute;
-      left: 0;
-      right: 0;
-      padding-top: 20px;
-      @extend %regular;     
-      font-size: 14px;
-      line-height: 20px;
-      width: max-content;
-      margin: auto;
-      color: rgba(75, 75, 75, 1);
-      user-select: none;
-    }
+  .nav__menu-link.svg,
+  .nav__menu-text {
+    display: inline-block;
   }
   .nav__menu {
+    li:nth-child(1) {
+      span {
+        margin-left: 22px;
+      }
+    }
     li:nth-child(2) {
       margin-top: 10.59px;
       span {
-        margin-left: 0px;
+        margin-left: 19px;
       }
     }
     li:nth-child(3) {
       margin-top: 20px;
+      span {
+        margin-left: 14.16px;
+      }
     }
     li:nth-child(4) {
       margin-top: 20px;
-      img {
-        margin-right: 4px;
-        margin-bottom: 20px;
+      span {
+        margin-left: 14px;
       }
     }
   }
@@ -290,6 +240,7 @@ export default {
   }
   &__menu {
     &-item {
+      // margin-bottom: 27px;
       &:last-child {
         margin-bottom: 0;
       }
@@ -303,26 +254,40 @@ export default {
         }
       }
     }
-    &-icon {
-      &_групповые {
-        margin-right: 14px;
-      }
-      &_преподаватели {
-        width: 25.19px;
-        height: 32.81px;
-        margin-right: 13.27px;
-      }
-      &_мой {
-        width: 23px;
-        height: 19px;
-        margin-right: 16px;
-      }
-      &_настройки {
-        width: 22px;
-        height: 14px;
-        margin-right: 17px;
-      }
-    }
+    // &-icon {
+    //   &_преподаватели {
+    //     width: 25px;
+    //     height: 32px;
+    //     margin-right: 13px;
+    //   }
+    //   &_мой {
+    //     width: 23px;
+    //     height: 19px;
+    //     margin-right: 16px;
+    //   }
+    //   &_настройки {
+    //     width: 22px;
+    //     height: 14px;
+    //     margin-right: 17px;
+    //   }
+    //   &_поддержка {
+    //     width: 27px;
+    //     height: 18px;
+    //     margin-right: 14px;
+    //   }
+    //   &_новые {
+    //     margin-right: rem(25);
+    //   }
+    //   &_домашние {
+    //     margin-right: rem(21);
+    //   }
+    //   &_ученики {
+    //     margin-right: rem(16);
+    //   }
+    //   &_календарь {
+    //     margin-right: rem(15);
+    //   }
+    // }
     &-link {
       @extend %df;
       @extend %aic;
@@ -352,12 +317,12 @@ export default {
     }
   }
   &__offer {
-    display: block;
-    max-width: 290px;
-    top: 63.5%;
-    position: absolute;
-    left: 0;
-    z-index: 100;
+    // display: block;
+    // max-width: 290px;
+    // position: absolute;
+    // left: 0;
+    // bottom: unset !important;
+    // z-index: -1;
   }
 }
 @include bp(1360px) {

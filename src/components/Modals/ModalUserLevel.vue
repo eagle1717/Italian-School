@@ -2,7 +2,7 @@
   <div class="c-modal-level">
     <div class="c-modal-level__select">
       <h2 class="c-modal-level__title">
-        Изменить уровень:
+        Cambiare il livello:
       </h2>
       <BaseSelect
         :isImagesOptions="true"
@@ -12,11 +12,11 @@
     </div>
     <div class="c-modal-level__progress">
       <div class="c-modal-level__wrap c-modal-level__wrap_left">
-        <p class="c-modal-level__wrap-item">Грамматика</p>
+        <p class="c-modal-level__wrap-item">Grammatica:</p>
         <CircleProgress :percent="10" />
       </div>
       <div class="c-modal-level__wrap c-modal-level__wrap_right">
-        <p class="c-modal-level__wrap-item">Лексика</p>
+        <p class="c-modal-level__wrap-item">Lessico:</p>
         <CircleProgress :percent="5" />
       </div>
     </div>

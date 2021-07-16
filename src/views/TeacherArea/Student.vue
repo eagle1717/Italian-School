@@ -148,12 +148,12 @@ export default {
 .c-student {
   width: 100%;
   height: rem(86);
-  background-color: $dark_white;
+  background-color: $dark-white;
   border-radius: 2px;
   @extend %df;
   @extend %aic;
   @extend %jcsb;
-  padding: 15px 38.5px 15px 15px;
+  margin-bottom: 12px;
   .c-student__btn_green {
     width: 175px;
   }
@@ -178,24 +178,18 @@ export default {
     overflow: hidden;
   }
 
-  // .c-student__name-data
-
   &__name-data {
-    margin-left: rem(21);
+    margin-left: 21px;
   }
-
-  // .c-student__name
 
   &__name {
     @extend %text-big;
     color: $black;
   }
-
-  // .c-student__data
-
   &__data {
     @extend %text-small-big-line-height;
     color: $gray;
+    margin-top: 3px;
   }
 
   // .c-student__btn
@@ -272,8 +266,8 @@ export default {
     padding-top: 28px;
   }
   &__img {
-    width: 87px;
-    height: 87px;
+    // width: 87px;
+    // height: 87px;
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto;

@@ -15,7 +15,10 @@
                 />
               </template>
             </figure>
-            <h2 class="c-student-modal__name" v-html="user.name"></h2>
+            <h2 class="c-student-modal__name">
+              {{ user.name }} <br />
+              {{ user.surname }}
+            </h2>
           </div>
           <template v-if="user.lessonData">
             <ul class="c-student-modal__time">
@@ -46,18 +49,23 @@
           <h3 class="m-new-lesson-teacher__wrapper-title">Link:</h3>
           <div class="m-new-lesson-teacher__inp-flex">
             <BaseInputText
+              class="m-new-lesson-teacher__input"
               placeholder="Link"
               v-model="lessonLink"
               :isLinkInput="true"
               :error="error_lesson"
-              class="m-new-lesson-teacher__input"
+              :error_message="error_lesson_message"
             />
             <button
-              @click="confirm_lesson"
               class="m-new-lesson-teacher__btn"
-              :class="{ confirmed: lessonLink }"
+              @click="confirmedLesson"
+              :class="{ confirmed: confirmLesson }"
             >
-              <span>{{ "Conferma la lezione" }}</span>
+              <span>
+                {{
+                  confirmLesson ? "Lezione confermata" : "Conferma la lezione"
+                }}
+              </span>
             </button>
           </div>
         </div>
@@ -72,7 +80,17 @@
               :isLinkInput="true"
               class="m-new-lesson-teacher__input"
               :error="error_homework"
+              :error_message="error_homework_message"
             />
+            <button
+              @click="confirmedHomeWork"
+              class="m-new-lesson-teacher__btn"
+              :class="{ confirmed: confirmHomeWork }"
+            >
+              <span>{{
+                confirmHomeWork ? "Conferma" : "Correggere compito"
+              }}</span>
+            </button>
           </div>
         </div>
         <div
@@ -93,16 +111,19 @@
     </div>
   </BaseModal>
 </template>
-
 <script>
 import { mapMutations } from "vuex";
 export default {
   data() {
     return {
+      confirmLesson: false,
+      confirmHomeWork: false,
       lessonLink: "",
       homeworkLink: "",
       error_lesson: false,
       error_homework: false,
+      error_lesson_message: "",
+      error_homework_message: "",
       user: {
         id: 234,
         photo: "user2",
@@ -122,22 +143,60 @@ export default {
     hideModal() {
       this.HIDE_MODAL();
     },
-    confirm_lesson() {
-      alert("ds");
+    confirmedLesson() {
+      if (this.confirmLesson.length > 0 && this.confirmLesson) {
+        this.confirmLesson = true;
+      } else {
+        this.error_lesson = true;
+        this.error_lesson_message = "Inserisci link alla lezione!";
+      }
+    },
+    confirmedHomeWork() {
+      if (this.confirmHomeWork) {
+        this.confirmHomeWork = true;
+      } else {
+        this.error_homework = true;
+        this.error_homework_message = "Aggiungi link al compito!";
+      }
     }
   }
 };
 </script>
-
 <style lang="scss">
 .m-new-lesson-teacher__modal {
   width: rem(859) !important;
   overflow-y: scroll;
+  .c-input-wrapper {
+    height: 50px;
+  }
+  .c-input {
+    border-radius: 2px !important;
+    width: 371px;
+    padding: 0 23px 0 23px;
+    input {
+      padding-left: 0px;
+      &::placeholder {
+        color: #d8d8d8;
+      }
+    }
+  }
+  .c-input__notifer {
+    text-align: left;
+    margin-left: 11px;
+    font-weight: 350;
+  }
+  .c-student-modal {
+    height: 138px;
+    padding: 25px 25px 25px 33px;
+    button {
+      width: 260px;
+    }
+  }
 }
 .m-new-lesson-teacher {
-  max-width: rem(680);
-  padding: rem(44) 0 rem(50) rem(61);
-
+  width: 678px;
+  padding: rem(44) 0 rem(50) 0;
+  margin: 0 auto;
   @extend %reset-scroll-bar;
   // .m-new-lesson-teacher__wrap
   &__wrap {
@@ -147,6 +206,7 @@ export default {
       @extend %df;
       @extend %aic;
       margin-bottom: rem(32);
+      margin-left: 18px;
     }
 
     // .m-new-lesson-teacher__wrap_user
@@ -155,7 +215,9 @@ export default {
       margin-bottom: rem(40);
     }
 
-    // .m-new-lesson-teacher__wrap_link-lesson
+    .m-new-lesson-teacher__wrap_link-lesson {
+      width: 678px;
+    }
 
     &_link-lesson {
     }
@@ -163,6 +225,9 @@ export default {
     // .m-new-lesson-teacher__wrap_lesson-type
 
     &_lesson-type {
+      .m-new-lesson-teacher__type-label {
+        margin-bottom: 5px;
+      }
     }
   }
 
@@ -184,6 +249,9 @@ export default {
 
   &__inp-wrapper {
     margin-bottom: rem(40);
+    .m-new-lesson-teacher__wrapper-title {
+      margin-bottom: 9px;
+    }
   }
 
   // .m-new-lesson-teacher__wrapper-title
@@ -216,11 +284,16 @@ export default {
 
   &__btn {
     @extend %simple-btn-green;
-    width: rem(277);
+    width: 100%;
     margin-left: rem(30);
     &.confirmed {
       @extend %simple-btn-green-border;
-      width: rem(277);
+      width: 100%;
+      &:hover {
+        background-color: transparent;
+        color: $green;
+        cursor: initial;
+      }
     }
   }
 

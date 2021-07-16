@@ -154,8 +154,9 @@ export default {
 <style lang="scss">
 .c-teacher-page {
   @extend %pagept;
-  margin-left: $ml;
+  margin: 0 auto;
   margin-bottom: 31px;
+  padding-left: 0px;
   .teacher__arrow {
     display: none;
   }
@@ -191,19 +192,9 @@ export default {
       }
     }
   }
-
-  // .c-teacher-page__teacher-card
-
   &__teacher-card {
     margin-bottom: 67px;
   }
-
-  // .c-teacher-page__calendar
-
-  &__calendar {
-  }
-}
-.open {
 }
 @include bp(1100px) {
   .c-teacher-page {

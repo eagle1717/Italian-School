@@ -94,19 +94,14 @@ export default {
 
 <style lang="scss">
 .c-level {
-  padding-left: rem(30);
   padding-top: rem(10);
   padding-right: 30px;
-  margin-left: $ml;
+  margin: 0 auto;
+  width: 946px;
   margin-bottom: 100px;
-  // .c-level__header
-
   &__header {
     margin-bottom: rem(80);
   }
-
-  // .c-level__wrap
-
   &__wrap {
     max-width: rem(742);
   }

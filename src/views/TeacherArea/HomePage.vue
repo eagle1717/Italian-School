@@ -66,12 +66,11 @@ export default {
 
 <style lang="scss">
 .c-home {
-  padding-left: rem(30);
   padding-top: rem(20);
-  max-width: rem(920);
+  width: 892px;
   padding-bottom: 50px;
   margin: 0 auto;
-  margin-left: $ml;
+  padding-left: 0px;
   &__header {
     @extend %df;
     @extend %jcsb;

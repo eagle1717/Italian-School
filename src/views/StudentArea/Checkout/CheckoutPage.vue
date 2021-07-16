@@ -75,7 +75,7 @@
             <h4 class="c-checkout__form-total-title">К оплате:</h4>
             <p class="c-checkout__form-total-price">30 000 €</p>
           </div>
-          <router-link :to="`/purchase/package/${currentPath}/success`">
+          <router-link :to="`/purchase/package/${currentPath}/success`" class="route-btn">
             <button class="c-checkout__form-btn">
               Выбрать пакет
             </button>
@@ -178,10 +178,9 @@ export default {
   @extend %df;
   @extend %jcsb;
   padding-top: rem(36);
-  max-width: rem(922);
+  width: 892px;
   padding-bottom: 50px;
-  padding-left: 50px;
-  margin-left: 403px;
+  margin: 0 auto;
   .select__value {
     color: $black;
   }
@@ -223,7 +222,7 @@ export default {
     @extend %text-middle;
     color: $gray;
     margin-top: rem(60);
-    max-width: rem(450);
+    max-width: rem(445);
     margin-bottom: rem(13);
   }
 
@@ -407,9 +406,6 @@ export default {
     @extend %h3-title-bold;
     color: $green;
   }
-
-  // .c-checkout__form-btn
-
   &__form-btn {
     @extend %simple-btn-red-fill;
     width: 296px;

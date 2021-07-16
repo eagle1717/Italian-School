@@ -10,7 +10,6 @@
 
 <script>
 import { mapGetters } from "vuex";
-import MyLessons from "@/components/Modals/MyLessons.vue";
 import { show_lesson_modal_mixin } from "@/mixins/mixins.js";
 export default {
   mixins: [show_lesson_modal_mixin],
@@ -51,9 +50,6 @@ export default {
         });
       }
     }
-  },
-  components: {
-    MyLessons
   }
 };
 </script>
@@ -62,9 +58,10 @@ export default {
 .c-calendar-page {
   padding-top: rem(40);
   padding-bottom: rem(64);
-  width: 892px;
   margin: 0 auto;
-
+  padding-top: 42px;
+  width: 892px;
+  padding-left: 0px !important;
   // // .c-calendar__header
 
   // &__header {

@@ -13,7 +13,6 @@
   font-size: 14px;
   line-height: 20px;
   color: $black;
-  height: min-content;
   .status-img {
     img {
       width: 23px;
@@ -25,23 +24,23 @@
   }
 }
 .wr-up {
-  margin-left: $ml;
-  padding-left: 30px;
+  margin: 0 auto;
 }
 .tc-group {
-  margin-left: $ml;
+  margin: 0 auto;
 }
 .group-wrapper {
   -moz-column-count: 2;
   -webkit-column-count: 2;
   column-count: 2;
-  width: min-content;
+  width: 892px;
   margin-top: 25px;
   .group-card {
     display: inline-block;
     box-sizing: border-box;
     cursor: pointer;
     background: #f7f7f7;
+    overflow: hidden;
     border-radius: 2px;
     padding: 30px;
     justify-content: center;
@@ -53,7 +52,14 @@
     margin-left: 0px;
     width: 431px;
     height: 100%;
+    min-height: 357px;
     position: relative;
+    &:hover {
+      .go-to-lesson {
+        transition: all 0.5s ease;
+        bottom: 30px;
+      }
+    }
     .current-status {
       position: absolute;
       left: 21px;
@@ -62,7 +68,11 @@
       line-height: 20px;
       color: $black;
       height: min-content;
+      display: flex;
       .status-img {
+        height: 23px;
+        width: 23px;
+        display: inline-block;
         img {
           width: 23px;
           height: 23px;
@@ -70,9 +80,11 @@
       }
       .status-text {
         margin-left: 5px;
+        display: inline-block;
+        line-height: 23px;
       }
     }
-    img {
+    .user-img-course {
       width: 87px;
       height: 87px;
       margin: auto;
@@ -109,6 +121,7 @@
     }
 
     .go-to-lesson {
+      transition: all 0.5s ease;
       background: #39b100;
       padding: 14.5px 20px;
       font-size: 16px;
@@ -116,10 +129,13 @@
       line-height: 21px;
       height: 50px;
       width: 180px;
-      margin: auto;
       border-radius: 2px;
-      @extend %text-middle;
-      transition: all 0.5s ease;
+      margin: auto;
+      position: absolute;
+      bottom: rem(-50);
+      margin-top: rem(120);
+      left: 0;
+      right: 0;
       &:hover {
         background-color: #2e8e00;
         transition: all 0.5s ease;
@@ -144,8 +160,7 @@
 }
 .teachers {
   padding-top: 44px;
-  padding-left: 30px;
-  max-width: 921px;
+  width: 892px;
   &__not-found {
     @extend %h3-title-bold;
     color: $gray;

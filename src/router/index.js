@@ -5,14 +5,6 @@ import Home2 from "@/views/TeacherArea/HomePage";
 Vue.use(VueRouter);
 const routes = [
   {
-    path: "/verification/:token",
-    name: "Verification",
-    component: () => import("@/views/StudentArea/Auth/Verification"),
-    meta: {
-      layout: "Empty"
-    }
-  },
-  {
     path: "/login",
     name: "Login",
     component: () => import("@/views/StudentArea/Auth/Login"),
@@ -53,37 +45,38 @@ const routes = [
     path: "/group",
     name: "Group",
     redirect: "/group/courses",
-    component: import("@/views/StudentArea/GroupPage/Group.vue"),
+    component: import("@/views/StudentArea/GroupPage/Group.vue")
   },
   {
     path: "/group/courses",
     component: () => import("@/views/StudentArea/GroupPage/Courses.vue"),
-    name: 'Courses',
+    name: "Courses"
   },
   {
     path: "/group/webinars",
     component: () => import("@/views/StudentArea/GroupPage/Webinars.vue"),
-    name: 'Webinars',
+    name: "Webinars"
   },
   {
     path: "/quiz",
     name: "Qviz",
     component: () => import("@/views/StudentArea/Auth/Qviz.vue"),
     meta: {
-      layout: 'NoContent'
+      layout: "NoContent"
     }
   },
   {
     path: "/teachers",
     name: "Teachers",
-    component: () => import("@/views/StudentArea/CuratorsPage/MainTeachers.vue"),
-    props: true,
+    component: () =>
+      import("@/views/StudentArea/CuratorsPage/MainTeachers.vue"),
+    props: true
   },
   {
     path: "/teachers/:id",
     name: "TeacherPage",
     props: true,
-    component: () => import("@/views/StudentArea/CuratorsPage/TeacherPage"),
+    component: () => import("@/views/StudentArea/CuratorsPage/TeacherPage")
   },
   {
     path: "/level",
@@ -99,7 +92,7 @@ const routes = [
     }
   },
   {
-    path: "/password-recovery/",
+    path: "/password-recovery",
     name: "PasswordRecovery",
     component: () => import("@/views/StudentArea/Auth/PasswordRecovery"),
     meta: {
@@ -110,13 +103,13 @@ const routes = [
     path: "/support",
     name: "Help",
     props: true,
-    component: () => import("@/views/StudentArea/SupportPage/Help"),
+    component: () => import("@/views/StudentArea/SupportPage/Help")
   },
   {
     path: "/support/my-message",
     name: "MyMessage",
     props: true,
-    component: () => import("@/views/StudentArea/SupportPage/MyMessage"),
+    component: () => import("@/views/StudentArea/SupportPage/MyMessage")
   },
   {
     path: "/checkout/:id",
@@ -126,74 +119,96 @@ const routes = [
   {
     path: "/purchase/:lesson/:id/:status",
     name: "CheckoutStatus",
-    component: () => import("@/views/StudentArea/Checkout/CheckoutStatus"),
+    component: () => import("@/views/StudentArea/Checkout/CheckoutStatus")
   },
   {
     path: "/promotion-lesson",
     name: "PromotionLesson",
-    component: () => import("@/views/StudentArea/PresentPages/PromotionLesson"),
+    component: () => import("@/views/StudentArea/PresentPages/PromotionLesson")
   },
   {
     path: "/offer",
     name: "SpecialOfferPage",
-    component: () => import("@/views/StudentArea/PresentPages/SpecialOfferPage"),
+    component: () => import("@/views/StudentArea/PresentPages/SpecialOfferPage")
   },
   {
     path: "/certificate",
     name: "Certificate",
-    component: () => import("@/views/StudentArea/PresentPages/Certificate"),
+    component: () => import("@/views/StudentArea/PresentPages/Certificate")
   },
   {
     path: "/settings",
     name: "SettingPage",
-    component: () =>
-      import("@/views/StudentArea/SettingsPage/SettingPage"),
+    component: () => import("@/views/StudentArea/SettingsPage/SettingPage")
   },
   {
     path: "/calendar",
     name: "Calendar",
-    component: () => import("@/views/StudentArea/CalendarPage/Calendar"),
+    component: () => import("@/views/StudentArea/CalendarPage/Calendar")
   },
   // teacher
   {
     path: "/home2",
-    name: 'Home2',
+    name: "Home2",
     component: Home2,
+    meta: {
+      layout: "Default2"
+    }
   },
   {
-    path: "/homework",
-    name: "HomeWork",
-    component: () => import("@/views/TeacherArea/HomeWork")
+    path: "/compiti",
+    name: "Compiti",
+    component: () => import("@/views/TeacherArea/HomeWork"),
+    meta: {
+      layout: "Default2"
+    }
   },
   {
-    path: "/students",
-    name: "Students",
-    component: () => import("@/views/TeacherArea/Students")
+    path: "/studenti",
+    name: "Studenti",
+    component: () => import("@/views/TeacherArea/Students"),
+    meta: {
+      layout: "Default2"
+    }
   },
   {
-    path: "/classes",
-    name: "Classes",
-    component: () => import("@/views/TeacherArea/Classes")
+    path: "/lezioni",
+    name: "Lezioni",
+    component: () => import("@/views/TeacherArea/Classes"),
+    meta: {
+      layout: "Default2"
+    }
   },
   {
-    path: "/calendar2",
-    name: "Calendar2",
-    component: () => import("@/components/Calendars/TimelineWeekCalendar")
+    path: "/calendario",
+    name: "Calendario",
+    component: () => import("@/components/Calendars/TimelineWeekCalendar"),
+    meta: {
+      layout: "Default2"
+    }
+  },
+  {
+    path: "/calendario2",
+    name: "Calendario2",
+    component: () => import("@/views/TeacherArea/Calendar"),
+    meta: {
+      layout: "Default2"
+    }
   },
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes
 });
 router.beforeEach((to, from, next) => {
-  store.dispatch('set_loading', true)
+  store.dispatch("set_loading", true);
   store.dispatch("hide_modal");
   next();
 });
 router.afterEach(() => {
-  store.dispatch('set_loading', false)
+  store.dispatch("set_loading", false);
   // store.dispatch('hide_show_overlay', true)
 });
 export default router;

@@ -3,7 +3,7 @@
     <Group />
     <div class="group-wrapper wr-up">
       <div class="group-card" v-for="group in groupInformation" :key="group.id">
-        <div class="current-status flex">
+        <div class="current-status">
           <div class="status-img">
             <img
               v-if="group.status === 'current'"
@@ -36,12 +36,19 @@
             </div>
           </div>
         </div>
-        <img :src="require(`@/assets/${group.curatorPhoto}.svg`)" alt="" />
+        <img
+          :src="require(`@/assets/${group.curatorPhoto}.svg`)"
+          alt=""
+          class="user-img-course"
+        />
         <p class="name">{{ group.curatorName }}</p>
         <h3 class="title" v-html="group.courseName"></h3>
-        <div class="go-to-lesson" v-if="group.status == 'current'">
-          <a @click.prevent="openModal">Перейти к занятию</a>
-        </div>
+        <a
+          @click.prevent="openModal"
+          class="go-to-lesson"
+          v-if="group.status == 'current'"
+          >Перейти к занятию</a
+        >
         <div v-else>
           <hr class="hr" />
           <span class="schedule">график занятий</span>

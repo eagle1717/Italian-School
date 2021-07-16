@@ -1,80 +1,82 @@
 <template>
   <div class="c-purchase-success">
-    <figure class="c-purchase-success__img">
-      <img :src="currentInformation.image" alt="" />
-    </figure>
-    <h1 class="c-purchase-success__title">
-      Покупка {{ currentInformation.lesson }} "{{
-        currentInformation.lessonName
-      }}" {{ currentInformation.statusText }}
-    </h1>
-    <p
-      class="c-purchase-success__text"
-      v-html="currentInformation.successText"
-    ></p>
-    <div
-      class="links-next"
-      v-if="
-        currentInformation.status === 'success' &&
-          currentInformation.lesson === 'курса'
-      "
-    >
-      <div>
-        <router-link
-          :to="{ name: 'HomePage' }"
-          class="c-purchase-success__next flex"
-        >
-          <div>Чат курса</div>
-          <div class="arrow-link"><img src="@/assets/leftArrow.svg" /></div>
-        </router-link>
+    <div class="entire-purchase-content">
+      <figure class="c-purchase-success__img">
+        <img :src="currentInformation.image" alt="" />
+      </figure>
+      <h1 class="c-purchase-success__title">
+        Покупка {{ currentInformation.lesson }} "{{
+          currentInformation.lessonName
+        }}" {{ currentInformation.statusText }}
+      </h1>
+      <p
+        class="c-purchase-success__text"
+        v-html="currentInformation.successText"
+      ></p>
+      <div
+        class="links-next"
+        v-if="
+          currentInformation.status === 'success' &&
+            currentInformation.lesson === 'курса'
+        "
+      >
+        <div>
+          <router-link
+            :to="{ name: 'HomePage' }"
+            class="c-purchase-success__next flex"
+          >
+            <div>Чат курса</div>
+            <div class="arrow-link"><img src="@/assets/leftArrow.svg" /></div>
+          </router-link>
+        </div>
+        <div>
+          <router-link
+            :to="{ name: 'HomePage' }"
+            class="c-purchase-success__next flex"
+          >
+            <div>Материалы курса</div>
+            <div class="arrow-link"><img src="@/assets/leftArrow.svg" /></div>
+          </router-link>
+        </div>
+        <div>
+          <router-link
+            :to="{ name: 'HomePage' }"
+            class="c-purchase-success__next flex"
+          >
+            <div>Что-то еще для обучения</div>
+            <div class="arrow-link"><img src="@/assets/leftArrow.svg" /></div>
+          </router-link>
+        </div>
       </div>
-      <div>
-        <router-link
-          :to="{ name: 'HomePage' }"
-          class="c-purchase-success__next flex"
-        >
-          <div>Материалы курса</div>
-          <div class="arrow-link"><img src="@/assets/leftArrow.svg" /></div>
-        </router-link>
-      </div>
-      <div>
-        <router-link
-          :to="{ name: 'HomePage' }"
-          class="c-purchase-success__next flex"
-        >
-          <div>Что-то еще для обучения</div>
-          <div class="arrow-link"><img src="@/assets/leftArrow.svg" /></div>
-        </router-link>
-      </div>
-    </div>
 
-    <router-link
-      class="failed failed-button-wrapper failed"
-      to="/"
-      v-else-if="currentInformation.status === 'failed'"
-    >
-      <span>Повторить попытку</span>
-    </router-link>
-    <router-link
-      class="success-button-package btn-status-wrapper btn-class"
-      to="/home"
-      v-else-if="
-        currentInformation.lesson === 'пакета' &&
-          currentInformation.status === 'success'
-      "
-    >
-      <span>Продолжить</span>
-    </router-link>
-    <router-link
-      class="success-button-package btn-webinar-wrapper btn-class"
-      to="/"
-      v-else-if="
-        currentInformation.lesson === 'вебинара' &&
-          currentInformation.status === 'success'
-      "
-    >
-      <span>На страницу вебинара</span>
-    </router-link>
+      <router-link
+        class="failed failed-button-wrapper failed"
+        to="/"
+        v-else-if="currentInformation.status === 'failed'"
+      >
+        <span>Повторить попытку</span>
+      </router-link>
+      <router-link
+        class="success-button-package btn-status-wrapper btn-class"
+        to="/home"
+        v-else-if="
+          currentInformation.lesson === 'пакета' &&
+            currentInformation.status === 'success'
+        "
+      >
+        <span>Продолжить</span>
+      </router-link>
+      <router-link
+        class="success-button-package btn-webinar-wrapper btn-class"
+        to="/"
+        v-else-if="
+          currentInformation.lesson === 'вебинара' &&
+            currentInformation.status === 'success'
+        "
+      >
+        <span>На страницу вебинара</span>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -154,8 +156,11 @@ export default {
 
 <style lang="scss">
 .c-purchase-success {
-  width: 585px;
-  margin-left: $ml;
+  width: 892px;
+  margin: 0 auto;
+  .entire-purchase-content {
+    width: 585px;
+  }
   .btn-class {
     position: absolute;
     @extend %simple-btn-green;
@@ -186,7 +191,8 @@ export default {
 }
 .btn-webinar-wrapper {
   margin-top: 20px;
-  width: max-content;
+  width: 200px !important;
+  padding: 0px !important;
 }
 .success-button-package {
   @extend %btnStatus;
@@ -208,9 +214,6 @@ export default {
 }
 .c-purchase-success {
   padding-top: rem(61);
-  padding-left: rem(31);
-  // .c-purchase-success__img
-
   .c-purchase-success__title {
     font-size: 30px;
     line-height: 34px;

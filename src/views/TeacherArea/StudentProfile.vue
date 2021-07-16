@@ -28,7 +28,7 @@
       <div
         class="c-student-modal-tech__wrap c-student-modal-tech__wrap_calendar"
       >
-        <h2 class="c-student-modal-tech-h2__title">Classi con uno studente</h2>
+        <h2 class="c-student-modal-tech-h2__title">Lezioni:</h2>
         <BaseWeekCalendar
           class="c-student-modal-tech__calendar"
           :lessons="lessons"
@@ -38,7 +38,7 @@
       <div
         class="c-student-modal-tech__wrap c-student-modal-tech__wrap_lessons"
       >
-        <h2 class="c-student-modal-tech-h2__title">А1. Программа обучения:</h2>
+        <h2 class="c-student-modal-tech-h2__title">Piano studi livello A1:</h2>
         <ul class="c-student-modal-tech__lessons">
           <li v-for="itm in lessonItems" :key="itm.id">
             <label class="c-student-modal-tech__checkbox">
@@ -52,7 +52,7 @@
       </div>
       <div class="c-student-modal__history">
         <h2 class="c-student-modal-tech-h2__title">
-          История обучения
+          Attività:
         </h2>
         <StudentLessonsHistory
           v-for="itm of history"
@@ -187,13 +187,17 @@ export default {
 
 <style lang="scss">
 .c-student-modal-tech {
-  height: 100%;
+  height: max-content;
   @extend %reset-scroll-bar;
   width: rem(677);
   padding: rem(44) 0 rem(50) 0;
   margin-left: rem(65);
   // .c-student-modal-tech__modal
-
+  .c-modal-level__wrap.c-modal-level__wrap_right {
+    p {
+      text-align: center;
+    }
+  }
   &__modal {
     width: rem(859) !important;
     overflow-y: scroll;
@@ -247,11 +251,13 @@ export default {
   &__title {
     @extend %h3-title-bold;
     color: $gray;
+    margin-left: 18px;
   }
 
   &-h2__title {
     @extend %btn-text;
     color: $black;
+    font-size: 18px;
     margin-bottom: rem(20);
   }
 
@@ -276,7 +282,7 @@ export default {
     padding: rem(28) 0 rem(25) rem(25);
     border: 1px solid $soft_gray;
     border-radius: 2px;
-    overflow-x: scroll;
+    overflow-x: auto;
     @extend %reset-scroll-bar;
     margin-bottom: rem(60);
     li {

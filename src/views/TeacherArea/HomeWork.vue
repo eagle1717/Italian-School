@@ -9,11 +9,14 @@
       </div>
       <div id="wr-stud-card">
         <div
-          class="flex justify-between"
+          class="flex justify-between c-student"
           v-for="(it, key) in students"
           :key="key"
+          :class="{
+            disabled: it.checkHomeWork
+          }"
         >
-          <div class="c-student__user-data" @click="showUser(it.userId)">
+          <div class="c-student__user-data" @click="showModal">
             <figure class="c-student__photo">
               <template v-if="it.photo">
                 <img
@@ -34,15 +37,8 @@
               </template>
             </div>
           </div>
-          <template
-            v-if="
-              it.link_to_homework !== '' &&
-                it.is_homework_done &&
-                !it.checkHomeWork
-            "
-          >
+          <template v-if="it.is_homework_done && !it.checkHomeWork">
             <a
-              @click="check_homework"
               :href="it.link_to_homework"
               class="c-student__btn c-student__btn_red"
               target="_blank"
@@ -122,40 +118,35 @@ export default {
       photo: "",
       name: "",
       surname: "",
-      isHomework: false,
-      checkHomeWork: false,
-      link_to_homework: "",
-      is_homework_done: false,
+      checkHomeWork: undefined,
+      is_homework_done: undefined,
       students: [
         {
           userId: 1,
           photo: "user2",
           name: "Ника",
           surname: "Ларингова",
-          isHomework: true,
+          checkHomeWork: false,
+          is_homework_done: true,
+          link_to_homework: "https://google.com"
+        },
+        {
+          userId: 1,
+          photo: "user2",
+          name: "Ника",
+          surname: "Ларингова",
           checkHomeWork: true,
-          link_to_homework: "https://google.com",
-          is_homework_done: true
+          is_homework_done: true,
+          link_to_homework: "https://google.com"
         },
         {
-          userId: 2,
+          userId: 1,
           photo: "user2",
           name: "Ника",
           surname: "Ларингова",
-          isHomework: true,
-          checkHomeWork: false,
-          link_to_homework: "https://google.com",
-          is_homework_done: true
-        },
-        {
-          userId: 3,
-          photo: "user2",
-          name: "Ника",
-          surname: "Ларингова",
-          isHomework: true,
-          checkHomeWork: false,
-          link_to_homework: "https://google.com",
-          is_homework_done: true
+          checkHomeWork: true,
+          is_homework_done: true,
+          link_to_homework: "https://google.com"
         }
       ]
     };
@@ -168,13 +159,8 @@ export default {
   },
   methods: {
     ...mapMutations(["SHOW_MODAL"]),
-    // Получает id занятия id
-    showUserModal() {
-      this.SHOW_MODAL("student-modal");
-    },
-    // Получает id юзера id
-    showLessonModal() {
-      this.SHOW_MODAL("new-teacher-lesson");
+    showModal() {
+      this.SHOW_MODAL("student-profile");
     }
   }
 };
@@ -183,9 +169,13 @@ export default {
 <style lang="scss">
 .v-teacher-homeworks {
   @extend %pagept;
-  max-width: rem(892);
-  margin-left: $ml;
+  margin: 0 auto;
   padding-top: 42px;
+  width: 892px;
+  padding-left: 0px !important;
+  .c-student {
+    padding: 15px 38.5px 15px 15px;
+  }
   .homework-navigation-bar {
     align-items: center;
     .select {

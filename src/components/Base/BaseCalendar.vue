@@ -50,7 +50,9 @@
     <div class="c-calendar__wrap">
       <div class="c-calendar__static-days">
         <div
-          v-for="staticDay in (!is_curator ? staticDays : staticDaysIT)"
+          v-for="staticDay in $route.name === 'Calendario2'
+            ? staticDaysIT
+            : staticDays"
           :key="staticDay"
           class="c-calendar__name-days"
         >
@@ -115,7 +117,11 @@ export default {
     };
   },
   created() {
-    moment.locale("ru");
+    if (this.$route.name === "Calendario2") {
+      moment.locale("it");
+    } else if (this.$route.name === "Calendar") {
+      moment.locale("ru");
+    }
     this.today = moment();
     this.dateContext = moment();
     this.updateData();
@@ -125,10 +131,10 @@ export default {
     this.updateData();
   },
   methods: {
-    addMonth: function () {
+    addMonth: function() {
       this.dateContext = moment(this.dateContext).add(1, "month");
     },
-    subtractMonth: function () {
+    subtractMonth: function() {
       this.dateContext = moment(this.dateContext).subtract(1, "month");
     },
     clickOnDateItem(date) {

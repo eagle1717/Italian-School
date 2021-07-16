@@ -1,7 +1,7 @@
 <template>
   <div class="v-students-page">
     <div class="v-students">
-      <div class="v-students__wrap v-students__wrap_top">
+      <div class="v-students__wrap_top">
         <h1 class="v-students__title">I tuoi studenti</h1>
       </div>
       <div class="v-students__wrap v-students__wrap_bot">
@@ -14,7 +14,11 @@
             <div class="c-simple-student-card__main-data">
               <figure class="c-simple-student-card__img">
                 <template v-if="it.img">
-                  <img :src="it.img" :alt="name" />
+                  <!-- <img :src="require(`@/assets/${it.img}.svg`)" :alt="name" /> -->
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
+                    :alt="name"
+                  />
                 </template>
                 <template v-else>
                   <img src="img/ill/default-photo.svg" :alt="it.name" />
@@ -36,7 +40,16 @@
               class="c-simple-student-card__btn c-simple-student-card__btn_red"
             >
               <span>
-                Controlla i compiti
+                Correggere compito
+              </span>
+            </button>
+          </template>
+          <template v-else-if="!it.link_to_lesson">
+            <button
+              class="c-simple-student-card__btn c-simple-student-card__btn_green2"
+            >
+              <span>
+                Aggiungere link
               </span>
             </button>
           </template>
@@ -87,7 +100,25 @@ export default {
       students: [
         {
           id: 34242,
-          img: "img/users/photos/1.jpg",
+          img: "user2",
+          name: "Ника Ларингова",
+          level: "A1",
+          date: "24 мая",
+          link_to_homework: "https://google.com",
+          is_homework_done: true,
+          isHomework: false
+        },
+        {
+          id: 34242,
+          img: "user2",
+          name: "Ника Ларингова",
+          level: "A1",
+          date: "24 мая",
+          link_to_lesson: "https://google.com"
+        },
+        {
+          id: 34242,
+          img: "user2",
           name: "Ника Ларингова",
           level: "A1",
           date: "24 мая",
@@ -96,7 +127,7 @@ export default {
         },
         {
           id: 34242,
-          img: "img/users/photos/2.jpg",
+          img: "user2",
           name: "Ника Ларингова",
           level: "A1",
           date: "24 мая",
@@ -105,25 +136,7 @@ export default {
         },
         {
           id: 34242,
-          img: "img/users/photos/3.jpg",
-          name: "Ника Ларингова",
-          level: "A1",
-          date: "24 мая",
-          link: "https://google.com",
-          isHomework: false
-        },
-        {
-          id: 34242,
-          img: "img/users/photos/4.jpg",
-          name: "Ника Ларингова",
-          level: "A1",
-          date: "24 мая",
-          link: "https://google.com",
-          isHomework: false
-        },
-        {
-          id: 34242,
-          img: "img/users/photos/4.jpg",
+          img: "user2",
           name: "Ника Ларингова",
           level: "A1",
           date: "24 мая",
@@ -132,7 +145,7 @@ export default {
         },
         {
           id: 34242,
-          img: "img/users/photos/4.jpg",
+          img: "user2",
           name: "Ника Ларингова",
           level: "A1",
           date: "24 мая",
@@ -159,7 +172,7 @@ export default {
 
 <style lang="scss">
 .v-students {
-  margin-left: $ml;
+  margin: 0 auto;
   &-page {
     width: max-content;
     margin: 0 auto;
@@ -167,6 +180,7 @@ export default {
     padding-bottom: 50px;
   }
   &__wrap {
+    margin-top: 32px !important;
     &_top {
       @extend %df;
       @extend %jcsb;
@@ -175,7 +189,8 @@ export default {
     &_bot {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+      column-gap: 30px;
+      row-gap: 38px;
       margin-top: 25px;
     }
   }
@@ -241,8 +256,7 @@ export default {
 </style>
 <style lang="scss">
 .c-simple-student-card {
-  // background-color: $dark_white;
-  background-color: $blue;
+  background-color: $dark_white;
   border-radius: 2px;
   width: 277px;
   height: 300px;
@@ -256,8 +270,14 @@ export default {
   }
   &__main-data {
     cursor: pointer;
+    .c-simple-student-card {
+      &__img {
+        display: block !important;
+      }
+    }
     &:hover {
       .c-simple-student-card {
+        background-color: $dark-white;
         &__img {
           border-color: $green;
         }
@@ -273,11 +293,17 @@ export default {
   &__img {
     width: 87px;
     height: 87px;
-    border-radius: 50%;
+    border-radius: 100%;
     overflow: hidden;
     margin: 0 auto;
     border: 2px solid transparent;
     transition: all 0.5s ease;
+    img {
+      object-fit: cover;
+      border-radius: 100%;
+      display: block;
+      position: relative;
+    }
   }
   &__name {
     @extend %text-big;
@@ -302,14 +328,24 @@ export default {
     text-align: center;
   }
   &__btn {
-    width: 189px;
     height: 35px;
     margin: 150px auto 0;
     &_red {
       @extend %simple-btn-red-fill;
+      width: 217px;
+      &:hover {
+        background: #d62a20;
+        border-color: transparent;
+        color: $white;
+      }
     }
     &_green {
       @extend %simple-btn-green;
+      width: 133px;
+    }
+    &_green2 {
+      @extend %simple-btn-green;
+      width: 175px;
     }
   }
 }

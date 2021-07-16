@@ -44,9 +44,9 @@ export default {
 
 <style lang="scss">
 .c-special-page {
-  padding-left: rem(30);
   padding-top: rem(10);
-  margin-left: $ml;
+  margin: 0 auto;
+  width: 946px;
 
   &__header {
     margin-bottom: rem(90);

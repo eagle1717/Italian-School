@@ -37,15 +37,12 @@ export default {
 
 <style lang="scss">
 .toasted {
-  margin-left: $ml;
+  margin: 0 auto;
 }
 .c-setting {
-  margin-left: $ml;
+  margin: 0 auto;
   margin-bottom: 91px;
-  &__container {
-    max-width: rem(892);
-    padding-left: 30px;
-  }
+  width: rem(892);
   &__title1 {
     margin-top: 42px;
     margin-bottom: 34px;
@@ -67,7 +64,7 @@ export default {
 @include bp(1360px) {
   .c-setting {
     padding-right: 30px;
-    padding-left: 30px;
+    ;
     padding-bottom: 50px;
     &__container {
     }

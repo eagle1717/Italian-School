@@ -118,6 +118,10 @@ export default {
   width: 705px !important;
 }
 .c-faq-modal {
+  width: 412px;
+  margin-left: 0px;
+}
+.c-faq-modal {
   @extend %pagept;
   .nazvaniye {
     border-radius: 2px;
@@ -179,7 +183,6 @@ export default {
   }
 
   &__container {
-    max-width: 640px;
     @extend %m0a;
     margin-top: 20px;
   }

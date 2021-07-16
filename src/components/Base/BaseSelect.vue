@@ -89,9 +89,9 @@ export default {
       opacity: 1;
       display: block;
     }
-    img {
-      transform: rotate(180deg);
-    }
+    // img {
+    //   transform: rotate(180deg);
+    // }
   }
   &__wrapper {
     height: 35px;

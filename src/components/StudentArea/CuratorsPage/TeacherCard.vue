@@ -229,6 +229,8 @@ export default {
     z-index: 1000;
     @extend %df;
     top: 42px;
+    color: #4b4b4b;
+    font-size: 14px;
   }
 }
 .up-teacher-wrapper.hide {
@@ -357,7 +359,7 @@ export default {
       padding-top: 18px;
       span {
         font-size: 15px;
-        font-family: "Circe";
+        font-family: "Circe" !important;
       }
       button,
       li {
