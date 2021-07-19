@@ -7,10 +7,8 @@
     <div class="c-teacher-calendar__time-lines">
       <template v-for="time in items">
         <ReservedTeacherTime
-          v-if="time.isReserved"
           class="c-teacher-calendar__timeline"
           :class="{ hovered: hoverId === time.isReserved }"
-          :id="time.isReserved"
           :hour="time.hour"
           :minutes-from="time.minuteFrom"
           :minutes-to="time.minuteTo"

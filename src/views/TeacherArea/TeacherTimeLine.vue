@@ -67,6 +67,7 @@
           :lessons="lessons_getter"
           :make_day_off="make_day_off"
           @make-day-off="make_day_off_method"
+          :daysOff="days_off"
         />
       </template>
     </div>
@@ -185,7 +186,7 @@ export default {
   },
   data() {
     return {
-      show_hour_timeline: false,
+      show_hour_timeline: true,
       time_lines: [],
       times_off: [],
       select_timeline_date: undefined,
@@ -389,6 +390,12 @@ export default {
 <style lang="scss">
 .c-teacher-calendar {
   cursor: default;
+  .c-teacher-calendar__container {
+    margin: 0 auto;
+  }
+  .c-calendar__curator-btns {
+    margin-bottom: 18px;
+  }
   &.cursor-active {
     cursor: none;
     .c-calendar__item {
@@ -412,7 +419,6 @@ export default {
   }
   &__container {
     max-width: 892px;
-    padding-left: 31px;
     padding-top: 40px;
     &--type-2 {
       display: flex;

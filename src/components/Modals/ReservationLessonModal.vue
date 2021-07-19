@@ -74,19 +74,19 @@
               class="c-reservation-lesson-modal__list-item"
               :key="time"
             >
-              <!--              <template v-if="mobile_time[index + 1]">-->
-              <button
-                @click="choice_mobile(time, mobile_time[index + 1])"
-                :class="{
-                  active:
-                    activeMobileTime.from === time &&
-                    activeMobileTime.to === mobile_time[index + 1]
-                }"
-                class="c-reservation-lesson-modal__list-btn"
-              >
-                {{ time }}
-              </button>
-              <!--              </template>-->
+              <template v-if="mobile_time[index + 1]">
+                <button
+                  @click="choice_mobile(time, mobile_time[index + 1])"
+                  :class="{
+                    active:
+                      activeMobileTime.from === time &&
+                      activeMobileTime.to === mobile_time[index + 1]
+                  }"
+                  class="c-reservation-lesson-modal__list-btn"
+                >
+                  {{ time }}
+                </button>
+              </template>
             </li>
           </ul>
         </template>

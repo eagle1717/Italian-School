@@ -452,13 +452,13 @@ export const getters = {
     return state.user ? state.user.not_confirmed_lessons : null;
   },
   curator_confirmed_lessons: state => {
-    return state.user ? state.user.confirmed_lessons : null;
+    return state.user ? state.user.confirmed_lessons : [];
   },
   curator_day_off: state => {
-    return state.user.day_off ? state.user.day_off : [];
+    return state.user && state.user.day_off ? state.user.day_off : [];
   },
   curator_time_off: state => {
-    return state.user.time_off ? state.user.time_off : [];
+    return state.user && state.user.time_off ? state.user.time_off : [];
   },
   notifications: state => {
     return state.user ? state.user.notifications : [];
