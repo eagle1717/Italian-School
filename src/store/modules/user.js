@@ -210,7 +210,7 @@ export const actions = {
       .then(({ data: { tickets } }) => {
         commit("SET_TICKETS", tickets);
       })
-      .catch(() => {});
+      .catch(() => { });
   },
   create_ticket({ dispatch }, data) {
     return Api.create_new_help_ticket(data)
@@ -449,7 +449,7 @@ export const getters = {
     return state.user ? (state.user.lessons ? state.user.lessons : null) : null;
   },
   curator_not_confirmed_lessons: state => {
-    return state.user ? state.user.not_confirmed_lessons : null;
+    return state.user ? state.user.not_confirmed_lessons : [];
   },
   curator_confirmed_lessons: state => {
     return state.user ? state.user.confirmed_lessons : [];

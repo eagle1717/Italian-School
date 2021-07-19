@@ -1,5 +1,8 @@
 <template>
-  <BaseModal class="c-video-modal teacher2-course-group">
+  <BaseModal
+    class="c-video-modal teacher2-course-group"
+    id="teacher-group-modal"
+  >
     <div class="c-video">
       <div class="c-video__container">
         <div class="c-video__content">
@@ -170,7 +173,7 @@ export default {
     show_full_card() {
       this.show_full_of_card = !this.show_full_of_card;
     }
-  },
+  }
 };
 </script>
 <style lang="scss">
@@ -187,7 +190,6 @@ export default {
       font-size: 30px;
       font-family: "Circe-Regular";
     }
-
     &-img {
       width: 90px;
       height: 90px;
@@ -195,6 +197,22 @@ export default {
       overflow: hidden;
     }
   }
+}
+@include bp(766px) {
+  .c-modal.c-video-modal.teacher2-course-group {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    .about-lesson {
+      padding-left: 0px;
+      padding-right: 0px;
+      .entire-lessons {
+        margin: auto;
+      }
+    }
+  }
+}
+@include bp(620px) {
+  
 }
 .teacher2__itm-middle {
   max-height: 100%;
@@ -246,7 +264,12 @@ export default {
     padding-left: 60px;
   }
   .top-side {
-    width: 525px;
+    max-width: 525px;
+    width: 100%;
+    @media screen and (max-width: 766px) {
+      margin: auto;
+      padding-left: 0px;
+    }
   }
   .c-video__container {
     margin: 0px;

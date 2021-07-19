@@ -396,56 +396,56 @@ $mt: 91px;
     }
   }
 }
-@include bp(766px) {
-  .datepiker__calendar {
-    .c-calendar {
-      &__item {
-        width: 35px;
-        height: 35px;
-      }
-    }
-  }
-  .c-calendar {
-    &__wrap {
-      padding: 9px 17px 13px;
-    }
-    &__title {
-      font-size: rem(16);
-    }
-    &__btns {
-      margin-right: 0;
-    }
-    &__month-name {
-      font-size: rem(16);
-    }
-    &__name-days {
-      font-size: rem(7);
-      padding-right: 5px;
-    }
-    &__item {
-      width: 40px;
-      height: 40px;
-      &-data {
-        top: 4px;
-        right: 6px;
-        font-size: rem(8);
-      }
-    }
-    &__lesson-ico {
-      bottom: 4px;
-      left: 3px;
-      display: flex;
-      align-items: flex-end;
-      span {
-        display: inline-block;
-        font-size: rem(6);
-        margin-bottom: 0;
-        line-height: rem(9);
-      }
-      img {
-        width: rem(15);
-        margin-bottom: 0;
-      }
-    }
-  }
-}
+// @include bp(766px) {
+//   .datepiker__calendar {
+//     .c-calendar {
+//       &__item {
+//         width: 35px;
+//         height: 35px;
+//       }
+//     }
+//   }
+//   .c-calendar {
+//     &__wrap {
+//       padding: 9px 17px 13px;
+//     }
+//     &__title {
+//       font-size: rem(16);
+//     }
+//     &__btns {
+//       margin-right: 0;
+//     }
+//     &__month-name {
+//       font-size: rem(16);
+//     }
+//     &__name-days {
+//       font-size: rem(7);
+//       padding-right: 5px;
+//     }
+//     &__item {
+//       width: 40px;
+//       height: 40px;
+//       &-data {
+//         top: 4px;
+//         right: 6px;
+//         font-size: rem(8);
+//       }
+//     }
+//     &__lesson-ico {
+//       bottom: 4px;
+//       left: 3px;
+//       display: flex;
+//       align-items: flex-end;
+//       span {
+//         display: inline-block;
+//         font-size: rem(6);
+//         margin-bottom: 0;
+//         line-height: rem(9);
+//       }
+//       img {
+//         width: rem(15);
+//         margin-bottom: 0;
+//       }
+//     }
+//   }
+// }

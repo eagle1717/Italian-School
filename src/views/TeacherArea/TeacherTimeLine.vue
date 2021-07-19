@@ -152,12 +152,14 @@ export default {
       return this.all_lessons;
     },
     lessons() {
-      return this.all_lessons.map(({ date, id }) => {
-        return {
-          day: date,
-          id
-        };
-      });
+      if (this.user) {
+        return this.all_lessons.map(({ date, id }) => {
+          return {
+            day: date,
+            id
+          };
+        });
+      }
     },
     time_off() {
       return this.curator_time_off.map(

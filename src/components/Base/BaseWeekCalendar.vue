@@ -227,7 +227,20 @@ export default {
 .c-calendar-week {
   @extend %df;
   // .c-calendar-week__wrap
-
+  @media screen and (max-width: 800px) {
+    // .c-calendar__item,
+    // .c-calendar__item-hover {
+    //   height: 64px;
+    //   width: 64px;
+    // }
+    // .c-calendar-week__wrap {
+    //   width: 500px;
+    // }
+    // .c-calendar__item-data {
+    //   font-size: 16px;
+    // }
+    display: initial;
+  }
   &__wrap {
     min-width: rem(698);
   }
@@ -341,18 +354,18 @@ export default {
     }
   }
 }
-@include bp(766px) {
-  .c-calendar__item.is_week {
-    width: 63px;
-    height: 63px;
-  }
-  .c-calendar__item-data {
-    font-size: 16px !important;
-  }
-  .c-calendar-week__name-days {
-    padding: 0 20px 0px 0px !important;
-  }
-}
+// @include bp(766px) {
+//   .c-calendar__item.is_week {
+//     width: 63px;
+//     height: 63px;
+//   }
+//   .c-calendar__item-data {
+//     font-size: 16px !important;
+//   }
+//   .c-calendar-week__name-days {
+//     padding: 0 20px 0px 0px !important;
+//   }
+// }
 // @include bp(766px) {
 //   .c-calendar-week {
 //     flex-direction: column;

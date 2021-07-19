@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="group-wrap-container">
     <Group />
     <div class="group-wrapper wr-up">
       <div class="group-card" v-for="group in groupInformation" :key="group.id">
@@ -162,11 +162,3 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-.group-wrapper {
-  font-family: "Circe-Regular";
-  .go-to-lesson {
-    font-family: 'Circe-Bold';
-  }
-}
-</style>

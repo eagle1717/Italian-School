@@ -124,12 +124,13 @@ h2 {
     }
   }
 }
+
 @include bp(766px) {
   .c-video {
+    width: 100vw;
     &-modal {
       overflow-x: scroll;
     }
-    max-width: 320px;
     padding-left: 0;
     margin: 0 auto;
     padding-bottom: 50px;

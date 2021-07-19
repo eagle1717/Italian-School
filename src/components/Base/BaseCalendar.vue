@@ -133,11 +133,9 @@ export default {
   methods: {
     addMonth: function() {
       this.dateContext = moment(this.dateContext).add(1, "month");
-      alert("a");
     },
     subtractMonth: function() {
       this.dateContext = moment(this.dateContext).subtract(1, "month");
-      alert("b");
     },
     clickOnDateItem(date) {
       if (this.make_day_off) {

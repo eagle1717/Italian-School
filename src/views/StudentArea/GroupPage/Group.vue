@@ -1,9 +1,13 @@
 <template>
   <div class="teachers tc-group">
     <div class="teachers__wrap teachers__wrap_filters">
-      <div class="teachers__wrap__tabs">
-        <router-link :to="{ name: 'Courses' }">Курсы</router-link>
-        <router-link :to="{ name: 'Webinars' }">Вебинары</router-link>
+      <div class="teachers__wrap__tabs flex">
+        <div class="courses-route">
+          <router-link :to="{ name: 'Courses' }">Курсы</router-link>
+        </div>
+        <div class="webinars-route">
+          <router-link :to="{ name: 'Webinars' }">Вебинары</router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -33,7 +37,7 @@
   -moz-column-count: 2;
   -webkit-column-count: 2;
   column-count: 2;
-  max-width: 892px;;
+  max-width: 892px;
   margin-top: 25px;
   .group-card {
     display: inline-block;
@@ -100,7 +104,7 @@
       color: #251c1c;
       @extend %text-middle;
       // font-weight: 700;
-      font-family: 'Circe-Bold';
+      font-family: "Circe-Bold";
       margin-bottom: 20px;
     }
 
@@ -108,7 +112,7 @@
       margin-bottom: 20px;
       @extend %text-middle;
       // font-weight: 700;
-      font-family: 'Circe-Bold';
+      font-family: "Circe-Bold";
       color: #251c1c;
       font-size: 30px;
       line-height: 33.87px;
@@ -162,7 +166,7 @@
 }
 .teachers {
   padding-top: 44px;
-  max-width: 892px;;
+  max-width: 892px;
   &__not-found {
     @extend %h3-title-bold;
     color: $gray;
@@ -242,20 +246,6 @@
 //     padding-right: 30px;
 //   }
 // }
-
-@include bp(1310px) {
-  .teachers {
-    padding-top: 57px;
-    padding-left: 0;
-    max-width: 750px;
-    margin: 0 auto;
-    padding-right: 0;
-
-    &__filters-wrap {
-      width: 402px;
-    }
-  }
-}
 
 // @include bp(766px) {
 //   .teachers {
@@ -345,5 +335,65 @@
 }
 .group-card {
   height: min-content;
+}
+</style>
+<style lang="scss">
+.group-wrap-container {
+  @media screen and (max-width: 1310px) {
+    max-width: 892px;
+    margin: 0 auto;
+    .go-to-lesson {
+      bottom: 20px !important;
+    }
+    .title {
+      margin-bottom: 50px !important;
+    }
+  }
+  @media screen and (max-width: 942px) {
+    max-width: 750px;
+    margin-bottom: 50px;
+    .group-card {
+      width: 360px;
+    }
+  }
+  @media screen and (max-width: 766px) {
+    max-width: max-content;
+    .group-card {
+      width: 80vw;
+      margin-right: 0px;
+      &:nth-child(1) {
+        margin-top: 0px;
+      }
+    }
+    .group-wrapper {
+      column-count: 1;
+      display: grid;
+      grid-gap: 10px;
+    }
+  }
+}
+@media screen and (max-width: 550px) {
+  .group-card {
+    padding-top: 50px !important;
+  }
+  .go-to-lesson {
+    height: 40px !important;
+    font-size: 12px !important;
+    padding-top: 10px !important;
+    width: 150px !important;
+  }
+  .courses-route,
+  .webinars-route {
+    a {
+      padding: 8px 18px;
+      font-size: 16px;
+    }
+  }
+}
+.group-wrapper {
+  font-family: "Circe-Regular";
+  .go-to-lesson {
+    font-family: "Circe-Bold";
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="group-wrap-container">
     <Group />
     <div class="group-wrapper wr-up">
       <div class="group-card" v-for="group in groupInformation" :key="group.id">

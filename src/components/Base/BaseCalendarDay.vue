@@ -5,7 +5,7 @@
       <template v-if="!is_filter">
         <div class="c-calendar__lesson-ico">
           <img
-            src="@/assets/img/icons/icon-calendar-lesson.svg"
+            src="/img/icons/icon-calendar-lesson.svg"
             alt="Lesson illustration"
           />
           <span>{{ count_lessons_in_day }}</span>
@@ -299,8 +299,119 @@ export default {
 @include bp(1310px) {
   .c-calendar {
     &__item {
-      height: 80px;
+      max-height: 80px;
+      max-width: 80px;
     }
+    .c-calendar-week__wrap {
+      margin-left: 0px;
+    }
+  }
+}
+@media screen and (max-width: 639px) {
+  .c-calendar-week__items {
+    grid-template-columns: repeat(5, 1fr) !important;
+    row-gap: 30px !important;
+    column-gap: 0px !important;
+  }
+  .c-calendar-week__wrap,
+  .c-calendar-week__name-days {
+    min-width: auto !important;
+  }
+  .c-calendar-week__static-days {
+    grid-template-columns: repeat(5, 1fr) !important;
+    position: relative !important;
+    margin-bottom: 9px;
+  }
+  .c-calendar-week__static-days {
+    max-width: 535px;
+  }
+  .c-calendar-week__name-days {
+    &:nth-child(6),
+    &:nth-child(7) {
+      top: 135px;
+      position: absolute;
+    }
+    &:nth-child(6) {
+      left: 55px;
+    }
+    &:nth-child(7) {
+      left: 170px;
+    }
+  }
+  .c-calendar-week__items {
+    width: min-content;
+    column-gap: 10px;
+    row-gap: 50px !important;
+  }
+}
+@media screen and (max-width: 568px) {
+  .c-calendar-week__name-days {
+    &:nth-child(6) {
+      left: 45px;
+    }
+    &:nth-child(7) {
+      left: 160px;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .c-calendar__item.is_week {
+    width: 64px;
+    height: 64px;
+  }
+  .c-calendar-week__wrap,
+  .c-calendar-week__name-days {
+    min-width: auto !important;
+  }
+  .c-calendar__item-data {
+    font-size: 16px !important;
+  }
+  .c-calendar-week__name-days {
+    &:nth-child(6),
+    &:nth-child(7) {
+      top: 120px !important;
+    }
+  }
+  .c-calendar-week__items {
+    width: min-content;
+  }
+  .c-calendar-week__name-days {
+    &:nth-child(6) {
+      left: 35px;
+    }
+    &:nth-child(7) {
+      left: 120px;
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .c-calendar-week__items {
+    width: min-content;
+    column-gap: 0px !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  .c-calendar-week__static-days {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  .c-calendar-week__name-days {
+    &:nth-child(6),
+    &:nth-child(7),
+    &:nth-child(5) {
+      top: 120px !important;
+    }
+    &:nth-child(5) {
+      left: 35px;
+      position: absolute;
+    }
+    &:nth-child(6) {
+      left: 105px;
+    }
+    &:nth-child(7) {
+      left: 180px;
+    }
+  }
+  .c-calendar-week__wrap {
+    width: 280px !important;
   }
 }
 // @include bp(766px) {
