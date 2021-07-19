@@ -3,10 +3,7 @@
     <div class="c-student-modal__user-data">
       <figure class="c-student-modal__photo">
         <template>
-          <img
-            :src="require(`@/assets/img/users/photos/${photo}`)"
-            :alt="name"
-          />
+          <img :src="require(`@/assets/${photo}.svg`)" :alt="name" />
         </template>
       </figure>
       <h2 class="c-student-modal__name" v-html="name"></h2>

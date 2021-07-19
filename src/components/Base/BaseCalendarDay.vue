@@ -5,7 +5,7 @@
       <template v-if="!is_filter">
         <div class="c-calendar__lesson-ico">
           <img
-            src="/img/icons/icon-calendar-lesson.svg"
+            src="@/assets/img/icons/icon-calendar-lesson.svg"
             alt="Lesson illustration"
           />
           <span>{{ count_lessons_in_day }}</span>

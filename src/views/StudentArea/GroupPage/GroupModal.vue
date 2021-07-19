@@ -24,7 +24,7 @@
                       <template>
                         <img
                           :src="
-                            require(`@/assets/img/users/photos/${curatorInformation.photo}.svg`)
+                            require(`@/assets/${curatorInformation.photo}.svg`)
                           "
                         />
                       </template>
@@ -149,7 +149,7 @@ export default {
       },
       curatorInformation: {
         name: "Robert Fox",
-        photo: "user",
+        photo: "robert",
         desc:
           "<p>Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam sunt est eu voluptate ut officia proident pariatur sint amet in cupidatat ea cillum. Irure fugiat magna deser...Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam sunt est eu voluptate ut officia proident pariatur sint amet in cupidatat ea cillum. Irure fugiat magna deser...</p>"
       },

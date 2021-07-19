@@ -13,7 +13,7 @@
       <template v-if="icon">
         <div class="c-input__wrap-icon" :class="`c-input__wrap-icon_${icon}`">
           <template v-if="icon == 'user'">
-            <img src="/img/icons/user-icon.svg" />
+            <img src="@/assets/img/icons/user-icon.svg" />
           </template>
           <template v-else>
             <BaseIcon :name="icon" class="c-input__field-icon" />

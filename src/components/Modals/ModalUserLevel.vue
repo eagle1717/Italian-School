@@ -40,23 +40,23 @@ export default {
       levelOptions: [
         {
           val: "A1",
-          text: "/img/ill/level/a1.svg"
+          text: "a1"
         },
         {
           val: "A2",
-          text: "/img/ill/level/a2.svg"
+          text: "a2"
         },
         {
           val: "B1",
-          text: "/img/ill/level/b1.svg"
+          text: "b1"
         },
         {
           val: "B2",
-          text: "/img/ill/level/b2.svg"
+          text: "b2"
         },
         {
           val: "C1",
-          text: "/img/ill/level/c1.svg"
+          text: "c1"
         }
       ]
     };

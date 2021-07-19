@@ -12,7 +12,7 @@
             </button>
           </div>
           <div class="hello-page__right">
-            <img src="/img/ill/quiz/main-ill.svg" alt="" />
+            <img src="@/assets/img/ill/quiz/main-ill.svg" alt="" />
           </div>
         </div>
         <div class="hello-page__second" v-show="current === 'gender'">
@@ -23,8 +23,8 @@
               :class="{ active: gender == 'man' }"
               @click="choiceGender('man')"
             >
-              <img src="/img/ill/quiz/reg-male.svg" alt="" />
-              <img src="/img/ill/quiz/reg-male-hover.svg" alt="" />
+              <img src="@/assets/img/ill/quiz/reg-male.svg" alt="" />
+              <img src="@/assets/img/ill/quiz/reg-male-hover.svg" alt="" />
               <h3>Мужчина</h3>
             </div>
             <div
@@ -32,8 +32,8 @@
               :class="{ active: gender == 'woman' }"
               @click="choiceGender('woman')"
             >
-              <img src="/img/ill/quiz/reg-girl.svg" alt="" />
-              <img src="/img/ill/quiz/reg-girl-hover.svg" alt="" />
+              <img src="@/assets/img/ill/quiz/reg-girl.svg" alt="" />
+              <img src="@/assets/img/ill/quiz/reg-girl-hover.svg" alt="" />
               <h3>Женщина</h3>
             </div>
             <div
@@ -41,8 +41,8 @@
               :class="{ active: gender == 'cat' }"
               @click="choiceGender('cat')"
             >
-              <img src="/img/ill/quiz/reg-cat.svg" alt="" />
-              <img src="/img/ill/quiz/reg-cat-hover.svg" alt="" />
+              <img src="@/assets/img/ill/quiz/reg-cat.svg" alt="" />
+              <img src="@/assets/img/ill/quiz/reg-cat-hover.svg" alt="" />
               <h3>Кот</h3>
             </div>
           </div>
@@ -111,7 +111,7 @@
             </button>
           </div>
           <div class="hello-page__right">
-            <img src="/img/ill/quiz/language.svg" alt="" />
+            <img src="@/assets/img/ill/quiz/language.svg" alt="" />
           </div>
         </div>
       </div>

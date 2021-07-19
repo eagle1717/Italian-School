@@ -11,7 +11,7 @@
           <label class="c-profile__wrapper-upload">
             <img
               class="c-profile__wrapper-upload-picture"
-              src="/img/icons/upload-photo.svg"
+              src="@/assets/img/icons/upload-photo.svg"
               alt="upload"
             />
             <span class="c-profile__wrapper-upload-title">Новое фото</span>

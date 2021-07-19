@@ -4,7 +4,7 @@
       <div class="c-teacher__content-teacher">
         <div class="c-teacher__content-teacher-photo">
           <template>
-            <img :src="require(`@/assets/img/users/photos/${curator.photo}`)" />
+            <img :src="require(`@/assets/${curator.photo}.svg`)" />
           </template>
         </div>
         <div class="c-teacher__content-teacher-name">
@@ -13,7 +13,7 @@
       </div>
       <div class="c-teacher__content-time">
         <div class="c-teacher__content-time-clock">
-          <img src="/img/ill/time.svg" alt="clock" />
+          <img src="@/assets/img/ill/time.svg" alt="clock" />
         </div>
         <div class="c-teacher__content-time-title">
           <p>Время занятия:</p>
@@ -45,7 +45,7 @@
           target="_blank"
           class="c-teacher__about-homework"
         >
-          <img src="/img/icons/doc.svg" alt="paper" />
+          <img src="@/assets/img/icons/doc.svg" alt="paper" />
           <p class="c-teacher__about-title">Домашнее задание</p>
         </a>
         <BaseCheckbox

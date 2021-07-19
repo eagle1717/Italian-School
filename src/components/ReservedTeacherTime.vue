@@ -12,7 +12,7 @@
               <img :src="modal_data.photo" :alt="name" />
             </template>
             <template v-else>
-              <img src="/img/ill/default-photo.svg" :alt="name" />
+              <img src="@/assets/img/ill/default-photo.svg" :alt="name" />
             </template>
           </figure>
           <div class="c-teacher-calendar__user-content">

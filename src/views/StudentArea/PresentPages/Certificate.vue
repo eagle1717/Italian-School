@@ -1,7 +1,7 @@
 <template>
   <div class="c-certificate-page">
     <figure class="c-certificate-page__header">
-      <img src="/img/ill/lavel-page/header.svg" alt="" />
+      <img src="@/assets/img/ill/lavel-page/header.svg" alt="" />
     </figure>
     <div class="c-certificate-page__container">
       <figure class="c-certificate-page__wrap c-certificate-page__wrap_left">

@@ -5,7 +5,7 @@ ul.select(:class="{ open: open, error: error }", @click.stop="openSelect")
       template(v-if="!isImagesOptions")
         span.select__value {{ currentText }}
       template(v-else)
-        img(:src="currentText", :alt="currentText")
+        img(:src="require(`@/assets/img/ill/level/${currentText}.svg`)", :alt="currentText")
       BaseIcon(name="arrow-down")
     ul.select__options
       li.select__option(v-for="option of options", :key="option.val")
@@ -13,7 +13,7 @@ ul.select(:class="{ open: open, error: error }", @click.stop="openSelect")
           template(v-if="!isImagesOptions")
             span {{ option.text }}
           template(v-else)
-            img(:src="option.text", :alt="option")
+            img(:src="require(`@/assets/img/ill/level/${option.text}.svg`)" , :alt="option")
 </template>
 
 <script>

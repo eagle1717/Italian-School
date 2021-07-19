@@ -6,7 +6,7 @@
         :src="lesson.teacher.photo_path"
         alt=""
       />
-      <img v-else src="/img/ill/default-photo.svg" alt="" />
+      <img v-else src="@/assets/img/ill/default-photo.svg" alt="" />
       <div class="info">
         <span
           >{{ lesson && lesson.teacher && lesson.teacher.first_name }}

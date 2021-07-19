@@ -11,7 +11,7 @@
           <transition-group name="list" tag="ul" class="list-ul">
             <li v-for="(question, index) in questions" :key="question.id">
               <Accordion
-                :image="question.image"
+                :image="require(`@/assets/img/ill/faq/${question.image}.svg`)"
                 :title="question.title"
                 :description="question.desc"
                 :data-index="index"
@@ -38,35 +38,35 @@ export default {
           desc:
             "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat...Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
           title: "Как пользоваться Studia.it?",
-          image: "/img/ill/faq/how-to-use.svg"
+          image: "how-to-use"
         },
         {
           id: 1,
           desc:
             "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat...Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
           title: "Что такое Studia.it?",
-          image: "/img/ill/faq/what-is-it.svg"
+          image: "what-is-it"
         },
         {
           id: 2,
           desc:
             "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat...Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
           title: "Как повышать уровень?",
-          image: "/img/ill/faq/how-to-up-lavel.svg"
+          image: "how-to-up-lavel"
         },
         {
           id: 3,
           desc:
             "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat...Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
           title: "Хочу работать у вас преподователем! Куда мне писать?",
-          image: "/img/ill/faq/i-want-work.svg"
+          image: "i-want-work"
         },
         {
           id: 4,
           desc:
             "Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat...Exercitation officia ad officia sit amet laboris Lorem Lorem. Veniam tur sint amet in cupidatat ea cillum. Irure fugiat magna deserunt labore veniam cupidatat... ",
           title: "Забыл пароль, что делать?",
-          image: "/img/ill/faq/password.svg"
+          image: "password"
         }
       ]
     };
@@ -88,7 +88,7 @@ export default {
     width: rem(179);
     height: 35px;
     // font-weight: 700;
-    font-family: 'Circe-Bold';
+    font-family: "Circe-Bold";
   }
   &__not-found {
     /*<!--@extend  %df;-->*/

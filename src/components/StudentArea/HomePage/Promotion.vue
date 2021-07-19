@@ -14,7 +14,7 @@
       <div class="c-promotion__wrapper-item cat-img-prom">
         <img
           class="c-promotion__wrapper-item-icon"
-          src="/img/ill/try-teacher/header-cat.svg"
+          src="@/assets/img/ill/buy-plan/header-cat.svg"
           alt="Cat"
         />
       </div>

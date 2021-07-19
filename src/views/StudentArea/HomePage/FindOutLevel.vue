@@ -1,7 +1,7 @@
 <template>
   <div class="c-level">
     <figure class="c-level__header">
-      <img src="/img/ill/lavel-page/header.svg" alt="" />
+      <img src="@/assets/img/ill/lavel-page/header.svg" alt="" />
     </figure>
     <div class="c-level__wrap">
       <h2 class="c-level__title">
@@ -10,7 +10,7 @@
       <div class="c-level__wrap-items">
         <div class="c-level__card c-level__card_teacher">
           <figure class="c-level__card-img">
-            <img src="/img/ill/lavel-page/help-teacher.svg" alt="" />
+            <img src="@/assets/img/ill/lavel-page/help-teacher.svg" alt="" />
           </figure>
           <h3 class="c-level__card-title">
             Определить с помощью<br />
@@ -26,7 +26,7 @@
         </div>
         <div class="c-level__card c-level__card_myself">
           <figure class="c-level__card-img">
-            <img src="/img/ill/lavel-page/myself.svg" alt="" />
+            <img src="@/assets/img/ill/lavel-page/myself.svg" alt="" />
           </figure>
           <h3 class="c-level__card-title">Да знаю...<br />И выберу сам!</h3>
           <p class="c-level__text c-level__text-2">

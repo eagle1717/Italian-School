@@ -9,7 +9,7 @@
       <div class="c-faq__content">
         <img
           class="c-faq__content-icon"
-          src="/img/ill/faq/you-have-no-messages.svg"
+          src="@/assets/img/ill/faq/you-have-no-messages.svg"
           alt="picture-message"
         />
         <h2 class="c-faq__content-title">У Вас ещё нет сообщений.</h2>

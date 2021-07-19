@@ -1,7 +1,7 @@
 <template>
   <div class="c-input-phone">
     <div class="c-input-phone__icon">
-      <img src="/img/icons/phone.svg" alt="phone icon" />
+      <img src="@/assets/img/icons/phone.svg" alt="phone icon" />
     </div>
     <input type="text" class="c-input-phone__input" />
     <ul class="c-input-phone__flags">

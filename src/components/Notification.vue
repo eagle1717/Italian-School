@@ -18,7 +18,7 @@
           target="_blank"
           ><div v-html="linkText" class="link-text"></div>
           <div class="arrow-wrapper-link">
-            <img src="/img/icons/arrow-right.svg" alt="arrow-right" />
+            <img src="@/assets/img/icons/arrow-right.svg" alt="arrow-right" />
           </div>
         </a>
       </div>

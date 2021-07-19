@@ -58,7 +58,7 @@ export default {
           id: 2,
           curator: {
             name: "Tomothy Murphy",
-            photo: "user.svg"
+            photo: "robert"
           }
         },
         {

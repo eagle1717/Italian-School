@@ -13,8 +13,8 @@
         class="c-input-password__field-show-icon"
         @click.stop="toggleShow"
       >
-        <img src="/img/icons/hide-pass.svg" alt="hide" v-if="isShow" />
-        <img src="/img/icons/eye-pass.svg" alt="show" v-else />
+        <img src="@/assets/img/icons/hide-pass.svg" alt="hide" v-if="isShow" />
+        <img src="@/assets/img/icons/eye-pass.svg" alt="show" v-else />
       </div>
       <template v-if="showProgress">
         <div class="c-input-password__progress">

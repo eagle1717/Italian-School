@@ -10,14 +10,14 @@
         >
           <img
             class="c-home-video__slide-picture"
-            :src="slide.image"
+            :src="require(`@/assets/img/ill/slider/${slide.image}.jpeg`)"
             :alt="slide.image"
           />
           <div class="c-home-video__slide-subpicture">
             <img
               class="c-home-video__slide-subpicture-item"
-              :src="slide.icon"
-              :alt="slide.icon"
+              src="@/assets/img/ill/slider/play.svg"
+              alt=""
             />
           </div>
         </a>
@@ -33,17 +33,14 @@ export default {
     return {
       articles: [
         {
-          image: "/img/ill/slider/slider-item1.jpeg",
-          icon: "/img/ill/slider/play.svg"
+          image: "slider-item1"
         },
 
         {
-          image: "/img/ill/slider/slider-item2.jpeg",
-          icon: "/img/ill/slider/play.svg"
+          image: "slider-item2"
         },
         {
-          image: "/img/ill/slider/slider-item3.jpeg",
-          icon: "/img/ill/slider/play.svg"
+          image: "slider-item3"
         }
       ]
     };

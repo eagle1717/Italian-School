@@ -14,7 +14,7 @@ nav.navigation.left-nav#teacher( :class="{ show: isHidden }")
     <router-link :to="{ name: 'HomePage' }" class="nav__user">
       figure.nav__user-photo
         template
-          img(src="/img/ill/default-photo.svg")
+          img(src="@/assets/img/ill/default-photo.svg")
       .nav__user-content
         h1.nav__user-name(v-html='username')
         template
@@ -30,7 +30,7 @@ nav.navigation.left-nav#teacher( :class="{ show: isHidden }")
           figure.nav__menu-icon(
             :class="'nav__menu-icon_' + itm.name.toLowerCase().split(' ')[0]"
           )
-            img(:src="itm.icon", :alt="itm.name")
+            img(:src="require(`@/assets/img/ill/teacher/${itm.icon}.svg`)", :alt="itm.name")
           span.nav__menu-text {{ itm.name }}
         </router-link>
       li.nav__menu-item.exit
@@ -54,22 +54,22 @@ export default {
       username: "Tomothy <br/> Murphy",
       menu_teacher: [
         {
-          icon: "/img/ill/teacher/lessons.svg",
+          icon: "lessons",
           name: "Lezioni",
           route: "Lezioni"
         },
         {
-          icon: "/img/ill/teacher/homework.svg",
+          icon: "homework",
           name: "Compiti",
           route: "Compiti"
         },
         {
-          icon: "/img/ill/teacher/students.svg",
+          icon: "students",
           name: "Studenti",
           route: "Studenti"
         },
         {
-          icon: "/img/ill/teacher/calendar.svg",
+          icon: "calendar",
           name: "Calendario",
           route: "Calendario"
         }

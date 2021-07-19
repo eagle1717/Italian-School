@@ -7,10 +7,10 @@
       <div class="c-message__img">
         <img
           v-if="isAnswered"
-          src="/img/ill/faq/question-pased.svg"
+          src="@/assets/img/ill/faq/question-pased.svg"
           alt="wait"
         />
-        <img v-else src="/img/ill/faq/question-waiting.svg" alt="wait" />
+        <img v-else src="@/assets/img/ill/faq/question-waiting.svg" alt="wait" />
       </div>
       <div class="c-message__text">
         <h2 class="c-message__title">{{ title }}</h2>

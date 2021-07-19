@@ -1,7 +1,7 @@
 <template>
   <div class="c-setting-notification flex justify-between">
     <div class="c-setting-notification__wrap-icon">
-      <img src="/img/ill/notification-settings.svg" alt="cat-icon" />
+      <img src="@/assets/img/ill/notification-settings.svg" alt="cat-icon" />
     </div>
     <div class="c-setting-notification__notification">
       <div class="c-setting-notification__wrap-switch">

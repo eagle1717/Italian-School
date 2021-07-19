@@ -5,7 +5,7 @@
         <div class="c-homework__content">
           <img
             class="c-homework__content-icon"
-            src="/img/ill/homework.svg"
+            src="@/assets/img/ill/homework.svg"
             alt="homework"
           />
           <h3 class="c-homework__content-title">

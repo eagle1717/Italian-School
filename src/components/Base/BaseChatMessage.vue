@@ -16,7 +16,7 @@
           </template>
           <template v-else>
             <figure class="c-help-chat__img">
-              <img src="/img/ill/default-photo.svg" :alt="user_name" />
+              <img src="@/assets/img/ill/default-photo.svg" :alt="user_name" />
             </figure>
           </template>
         </template>

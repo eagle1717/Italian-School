@@ -15,7 +15,7 @@
           </h3>
           <div class="c-calendar-tooltip__lesson-time">
             <figure class="c-calendar-tooltip__tach-icon">
-              <img src="/img/ill/time.svg" alt="Time icon" />
+              <img src="@/assets/img/ill/time.svg" alt="Time icon" />
             </figure>
             <p class="c-calendar-tooltip__tech-start-time">
               {{ tech.lessonTimeStart }}

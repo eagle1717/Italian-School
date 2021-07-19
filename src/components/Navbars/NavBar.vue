@@ -16,7 +16,7 @@ nav.navigation.left-nav#student( :class="{ show: isHidden }")
     <router-link :to="{ name: 'HomePage' }" class="nav__user">
       figure.nav__user-photo
         template
-          img(src="/img/ill/default-photo.svg")
+          img(src="@/assets/img/ill/default-photo.svg")
       .nav__user-content
         h1.nav__user-name(v-html='username')
         template
@@ -33,7 +33,7 @@ nav.navigation.left-nav#student( :class="{ show: isHidden }")
           figure.nav__menu-icon(
             :class="'nav__menu-icon_' + itm.name.toLowerCase().split(' ')[0]"
           )
-            img(:src="itm.icon", :alt="itm.name")
+            img(:src="require(`@/assets/img/ill/${itm.icon}.svg`)", :alt="itm.name")
           span.nav__menu-text {{ itm.name }}
         </router-link>
     template
@@ -45,7 +45,7 @@ nav.navigation.left-nav#student( :class="{ show: isHidden }")
     <div>
         <router-link class="nav__menu-link" id="support-link" :to="{name: menu2.route }">
           figure.nav__menu-icon
-            img(:src="menu2.icon", :alt="menu2.name")
+            img(:src="require(`@/assets/img/ill/${menu2.icon}.svg`)", :alt="menu2.name")
           span.nav__menu-text {{ menu2.name }}
         </router-link>
     </div>
@@ -87,28 +87,28 @@ export default {
       username: "Дмитрий <br/> Релик",
       menu_student: [
         {
-          icon: "/img/ill/group.svg",
+          icon: "group",
           name: "Групповые занятия",
           route: "Group"
         },
         {
-          icon: "/img/ill/teachers.svg",
+          icon: "teachers",
           name: "Преподаватели",
           route: "Teachers"
         },
         {
-          icon: "/img/ill/calendar.svg",
+          icon: "calendar",
           name: "Мой календарь",
           route: "Calendar"
         },
         {
-          icon: "/img/ill/settings.svg",
+          icon: "settings",
           name: "Настройки",
           route: "SettingPage"
         }
       ],
       menu2: {
-        icon: "/img/ill/help.svg",
+        icon: "help",
         name: "Поддержка",
         route: "Help"
       }

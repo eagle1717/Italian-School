@@ -124,7 +124,7 @@ export default {
   data() {
     return {
       notSendYet: true,
-      user_photo: "user.svg",
+      user_photo: "robert",
       user_name: "Tomothy <br />Murphy"
     };
   },

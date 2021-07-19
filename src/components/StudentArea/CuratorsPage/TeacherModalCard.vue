@@ -16,7 +16,7 @@
       <div class="c-teacher-modal__content">
         <div class="c-teacher-modal__lesson">
           <figure class="c-teacher-modal__time-img">
-            <img src="/img/ill/time.svg" alt="Time illustration" />
+            <img src="@/assets/img/ill/time.svg" alt="Time illustration" />
           </figure>
           <h3 class="c-teacher-modal__time-title">
             Время занятия:

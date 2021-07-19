@@ -1,11 +1,11 @@
 <template>
   <div class="c-special-page">
     <figure class="c-special-page__header">
-      <img src="/img/ill/lavel-page/header.svg" alt="" />
+      <img src="@/assets/img/ill/lavel-page/header.svg" alt="" />
     </figure>
     <div class="c-special-page__container">
       <figure class="c-special-page__wrap c-special-page__wrap_left">
-        <img src="/img/ill/special/offer.svg" alt="" />
+        <img src="@/assets/img/ill/special/offer.svg" alt="" />
       </figure>
       <div class="c-special-page__wrap c-special-page__wrap_right">
         <h1 class="c-special-page__title">

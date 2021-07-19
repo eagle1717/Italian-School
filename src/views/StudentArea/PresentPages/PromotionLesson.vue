@@ -1,7 +1,7 @@
 <template>
   <div class="c-promotion-page">
     <figure class="c-promotion-page__header">
-      <img src="/img/ill/try-teacher/header.svg" alt="" />
+      <img src="@/assets/img/ill/try-teacher/header.svg" alt="" />
     </figure>
     <div class="c-promotion-page__container">
       <div class="c-promotion-page__wrap c-promotion-page__wrap_left">
@@ -18,7 +18,7 @@
         </router-link>
       </div>
       <figure class="c-promotion-page__wrap c-promotion-page__wrap_right">
-        <img src="/img/ill/buy-plan/buy-success.svg" alt="Illustration" />
+        <img src="@/assets/img/ill/buy-plan/buy-success.svg" alt="Illustration" />
       </figure>
     </div>
   </div>

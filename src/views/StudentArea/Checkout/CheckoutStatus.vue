@@ -5,7 +5,12 @@
         class="c-purchase-success__img"
         :class="{ failedImage: $route.params.status === 'failed' }"
       >
-        <img :src="currentInformation.image" alt="" />
+        <img
+          :src="
+            require(`@/assets/img/ill/buy-plan/${currentInformation.image}`)
+          "
+          alt=""
+        />
       </figure>
       <div class="text-checkout">
         <h1 class="c-purchase-success__title">
@@ -146,11 +151,11 @@ export default {
     }
     // status type
     if (this.currentInformation.status === "success") {
-      this.currentInformation.image = "/img/ill/buy-plan/buy-success.svg";
+      this.currentInformation.image = "buy-success.svg";
       this.currentInformation.statusText = "прошла успешно!";
     } else if (this.currentInformation.status === "failed") {
       this.currentInformation.successText = this.status2.failed.text;
-      this.currentInformation.image = "/img/ill/buy-plan/buy-failed.svg";
+      this.currentInformation.image = "buy-failed.svg";
       this.currentInformation.statusText = "не удалась!";
     }
     // lessonName

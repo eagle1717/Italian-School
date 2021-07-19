@@ -8,10 +8,7 @@
         <figure class="teacher__user">
           <div class="teacher__user-img">
             <template>
-              <img
-                :src="require(`@/assets/img/users/photos/${curator_photo}`)"
-                alt=""
-              />
+              <img :src="require(`@/assets/${curator_photo}.svg`)" alt="" />
             </template>
           </div>
           <figcaption class="teacher__user-info">

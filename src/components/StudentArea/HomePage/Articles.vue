@@ -10,7 +10,7 @@
         >
           <img
             class="c-home-articles__slide-picture"
-            :src="slide.image"
+            :src="require(`@/assets/img/ill/slider/${slide.image}.jpeg`)"
             alt=""
           />
           <div class="article-description">
@@ -34,7 +34,7 @@ export default {
       articles: [
         {
           id: 1,
-          image: "/img/ill/slider/slider-item1.jpeg",
+          image: "slider-item1",
           desc:
             "Ad ipsum mollit duis eiusmod nisi quis ullamco <br>Ad ipsum mollit duis",
           date: "12 февраля 2020",
@@ -43,7 +43,7 @@ export default {
 
         {
           id: 2,
-          image: "/img/ill/slider/slider-item2.jpeg",
+          image: "slider-item2",
           desc:
             "Ad ipsum mollit duis eiusmod nisi quis ullamco <br>Ad ipsum mollit duis",
           date: "12 февраля 2020",
@@ -51,7 +51,7 @@ export default {
         },
         {
           id: 3,
-          image: "/img/ill/slider/slider-item3.jpeg",
+          image: "slider-item3",
           desc:
             "Ad ipsum mollit duis eiusmod nisi quis ullamco <br>Ad ipsum mollit duis",
           date: "12 февраля 2020",

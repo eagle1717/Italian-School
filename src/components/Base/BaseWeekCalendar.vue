@@ -64,7 +64,7 @@
     <template v-if="!isModal">
       <div class="c-calendar-week__desc">
         <figure class="c-calendar-week__img">
-          <img src="/img/ill/classes-red.svg" alt="" />
+          <img src="@/assets/img/ill/classes-red.svg" alt="" />
         </figure>
         <h3 class="c-calendar-week__title">
           <template v-if="is_curator">
@@ -138,21 +138,21 @@ export default {
       //     id: 234,
       //     name: "Tomothy",
       //     surname: "Murphy",
-      //     photo: "/img/users/photos/0.jpg",
+      //     photo: "@/assets/robert.svg",
       //     lessonTimeStart: "18:00"
       //   },
       //   {
       //     id: 453,
       //     name: "Tomothy",
       //     surname: "Murphy",
-      //     photo: "/img/users/photos/1.jpg",
+      //     photo: "@/assets/robert.svg",
       //     lessonTimeStart: "18:00"
       //   },
       //   {
       //     id: 990,
       //     name: "Tomothy",
       //     surname: "Murphy",
-      //     photo: "/img/users/photos/2.jpg",
+      //     photo: "@/assets/robert.svg",
       //     lessonTimeStart: "18:00"
       //   }
       // ];
