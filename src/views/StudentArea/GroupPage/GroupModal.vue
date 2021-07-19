@@ -171,13 +171,6 @@ export default {
       this.show_full_of_card = !this.show_full_of_card;
     }
   },
-  mounted() {
-    this.$root.$on("group-modal", ({ video, desc }) => {
-      this.video = video;
-      this.desc = desc;
-    });
-    console.log(this.modalInfo);
-  }
 };
 </script>
 <style lang="scss">

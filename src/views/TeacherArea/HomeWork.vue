@@ -96,7 +96,6 @@ export default {
   data() {
     return {
       selectVal: "notCheck",
-      selectVal: "notCheck",
       selectOptions: [
         {
           val: "notCheck",
@@ -144,12 +143,6 @@ export default {
       ]
     };
   },
-  computed: {
-    ...mapGetters("user", [
-      "curator_confirmed_lessons",
-      "curator_not_confirmed_lessons"
-    ])
-  },
   methods: {
     ...mapMutations(["SHOW_MODAL"]),
     showModal() {
@@ -164,7 +157,7 @@ export default {
   @extend %pagept;
   margin: 0 auto;
   padding-top: 42px;
-  max-width: 892px;;
+  max-width: 892px;
   padding-left: 0px !important;
   $border-width: 2.4;
   .c-student__user-data {

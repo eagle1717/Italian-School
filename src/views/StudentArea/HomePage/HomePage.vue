@@ -22,7 +22,7 @@
         <h2 class="c-home__notifications-title">
           Уведомления
         </h2>
-        <template v-if="notifications">
+        <template v-if="notificationsData">
           <Notifications
             v-for="notification in notificationsData"
             :key="notification.id"
@@ -37,7 +37,7 @@
       <h2 class="c-home__calendar-title">
         Ближайшие занятия
       </h2>
-      <BaseWeekCalendar @click="calendarEvent" :lessons="computed_lessons" />
+      <BaseWeekCalendar />
     </div>
     <template>
       <Articles />
@@ -53,11 +53,8 @@ import SpecialOffer from "@/components/StudentArea/HomePage/SpecialOffer";
 import Notifications from "@/components/Notification";
 import Articles from "@/components/StudentArea/HomePage/Articles";
 import VideoSlider from "@/components/StudentArea/HomePage/VideoSlider";
-import { show_lesson_modal_mixin } from "@/mixins/mixins.js";
-import { mapGetters } from "vuex";
 export default {
   name: "HomePage",
-  mixins: [show_lesson_modal_mixin],
   components: {
     VideoSlider,
     Articles,
@@ -68,7 +65,6 @@ export default {
   },
   data() {
     return {
-      lessons: [],
       notificationsData: [
         {
           img: "NotificationLesson.svg",
@@ -96,41 +92,6 @@ export default {
         }
       ]
     };
-  },
-  computed: {
-    ...mapGetters("user", [
-      "user_lessons",
-      "curator_confirmed_lessons",
-      "notifications"
-    ]),
-    ...mapGetters(["offers"]),
-    student_lessons() {
-      return this.user_lessons;
-    },
-    curator_lessons() {
-      return this.curator_confirmed_lessons;
-    },
-    computed_lessons() {
-      let result = [];
-      if (this.student_lessons) {
-        this.student_lessons.forEach(({ id, day }) => {
-          result.push({ id, day });
-        });
-      } else if (this.curator_lessons) {
-        this.curator_lessons.forEach(({ id, calendar_day }) => {
-          result.push({ id, day: calendar_day });
-        });
-      }
-      return result;
-    }
-  },
-  methods: {
-    calendarEvent(data) {
-      if (data.type.name === "lessons-modal") {
-        const { fullDate } = data.date;
-        this.show_lesson_modal(fullDate);
-      }
-    }
   }
 };
 </script>

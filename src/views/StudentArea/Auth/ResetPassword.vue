@@ -5,16 +5,14 @@
         <h2 class="c-reset-password__tag c-reset-modal__title">
           Восстановление пароля
         </h2>
-        <form @submit.prevent="onSubmit" class="c-reset-password__form">
+        <form class="c-reset-password__form">
           <BaseInputPassword
             class="c-reset-password__form-field text-field-input"
             placeholder="Новый пароль"
-            v-model="old_password"
             :error="error_old_pass"
           />
           <BaseInputPassword
             placeholder="Повторите пароль"
-            v-model="new_password"
             :error="error_new_pass"
             :showProgress="true"
             :error_message="error_password_message"
@@ -41,48 +39,48 @@ export default {
     };
   },
   methods: {
-    onSubmit() {
-      if (this.old_password && this.new_password) {
-        if (this.old_password.length === 0 || this.old_password.length < 6) {
-          this.error_old_pass = true;
-          this.error_password_message =
-            "Ненадежный пароль (Используйте символы A-z, 0-9)";
-          setTimeout(() => {
-            this.error_password = false;
-            this.error_password_message = null;
-          }, 2000);
-          return;
-        } else if (this.old_password !== this.new_password) {
-          this.error_password_message = "Пароли не совпадают!";
-          setTimeout(() => {
-            this.error_password_message = null;
-          }, 3000);
-        }
-        {
-          this.error_old_pass = true;
-          this.error_new_pass = true;
-          setTimeout(() => {
-            this.error_old_pass = false;
-            this.error_new_pass = false;
-          }, 3000);
-          return;
-        }
-      } else {
-        this.error_old_pass = true;
-        this.error_new_pass = true;
-        setTimeout(() => {
-          this.error_old_pass = false;
-          this.error_new_pass = false;
-        }, 3000);
-        return;
-      }
-      // const sendingData = {
-      //   new_password: this.new_password,
-      //   remember_token: this.$route.params.token
-      // };
+    // onSubmit() {
+    //   if (this.old_password && this.new_password) {
+    //     if (this.old_password.length === 0 || this.old_password.length < 6) {
+    //       this.error_old_pass = true;
+    //       this.error_password_message =
+    //         "Ненадежный пароль (Используйте символы A-z, 0-9)";
+    //       setTimeout(() => {
+    //         this.error_password = false;
+    //         this.error_password_message = null;
+    //       }, 2000);
+    //       return;
+    //     } else if (this.old_password !== this.new_password) {
+    //       this.error_password_message = "Пароли не совпадают!";
+    //       setTimeout(() => {
+    //         this.error_password_message = null;
+    //       }, 3000);
+    //     }
+    //     {
+    //       this.error_old_pass = true;
+    //       this.error_new_pass = true;
+    //       setTimeout(() => {
+    //         this.error_old_pass = false;
+    //         this.error_new_pass = false;
+    //       }, 3000);
+    //       return;
+    //     }
+    //   } else {
+    //     this.error_old_pass = true;
+    //     this.error_new_pass = true;
+    //     setTimeout(() => {
+    //       this.error_old_pass = false;
+    //       this.error_new_pass = false;
+    //     }, 3000);
+    //     return;
+    //   }
+    //   // const sendingData = {
+    //   //   new_password: this.new_password,
+    //   //   remember_token: this.$route.params.token
+    //   // };
 
-      // this.$store.dispatch("auth/reset_password", sendingData);
-    }
+    //   // this.$store.dispatch("auth/reset_password", sendingData);
+    // }
   }
 };
 </script>
@@ -94,6 +92,9 @@ export default {
     line-height: 100%;
     text-align: left;
     margin-bottom: 26px;
+  }
+  .c-input-password__field-show-icon {
+    right: 20px;
   }
   .c-reset-password__form-field {
     margin-bottom: 0px;

@@ -13,7 +13,7 @@
         <div class="c-special-modal__wrapper-text">
           <h3 class="c-special-modal__text-title">Опишите вашу ситуацию</h3>
           <div class="c-special-modal__textarea">
-            <BaseTextArea v-model="situation_val" />
+            <BaseTextArea />
           </div>
         </div>
         <div class="c-special-modal__wrapper-text">
@@ -21,7 +21,7 @@
             У вас уже есть готовый материал для подготовки?
           </h3>
           <div class="c-special-modal__textarea">
-            <BaseTextArea v-model="materials_val" />
+            <BaseTextArea />
           </div>
         </div>
         <div class="c-special-modal__wrapper-text">
@@ -29,7 +29,7 @@
             Когда вам было бы удобно провести занятие?
           </h3>
           <div class="c-special-modal__textarea">
-            <BaseTextArea v-model="lesson_val" />
+            <BaseTextArea />
           </div>
         </div>
       </div>
@@ -40,12 +40,11 @@
           обсудить занятие.
         </p>
         <div class="c-special-modal__data-wrap">
-          <BasePhoneInput v-model="phone" />
+          <BasePhoneInput />
           <BaseInputText
             class="c-special-modal__field"
             icon="email"
             placeholder="Ваша почта"
-            v-model="userEmail"
           />
         </div>
       </div>
@@ -62,7 +61,6 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import StudentModalCard from "@/components/Modals/StudentModalCard";
 import Way from "@/components/Modals/ModalWay.vue";
 export default {
@@ -72,11 +70,6 @@ export default {
   },
   data() {
     return {
-      situation_val: null,
-      materials_val: null,
-      lesson_val: null,
-      userEmail: null,
-      phone: null,
       user_photo: "user.svg",
       user_name: "Tomothy <br />Murphy",
       notSendYet: true

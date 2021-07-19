@@ -7,10 +7,7 @@
           <span>{{ text }}</span>
         </div>
         <div class="c-notification-alert__holder">
-          <button
-            class="c-notification-alert__close"
-            @click="remove_notification(_id)"
-          >
+          <button class="c-notification-alert__close">
             <svg
               width="22"
               height="22"
@@ -44,8 +41,6 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
   name: "Notifications",
   data() {
@@ -62,26 +57,6 @@ export default {
       type: String,
       required: true
     }
-  },
-  methods: {
-    remove_notification(_id) {
-      this.$store.dispatch("notifications/remove_notification", _id);
-    }
-  },
-  watch: {
-    notificationAlerts(notifications) {
-      for (const notification of notifications) {
-        setTimeout(() => {
-          this.$store.dispatch(
-            "notifications/remove_notification",
-            notification.uuid
-          );
-        }, notification.delay * 1000);
-      }
-    }
-  },
-  computed: {
-    ...mapGetters("notifications", ["notificationAlerts"])
   }
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div id="enter-content-wrapper">
-    <!-- <TopNavbar /> -->
+    <TopNavbar />
     <div class="main">
       <div class="container">
         <div class="hello-page__first" v-show="current === 'hello'">
@@ -137,7 +137,6 @@ export default {
       if (name === "reg") {
         this.quiz.male = this.gender;
         this.quiz.for_what = this.why;
-        this.$store.dispatch("user/set_quiz_data", this.quiz);
         this.$router.push({ name: "Registration" });
       }
       this.current = name;

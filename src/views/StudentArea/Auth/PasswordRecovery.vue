@@ -9,7 +9,6 @@
           class="v-pass-recovery__field text-field-input"
           icon="email"
           placeholder="Ваша почта"
-          v-model="email"
           :error="error_email"
           :error_message="error_message"
         />
@@ -36,7 +35,7 @@ export default {
   methods: {
     ...mapMutations(["SHOW_MODAL"]),
     onSubmit() {
-      const sendingData = {};
+      // const sendingData = {};
       // if (
       //   this.email.length === 0 ||
       //   !this.email.match(/^[0-9a-z-.]+@[0-9a-z-]{2,}\.[a-z]{2,}$/i)

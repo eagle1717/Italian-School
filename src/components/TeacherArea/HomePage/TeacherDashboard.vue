@@ -36,12 +36,8 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
-  name: "TeacherDashboard",
-  computed: {
-    ...mapGetters("user", ["working_hours", "earned_money"])
-  }
+  name: "TeacherDashboard"
 };
 </script>
 

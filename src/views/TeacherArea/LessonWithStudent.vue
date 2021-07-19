@@ -58,7 +58,6 @@
             />
             <button
               class="m-new-lesson-teacher__btn"
-              @click="confirmedLesson"
               :class="{ confirmed: confirmLesson }"
             >
               <span>
@@ -83,7 +82,6 @@
               :error_message="error_homework_message"
             />
             <button
-              @click="confirmedHomeWork"
               class="m-new-lesson-teacher__btn"
               :class="{ confirmed: confirmHomeWork }"
             >
@@ -142,22 +140,6 @@ export default {
     ...mapMutations(["HIDE_MODAL"]),
     hideModal() {
       this.HIDE_MODAL();
-    },
-    confirmedLesson() {
-      if (this.lessonLink.length > 0 && this.lessonLink) {
-        this.confirmLesson = true;
-      } else {
-        this.error_lesson = true;
-        this.error_lesson_message = "Inserisci link alla lezione!";
-      }
-    },
-    confirmedHomeWork() {
-      if (this.homeworkLink.length > 0 && this.homeworkLink) {
-        this.confirmHomeWork = true;
-      } else {
-        this.error_homework = true;
-        this.error_homework_message = "Aggiungi link al compito!";
-      }
     }
   }
 };
@@ -166,7 +148,7 @@ export default {
 .m-new-lesson-teacher__modal {
   width: rem(859) !important;
   overflow-y: scroll;
-  font-family: 'Circe-Regular';
+  font-family: "Circe-Regular";
   .c-input-wrapper {
     height: 50px;
   }

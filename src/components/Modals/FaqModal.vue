@@ -9,16 +9,14 @@
             удобной, а обучение эффективным. Присылайте нам свои отзывы,
             замечания, комментарии <br />и пожелания. Хорошие тоже можно!
           </p>
-          <form @submit.prevent="submit_ticket" class="c-faq-modal__form">
+          <form class="c-faq-modal__form">
             <BaseInputText
               class="nazvaniye"
               placeholder="Название"
-              v-model="name"
               :error="error_name"
             />
             <BaseSelect
               class="c-faq-modal__select"
-              v-model="type"
               :options="options"
               placeholder="Тема"
               :error="error_type"
@@ -27,7 +25,6 @@
               <BaseTextArea
                 class="text-area"
                 placeholder="Ваш вопрос?..."
-                v-model="question"
                 :error="error_question"
               />
             </div>
@@ -51,9 +48,6 @@ export default {
   components: { BaseTextArea, BaseSelect, BaseInputText },
   data() {
     return {
-      name: "",
-      question: null,
-      type: null,
       options: [
         {
           val: "error",
@@ -76,39 +70,6 @@ export default {
       error_type: false,
       error_question: false
     };
-  },
-  methods: {
-    errorHandler(name) {
-      this[name] = true;
-      setTimeout(() => (this[name] = false), 2000);
-    },
-    submit_ticket() {
-      const TicketData = {};
-
-      if (this.name.length === 0) {
-        this.errorHandler("error_name");
-        return;
-      } else {
-        TicketData.name = this.name;
-      }
-
-      if (!this.type) {
-        this.errorHandler("error_type");
-        return;
-      } else {
-        TicketData.type = this.type;
-      }
-
-      if (!this.question && this.question.length < 20) {
-        this.errorHandler("error_question");
-        return;
-      } else {
-        TicketData.question = this.question;
-      }
-      this.$store.dispatch("user/create_ticket", TicketData).then(() => {
-        this.$store.dispatch("hide_show_overlay", false);
-      });
-    }
   }
 };
 </script>
@@ -120,6 +81,9 @@ export default {
 .c-faq-modal {
   width: 412px;
   margin-left: 0px;
+  .c-input {
+    max-width: 100%;
+  }
 }
 .c-faq-modal {
   @extend %pagept;

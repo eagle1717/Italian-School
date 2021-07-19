@@ -65,15 +65,13 @@
   </div>
 </template>
 <script>
-import { mapMutations, mapGetters } from "vuex";
+import { mapMutations } from "vuex";
 import Student from "./Student.vue";
-import { get_curator_users } from "@/mixins/mixins.js";
 export default {
   name: "Teacherclasses",
   components: {
     Student
   },
-  mixins: [get_curator_users],
   data() {
     return {
       selectVal: "notCheck",
@@ -126,12 +124,6 @@ export default {
       ]
     };
   },
-  computed: {
-    ...mapGetters("user", [
-      "curator_confirmed_lessons",
-      "curator_not_confirmed_lessons"
-    ])
-  },
   methods: {
     ...mapMutations(["SHOW_MODAL"]),
     openModal() {
@@ -146,7 +138,7 @@ export default {
   @extend %pagept;
   margin: 0 auto;
   padding-top: 42px;
-  max-width: 892px;;
+  max-width: 892px;
   padding-left: 0px;
   #wr-stud-card {
     margin-top: 32px;
@@ -183,7 +175,7 @@ export default {
   &__title {
     font-size: 20px;
     // font-weight: 700;
-    font-family: 'Circe-Bold';
+    font-family: "Circe-Bold";
     height: min-content;
     letter-spacing: 0.03em;
     color: #4b4b4b;
@@ -206,7 +198,7 @@ export default {
       font-size: 20px;
       font-style: normal;
       // font-weight: 700;
-      font-family: 'Circe-Bold';
+      font-family: "Circe-Bold";
       line-height: 21px;
       letter-spacing: 0.03em;
     }

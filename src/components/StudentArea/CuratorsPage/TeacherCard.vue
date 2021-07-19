@@ -171,24 +171,13 @@ export default {
       return;
     },
     open_teacher_modal() {
-      if (this.user_role == "default") {
-        this.SHOW_MODAL("register");
-        return;
-      }
       this.SHOW_MODAL("video");
-      this.$root.$emit("video-modal", {
-        video: this.curator.about.video_url,
-        desc: this.curator.about.description
-      });
     },
     addFavorite() {
-      // console.log(this.curator.id)
       this.show_contest();
-      this.$store.dispatch("user/add_favorite_curator", this.curator.id);
     },
     blockCurator() {
       this.show_contest();
-      this.$store.dispatch("user/block_curator", this.curator.id);
     },
     ...mapMutations(["SHOW_MODAL"])
   }

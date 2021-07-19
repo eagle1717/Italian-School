@@ -2,24 +2,6 @@
   <BaseModal class="c-help-chat__modal">
     <div class="c-help-chat">
       <div class="c-help-chat__header">
-        <!--        <div class="c-help-chat__back">-->
-        <!--          <svg-->
-        <!--            width="8"-->
-        <!--            height="13"-->
-        <!--            viewBox="0 0 8 13"-->
-        <!--            fill="none"-->
-        <!--            xmlns="http://www.w3.org/2000/svg"-->
-        <!--          >-->
-        <!--            <path-->
-        <!--              d="M7 12L1 6.5L7 1"-->
-        <!--              stroke="#4B4B4B"-->
-        <!--              stroke-width="1.5"-->
-        <!--              stroke-linecap="round"-->
-        <!--              stroke-linejoin="round"-->
-        <!--            />-->
-        <!--          </svg>-->
-        <!--          <span>Назад</span>-->
-        <!--        </div>-->
         <router-link :to="{ name: 'Help' }" class="c-help-chat__faq-btn">
           <span>FAQ</span>
         </router-link>
@@ -39,7 +21,7 @@
             :type="message.type"
           />
         </ul>
-        <form @submit.prevent="send_message" class="c-help-chat__form">
+        <form class="c-help-chat__form">
           <input
             type="text"
             v-model="new_message"
@@ -103,23 +85,6 @@ export default {
   methods: {
     checkScroll(ths) {
       return ths.scrollTop + ths.clientHeight;
-    },
-    send_message() {
-      if (this.new_message) {
-        this.$store
-          .dispatch("user/send_ticket_message", {
-            id: this.ticketId,
-            data: { id: this.ticketId, description: this.new_message }
-          })
-          .then(() => {
-            this.local_message.push({
-              id: Math.floor(Math.random() * 365),
-              description: this.new_message,
-              type: "question"
-            });
-            this.new_message = null;
-          });
-      }
     }
   }
 };
@@ -168,6 +133,18 @@ export default {
     @extend %simple-btn-red-border;
     width: 147px;
     height: 35px;
+  }
+  .c-help-chat__faq-btn {
+    span {
+      color: $red !important;
+      transition: all 0.4s ease;
+    }
+    &:hover {
+      span {
+        color: $white !important;
+        transition: all 0.4s ease;
+      }
+    }
   }
   &__chat {
     &-header {

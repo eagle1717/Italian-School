@@ -3,9 +3,7 @@
     class="c-default-layout app"
     :class="{ 'overflow-hidden': show_overlay }"
   >
-    <!--    <template v-if="!isNotAuthenticated">-->
     <NavBar />
-    <!--    </template>-->
     <slot></slot>
     <div
       class="overlay"

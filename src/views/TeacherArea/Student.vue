@@ -1,7 +1,7 @@
 <template>
   <div class="c-student" :class="{ disabled: checkHomeWork }">
     <div v-if="$route.name === 'HomeWork'" class="flex justify-between">
-      <div class="c-student__user-data" @click="showUser(userId)">
+      <div class="c-student__user-data">
         <figure class="c-student__photo">
           <template v-if="photo">
             <img :src="require(`@/assets/${photo}.svg`)" :alt="name" />
@@ -21,7 +21,6 @@
       </div>
       <template v-if="link_to_homework && is_homework_done">
         <a
-          @click="check_homework"
           :href="link_to_homework"
           class="c-student__btn c-student__btn_red"
           target="_blank"
@@ -46,7 +45,7 @@
       </template>
     </div>
     <div v-if="$route.name === 'Classes'" class="flex justify-between">
-      <div class="c-student__user-data" @click="showUser(userId)">
+      <div class="c-student__user-data">
         <figure class="c-student__photo">
           <template v-if="photo">
             <img :src="require(`@/assets/${photo}.svg`)" :alt="name" />
@@ -67,7 +66,6 @@
       </div>
       <template v-if="!link_to_lesson">
         <a
-          @click="openModal"
           :href="link_to_homework"
           class="c-student__btn c-student__btn_green"
           target="_blank"

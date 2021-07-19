@@ -4,7 +4,7 @@
       <h3 class="c-user-level__title">
         Ваш уровень
       </h3>
-      <template v-if="!isCheckLevel">
+      <template v-if="isCheckLevel">
         <p class="c-user-level__text">
           Ваш уровень не<br />
           подтвержден
@@ -40,7 +40,6 @@
 
 <script>
 import CircleProgress from "@/components/StudentArea/LevelPage/CircleProgress";
-import { mapState } from "vuex";
 export default {
   components: { CircleProgress },
   data() {
@@ -70,9 +69,6 @@ export default {
       },
       percentage: 68
     };
-  },
-  computed: {
-    ...mapState({ user: state => state.user.user })
   }
 };
 </script>

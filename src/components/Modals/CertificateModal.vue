@@ -15,7 +15,7 @@
             Какой у вас уровень языка?
           </h3>
           <div class="c-special-modal__text" id="language-level">
-            <BaseInputText v-model="level" />
+            <BaseInputText />
           </div>
         </div>
         <div class="c-special-modal__wrapper-text">
@@ -23,7 +23,7 @@
             Какой уровень вам требуется?
           </h3>
           <div class="c-special-modal__textarea">
-            <BaseTextArea v-model="levelNeeded" />
+            <BaseTextArea />
           </div>
         </div>
         <div class="c-special-modal__wrapper-text">
@@ -32,7 +32,7 @@
             экзамен?
           </h3>
           <div class="c-special-modal__textarea">
-            <BaseTextArea v-model="schedule" />
+            <BaseTextArea />
           </div>
         </div>
         <div class="c-special-modal__wrapper-text">
@@ -40,7 +40,7 @@
             Как давно вы изучаете язык?
           </h3>
           <div class="c-special-modal__textarea">
-            <BaseTextArea v-model="learningTime" />
+            <BaseTextArea />
           </div>
         </div>
         <div class="c-special-modal__wrapper-text">
@@ -48,7 +48,7 @@
             Где? С преподавателем или на курсах? Сами?
           </h3>
           <div class="c-special-modal__textarea">
-            <BaseTextArea v-model="studyType" />
+            <BaseTextArea />
           </div>
         </div>
         <div class="c-special-modal__wrapper-text">
@@ -56,7 +56,7 @@
             Какими учебными пособиями вы пользовались?
           </h3>
           <div class="c-special-modal__textarea">
-            <BaseTextArea v-model="studyMaterials" />
+            <BaseTextArea />
           </div>
         </div>
         <div class="c-special-modal__wrapper-text">
@@ -65,7 +65,7 @@
             дается?
           </h3>
           <div class="c-special-modal__textarea">
-            <BaseTextArea v-model="studyDuration" />
+            <BaseTextArea />
           </div>
         </div>
         <div class="c-special-modal__wrapper-text">
@@ -73,7 +73,7 @@
             В чем, как вы думаете, ваши слабые стороны?
           </h3>
           <div class="c-special-modal__textarea">
-            <BaseTextArea v-model="weekSides" />
+            <BaseTextArea />
           </div>
         </div>
         <div class="c-special-modal__wrapper-text">
@@ -82,7 +82,7 @@
             CILS, CELI?
           </h3>
           <div class="c-special-modal__textarea">
-            <BaseTextArea v-model="certName" />
+            <BaseTextArea />
           </div>
         </div>
       </div>
@@ -93,12 +93,11 @@
           обсудить занятие.
         </p>
         <div class="c-special-modal__data-wrap" id="bottom-form">
-          <BasePhoneInput v-model="phone" />
+          <BasePhoneInput />
           <BaseInputText
             class="c-special-modal__field"
             icon="email"
             placeholder="Ваша почта"
-            v-model="userEmail"
           />
         </div>
       </div>
@@ -124,17 +123,6 @@ export default {
   },
   data() {
     return {
-      userEmail: null,
-      phone: null,
-      level: null,
-      levelNeeded: null,
-      schedule: null,
-      learningTime: null,
-      studyType: null,
-      studyMaterials: null,
-      studyDuration: null,
-      weekSides: null,
-      certName: null,
       notSendYet: true,
       user_photo: "user.svg",
       user_name: "Tomothy <br />Murphy"
@@ -150,7 +138,6 @@ export default {
 
 <style lang="scss">
 .c-special-modal-main {
-  // overflow-x: scroll;
   overflow-x: hidden;
   .c-special-modal__text {
     .c-input {

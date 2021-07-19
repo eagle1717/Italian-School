@@ -52,7 +52,7 @@ import DefaultLayout from "@/components/Layout/DefaultLayout";
 import Default2Layout from "@/components/Layout/Default2Layout";
 import EmptyLayout from "@/components/Layout/EmptyLayout";
 import MobileLayout from "@/components/Layout/MobileLayout";
-import NoContent from "@/components/Layout/NoContent";
+import NoLayout from "@/components/Layout/NoLayout";
 import FaqModal from "@/components/Modals/FaqModal";
 import SpecialLessonModal from "@/components/Modals/SpecialLessonModal";
 import CertificateModal from "@/components/Modals/CertificateModal";
@@ -74,13 +74,13 @@ export default {
     FaqModal,
     DefaultLayout,
     EmptyLayout,
+    NoLayout,
     MobileLayout,
     SpecialLessonModal,
     CertificateModal,
     Video,
     ReservationLessonModal,
     GroupModal,
-    NoContent,
     StudentProfile,
     LessonWithStudent,
     Default2Layout

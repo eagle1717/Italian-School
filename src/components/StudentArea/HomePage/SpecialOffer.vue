@@ -4,10 +4,7 @@
       <span class="c-home-offer__discount"> Скидка {{ offer.discount }}% </span>
       <div class="c-home-offer__content">
         <figure class="c-home-offer__image">
-          <img
-            :src="require(`@/assets/img/packages/${offer.image}.svg`)"
-            alt=""
-          />
+          <img :src="require(`@/assets/img/packages/${offer.image}.svg`)" />
         </figure>
         <h3 class="c-home-offer__title">
           {{ offer.name }}
@@ -32,27 +29,6 @@ export default {
   data() {
     return {
       offers: [
-        {
-          id: "classic",
-          image: "classic",
-          discount: "5-15",
-          name: "Классические занятия",
-          lessons: "5"
-        },
-        {
-          id: "spoken",
-          image: "spoken",
-          discount: "5-15",
-          name: "Разговорные занятия",
-          lessons: "5"
-        },
-        {
-          id: "pronounce",
-          image: "pronounce",
-          discount: "5-15",
-          name: "Отработка произношения",
-          lessons: "5"
-        },
         {
           id: "classic",
           image: "classic",
@@ -183,7 +159,7 @@ export default {
       font-size: 12px;
       margin-left: 5px;
     }
-    @media screen and (max-width:400px) {
+    @media screen and (max-width: 400px) {
       width: 100px;
     }
   }

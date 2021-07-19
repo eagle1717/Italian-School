@@ -18,12 +18,7 @@
 
 <script>
 export default {
-  name: "CheckEmailModal",
-  methods: {
-    login() {
-      this.$store.dispatch("show_modal", "login");
-    }
-  }
+  name: "CheckEmailModal"
 };
 </script>
 

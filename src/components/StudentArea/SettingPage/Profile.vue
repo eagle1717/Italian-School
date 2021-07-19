@@ -5,7 +5,7 @@
         <div class="c-profile__avatar-holder">
           <img
             class="c-profile__wrapper-avatar-item"
-            :src="default_user_photo"
+            src="@/assets/robert.svg"
             alt="user-photo"
           />
           <label class="c-profile__wrapper-upload">
@@ -202,13 +202,11 @@
           <BaseInputPassword
             class="c-profile__field"
             placeholder="Старый пароль"
-            v-model="old_password"
           />
           <BaseInputPassword
             class="c-profile__field newPassword"
             placeholder="Новый пароль"
             :showProgress="true"
-            v-model="new_password"
             :error="error_password"
             :error_message="error_password_message"
           />
@@ -221,7 +219,6 @@
             class="c-profile__field c-profile__field_reg email-field"
             icon="email"
             placeholder="Почта"
-            v-model="email"
             :error="error_email"
             :error_message="error_email_message"
           />
@@ -232,176 +229,10 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
-import { check_form_data } from "@/mixins/mixins.js";
 import BasePhoneInput from "@/components/Base/BasePhoneInput";
 export default {
   name: "Profile",
-  components: { BasePhoneInput },
-  mixins: [check_form_data],
-  data() {
-    return {
-      sendingPhoto: null,
-      first_name: null,
-      last_name: null,
-      phone: null,
-      old_password: null,
-      new_password: null,
-      email: null,
-      error_password: false,
-      error_email: false,
-      error_email_message: null,
-      error_password_message: null,
-      social_links: {},
-      is_insta: false,
-      is_fb: false,
-      is_vk: false
-    };
-  },
-  computed: {
-    ...mapGetters("user", [
-      "user_first_name",
-      "user_last_name",
-      "user_email",
-      "user_photo"
-    ]),
-    links_soc() {
-      return this.social_links;
-    },
-    default_user_photo() {
-      return this.user_photo ? this.user_photo : "/img/ill/default-photo.svg";
-    }
-  },
-  methods: {
-    ...mapMutations(["ADD_NOTIFICATION", "SET_USER_PHOTO"]),
-    save() {
-      const SaveNewData = {};
-      if (this.first_name) {
-        if (this.check_name("first_name") && this.first_name.length > 0) {
-          SaveNewData.first_name = this.first_name;
-        } else {
-          return;
-        }
-      }
-      if (this.last_name) {
-        if (this.check_name("last_name") && this.last_name.length > 0) {
-          SaveNewData.last_name = this.last_name;
-        } else {
-          return;
-        }
-      }
-      // Доделать проверки
-      if (this.email) {
-        if (this.check_email_field(this.email) && this.email.length > 0) {
-          SaveNewData.email = this.email;
-        } else {
-          this.error_handler("error_email", {
-            message_field: "error_email_message",
-            message: "Некорректный email!"
-          });
-          return;
-        }
-      }
-
-      if (this.old_password && this.new_password) {
-        if (
-          this.check_password_field(this.new_password) &&
-          this.old_password.length > 0 &&
-          this.new_password.length > 0
-        ) {
-          SaveNewData.old_password = this.old_password;
-          SaveNewData.new_password = this.new_password;
-        } else {
-          this.error_handler("error_password", {
-            message_field: "error_password_message",
-            message: "Ненадежный пароль (Используйте символы A-z, 0-9)"
-          });
-          return;
-        }
-      }
-
-      if (this.phone) {
-        if (this.phone.code && this.phone.number) {
-          SaveNewData.phone = this.phone.number;
-          SaveNewData.country = this.phone.code;
-        }
-      }
-
-      if (this.sendingPhoto) {
-        SaveNewData.photo = this.sendingPhoto;
-      }
-
-      if (Object.keys(this.social_links).length > 0) {
-        SaveNewData.social_links = this.social_links;
-      }
-
-      if (Object.keys(SaveNewData).length === 0) {
-        return;
-      }
-
-      let formData = new FormData();
-
-      for (let k in SaveNewData) {
-        formData.append(k, SaveNewData[k]);
-      }
-
-      // console.log(formData.toString())
-
-      this.$store.dispatch("user/update_user_data", formData).then(() => {});
-
-      // this.ADD_NOTIFICATION({
-      //   type: "success",
-      //   text: "Изменения успешно сохранены"
-      // });
-    },
-    uploadPhoto(event) {
-      let file = event.target.files,
-        f = file[0],
-        self = this;
-      this.sendingPhoto = f;
-      if (!f.type.match("image.*")) {
-        alert("Только картинки");
-        return;
-      }
-      const output = document.querySelector(".c-profile__wrapper-avatar-item");
-      output.src = URL.createObjectURL(event.target.files[0]);
-      output.onload = function() {
-        URL.revokeObjectURL(output.src); // free memory
-      };
-
-      const reader = new FileReader();
-      reader.onload = (function() {
-        return function(e) {
-          self.SET_USER_PHOTO(e.target.result);
-          // return (self.default_user_photo = e.target.result);
-        };
-      })(f);
-      reader.readAsDataURL(f);
-    },
-    setSocial(name) {
-      this.social_links[`${name}`] = prompt(
-        "Вставьте ссылку на ваш аккаунт!",
-        ""
-      );
-      if (name === "insta") {
-        this.is_insta = true;
-      } else if (name === "fb") {
-        this.is_fb = true;
-      } else {
-        this.is_vk = true;
-      }
-    },
-    deleteSocial(name) {
-      delete this.social_links[name];
-      if (name === "insta") {
-        this.is_insta = false;
-      } else if (name === "fb") {
-        this.is_fb = false;
-      } else {
-        this.is_vk = false;
-      }
-    }
-  }
+  components: { BasePhoneInput }
 };
 </script>
 
@@ -412,7 +243,7 @@ export default {
   padding-bottom: 35px;
   display: grid;
   border-radius: 2px;
-  max-width: 892px;;
+  max-width: 892px;
   .c-input-password__field-icon {
     width: auto;
   }

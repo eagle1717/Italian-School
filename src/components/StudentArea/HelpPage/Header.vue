@@ -4,12 +4,7 @@
       <h3 class="c-help__wrap-title-tag">{{ pageTitle }}</h3>
     </div>
     <div class="c-help__wrap-term">
-      <BaseSearch
-        placeholder="Ваш вопрос"
-        v-model="searchInput"
-        @input="searchQuery"
-        class="quest"
-      />
+      <BaseSearch placeholder="Ваш вопрос" class="quest" />
       <router-link
         :to="{ name: 'Help' }"
         class="c-help__message-btn faq"
@@ -41,16 +36,6 @@ export default {
     },
     btnRouteName: {
       type: String
-    }
-  },
-  data() {
-    return {
-      searchInput: null
-    };
-  },
-  methods: {
-    searchQuery() {
-      this.$emit("input", this.searchInput);
     }
   }
 };

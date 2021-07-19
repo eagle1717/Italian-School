@@ -4,7 +4,6 @@
       btnTitle="FAQ"
       pageTitle="Поддержка пользователей"
       btnRouteName="Help"
-      v-model="searchQuery"
     />
     <template v-if="hasOwnQuestions">
       <div class="c-faq__content">
@@ -69,7 +68,6 @@ export default {
   },
   data() {
     return {
-      searchQuery: "",
       hasOwnQuestions: false,
       messages: [
         {
@@ -155,7 +153,7 @@ export default {
     padding-top: 38px;
   }
   &__container {
-    max-width: 892px;;
+    max-width: 892px;
     @extend %m0a;
   }
   input {
