@@ -144,7 +144,7 @@ export default {
       this.HIDE_MODAL();
     },
     confirmedLesson() {
-      if (this.confirmLesson.length > 0 && this.confirmLesson) {
+      if (this.lessonLink.length > 0 && this.lessonLink) {
         this.confirmLesson = true;
       } else {
         this.error_lesson = true;
@@ -152,7 +152,7 @@ export default {
       }
     },
     confirmedHomeWork() {
-      if (this.confirmHomeWork) {
+      if (this.homeworkLink.length > 0 && this.homeworkLink) {
         this.confirmHomeWork = true;
       } else {
         this.error_homework = true;
@@ -166,6 +166,7 @@ export default {
 .m-new-lesson-teacher__modal {
   width: rem(859) !important;
   overflow-y: scroll;
+  font-family: 'Circe-Regular';
   .c-input-wrapper {
     height: 50px;
   }
@@ -329,7 +330,7 @@ export default {
 }
 @include bp(1360px) {
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .m-new-lesson-teacher__modal {
     width: 100% !important;
   }

@@ -18,21 +18,7 @@
             }"
             @click="isShow = !isShow"
           >
-            <svg
-              width="16"
-              height="9"
-              viewBox="0 0 16 9"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15 1L8 8L0.999999 0.999999"
-                stroke="#251C1C"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            <BaseIcon name="arrow-down"></BaseIcon>
           </button>
         </div>
         <p class="c-accordion__hide-text" v-html="description"></p>
@@ -78,10 +64,25 @@ export default {
   overflow: hidden;
   cursor: pointer;
   transition: height 0.5s ease-in;
+  .icon {
+    width: 16px;
+    height: 10px;
+    fill: transparent;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: $black;
+    color: $black;
+    transition: all 0.5s ease;
+  }
   &.open {
     height: 100%;
     padding-bottom: 34px;
     transition: height 0.5s ease-in;
+    .icon {
+      stroke: $green;
+      color: $green;
+    }
     .c-accordion__hide-text {
       max-height: 100%;
       height: auto;
@@ -104,11 +105,10 @@ export default {
 
     &-arrow {
       &-item {
-        /*transform: rotate(90deg);*/
         width: 12px;
         cursor: pointer;
         opacity: 0.7;
-        transition: all 0.4s;
+        transition: all 0.5s ease;
         position: absolute;
         top: 15px;
         right: 0;
@@ -146,10 +146,9 @@ export default {
     text-overflow: ellipsis;
     margin-top: rem(19);
     transition: max-height 0.5s ease;
-    // transition: max-height 0.5s ease;
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-accordion {
     &__content-holder-description {
       margin-left: 30px;

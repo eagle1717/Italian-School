@@ -14,12 +14,12 @@
         :error_message="error_message"
       />
       <BaseInputPassword
-        class="c-login-modal__field"
+        class="c-login-modal__field password-field-prop"
         placeholder="Ваш пароль"
         v-model="password"
         :error="error_password"
       />
-      <div class="c-login-modal__error">
+      <div class="c-login-modal__error" v-if="error_password">
         {{ error_login_message }}
       </div>
       <button class="c-login-modal__register-btn">
@@ -59,7 +59,6 @@ export default {
     },
     onSubmit() {
       const sendingData = {};
-      // console.log(!this.email.match(/^[0-9a-z-.]+@[0-9a-z-]{2,}\.[a-z]{2,}$/i))
       if (
         this.email.length === 0 ||
         this.email.trim().length === 0 ||
@@ -117,22 +116,16 @@ export default {
   &__error {
     @extend %text-very-small;
     color: $red;
-    text-align: center;
+    margin-top: 4px;
   }
 
   &__field {
     width: 100%;
     margin-bottom: 13px;
+    &.password-field-prop {
+      margin-bottom: 0px;
+    }
   }
-
-  &__content {
-    @extend %df;
-    @extend %fdc;
-    @extend %jcc;
-    @extend %h100;
-    width: rem(312);
-  }
-
   &__title {
     @extend %h2-title-regular;
     color: $black;
@@ -149,7 +142,7 @@ export default {
   &__register-btn {
     @extend %btn-border-green;
     @extend %btn-all-green;
-    width: rem(311);
+    width: 100%;
     margin-top: rem(34);
     &:hover {
       @extend %btn-darkgreen;
@@ -165,7 +158,6 @@ export default {
 
     &-login {
       text-align: center;
-      width: rem(311);
       margin-top: 20px;
     }
 

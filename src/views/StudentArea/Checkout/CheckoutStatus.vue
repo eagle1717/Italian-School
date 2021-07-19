@@ -1,81 +1,85 @@
 <template>
   <div class="c-purchase-success">
     <div class="entire-purchase-content">
-      <figure class="c-purchase-success__img">
+      <figure
+        class="c-purchase-success__img"
+        :class="{ failedImage: $route.params.status === 'failed' }"
+      >
         <img :src="currentInformation.image" alt="" />
       </figure>
-      <h1 class="c-purchase-success__title">
-        Покупка {{ currentInformation.lesson }} "{{
-          currentInformation.lessonName
-        }}" {{ currentInformation.statusText }}
-      </h1>
-      <p
-        class="c-purchase-success__text"
-        v-html="currentInformation.successText"
-      ></p>
-      <div
-        class="links-next"
-        v-if="
-          currentInformation.status === 'success' &&
-            currentInformation.lesson === 'курса'
-        "
-      >
-        <div>
-          <router-link
-            :to="{ name: 'HomePage' }"
-            class="c-purchase-success__next flex"
-          >
-            <div>Чат курса</div>
-            <div class="arrow-link"><img src="@/assets/leftArrow.svg" /></div>
-          </router-link>
+      <div class="text-checkout">
+        <h1 class="c-purchase-success__title">
+          Покупка {{ currentInformation.lesson }} "{{
+            currentInformation.lessonName
+          }}" {{ currentInformation.statusText }}
+        </h1>
+        <p
+          class="c-purchase-success__text"
+          v-html="currentInformation.successText"
+        ></p>
+        <div
+          class="links-next btn-wrapp-result"
+          v-if="
+            currentInformation.status === 'success' &&
+              currentInformation.lesson === 'курса'
+          "
+        >
+          <div>
+            <router-link
+              :to="{ name: 'HomePage' }"
+              class="c-purchase-success__next flex"
+            >
+              <div>Чат курса</div>
+              <div class="arrow-link"><img src="@/assets/leftArrow.svg" /></div>
+            </router-link>
+          </div>
+          <div>
+            <router-link
+              :to="{ name: 'HomePage' }"
+              class="c-purchase-success__next flex"
+            >
+              <div>Материалы курса</div>
+              <div class="arrow-link"><img src="@/assets/leftArrow.svg" /></div>
+            </router-link>
+          </div>
+          <div>
+            <router-link
+              :to="{ name: 'HomePage' }"
+              class="c-purchase-success__next flex"
+            >
+              <div>Что-то еще для обучения</div>
+              <div class="arrow-link"><img src="@/assets/leftArrow.svg" /></div>
+            </router-link>
+          </div>
         </div>
-        <div>
-          <router-link
-            :to="{ name: 'HomePage' }"
-            class="c-purchase-success__next flex"
-          >
-            <div>Материалы курса</div>
-            <div class="arrow-link"><img src="@/assets/leftArrow.svg" /></div>
-          </router-link>
-        </div>
-        <div>
-          <router-link
-            :to="{ name: 'HomePage' }"
-            class="c-purchase-success__next flex"
-          >
-            <div>Что-то еще для обучения</div>
-            <div class="arrow-link"><img src="@/assets/leftArrow.svg" /></div>
-          </router-link>
-        </div>
+        <router-link
+          class="failed failed-button-wrapper failed btn-wrapp-result btn-height-change"
+          to="/home"
+          v-else-if="currentInformation.status === 'failed'"
+        >
+          <span>Повторить попытку</span>
+        </router-link>
+        <router-link
+          class="success-button-package btn-status-wrapper btn-class btn-wrapp-result btn-height-change"
+          to="/home"
+          v-else-if="
+            currentInformation.lesson === 'пакета' &&
+              currentInformation.status === 'success'
+          "
+        >
+          <span>Продолжить</span>
+        </router-link>
+        <router-link
+          class="success-button-package btn-webinar-wrapper btn-class btn-wrapp-result btn-height-change"
+          to="/home"
+          v-else-if="
+            currentInformation.lesson === 'вебинара' &&
+              currentInformation.status === 'success'
+          "
+        >
+          <span>На страницу вебинара</span>
+        </router-link>
       </div>
-
-      <router-link
-        class="failed failed-button-wrapper failed"
-        to="/"
-        v-else-if="currentInformation.status === 'failed'"
-      >
-        <span>Повторить попытку</span>
-      </router-link>
-      <router-link
-        class="success-button-package btn-status-wrapper btn-class"
-        to="/home"
-        v-else-if="
-          currentInformation.lesson === 'пакета' &&
-            currentInformation.status === 'success'
-        "
-      >
-        <span>Продолжить</span>
-      </router-link>
-      <router-link
-        class="success-button-package btn-webinar-wrapper btn-class"
-        to="/"
-        v-else-if="
-          currentInformation.lesson === 'вебинара' &&
-            currentInformation.status === 'success'
-        "
-      >
-        <span>На страницу вебинара</span>
-      </router-link>
     </div>
   </div>
 </template>
@@ -156,10 +160,39 @@ export default {
 
 <style lang="scss">
 .c-purchase-success {
-  width: 892px;
+  max-width: 892px;
   margin: 0 auto;
+  .c-purchase-success__text {
+    margin-top: 23px;
+  }
+  .links-next {
+    margin-top: 20px;
+    .c-purchase-success__next div {
+      margin-top: 5px;
+      font-size: 18px;
+      font-family: "Circe-Bold";
+      line-height: 27px;
+      color: $green;
+      @include bp(766px) {
+        img {
+          width: 15px;
+          height: 10px;
+        }
+      }
+      &.flex {
+        cursor: pointer;
+      }
+    }
+    .arrow-link {
+      margin-left: 10px;
+      img {
+        margin-top: 5px;
+      }
+    }
+  }
   .entire-purchase-content {
-    width: 585px;
+    max-width: 585px;
+    width: 100%;
   }
   .btn-class {
     position: absolute;
@@ -171,6 +204,7 @@ export default {
     position: absolute;
     width: 182px;
     padding: 0px;
+    color: white !important;
     &:hover {
       background-color: #d62a20;
       color: white;
@@ -183,37 +217,34 @@ export default {
   }
   .failed-button-wrapper {
     margin-top: 30px;
+    color: white !important;
   }
-}
-.btn-status-wrapper {
-  margin-top: 46px;
-  width: max-content;
-}
-.btn-webinar-wrapper {
-  margin-top: 20px;
-  width: 200px !important;
-  padding: 0px !important;
-}
-.success-button-package {
-  @extend %btnStatus;
-  background-color: $green;
-  &:hover {
+  .btn-status-wrapper {
+    margin-top: 46px;
+    width: max-content;
+  }
+  .btn-webinar-wrapper {
+    margin-top: 20px;
+    width: 200px !important;
+    padding: 0px !important;
+  }
+  .success-button-package {
+    @extend %btnStatus;
+    background-color: $green;
     &:hover {
       @extend %btn-darkgreen;
     }
   }
-}
-.failed-button-package {
-  @extend %btnStatus;
-  background-color: $red;
-  &:hover {
+  .failed-button-package {
+    @extend %btnStatus;
+    background-color: $red;
     &:hover {
-      @extend %btn-dark-red;
+      &:hover {
+        @extend %btn-dark-red;
+      }
     }
   }
-}
-.c-purchase-success {
-  padding-top: rem(61);
+  margin-top: 61px;
   .c-purchase-success__title {
     font-size: 30px;
     line-height: 34px;
@@ -221,7 +252,6 @@ export default {
     margin-bottom: 5px;
     margin-top: 37px;
   }
-
   &__title {
     @extend %h2-title-regular;
     color: $black;
@@ -234,28 +264,67 @@ export default {
     @extend %text-middle;
     color: $gray;
   }
-
-  // .c-purchase-success__next
-  .links-next {
-    margin-top: 20px;
-    div {
-      margin-top: 5px;
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 27px;
-      color: rgba(57, 177, 0, 1);
-      font-family: "Circe";
-      &.flex {
-        cursor: pointer;
-      }
-    }
-    .arrow-link {
-      margin-left: 10px;
-      margin-top: 6.5px;
-    }
-  }
   &__next {
     width: max-content;
+  }
+}
+@include bp(1310px) {
+  .c-purchase-success {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    // margin-left: 25px;
+    // margin-right: 25px;
+    max-width: 585px;
+    .btn-height-change {
+      margin-top: 42px;
+    }
+  }
+  .entire-purchase-content {
+    max-width: auto;
+    margin: auto;
+  }
+  .c-purchase-success__img {
+    width: max-content;
+  }
+}
+@include bp(766px) {
+  .c-purchase-success {
+    padding: 0 25px;
+  }
+}
+@include bp(506px) {
+  .c-purchase-success {
+    .c-purchase-success__text {
+      margin-top: 18px;
+      width: 100%;
+    }
+    .entire-purchase-content {
+      max-width: 320px;
+      width: 100%;
+    }
+    .text-checkout {
+      width: auto;
+    }
+    // .c-purchase-success__img {
+    //   img {
+    //     width: 206px;
+    //     height: 159px;
+    //   }
+    // }
+    .c-purchase-success__title {
+      // font-size: 22px;
+      margin-bottom: 18px;
+      margin-top: 37px;
+      width: auto;
+    }
+    .btn-wrapp-result {
+      margin-top: 30px;
+    }
+    .btn-height-change {
+      width: max-content !important;
+      padding: 0 23px !important;
+    }
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <BaseModal class="c-video-modal">
+  <BaseModal class="c-video-modal" id="teacher-video-modal">
     <div class="c-video">
       <div class="c-video__container">
         <div class="c-video__content">
@@ -61,7 +61,7 @@ h2 {
   padding-left: 60px;
   padding-top: 43px;
   overflow-y: scroll;
-  width: 859px !important;
+  // width: 100vw;
 }
 .c-video {
   margin-bottom: 30px;
@@ -93,7 +93,8 @@ h2 {
   }
   .individualName {
     color: rgba(37, 28, 28, 1);
-    font-weight: 700;
+    // font-weight: 700;
+    font-family: "Circe-Bold";
   }
   &__content {
     &-holder {
@@ -114,7 +115,7 @@ h2 {
     }
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-video {
     &__container {
       max-width: 750px;

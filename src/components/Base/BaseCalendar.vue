@@ -117,11 +117,11 @@ export default {
     };
   },
   created() {
-    if (this.$route.name === "Calendario2") {
-      moment.locale("it");
-    } else if (this.$route.name === "Calendar") {
-      moment.locale("ru");
-    }
+    // if (this.$route.name === "Calendario2") {
+    //   moment.locale("it");
+    // } else if (this.$route.name === "Calendar") {
+    moment.locale("ru");
+    // }
     this.today = moment();
     this.dateContext = moment();
     this.updateData();

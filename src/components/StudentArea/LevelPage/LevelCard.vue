@@ -4,7 +4,7 @@
       <h3 class="c-user-level__title">
         Ваш уровень
       </h3>
-      <template v-if="isCheckLevel">
+      <template v-if="!isCheckLevel">
         <p class="c-user-level__text">
           Ваш уровень не<br />
           подтвержден
@@ -16,6 +16,7 @@
       <template v-else>
         <img
           :src="require(`@/assets/img/ill/level/${levels.a1.img}.svg`)"
+          class="level-show-image"
           :alt="levels.a1.text"
         />
       </template>
@@ -85,8 +86,6 @@ export default {
   width: rem(430);
   border: 1px solid #4b4b4b;
   border-radius: 2px;
-  padding-left: 33;
-  padding-right: 33px;
   .c-user-level__wrap_left {
     padding-top: 5px;
   }
@@ -124,7 +123,7 @@ export default {
     margin-right: 20px;
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-user-level {
     width: calc(100% / 2);
     margin-right: 20px;
@@ -136,8 +135,42 @@ export default {
     margin-right: 0;
     margin-bottom: 13px;
     padding-left: 18px;
+    padding-right: 18px;
     align-items: flex-start;
-    padding-top: 35px;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+@include bp($mobile) {
+  .c-user-level {
+    height: 113px;
+    padding: 0 10px;
+    &__wrap-item {
+      margin-bottom: 5px;
+    }
+    .c-user-level__text,
+    .c-user-level__link {
+      font-size: 12px;
+      line-height: 100%;
+    }
+    .leksik-percentage {
+      margin-left: 10px;
+    }
+    .level-show-image {
+      width: 97px;
+      height: 45.93px;
+    }
+    .c-user-level__wrap-item {
+      font-size: 10px;
+      text-align: center;
+    }
+    .c-circle-progress {
+      width: 68.13px;
+      height: 67.93px;
+    }
+    .c-circle-progress__percent {
+      font-size: 10px;
+    }
     &__img {
       width: 80px;
     }

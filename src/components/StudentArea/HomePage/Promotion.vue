@@ -3,7 +3,7 @@
     <div class="c-promotion__wrapper">
       <div class="c-promotion__wrapper-item">
         <h2 class="c-promotion__wrapper-item-tag">
-          Хочешь узнать, как у нас классно? Пройди пробное занятие
+          Хочешь узнать, как у нас классно? <br />Пройди пробное занятие
         </h2>
         <router-link
           :to="{ name: 'PromotionLesson' }"
@@ -11,7 +11,7 @@
           >Вперед!</router-link
         >
       </div>
-      <div class="c-promotion__wrapper-item">
+      <div class="c-promotion__wrapper-item cat-img-prom">
         <img
           class="c-promotion__wrapper-item-icon"
           src="/img/ill/try-teacher/header-cat.svg"
@@ -37,6 +37,13 @@ export default {
   border-radius: 2px;
   height: rem(150);
   padding: 0 23px 0 33px;
+  .cat-img-prom {
+    margin-left: 14px;
+    img {
+      width: 85px;
+      height: 105px;
+    }
+  }
   &__wrapper {
     @extend %df;
     @extend %aic;
@@ -49,6 +56,7 @@ export default {
         @extend %text-big;
         color: $black;
         line-height: 27px;
+        width: 273px;
       }
 
       &-icon {
@@ -70,7 +78,7 @@ export default {
     }
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-promotion {
     width: calc(100% / 2);
   }
@@ -79,16 +87,35 @@ export default {
   .c-promotion {
     width: 100%;
     padding-left: 18px;
-    &__wrapper-item-tag {
-      font-size: rem(14);
+    .c-promotion__wrapper {
+      width: 100%;
+      justify-content: space-between;
     }
-    &__wrapper-item-btn {
-      width: 116px;
-      height: 30px;
-      font-size: rem(12);
+    .cat-img-prom {
+      margin-left: 0px;
+      img {
+        width: 66px;
+        height: 80px;
+      }
     }
-    &__wrpapper-item-icon {
-      width: 53px;
+  }
+  @include bp($mobile) {
+    .c-promotion {
+      width: 100%;
+      padding: 0 10px;
+      height: 113px;
+      &__wrapper-item-tag {
+        font-size: rem(14);
+        line-height: 100%;
+      }
+      &__wrapper-item-btn {
+        width: 116px;
+        height: 30px;
+        font-size: rem(12);
+      }
+      &__wrpapper-item-icon {
+        width: 53px;
+      }
     }
   }
 }

@@ -93,7 +93,7 @@ export default {
           text:
             "<div>Занятие с <a href='#' class='teacher-name'>Анна Батьковна</a> начнется через 30 минут.</div>",
           linkText: "<a href='https://google.com'>Перейти</a>"
-        },
+        }
       ]
     };
   },
@@ -138,9 +138,13 @@ export default {
 <style lang="scss">
 .c-home {
   padding-top: rem(20);
-  width: rem(892);
+  max-width: 892px;
+  width: 100%;
   padding-bottom: 50px;
   margin: 0 auto;
+  .c-user-level__wrap-item {
+    text-align: center;
+  }
   &__header {
     @extend %df;
     @extend %jcsb;
@@ -189,38 +193,179 @@ export default {
 }
 @include bp(1360px) {
   .c-home {
-    padding-right: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
   }
 }
-@include bp(1100px) {
-  .c-home {
-    padding: 50px 0 0 0;
-    margin: 0 auto;
-    max-width: 750px;
+@include bp(1310px) {
+  .c-slider__remote-btn {
+    padding: 14px !important;
+    svg {
+      width: 8px;
+      height: 14px;
+    }
   }
 }
 @include bp(766px) {
   .c-home {
-    max-width: 320px;
     &__header {
       flex-direction: column;
     }
     &__offer {
-      &-title {
-        font-size: rem(16);
-      }
-      &-link {
-        width: 150px;
-        height: 30px;
-        font-size: rem(10);
-      }
+      // &-title {
+      //   font-size: rem(16);
+      // }
+      // &-link {
+      //   width: 150px;
+      //   height: 30px;
+      //   font-size: rem(10);
+      // }
       &-items {
         flex-wrap: wrap;
       }
     }
-    &__notifications {
-      font-size: rem(16);
+    // &__notifications {
+    //   font-size: rem(16);
+    // }
+  }
+}
+@include bp(550px) {
+  .c-user-level__title {
+    font-size: 14px;
+  }
+  .c-user-level__text {
+    font-size: 12px;
+    line-height: 17px;
+  }
+  .c-user-level,
+  .c-promotion {
+    height: 113px;
+  }
+  .c-user-level__link {
+    font-size: 12px;
+    margin-top: 0px;
+  }
+  .c-user-level__wrap-item {
+    font-size: 10px;
+    margin-bottom: 0px;
+  }
+  .c-promotion__wrapper-item-tag {
+    font-size: 14px;
+    line-height: 13.92px;
+  }
+  .c-promotion__wrapper-item-btn {
+    height: 30px;
+    font-size: 12px;
+    line-height: 15.95px;
+    width: 116px;
+    margin-top: 20px;
+  }
+  .c-circle-progress {
+    width: 70px;
+    height: 70px;
+  }
+  .c-circle-progress__percent {
+    font-size: 10px;
+  }
+  .level-show-image {
+    width: 97px;
+    height: 46px;
+  }
+  .c-home__offer-title,
+  .c-home__notifications-title,
+  .c-slider__navigation h2 {
+    font-size: 16px;
+    line-height: 16.94px;
+    width: 106px;
+  }
+  .c-slider__navigation,
+  .c-home__notifications-title,
+  .c-home__offer-wrap {
+    margin-bottom: 22.5px;
+  }
+  .c-slider__navigation h2 {
+    width: 100%;
+  }
+  .c-home-offer__title {
+    line-height: 16.94px;
+  }
+  .c-home__offer-link {
+    height: 30px;
+    font-size: 12px;
+    width: 150px;
+  }
+  .c-home__offer {
+    padding-top: 50px;
+  }
+  .c-home-offer {
+    width: 100%;
+    height: 100%;
+    .c-home-offer__content {
+      padding-left: 18px;
     }
+    .c-home-offer__btn {
+      height: 30px;
+      font-size: 12px;
+      width: 100px;
+      position: initial;
+      margin-left: 18px;
+      margin-top: 5px;
+    }
+  }
+  .c-home-offer__title {
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    max-width: 116px;
+  }
+  .c-home-offer__lessons,
+  .c-home-offer__discount {
+    font-size: 10px;
+  }
+  .c-home-offer__lessons {
+    line-height: 15.04px;
+  }
+  .c-home-offer__title {
+    width: 100% !important;
+  }
+  // notificications
+  .c-notification__wrapper-info-picture {
+    width: 30px;
+    height: 20px;
+  }
+  .c-notification {
+    padding: 13px 12px;
+    min-height: min-content;
+  }
+  .c-notification__wrapper-info {
+    img {
+      margin-right: 11px;
+    }
+  }
+  .notification-text {
+    div {
+      font-size: 10px;
+      line-height: 16px;
+      width: 95%;
+    }
+  }
+  // articles
+  .c-home-articles {
+    &__slide-description {
+      font-size: 12px;
+      line-height: 18.05px;
+      margin-bottom: 5px;
+    }
+    &__slide-date {
+      font-size: 14px;
+    }
+  }
+  // videos
+  .c-home-video {
+    margin-top: 50px;
+  }
+  .teacher-name {
+    font-size: 12px !important;
   }
 }
 .c-home__offer-items {

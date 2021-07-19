@@ -1,37 +1,19 @@
 <template>
   <div class="mobile-navigation">
-    <div class="container">
-      <div class="mobile-nav">
-        <div class="mobile-nav__wrapper">
-          <div class="mobile-nav__burger">
-            <button class="mobile-nav__btn" @click="showNavigation">
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-          </div>
-          <router-link :to="{ name: 'HomePage' }" class="mobile-nav__logo">
-            <img src="@/assets/logo.svg" alt="Logotype" />
-          </router-link>
+    <div class="mobile-nav">
+      <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__burger">
+          <button class="mobile-nav__btn" @click="showNavigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
-        <ul class="nav__social">
-          <li class="nav__social-item">
-            <a class="nav__social-link" href="#">
-              <BaseIcon name="play-ico" width="13" height="13"></BaseIcon>
-            </a>
-          </li>
-          <li class="nav__social-item">
-            <a class="nav__social-link" href="#">
-              <BaseIcon name="fb" width="8" height="15"></BaseIcon>
-            </a>
-          </li>
-          <li class="nav__social-item">
-            <a class="nav__social-link" href="#">
-              <BaseIcon name="insta" width="15" height="15"></BaseIcon>
-            </a>
-          </li>
-        </ul>
+        <router-link :to="{ name: 'HomePage' }" class="mobile-nav__logo">
+          <img src="@/assets/logo.svg" alt="Logotype" />
+        </router-link>
       </div>
+      <BaseMedias />
     </div>
   </div>
 </template>
@@ -54,12 +36,22 @@ export default {
 </script>
 
 <style lang="scss">
-.mobile-navigation {
-  padding-top: 7px;
-}
 .mobile-nav {
   @extend %df;
   @extend %jcsb;
+  height: 50px;
+  position: relative;
+  padding: 0px 25px;
+  .social-medias {
+    right: 25px !important;
+    left: auto !important;
+    height: min-content !important;
+    .media-icon,
+    svg {
+      width: 20.27px !important;
+      height: 20.27px !important;
+    }
+  }
   &__wrapper {
     @extend %df;
     @extend %aic;
@@ -80,10 +72,10 @@ export default {
     @extend %ease;
     span {
       display: block;
-      width: 23px;
+      width: 25px;
       height: 2px;
       border-radius: 7px;
-      background-color: $black;
+      background-color: $gray;
       transition: all 0.5s ease;
       &:first-child {
         position: absolute;

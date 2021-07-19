@@ -1,43 +1,45 @@
 <template>
   <div class="c-teacher-page">
-    <div class="c-teacher-page__header">
-      <router-link :to="{ name: 'Teachers' }" class="c-teacher-page__back">
-        <div class="inline-block">
-          <svg
-            width="8"
-            height="13"
-            viewBox="0 0 8 13"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7 12L1 6.5L7 1"
-              stroke="#4B4B4B"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </div>
-        <div class="inline-block">Назад</div>
-      </router-link>
-    </div>
-    <div class="c-teacher-page__teacher-card">
-      <TeacherCard
-        :hideContentOnClick="false"
-        class="open"
-        :curator_nation="curator.nation"
-        :curator_name="curator.name"
-        :curator_photo="curator.photo"
-        :curator_short_description="curator.about_content"
-      />
-    </div>
-    <div class="c-teacher-page__calendar">
-      <BaseCalendar
-        :lessons="lessons_array"
-        :daysOff="daysOff"
-        @click="calendarEvent"
-      />
+    <div class="entire-padding-teach">
+      <div class="c-teacher-page__header">
+        <router-link :to="{ name: 'Teachers' }" class="c-teacher-page__back">
+          <div class="inline-block">
+            <svg
+              width="8"
+              height="13"
+              viewBox="0 0 8 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 12L1 6.5L7 1"
+                stroke="#4B4B4B"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="inline-block">Назад</div>
+        </router-link>
+      </div>
+      <div class="c-teacher-page__teacher-card" id="indiv-teacher">
+        <TeacherCard
+          :hideContentOnClick="false"
+          class="open"
+          :curator_nation="curator.nation"
+          :curator_name="curator.name"
+          :curator_photo="curator.photo"
+          :curator_short_description="curator.about_content"
+        />
+      </div>
+      <div class="c-teacher-page__calendar">
+        <BaseCalendar
+          :lessons="lessons_array"
+          :daysOff="daysOff"
+          @click="calendarEvent"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -152,17 +154,37 @@ export default {
 </script>
 
 <style lang="scss">
+#indiv-teacher {
+  .hide,
+  .teacher__text {
+    max-height: 100%;
+  }
+  .teacher__contest {
+    z-index: 1000;
+  }
+}
 .c-teacher-page {
   @extend %pagept;
   margin: 0 auto;
   margin-bottom: 31px;
   padding-left: 0px;
+  .entire-padding-teach {
+    @media screen and (max-width: 1310px) {
+      margin: 0px 25px;
+    }
+  }
   .teacher__arrow {
     display: none;
+    @media screen and (max-width: 766px) {
+      display: initial;
+    }
   }
   .teacher__itm-middle {
     max-height: 100% !important;
     overflow: visible;
+    @media screen and (max-width: 766px) {
+      overflow: hidden;
+    }
   }
   .makeLessonBtn {
     display: none;
@@ -170,9 +192,6 @@ export default {
   &__header {
     margin-bottom: rem(32);
   }
-
-  // .c-teacher-page__back
-
   &__back {
     @extend %btn-text;
     color: $gray;
@@ -194,18 +213,6 @@ export default {
   }
   &__teacher-card {
     margin-bottom: 67px;
-  }
-}
-@include bp(1100px) {
-  .c-teacher-page {
-    padding: 50px 0 0 0;
-    margin: 0 auto;
-    max-width: 750px;
-  }
-}
-@include bp(766px) {
-  .c-teacher-page {
-    max-width: 320px;
   }
 }
 </style>

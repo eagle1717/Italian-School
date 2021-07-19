@@ -155,7 +155,7 @@ export default {
     padding-top: 38px;
   }
   &__container {
-    width: 892px;
+    max-width: 892px;;
     @extend %m0a;
   }
   input {
@@ -232,7 +232,7 @@ export default {
     padding-bottom: 50px;
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-my-message {
     padding: 50px 0 50px 0;
     margin: 0 auto;

@@ -243,9 +243,9 @@ export default {
   // .c-calendar-week__name-days
 
   &__name-days {
+    padding: 0 20px 0px 0px;
     @extend %df;
     justify-content: flex-end;
-    padding: 0 20px 0px 0px;
     @extend %text-middle;
     color: $gray;
   }
@@ -330,7 +330,7 @@ export default {
     }
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-calendar-week {
     &__wrap {
       min-width: 593px;
@@ -342,59 +342,71 @@ export default {
   }
 }
 @include bp(766px) {
-  .c-calendar-week {
-    flex-direction: column;
-    &__wrap {
-      min-width: 100%;
-    }
-    &__desc {
-      margin-left: 0;
-    }
-    &__name-days {
-      font-size: rem(12);
-      &:nth-child(6),
-      &:nth-child(7) {
-        position: absolute;
-        top: 110px;
-      }
-      &:nth-child(6) {
-        left: 23px;
-      }
-      &:nth-child(7) {
-        left: 87px;
-      }
-    }
-    &__static-days {
-      grid-template-columns: repeat(5, 1fr);
-      /*grid-template-rows: repeat(2, 1fr);*/
-      position: relative;
-      margin-bottom: 9px;
-    }
-    &__items {
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      row-gap: 43px;
-    }
-    &__item {
-      width: 62px;
-      height: 62px;
-      &-data {
-        top: 9px;
-        right: 9px;
-        font-size: rem(16);
-      }
-    }
-    &__desk {
-      margin: -67px 0 0 168px;
-    }
-    &__img {
-      margin-bottom: 0;
-      img {
-        width: 35px;
-      }
-    }
-    &__title {
-    }
+  .c-calendar__item.is_week {
+    width: 63px;
+    height: 63px;
+  }
+  .c-calendar__item-data {
+    font-size: 16px !important;
+  }
+  .c-calendar-week__name-days {
+    padding: 0 20px 0px 0px !important;
   }
 }
+// @include bp(766px) {
+//   .c-calendar-week {
+//     flex-direction: column;
+//     &__wrap {
+//       min-width: 100%;
+//     }
+//     &__desc {
+//       margin-left: 0;
+//     }
+//     &__name-days {
+//       font-size: rem(12);
+//       &:nth-child(6),
+//       &:nth-child(7) {
+//         position: absolute;
+//         top: 110px;
+//       }
+//       &:nth-child(6) {
+//         left: 23px;
+//       }
+//       &:nth-child(7) {
+//         left: 87px;
+//       }
+//     }
+//     &__static-days {
+//       grid-template-columns: repeat(5, 1fr);
+//       /*grid-template-rows: repeat(2, 1fr);*/
+//       position: relative;
+//       margin-bottom: 9px;
+//     }
+//     &__items {
+//       grid-template-columns: repeat(5, 1fr);
+//       grid-template-rows: repeat(2, 1fr);
+//       row-gap: 43px;
+//     }
+//     &__item {
+//       width: 62px;
+//       height: 62px;
+//       &-data {
+//         top: 9px;
+//         right: 9px;
+//         font-size: rem(16);
+//       }
+//     }
+//     &__desk {
+//       margin: -67px 0 0 168px;
+//     }
+//     &__img {
+//       margin-bottom: 0;
+//       img {
+//         width: 35px;
+//       }
+//     }
+//     &__title {
+//     }
+//   }
+// }
 </style>

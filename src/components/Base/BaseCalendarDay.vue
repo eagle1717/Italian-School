@@ -296,40 +296,40 @@ export default {
     text-align: center;
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-calendar {
     &__item {
       height: 80px;
     }
   }
 }
-@include bp(766px) {
-  .c-calendar {
-    &__item {
-      width: 40px;
-      height: 40px;
-      &-data {
-        top: 4px;
-        right: 6px;
-        font-size: rem(8);
-      }
-    }
-    &__lesson-ico {
-      bottom: 4px;
-      left: 3px;
-      display: flex;
-      align-items: flex-end;
-      span {
-        display: inline-block;
-        font-size: rem(6);
-        margin-bottom: 0;
-        line-height: rem(9);
-      }
-      img {
-        width: rem(15);
-        margin-bottom: 0;
-      }
-    }
-  }
-}
+// @include bp(766px) {
+//   .c-calendar {
+//     &__item {
+//       width: 40px;
+//       height: 40px;
+//       &-data {
+//         top: 4px;
+//         right: 6px;
+//         font-size: rem(8);
+//       }
+//     }
+//     &__lesson-ico {
+//       bottom: 4px;
+//       left: 3px;
+//       display: flex;
+//       align-items: flex-end;
+//       span {
+//         display: inline-block;
+//         font-size: rem(6);
+//         margin-bottom: 0;
+//         line-height: rem(9);
+//       }
+//       img {
+//         width: rem(15);
+//         margin-bottom: 0;
+//       }
+//     }
+//   }
+// }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div id="enter-content-wrapper">
-    <TopNavbar />
+    <!-- <TopNavbar /> -->
     <div class="main">
       <div class="container">
         <div class="hello-page__first" v-show="current === 'hello'">
@@ -151,241 +151,319 @@ export default {
 
 <style lang="scss">
 #enter-content-wrapper {
-  width: 1180px;
+  max-width: 1180px;
   margin: auto;
 }
 img {
   max-width: 100%;
 }
-
 .main {
   @extend %df;
   @extend %jcc;
   @extend %aic;
   justify-content: initial !important;
   margin-left: 133px;
-}
-.btn-main-green {
-  @extend %simple-btn-green;
-  width: 98px;
-  &:hover {
-    @extend %btn-darkgreen;
-  }
-  &.countinue {
-    width: 131px;
-  }
-}
-@media (max-width: 1200px) {
-  .container {
-    max-width: 960px;
-  }
-}
-
-@media (max-width: 1023px) {
-  .container {
-    max-width: 690px;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    max-width: 320px;
-  }
-}
-
-@media (max-width: 340px) {
-  .container {
-    max-width: 100%;
-    padding: 0 15px;
-  }
-}
-
-.hello-page__first,
-.hello-page__three,
-.hello-page__four {
-  @extend %df;
-  @extend %jcsb;
-  @extend %aic;
-  width: 100%;
-}
-
-.hello-page__left {
-  width: 431px;
-  margin-right: 130px;
-}
-.hello-page__first {
-  width: 100%;
-  max-width: 839px;
-  margin-top: 58px;
-  h2 {
-    @extend %h2-title-bold;
-    margin-bottom: 20px;
-  }
-}
-
-.hello-page__first p {
-  @extend %text-middle;
   margin-bottom: 50px;
-}
-
-.hello-page__second {
-  @extend %df;
-  @extend %fdc;
-  width: 100%;
-  max-width: 503px;
-  margin-top: 91px;
-  button {
-    margin-top: 25px;
-  }
-}
-
-.hello-page__second h2 {
-  @extend %h2-title-bold;
-  margin-bottom: 15px;
-}
-
-.hello-page__human {
-  @extend %df;
-}
-
-.hello-page__human-item {
-  margin-right: 73px;
-  text-align: center;
-  position: relative;
-  width: 120px;
-  &.cot {
-    margin-right: 0px;
-  }
-}
-
-.hello-page__human-item img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 120px;
-  height: 164px;
-  transition: 0.2s all ease;
-  opacity: 1;
-}
-
-@media (max-width: 1023px) {
-  .hello-page__human {
-    flex-direction: column;
-  }
-  .hello-page__human-item {
-    margin-right: auto;
-    margin-left: auto;
-  }
-}
-
-.hello-page__human-item img:nth-child(2) {
-  opacity: 0;
-  transition: 0.2s all ease;
-}
-
-.hello-page__human-item {
-  h3 {
-    cursor: default;
-  }
-  &:hover,
-  &.active {
-    h3 {
-      color: $green;
+  .btn-main-green {
+    @extend %simple-btn-green;
+    width: 98px;
+    &:hover {
+      @extend %btn-darkgreen;
     }
-    img {
-      &:nth-child(1) {
-        opacity: 0;
-      }
+    &.countinue {
+      width: 131px;
     }
-  }
-}
-
-.hello-page__human-item {
-  &:hover,
-  &.active {
-    img {
-      &:nth-child(2) {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-.hello-page__human-item h3 {
-  @extend %h3-title-bold;
-  margin-top: 179px;
-  transition: 0.2s all ease;
-}
-
-.hello-page__human-item:hover h3 {
-  color: $green;
-}
-
-.hello-page__three {
-  width: 100%;
-  max-width: 857px;
-  margin-top: 91px;
-  h2 {
-    @extend %h2-title-bold;
-    margin-bottom: 23.5px;
-  }
-}
-
-.hello-page__three ul,
-.hello-page__four ul {
-  @extend %text-big;
-}
-.hello-page__checkbox input {
-  position: absolute;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-.hello-page__checkbox-text {
-  position: relative;
-  padding: 0 0 0 37px;
-  margin-bottom: 27px;
-  line-height: 24px;
-  background-position: left center;
-  background-size: 24px;
-  background-repeat: no-repeat;
-  transition: 0.15s all ease;
-  &.last {
-    margin-bottom: 0px;
-  }
-}
-
-.hello-page__checkbox input:checked ~ .hello-page__checkbox-text {
-  color: $green;
-  background-image: url($img_dir+"ill/notifications/alert-great.svg");
-}
-
-.hello-page__three button {
-  margin-top: 40px;
-}
-
-.hello-page__four h2 {
-  @extend %h2-title-bold;
-  margin-bottom: 45px;
-}
-
-.hello-page__four button {
-  margin-top: 33px;
-}
-
-@media (max-width: 1023px) {
-  .main {
-    padding: 50px 0;
   }
   .hello-page__first,
-  .hello-page__second,
   .hello-page__three,
   .hello-page__four {
-    flex-direction: column;
+    @extend %df;
+    @extend %jcsb;
+    @extend %aic;
+    width: 100%;
   }
   .hello-page__left {
-    margin-right: 0px;
+    max-width: 431px;
+    margin-right: 130px;
+    @media screen and(max-width:900px) {
+      margin-right: 0px;
+    }
+  }
+  .hello-page__first {
+    width: 100%;
+    max-width: 839px;
+    margin-top: 58px;
+    h2 {
+      @extend %h2-title-bold;
+      margin-bottom: 20px;
+    }
+  }
+
+  .hello-page__first p {
+    @extend %text-middle;
     margin-bottom: 50px;
+  }
+
+  .hello-page__second {
+    @extend %df;
+    @extend %fdc;
+    width: 100%;
+    max-width: 503px;
+    margin-top: 91px;
+    button {
+      margin-top: 25px;
+    }
+  }
+
+  .hello-page__second {
+    h2 {
+      @extend %h2-title-bold;
+      margin-bottom: 15px;
+    }
+    @media screen and (max-width: 580px) {
+      button {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  .hello-page__human {
+    @extend %df;
+    @media screen and (max-width: 580px) {
+      justify-content: center;
+    }
+  }
+
+  .hello-page__human-item {
+    margin-right: 73px;
+    text-align: center;
+    position: relative;
+    width: 120px;
+    @media screen and (max-width: 580px) {
+      margin-right: 20px !important;
+    }
+    &.cot {
+      margin-right: 0px !important;
+    }
+  }
+
+  .hello-page__human-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 164px;
+    transition: 0.2s all ease;
+    opacity: 1;
+  }
+  .hello-page__human-item img:nth-child(2) {
+    opacity: 0;
+    transition: 0.2s all ease;
+  }
+
+  .hello-page__human-item {
+    h3 {
+      cursor: default;
+    }
+    &:hover,
+    &.active {
+      h3 {
+        color: $green;
+      }
+      img {
+        &:nth-child(1) {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  .hello-page__human-item {
+    &:hover,
+    &.active {
+      img {
+        &:nth-child(2) {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .hello-page__human-item h3 {
+    @extend %h3-title-bold;
+    margin-top: 179px;
+    transition: 0.2s all ease;
+  }
+
+  .hello-page__human-item:hover h3 {
+    color: $green;
+  }
+
+  .hello-page__three {
+    width: 100%;
+    max-width: 857px;
+    margin-top: 91px;
+    h2 {
+      @extend %h2-title-bold;
+      margin-bottom: 23.5px;
+    }
+    @media screen and (max-width: 766px) {
+      flex-direction: column-reverse;
+      .hello-page__left2 {
+        margin-top: 80px;
+        h2 {
+          text-align: center;
+        }
+        button {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+      .hello-page__right {
+        img {
+          height: 236px;
+          width: 312px;
+        }
+      }
+    }
+    @media screen and (max-width: $mobile) {
+      .hello-page__left2 {
+        margin-top: 30px;
+      }
+      button {
+        margin-top: 64px !important;
+      }
+      .hello-page__right {
+        img {
+          width: 196px;
+          height: 148px;
+        }
+      }
+    }
+  }
+
+  .hello-page__three ul,
+  .hello-page__four ul {
+    @extend %text-big;
+  }
+  .hello-page__checkbox input {
+    position: absolute;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .hello-page__checkbox-text {
+    position: relative;
+    padding: 0 0 0 37px;
+    margin-bottom: 27px;
+    line-height: 24px;
+    background-position: left center;
+    background-size: 24px;
+    background-repeat: no-repeat;
+    transition: 0.15s all ease;
+    &.last {
+      margin-bottom: 0px;
+    }
+  }
+  .hello-page__checkbox input:checked ~ .hello-page__checkbox-text {
+    color: $green;
+    background-image: url($img_dir+"ill/notifications/alert-great.svg");
+  }
+  .hello-page__three button {
+    margin-top: 40px;
+  }
+  .hello-page__four h2 {
+    @extend %h2-title-bold;
+    margin-bottom: 45px;
+  }
+  .hello-page__four button {
+    margin-top: 33px;
+  }
+  @media screen and (max-width: 1310px) {
+    margin-left: 0px;
+    .hello-page__first,
+    .hello-page__second,
+    .hello-page__three {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+  }
+  .hello-page__first,
+  .hello-page__three {
+    text-align: initial;
+  }
+  @media screen and (max-width: 830px) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  @include bp(766px) {
+    .hello-page__first {
+      flex-direction: column-reverse;
+      text-align: center;
+      .hello-page__right {
+        img {
+          width: 287px;
+          height: 223px;
+        }
+      }
+      .hello-page__left {
+        margin-top: 104px;
+        margin-right: 0px;
+        button {
+          margin: 0 auto;
+        }
+      }
+    }
+    .hello-page__second {
+      .hello-page__human-item {
+        img {
+          width: 119px;
+          height: 163px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: $mobile) {
+    margin-left: 20px;
+    margin-right: 20px;
+    .hello-page__left {
+      margin-top: 50px !important;
+    }
+    .hello-page__first p {
+      margin-bottom: 20px;
+      .hello-page__left h2 {
+        margin-bottom: 10px;
+      }
+      .hello-page__right {
+        img {
+          width: 226.4px;
+          height: 175.75px;
+        }
+      }
+    }
+    .hello-page__second {
+      .hello-page__human-item {
+        h3 {
+          margin-top: 125px;
+        }
+        img {
+          width: 85px;
+          height: 114px;
+          right: 0;
+          left: 0;
+          margin: auto;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 350px) {
+    .hello-page__second {
+      .hello-page__human-item {
+        margin-right: 0px !important;
+      }
+    }
   }
 }
 </style>

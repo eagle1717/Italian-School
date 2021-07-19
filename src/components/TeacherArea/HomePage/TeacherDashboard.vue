@@ -88,7 +88,7 @@ export default {
     }
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-teacher-dashboard {
     &__chart {
       width: 362px;

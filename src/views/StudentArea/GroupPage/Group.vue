@@ -33,7 +33,7 @@
   -moz-column-count: 2;
   -webkit-column-count: 2;
   column-count: 2;
-  width: 892px;
+  max-width: 892px;;
   margin-top: 25px;
   .group-card {
     display: inline-block;
@@ -99,14 +99,16 @@
       font-size: 18px;
       color: #251c1c;
       @extend %text-middle;
-      font-weight: 700;
+      // font-weight: 700;
+      font-family: 'Circe-Bold';
       margin-bottom: 20px;
     }
 
     .title {
       margin-bottom: 20px;
       @extend %text-middle;
-      font-weight: 700;
+      // font-weight: 700;
+      font-family: 'Circe-Bold';
       color: #251c1c;
       font-size: 30px;
       line-height: 33.87px;
@@ -160,7 +162,7 @@
 }
 .teachers {
   padding-top: 44px;
-  width: 892px;
+  max-width: 892px;;
   &__not-found {
     @extend %h3-title-bold;
     color: $gray;
@@ -235,13 +237,13 @@
   }
 }
 
-@include bp(1360px) {
-  .teachers {
-    padding-right: 30px;
-  }
-}
+// @include bp(1360px) {
+//   .teachers {
+//     padding-right: 30px;
+//   }
+// }
 
-@include bp(1100px) {
+@include bp(1310px) {
   .teachers {
     padding-top: 57px;
     padding-left: 0;
@@ -255,88 +257,88 @@
   }
 }
 
-@include bp(766px) {
-  .teachers {
-    max-width: 320px;
+// @include bp(766px) {
+//   .teachers {
+//     max-width: 320px;
 
-    &__title {
-      font-size: rem(20);
-      line-height: rem(25);
-    }
+//     &__title {
+//       font-size: rem(20);
+//       line-height: rem(25);
+//     }
 
-    &__filters-wrap {
-      width: 100%;
-      position: relative;
-      z-index: 5;
+//     &__filters-wrap {
+//       width: 100%;
+//       position: relative;
+//       z-index: 5;
 
-      .select {
-        width: 161px;
-        height: 30px;
+//       .select {
+//         width: 161px;
+//         height: 30px;
 
-        &__wrapper {
-          height: 30px;
-        }
+//         &__wrapper {
+//           height: 30px;
+//         }
 
-        &__wrap-val {
-          padding-left: 15px;
-          padding-right: 5px;
-          height: 30px;
-        }
+//         &__wrap-val {
+//           padding-left: 15px;
+//           padding-right: 5px;
+//           height: 30px;
+//         }
 
-        &__value {
-          font-size: rem(12);
-        }
+//         &__value {
+//           font-size: rem(12);
+//         }
 
-        &__optios {
-          padding-left: 15px;
-        }
+//         &__optios {
+//           padding-left: 15px;
+//         }
 
-        &__option-btn {
-          font-size: rem(12);
-        }
-      }
+//         &__option-btn {
+//           font-size: rem(12);
+//         }
+//       }
 
-      .datepiker {
-        width: 66px;
-        height: 30px;
+//       .datepiker {
+//         width: 66px;
+//         height: 30px;
 
-        &__val {
-          font-size: rem(12);
-        }
-      }
+//         &__val {
+//           font-size: rem(12);
+//         }
+//       }
 
-      .timepicker {
-        width: 75px;
-        height: 30px;
+//       .timepicker {
+//         width: 75px;
+//         height: 30px;
 
-        &__val {
-          font-size: rem(12);
-        }
-      }
-    }
+//         &__val {
+//           font-size: rem(12);
+//         }
+//       }
+//     }
 
-    &__my {
-      width: 100%;
-      height: 30px;
-      font-size: rem(12);
-      line-height: rem(14);
-      margin-top: 11px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      span {
-        line-height: 16px;
-      }
-    }
+//     &__my {
+//       width: 100%;
+//       height: 30px;
+//       font-size: rem(12);
+//       line-height: rem(14);
+//       margin-top: 11px;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       span {
+//         line-height: 16px;
+//       }
+//     }
 
-    &__wrap {
-      &_filters {
-        width: 100%;
-        flex-direction: column;
-      }
-    }
-  }
-}
+//     &__wrap {
+//       &_filters {
+//         width: 100%;
+//         flex-direction: column;
+//       }
+//     }
+//   }
+// }
 .teachers__filters-wrap {
   width: 172px !important;
   padding: 0px !important;

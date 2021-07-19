@@ -4,10 +4,7 @@
       <div class="c-teacher__content-teacher">
         <div class="c-teacher__content-teacher-photo">
           <template>
-            <img
-              :src="require(`@/assets/img/users/photos/${curator.photo}`)"
-              alt=""
-            />
+            <img :src="require(`@/assets/img/users/photos/${curator.photo}`)" />
           </template>
         </div>
         <div class="c-teacher__content-teacher-name">
@@ -88,7 +85,7 @@ export default {
     timeEnd: {
       type: String
     }
-  },
+  }
 };
 </script>
 

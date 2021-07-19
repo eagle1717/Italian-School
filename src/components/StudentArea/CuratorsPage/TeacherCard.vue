@@ -1,5 +1,8 @@
 <template>
-  <div class="up-teacher-wrapper" :class="{ hide: !show_full_of_card }">
+  <div
+    class="up-teacher-wrapper make-transitions"
+    :class="{ hide: !show_full_of_card }"
+  >
     <div class="teacher" @click="show_full_card">
       <div class="teacher__itm-left">
         <figure class="teacher__user">
@@ -16,24 +19,42 @@
             <p class="teacher__user-nation">{{ curator_nation }}</p>
           </figcaption>
         </figure>
-        <button
-          class="teacher__btn-video curator-buttons"
-          @click.stop="open_teacher_modal"
-        >
-          <span>Посмотреть видео</span>
-        </button>
-        <router-link
-          class="teacher__btn-lesson curator-buttons makeLessonBtn"
-          :to="{ name: 'TeacherPage', params: { id: curator_id } }"
-        >
-          <span>Назначить занятие</span>
-        </router-link>
+        <div class="buttons-teacher-card big-device">
+          <button
+            class="teacher__btn-video curator-buttons"
+            @click.stop="open_teacher_modal"
+          >
+            <span>Посмотреть видео</span>
+          </button>
+          <router-link
+            class="teacher__btn-lesson curator-buttons makeLessonBtn"
+            :to="{ name: 'TeacherPage', params: { id: curator_id } }"
+          >
+            <span>Назначить занятие</span>
+          </router-link>
+        </div>
       </div>
-      <div class="teacher__itm-middle">
-        <p class="teacher__text" v-html="curator_short_description"></p>
+      <div class="small-devices-wrapper">
+        <div class="teacher__itm-middle">
+          <p class="teacher__text" v-html="curator_short_description"></p>
+        </div>
+        <div class="buttons-teacher-card small-device">
+          <button
+            class="teacher__btn-video curator-buttons"
+            @click.stop="open_teacher_modal"
+          >
+            <span>Посмотреть видео</span>
+          </button>
+          <router-link
+            class="teacher__btn-lesson curator-buttons makeLessonBtn"
+            :to="{ name: 'TeacherPage', params: { id: curator_id } }"
+          >
+            <span>Назначить занятие</span>
+          </router-link>
+        </div>
       </div>
-      <div class="teacher__itm-right">
-        <div class="teacher__arrow">
+      <div class="teacher__itm-right" @click="show_full_card">
+        <div class="teacher__arrow" @click="show_full_card">
           <BaseIcon name="arrow-down"></BaseIcon>
         </div>
       </div>
@@ -177,49 +198,67 @@ export default {
 <style lang="scss">
 .up-teacher-wrapper {
   margin-bottom: 15px;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  max-height: 362px;
-  background-color: #f7f7f7;
-  border-radius: 2px;
-  padding: 30px 25px 0 31px;
-  overflow: hidden;
-  cursor: pointer;
-  position: relative;
   justify-content: initial;
-  padding-bottom: 34px;
-  max-height: 100%;
+  width: 100%;
+  padding: 30px 25px 34px 31px;
+  .small-device {
+    display: none;
+  }
+  @include bp(766px) {
+    padding: 15px 22px 15px 18px;
+    padding-right: 60px;
+    .big-device {
+      display: none;
+    }
+    .small-device {
+      margin-top: 20px;
+      display: block;
+      padding-left: 20px;
+    }
+    .teacher {
+      padding: 0px;
+    }
+  }
+  .teacher__itm-middle {
+    max-width: 362px;
+    margin-left: 67px;
+    @media screen and (max-width: 1310px) {
+      max-width: 650px;
+      margin-left: 80px !important;
+    }
+    @media screen and (max-width: 1200px) {
+      margin-left: 60px !important;
+    }
+    @media screen and (max-width: 1155px) {
+      width: 500px;
+      margin-left: 20px !important;
+    }
+    @media screen and (max-width: 940px) {
+      width: 340px;
+      margin-left: 30px !important;
+    }
+    @media screen and (max-width: 800px) {
+      width: 300px;
+    }
+    @media screen and (max-width: 766px) {
+      max-width: 100% !important;
+      width: 100%;
+    }
+  }
   .teacher {
     justify-content: initial;
+    &-left {
+      width: 260px;
+    }
   }
   .teacher__itm-right {
-    height: min-content;
     position: absolute !important;
     right: 0;
     top: 42px;
-  }
-  &.hide {
-    .teacher__arrow {
-      transform: rotate(180deg);
-    }
-    .teacher__itm-middle {
-      max-height: 60px;
-      overflow: hidden;
-    }
-  }
-  .teacher__arrow {
-    margin-right: 69px;
-    .icon {
-      width: 16px;
-      height: 10px;
-      fill: transparent;
-      stroke-width: 2px;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      transform: rotate(180deg);
-      stroke: green;
-      color: green;
+    z-index: 999;
+    @media screen and (max-width: 766px) {
+      top: 10px;
+      margin-right: 0px !important;
     }
   }
   .teacher__contest {
@@ -231,30 +270,8 @@ export default {
     top: 42px;
     color: #4b4b4b;
     font-size: 14px;
-  }
-}
-.up-teacher-wrapper.hide {
-  .icon {
-    transform: rotate(180deg);
-    stroke: #251c1c !important;
-  }
-  max-height: 144px;
-  &__text {
-    max-height: 60px;
-    p:nth-child(even) {
-      margin-top: 20px;
-    }
-  }
-
-  &.open {
-    max-height: 100%;
-    cursor: default;
-    padding-bottom: 34px;
-    .teacher {
-      &__text {
-        max-height: 100%;
-        // overflow: hidden;
-      }
+    @media screen and (max-width: 766px) {
+      top: 33px;
     }
   }
 }
@@ -262,14 +279,9 @@ export default {
   @extend %df;
   @extend %jcsb;
   &__itm {
-    &-left {
-      width: 260px;
-    }
     &-middle {
-      max-width: 362px;
       margin-top: 12px;
       overflow: hidden;
-      margin-left: 67px;
     }
   }
 
@@ -322,14 +334,21 @@ export default {
   }
 
   &__contest {
+    &-menu {
+      @media screen and (max-width: 766px) {
+        width: 239px !important;
+        height: 91px !important;
+      }
+    }
     &-icon {
       cursor: pointer;
-      margin-left: 39px;
       width: 25px;
       @extend %df;
       @extend %fdc;
       @extend %jcc;
-
+      @media screen and (max-width: 766px) {
+        z-index: 10000;
+      }
       span {
         position: relative;
         z-index: 2;
@@ -357,9 +376,13 @@ export default {
       opacity: 0;
       pointer-events: none;
       padding-top: 18px;
+      transition: all 0.5s ease;
       span {
         font-size: 15px;
-        font-family: "Circe" !important;
+        font-family: "Circe-Regular" !important;
+      }
+      .teacher__contest-itm {
+        width: max-content;
       }
       button,
       li {
@@ -375,7 +398,6 @@ export default {
         pointer-events: all;
       }
     }
-
     &-icon {
       &-heart {
         margin-right: 14px;
@@ -397,7 +419,7 @@ export default {
 .teacher__itm-middle {
   max-height: 100%;
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .teacher {
     &__itm-middle {
       max-width: 336px;

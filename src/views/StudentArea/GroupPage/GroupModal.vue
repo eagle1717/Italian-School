@@ -12,7 +12,8 @@
               </h2>
             </div>
             <div
-              class="teacher2"
+              class="teacher2 make-transitions"
+              id="teach-teacher2"
               :class="{ hide: !show_full_of_card }"
               @click="show_full_card"
             >
@@ -180,12 +181,44 @@ export default {
 };
 </script>
 <style lang="scss">
+#teach-teacher2 {
+  padding: 30px;
+  max-width: 525px;
+  width: 525px;
+  margin: 30px 0px;
+  min-height: 156px;
+  .teacher2__user {
+    &-name {
+      @extend %text-big;
+      color: $black;
+      font-size: 30px;
+      font-family: "Circe-Regular";
+    }
+
+    &-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+}
+.teacher2__itm-middle {
+  max-height: 100%;
+  width: 358px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+.teacher2__text {
+  @extend %text-small-big-line-height;
+  color: $gray;
+  max-height: 100%;
+}
+
 .teacher2-course-group {
   max-width: 705px !important;
   width: 100% !important;
   padding: 0px;
-  font-family: "Circe Regular", sans-serif !important;
-  font-style: normal !important;
   .main-description2 {
     margin-bottom: 20px;
   }
@@ -204,7 +237,8 @@ export default {
   .kurs-prepoda {
     padding-top: 10px !important;
     font-size: 20px;
-    font-weight: 700;
+    // font-weight: 700;
+    font-family: "Circe-Bold";
     line-height: 29px;
     letter-spacing: 0.03em;
     color: #4b4b4b;
@@ -229,100 +263,9 @@ export default {
   .teacher2__user {
     margin-bottom: 0px;
   }
-  .teacher2 {
-    background-color: #f7f7f7;
-    max-width: 525px;
-    width: 525px;
-    margin: 30px 0px;
-    border-radius: 2px;
-    position: relative;
-    max-height: max-content;
-    height: max-content;
-    padding: 30px;
-    transition: all 0.5s ease;
-    cursor: pointer;
-    .teacher2__arrow {
-      .icon {
-        width: 11px;
-        height: 10px;
-        fill: transparent;
-        stroke: $green;
-        stroke-width: 2px;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        transform: rotate(180deg);
-      }
-    }
-    &.hide {
-      max-height: 144px;
-      overflow: hidden;
-      transition: all 0.5s ease;
-      .teacher2__itm-middle {
-        height: 60px;
-        overflow: hidden;
-        margin-bottom: 20px;
-      }
-      &__text {
-        p:nth-child(even) {
-          margin-top: 20px;
-        }
-      }
-      .teacher2__arrow {
-        .icon {
-          transform: rotate(0);
-          stroke: #251c1c !important;
-        }
-      }
-
-      &.open {
-        max-height: 100%;
-        cursor: default;
-
-        .teacher2 {
-          &__text {
-            max-height: 100%;
-            // overflow: hidden;
-          }
-        }
-      }
-    }
-    .curator-text {
-      margin-left: 17px;
-      .teacher2__itm-middle {
-        p {
-          font-size: 14px;
-          line-height: 20px;
-          color: $gray;
-        }
-      }
-    }
-    .top-content {
-      width: 100%;
-    }
-    .teacher2__user-name {
-      @extend %regular;
-      font-size: 30px;
-      font-weight: 400;
-      line-height: 34px;
-      letter-spacing: 0.03em;
-      color: rgba(37, 28, 28, 1);
-    }
-    .teacher2__itm-middle {
-      margin-top: 4px;
-      .teacher2__text {
-        width: 358px;
-      }
-      p {
-        margin-top: 25px;
-      }
-      p:nth-child(1) {
-        margin-top: 0px;
-      }
-    }
-  }
-  .teacher2__user-info {
-    margin-top: 0px;
-    margin-left: 0px;
+  .curator-text {
+    margin-left: 17px;
+    margin-top: 12px;
   }
   .teacher2__itm-right {
     margin-top: 9px;
@@ -340,7 +283,8 @@ export default {
     }
     h3 {
       font-size: 30px;
-      font-weight: 700;
+      // font-weight: 700;
+      font-family: "Circe-Bold";
       line-height: 34px;
       letter-spacing: 0.03em;
     }
@@ -350,9 +294,8 @@ export default {
     margin-bottom: 20px;
     .times {
       span {
-        font-family: "Circe";
+        font-family: "Circe-Bold";
         font-size: 20px;
-        font-weight: 700;
         line-height: 29px;
         letter-spacing: 0.03em;
         margin-left: 5px;
@@ -414,7 +357,8 @@ export default {
         }
         .hd-ab {
           margin-top: 20px;
-          font-weight: 700;
+          // font-weight: 700;
+          font-family: "Circe-Bold";
           line-height: 29px;
           letter-spacing: 0.03em;
         }
@@ -428,7 +372,8 @@ export default {
     }
     .price {
       font-size: 18px;
-      font-weight: 700;
+      // font-weight: 700;
+      font-family: "Circe-Bold";
       line-height: 27px;
       color: rgba(57, 177, 0, 1);
     }
@@ -451,7 +396,8 @@ export default {
   margin-top: 10px;
   span {
     font-size: 20px;
-    font-weight: 700;
+    // font-weight: 700;
+    font-family: "Circe-Bold";
     line-height: 29px;
     letter-spacing: 0.03em;
     margin-left: 5px;

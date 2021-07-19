@@ -10,6 +10,7 @@
       </p>
       <BaseInputText
         class="c-register-modal__field text-field-input"
+        id="user-fill"
         icon="user"
         placeholder="Ваше имя"
         v-model="first_name"
@@ -125,18 +126,24 @@ export default {
   @extend %jcc;
   margin-top: $mt;
 }
+.c-register-modal__field.text-field-input#user-fill {
+  .c-input__field {
+    padding-left: 5px;
+    @media screen and (max-width: $mobile) {
+      padding-left: 10px !important;
+    }
+  }
+}
 .c-register-modal {
   &__field {
     width: 100%;
     margin-bottom: 13px;
   }
-
   &__content {
     @extend %df;
     @extend %fdc;
     // @extend %jcc;
     @extend %h100;
-    width: rem(311);
     &.v-registration {
       &__from {
         margin: 0 auto;
@@ -152,18 +159,25 @@ export default {
   &__subtitle {
     @extend %text-small-big-line-height;
     color: $black;
-    max-width: rem(300);
-    margin: rem(5) 0 rem(37) 0;
-    margin-bottom: 30px;
+    max-width: 100%;
+    margin: rem(5) 0 rem(30) 0;
+    @media screen and (max-width: $mobile) {
+      margin-bottom: 26px;
+    }
   }
 
   &__register-btn {
     @extend %btn-border-green;
     @extend %btn-all-green;
-    width: rem(311);
+    width: 100%;
     margin-top: 34px;
     &:hover {
       @extend %btn-darkgreen;
+    }
+    @media screen and (max-width: $mobile) {
+      margin-bottom: 22px;
+      height: 35px;
+      padding: 0px !important;
     }
   }
 }

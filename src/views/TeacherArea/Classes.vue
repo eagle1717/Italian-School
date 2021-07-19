@@ -146,7 +146,7 @@ export default {
   @extend %pagept;
   margin: 0 auto;
   padding-top: 42px;
-  width: 892px;
+  max-width: 892px;;
   padding-left: 0px;
   #wr-stud-card {
     margin-top: 32px;
@@ -182,7 +182,8 @@ export default {
   }
   &__title {
     font-size: 20px;
-    font-weight: 700;
+    // font-weight: 700;
+    font-family: 'Circe-Bold';
     height: min-content;
     letter-spacing: 0.03em;
     color: #4b4b4b;
@@ -204,7 +205,8 @@ export default {
       margin-bottom: 15px;
       font-size: 20px;
       font-style: normal;
-      font-weight: 700;
+      // font-weight: 700;
+      font-family: 'Circe-Bold';
       line-height: 21px;
       letter-spacing: 0.03em;
     }
@@ -215,7 +217,7 @@ export default {
     }
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .v-teacher-classess {
     padding: 50px 0 0 0;
     max-width: 750px;

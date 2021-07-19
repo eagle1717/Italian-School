@@ -11,9 +11,11 @@
       />
       <div
         class="c-input-password__field-show-icon"
-        :class="{ 'c-input-password__field-show-icon--show': isShow }"
         @click.stop="toggleShow"
-      ></div>
+      >
+        <img src="/img/icons/hide-pass.svg" alt="hide" v-if="isShow" />
+        <img src="/img/icons/eye-pass.svg" alt="show" v-else />
+      </div>
       <template v-if="showProgress">
         <div class="c-input-password__progress">
           <span :style="{ width: security_password }"></span>
@@ -78,11 +80,17 @@ export default {
   border: 1px solid $soft_gray;
   width: 100%;
   height: rem(50);
-  padding: 0 0 0 16px;
+  padding: 0 0 0 20px;
   transition: all 0.5s ease;
   margin-bottom: 0px !important;
+  position: relative;
+  .c-input-password__field-show-icon--show {
+    height: 20px;
+    width: 20px;
+  }
   svg {
-    width: 27.25px;
+    width: 20px;
+    margin-left: 2px;
   }
   .c-input__field {
     padding-left: 0px;
@@ -94,7 +102,7 @@ export default {
     @extend %text-very-small;
     color: $red;
     margin-top: 10px;
-    text-align: center;
+    // text-align: center;
   }
   &__progress {
     position: absolute;
@@ -123,8 +131,6 @@ export default {
     width: 100%;
     @extend %text-middle;
     @extend %input-reset;
-    letter-spacing: 1px;
-    /*font-size: 20px;*/
     color: $black;
     height: 100%;
     max-width: rem(220);
@@ -133,12 +139,6 @@ export default {
       color: rgba(75, 75, 75, 1);
     }
     &-icon {
-      // position: absolute;
-      // top: 50%;
-      // transform: translateY(-50%);
-      // left: rem(27);
-      // width: rem(17);
-      // height: rem(17);
       &.icon {
         fill: transparent;
         stroke: currentColor;
@@ -146,27 +146,6 @@ export default {
       width: rem(34);
       height: rem(20);
     }
-
-    &-show-icon {
-      // position: absolute;
-      // top: 50%;
-      // right: 21px;
-      background-image: url($img_dir+"icons/hide-pass.svg");
-      @extend %bg-reset;
-      width: rem(19);
-      height: rem(12);
-      margin-left: rem(3);
-      &--show {
-        background-image: url($img_dir+"icons/eye-pass.svg");
-      }
-    }
-  }
-}
-</style>
-<style lang="scss">
-input {
-  &:placeholder {
-    color: red !important;
   }
 }
 </style>

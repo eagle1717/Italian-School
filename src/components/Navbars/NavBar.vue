@@ -339,12 +339,6 @@ export default {
         }
       }
     }
-    .router-link-active,
-    .router-link-exact-active {
-      span {
-        color: $green;
-      }
-    }
     &-text {
       @extend %h3-title-bold;
       color: $gray;
@@ -360,28 +354,28 @@ export default {
     z-index: 100;
   }
 }
-@include bp(1360px) {
-  .navigation {
-    padding-left: 60px;
-    width: 338px;
-  }
-  .nav {
-    &__offer {
-      max-width: 200px;
-      bottom: 117px;
-    }
-    &__menu {
-      &-item {
-        position: relative;
-        z-index: 5;
-        &_поддержка {
-          margin-top: 150px;
-        }
-      }
-    }
-  }
-}
-@include bp(1100px) {
+// @include bp(1360px) {
+//   .navigation {
+//     padding-left: 60px;
+//     width: 338px;
+//   }
+//   .nav {
+//     &__offer {
+//       max-width: 200px;
+//       bottom: 117px;
+//     }
+//     &__menu {
+//       &-item {
+//         position: relative;
+//         z-index: 5;
+//         &_поддержка {
+//           margin-top: 150px;
+//         }
+//       }
+//     }
+//   }
+// }
+@include bp(1310px) {
   .navigation {
     z-index: 9999;
   }
@@ -407,16 +401,16 @@ export default {
     }
   }
 }
-@media screen and (max-width: 1300px) and (min-width: 1100px) and (min-height: 600px) {
-  .nav {
-    &__user {
-      margin-bottom: 15px;
-    }
-    &__menu-item_поддержка {
-      margin-top: 100px;
-    }
-  }
-}
+// @media screen and (max-width: 1300px) and (min-width: 1310px) and (min-height: 600px) {
+//   .nav {
+//     &__user {
+//       margin-bottom: 15px;
+//     }
+//     &__menu-item_поддержка {
+//       margin-top: 100px;
+//     }
+//   }
+// }
 @include bp(766px) {
   .navigation {
     width: 100%;
@@ -443,6 +437,13 @@ export default {
       }
     }
   }
+}
+.nav__menu-link.svg {
+ svg {
+   path {
+     transition: all 0.3s ease;
+   }
+ }
 }
 @include bp(360px) {
   .mobile-navbar {

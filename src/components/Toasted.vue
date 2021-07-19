@@ -139,7 +139,7 @@ export default {
     height: 22px;
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-notification-alert {
     &__list {
       width: 100%;

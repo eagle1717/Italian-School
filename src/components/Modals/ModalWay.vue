@@ -21,7 +21,8 @@
     margin-top: 60px;
     &-header {
       font-size: 20px;
-      font-weight: 700;
+      // font-weight: 700;
+      font-family: "Circe-Bold";
       line-height: 29px;
       letter-spacing: 0.03em;
       color: $text;
@@ -32,6 +33,27 @@
       line-height: 27px;
       color: $text;
       margin-top: 23px;
+    }
+  }
+  @include bp($mobile) {
+    width: min-content;
+    margin: auto;
+    img {
+      width: 240px;
+      height: 135px;
+      margin: auto;
+    }
+    .way-text-header {
+      font-size: 16px;
+    }
+    .way-text {
+      margin-top: 32px;
+    }
+    .way-text-paragraph {
+      font-size: 12px;
+      line-height: 18.05px;
+      width: 301px;
+      margin-top: 13px;
     }
   }
 }

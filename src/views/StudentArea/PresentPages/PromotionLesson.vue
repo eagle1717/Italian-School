@@ -34,8 +34,7 @@ export default {
 .c-promotion-page {
   padding-top: rem(10);
   margin: 0 auto;
-  width: 946px;
-
+  max-width: 946px;
   &__header {
     margin-bottom: rem(83);
   }
@@ -55,8 +54,6 @@ export default {
     &_left {
       max-width: rem(390);
     }
-
-    // .c-promotion-page__wrap_right
 
     &_right {
       width: rem(381);
@@ -89,35 +86,107 @@ export default {
     }
   }
 }
-@include bp(1100px) {
+@include bp(1368px) {
   .c-promotion-page {
-    padding-top: 50px;
-    padding-left: 15px;
-    padding-right: 15px;
-
-    &__container {
-      max-width: 750px;
-      margin: 0 auto;
-      padding-left: 0;
-    }
-    &__wrap {
-      &_right {
-        width: 300px;
+    max-width: 920px;
+  }
+}
+@include bp(1310px) {
+  .c-promotion-page {
+    max-width: 946px;
+    margin: auto;
+    .c-promotion-page__container {
+      padding-left: 0px;
+      margin: auto;
+      .c-promotion-page__text {
+        width: 352px;
       }
+    }
+  }
+}
+@include bp(1000px) {
+  .c-promotion-page {
+    width: 800px;
+    .c-promotion-page__wrap_right {
+      width: 354px;
+      height: 274px;
+    }
+    .c-promotion-page__header {
+      margin-bottom: 80px;
+    }
+    .c-promotion-page__container {
+      padding-left: 0px;
+      width: 750px;
+    }
+  }
+}
+@include bp(830px) {
+  .c-promotion-page {
+    max-width: 100%;
+    padding: 0 5px;
+    .c-promotion-page__header {
+      width: 100%;
     }
   }
 }
 @include bp(766px) {
   .c-promotion-page {
     margin-bottom: 50px;
-    &__container {
-      max-width: 320px;
+    .c-promotion-page__container {
       flex-direction: column;
+      padding-left: 0px;
+      margin-left: 20px;
+      max-width: max-content;
+      .c-promotion-page__text {
+        margin-top: 13px;
+        margin-bottom: 26px;
+      }
     }
     &__wrap {
       &_left {
         margin-bottom: 50px;
       }
+    }
+  }
+}
+@include bp(620px) {
+  .c-promotion-page {
+    .c-promotion-page__header {
+      margin-bottom: 50px;
+    }
+    .c-promotion-page__container {
+      max-width: 320px;
+      .c-promotion-page__title {
+        font-size: 22px;
+        line-height: 24.84px;
+      }
+      .c-promotion-page__text {
+        font-size: 12px;
+        line-height: 18.05px;
+        max-width: 100%;
+      }
+      .c-promotion-page__link {
+        width: 202px;
+        height: 35px;
+        font-size: 12px;
+      }
+      .c-promotion-page__wrap_right {
+        width: 317px;
+        height: 245px;
+      }
+    }
+  }
+}
+@include bp(355px) {
+  .c-promotion-page {
+    width: fit-content !important;
+    height: fit-content !important;
+    .c-promotion-page__container {
+      margin: 0px 5px;
+    }
+    .c-promotion-page__wrap_right {
+      width: fit-content !important;
+      height: fit-content !important;
     }
   }
 }

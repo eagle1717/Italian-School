@@ -11,17 +11,10 @@
           :key="key"
         >
           <div class="c-simple-student-card__user-data">
-            <div class="c-simple-student-card__main-data">
+            <div class="c-simple-student-card__main-data" @click="openModal">
               <figure class="c-simple-student-card__img">
                 <template v-if="it.img">
-                  <!-- <img :src="require(`@/assets/${it.img}.svg`)" :alt="name" /> -->
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
-                    :alt="name"
-                  />
-                </template>
-                <template v-else>
-                  <img src="img/ill/default-photo.svg" :alt="it.name" />
+                  <img :src="require(`@/assets/${it.img}.svg`)" alt="" />
                 </template>
               </figure>
               <div class="c-simple-student-card__name">
@@ -36,31 +29,36 @@
             </div>
           </div>
           <template v-if="it.link_to_homework && it.is_homework_done">
-            <button
+            <a
+              href="https://google.com"
+              target="_blank"
               class="c-simple-student-card__btn c-simple-student-card__btn_red"
             >
               <span>
                 Correggere compito
               </span>
-            </button>
+            </a>
           </template>
           <template v-else-if="!it.link_to_lesson">
-            <button
+            <a
+              @click="openModal2"
               class="c-simple-student-card__btn c-simple-student-card__btn_green2"
             >
               <span>
                 Aggiungere link
               </span>
-            </button>
+            </a>
           </template>
           <template v-else>
-            <button
+            <a
+              href="https://google.com"
+              target="_blank"
               class="c-simple-student-card__btn c-simple-student-card__btn_green"
             >
               <span>
                 Alla lezione
               </span>
-            </button>
+            </a>
           </template>
         </div>
       </div>
@@ -69,11 +67,9 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from "vuex";
-import { get_curator_users } from "@/mixins/mixins.js";
+import { mapMutations } from "vuex";
 export default {
   name: "Students",
-  mixins: [get_curator_users],
   data() {
     return {
       dateSelect: null,
@@ -114,7 +110,9 @@ export default {
           name: "Ника Ларингова",
           level: "A1",
           date: "24 мая",
-          link_to_lesson: "https://google.com"
+          link_to_homework: "https://google.com",
+          is_homework_done: true,
+          isHomework: false
         },
         {
           id: 34242,
@@ -157,15 +155,12 @@ export default {
   },
   methods: {
     ...mapMutations(["SHOW_MODAL"]),
-    showUserModal() {
-      this.SHOW_MODAL("student-modal");
+    openModal() {
+      this.SHOW_MODAL("student-profile");
+    },
+    openModal2() {
+      this.SHOW_MODAL("lesson-with-student");
     }
-  },
-  computed: {
-    ...mapGetters("user", [
-      "curator_not_confirmed_lessons",
-      "curator_confirmed_lessons"
-    ])
   }
 };
 </script>
@@ -189,8 +184,8 @@ export default {
     &_bot {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      column-gap: 30px;
-      row-gap: 38px;
+      grid-column-gap: 30px;
+      grid-row-gap: 36px;
       margin-top: 25px;
     }
   }
@@ -209,7 +204,7 @@ export default {
     }
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .v-students-page {
     max-width: 750px;
     margin: 0 auto;
@@ -227,8 +222,6 @@ export default {
       &_bot {
         grid-template-columns: 1fr;
       }
-    }
-    &__wrapper-selects {
     }
     &__select {
       width: 141px;
@@ -261,6 +254,7 @@ export default {
   width: 277px;
   height: 300px;
   overflow: hidden;
+  $border-width2: 2.5;
   &:hover {
     .c-simple-student-card {
       &__btn {
@@ -270,40 +264,45 @@ export default {
   }
   &__main-data {
     cursor: pointer;
+    width: max-content;
+    margin: auto;
     .c-simple-student-card {
       &__img {
-        display: block !important;
+        margin: auto;
+        transition: all 0.5s ease;
+        width: 90px;
+        height: 90px;
+        border-radius: 100%;
+        overflow: hidden;
+        border: $border-width2 + px solid transparent;
+        transition: all 0.5s ease;
+        img {
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+          border-radius: 100%;
+        }
+      }
+      &__name {
+        transition: all 0.5s ease;
       }
     }
     &:hover {
       .c-simple-student-card {
         background-color: $dark-white;
         &__img {
-          border-color: $green;
+          border: $border-width2 + px solid $green;
+          transition: all 0.5s ease;
         }
         &__name {
           color: $green;
+          transition: all 0.5s ease;
         }
       }
     }
   }
   &__user-data {
     padding-top: 28px;
-  }
-  &__img {
-    width: 87px;
-    height: 87px;
-    border-radius: 100%;
-    overflow: hidden;
-    margin: 0 auto;
-    border: 2px solid transparent;
-    transition: all 0.5s ease;
-    img {
-      object-fit: cover;
-      border-radius: 100%;
-      display: block;
-      position: relative;
-    }
   }
   &__name {
     @extend %text-big;
@@ -334,9 +333,9 @@ export default {
       @extend %simple-btn-red-fill;
       width: 217px;
       &:hover {
-        background: #d62a20;
+        background: #d62a20 !important;
         border-color: transparent;
-        color: $white;
+        color: $white !important;
       }
     }
     &_green {

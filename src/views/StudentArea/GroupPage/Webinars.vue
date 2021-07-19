@@ -162,3 +162,11 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.group-wrapper {
+  font-family: "Circe-Regular";
+  .go-to-lesson {
+    font-family: 'Circe-Bold';
+  }
+}
+</style>

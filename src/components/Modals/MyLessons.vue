@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import Teacher from "../MyLessons/Teacher";
+import Teacher from "@/components/MyLessons/Teacher";
 import Homework from "@/components/Modals/Homework.vue";
 export default {
   name: "MyLessons",
@@ -82,13 +82,14 @@ export default {
 </script>
 
 <style lang="scss">
+.c-homework {
+  width: 705px;
+}
 .c-my-lessons {
   @extend %pagept;
   padding-top: 36px;
   padding-left: 60px;
-  &__modal {
-    width: 705px;
-  }
+  width: 705px;
   &__container {
     max-width: 525px;
   }
@@ -135,7 +136,7 @@ export default {
     }
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-my-lessons {
     &__modal {
       width: 100% !important;

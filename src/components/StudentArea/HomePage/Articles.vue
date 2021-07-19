@@ -13,8 +13,13 @@
             :src="slide.image"
             alt=""
           />
-          <p class="c-home-articles__slide-description" v-html="slide.desc"></p>
-          <p class="c-home-articles__slide-date">{{ slide.date }}</p>
+          <div class="article-description">
+            <p
+              class="c-home-articles__slide-description"
+              v-html="slide.desc"
+            ></p>
+            <p class="c-home-articles__slide-date">{{ slide.date }}</p>
+          </div>
         </a>
       </template>
     </BaseSlider>
@@ -78,7 +83,7 @@ export default {
   &__slide {
     @extend %df;
     @extend %fdc;
-    width: rem(430);
+    max-width: 48%;
     transition: all 0.5s ease;
     &:hover {
       .c-home-articles {
@@ -108,32 +113,28 @@ export default {
     }
   }
 }
-@include bp(1360px) {
-  .c-home-articles {
-    &__slide {
-      max-width: 400px;
-    }
-  }
-}
-@include bp(1100px) {
-  .c-home-articles {
-    &__slide {
-      max-width: 365px;
-      &-picture {
-        height: 228px;
-      }
-    }
-  }
-}
 @include bp(766px) {
   .c-home-articles {
     flex-direction: column;
+    img {
+      z-index: -1;
+    }
+    .c-slider__remote {
+      margin-bottom: -404px;
+      position: relative;
+    }
     &__slide {
-      width: 100%;
-      margin-bottom: 30px;
+      max-width: 100%;
       img {
-        height: 198px;
+        max-height: 198px;
       }
+    }
+  }
+}
+@include bp(550px) {
+  .c-home-articles {
+    .c-slider__remote {
+      margin-bottom: -417px;
     }
   }
 }

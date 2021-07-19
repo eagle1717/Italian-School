@@ -16,25 +16,20 @@
             disabled: it.checkHomeWork
           }"
         >
-          <div class="c-student__user-data" @click="showModal">
-            <figure class="c-student__photo">
-              <template v-if="it.photo">
+          <div class="c-student__user-data">
+            <div class="hover-change" @click="showModal">
+              <figure class="c-student__photo">
                 <img
                   :src="require(`@/assets/${it.photo}.svg`)"
                   :alt="it.name"
                 />
-              </template>
-              <template>
-                <img src="img/ill/default-photo.svg" :alt="it.name" />
-              </template>
-            </figure>
-            <div class="c-student__name-data">
+              </figure>
               <h2 class="c-student__name">{{ it.name }} {{ it.surname }}</h2>
-              <template>
-                <p class="c-student__data">
-                  Ha caricato il compito
-                </p>
-              </template>
+            </div>
+            <div class="c-student__name-data">
+              <p class="c-student__data">
+                Ha caricato il compito
+              </p>
             </div>
           </div>
           <template v-if="it.is_homework_done && !it.checkHomeWork">
@@ -93,13 +88,11 @@
 <script>
 import { mapMutations, mapGetters } from "vuex";
 import Student from "./Student.vue";
-import { get_curator_users } from "@/mixins/mixins.js";
 export default {
   name: "TeacherHomeWork",
   components: {
     Student
   },
-  mixins: [get_curator_users],
   data() {
     return {
       selectVal: "notCheck",
@@ -171,8 +164,58 @@ export default {
   @extend %pagept;
   margin: 0 auto;
   padding-top: 42px;
-  width: 892px;
+  max-width: 892px;;
   padding-left: 0px !important;
+  $border-width: 2.4;
+  .c-student__user-data {
+    position: relative;
+    cursor: initial;
+  }
+  .c-student__name-data {
+    margin-top: 15px;
+    .c-student__data {
+      line-height: 19.6px;
+      cursor: default;
+    }
+  }
+  .c-student__name {
+    color: #251c1c;
+    position: absolute;
+    margin-left: 21px;
+    top: 9px;
+    line-height: 17.89px;
+    transition: all 0.5s ease;
+  }
+  .c-student__photo {
+    border: $border-width + px solid transparent;
+    transition: all 0.5s ease;
+  }
+  .hover-change {
+    cursor: pointer;
+    figure,
+    h2 {
+      display: inline-block;
+    }
+    img {
+      object-fit: cover;
+      height: min-content;
+    }
+    figure {
+      width: 60px;
+      height: 60px;
+    }
+    &:hover {
+      transition: all 0.5s ease;
+      .c-student__photo {
+        border: $border-width + px solid $green;
+        transition: all 0.5s ease;
+      }
+      .c-student__name {
+        color: $green;
+        transition: all 0.5s ease;
+      }
+    }
+  }
   .c-student {
     padding: 15px 38.5px 15px 15px;
   }
@@ -207,7 +250,8 @@ export default {
   }
   &__title {
     font-size: 20px;
-    font-weight: 700;
+    // font-weight: 700;
+    font-family: "Circe-Bold";
     height: min-content;
     letter-spacing: 0.03em;
     color: #4b4b4b;
@@ -229,7 +273,8 @@ export default {
       margin-bottom: 15px;
       font-size: 20px;
       font-style: normal;
-      font-weight: 700;
+      // font-weight: 700;
+      font-family: "Circe-Bold";
       line-height: 21px;
       letter-spacing: 0.03em;
     }
@@ -240,7 +285,7 @@ export default {
     }
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .v-teacher-homeworks {
     padding: 50px 0 0 0;
     max-width: 750px;

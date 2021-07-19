@@ -59,17 +59,15 @@ export default {
     left: 61px;
   }
 }
-@include bp(1100px) {
-  .c-modal {
-    width: 100vw;
-    .mobile-nav__burger {
-      top: 35px;
-    }
+.c-modal {
+  width: 56vw;
+  .mobile-nav__burger {
+    top: 43px;
   }
 }
 @include bp(766px) {
   .c-modal {
-    width: 100%;
+    width: 100vw;
   }
 }
 </style>

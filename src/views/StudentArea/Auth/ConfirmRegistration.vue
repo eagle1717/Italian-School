@@ -33,25 +33,14 @@ export default {
   .confirm-text {
     margin-top: 40px;
   }
-  &__login {
-    @extend %df;
-    @extend %jcfe;
-
-    &-btn {
-      @extend %simple-btn-gray;
-      width: rem(133);
-      height: rem(45);
-    }
-  }
-
   &__content {
     @extend %df;
     @extend %jcc;
     @extend %fdc;
     height: 100%;
-    width: rem(309);
+    max-width: 311px;
+    width: 100%;
     margin: 0 auto;
-
     &-tag {
       @extend %h2-title-regular;
       color: $black;
@@ -72,6 +61,20 @@ export default {
     &-send {
       @extend %text-middle;
       color: $green;
+    }
+    @media screen and (max-width: $mobile) {
+      max-width: 231px;
+      .confirm-text {
+        margin-top: 30px;
+        h2 {
+          font-size: 22px;
+          line-height: 100%;
+          white-space: nowrap;
+        }
+        p {
+          font-size: 12px;
+        }
+      }
     }
   }
 }

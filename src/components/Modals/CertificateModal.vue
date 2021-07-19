@@ -1,25 +1,20 @@
 <template>
-  <BaseModal class="c-special-modal-main">
+  <BaseModal class="c-special-modal-main" id="certificatemodal">
     <div class="c-special-modal" v-if="notSendYet">
       <div class="c-special-modal__wrap c-special-modal__wrap_top">
-        <h2 class="c-special-modal__title margin-from-close-button">Анкета специального занятия</h2>
+        <h2 class="c-special-modal__title margin-from-close-button">
+          Анкета специального занятия
+        </h2>
       </div>
       <div class="c-special-modal__wrap c-special-modal__wrap_teacher">
         <StudentModalCard :photo="user_photo" :name="user_name" />
-        <!--        <TeacherModalCard-->
-        <!--          :image="teacherInfo.image"-->
-        <!--          :name="teacherInfo.name"-->
-        <!--          :surname="teacherInfo.surname"-->
-        <!--          :time-start="teacherInfo.timeStart"-->
-        <!--          :time-end="teacherInfo.timeEnd"-->
-        <!--        />-->
       </div>
       <div class="c-special-modal__wrap c-special-modal__wrap_text">
         <div class="c-special-modal__wrapper-text">
           <h3 class="c-special-modal__text-title">
             Какой у вас уровень языка?
           </h3>
-          <div class="c-special-modal__text">
+          <div class="c-special-modal__text" id="language-level">
             <BaseInputText v-model="level" />
           </div>
         </div>
@@ -97,19 +92,21 @@
           Подтвердите свои контактные данные чтобы мы могли связаться с вами и
           обсудить занятие.
         </p>
-        <div class="c-special-modal__data-wrap">
+        <div class="c-special-modal__data-wrap" id="bottom-form">
+          <BasePhoneInput v-model="phone" />
           <BaseInputText
             class="c-special-modal__field"
             icon="email"
             placeholder="Ваша почта"
             v-model="userEmail"
           />
-          <BasePhoneInput v-model="phone" />
         </div>
       </div>
-      <button @click="send" class="c-special-modal__btn">
-        <span>Хочу специальное занятие!</span>
-      </button>
+      <div class="btn-wrapper-submit">
+        <button @click="send" class="c-special-modal__btn">
+          <span>Хочу специальное занятие!</span>
+        </button>
+      </div>
     </div>
     <div class="c-special-modal second-special-modal" v-else>
       <Way />
@@ -153,121 +150,136 @@ export default {
 
 <style lang="scss">
 .c-special-modal-main {
-  overflow-x: scroll;
-}
-.c-special-modal__text {
+  // overflow-x: scroll;
+  overflow-x: hidden;
+  .c-special-modal__text {
+    .c-input {
+      width: 100%;
+      padding-left: 0px;
+    }
+  }
   .c-input {
-    width: 100%;
-    padding-left: 0px;
+    border-radius: 2px !important;
   }
-}
-.c-special-modal {
-  padding-top: rem(43);
-  margin-left: 60px;
-  max-width: rem(574);
-  // .c-special-modal__wrap
-
-  &__wrap {
-    // .c-special-modal__wrap_top
-
-    &_top {
-      @extend %df;
-      @extend %aic;
-      margin-bottom: rem(60);
-    }
-
-    // .c-special-modal__wrap_teacher
-
-    &_teacher {
-      margin-bottom: 60px;
-    }
-
-    // .c-special-modal__wrap_text
-
-    &_text {
+  #language-level {
+    .c-input {
+      max-width: 100%;
     }
   }
-
-  // .c-special-modal__close
-
-  &__close {
-    @extend %close-modal-btn;
+  input {
+    padding-right: 10px;
   }
-
-  // .c-special-modal__title
-
-  &__title {
-    @extend %h3-title-bold;
-    color: $gray;
-    margin-left: rem(12);
-  }
-
-  // .c-special-modal__wrapper-text
-
-  &__wrapper-text {
-    margin-bottom: rem(40);
-  }
-
-  &__field {
-    width: calc(100% / 2);
-    margin-right: 10px;
-  }
-
-  // .c-special-modal__text-title
-
-  &__text-title {
-    @extend %text-big;
-    color: $gray;
-    margin-bottom: rem(14);
-  }
-
-  // .c-special-modal__textarea
-
-  &__textarea {
-    height: 120px;
-  }
-
-  // .c-special-modal__user-data
-
-  &__user-data {
+  #bottom-form {
+    .c-input-wrapper.c-special-modal__field {
+      margin-right: 0px;
+      padding-right: 0px;
+    }
+    .c-base-phone,
+    .c-input {
+      border-radius: 2px;
+    }
     .c-input,
-    .c-base-phone {
+    .c-input-wrapper.c-special-modal__field {
       width: 252px;
     }
+    .c-base-phone {
+      input {
+        padding-right: 10px;
+      }
+    }
     .c-input {
-      margin-right: 0px;
+      padding-right: 30px;
     }
   }
-
-  // .c-special-modal__btn
-
-  &__btn {
-    @extend %simple-btn-green;
-    margin-top: 37px;
-    margin-bottom: 50px;
-  }
-
-  &__data {
-    &-title {
-      margin-bottom: 14px;
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 27px;
-    }
-    &-wrap {
-      margin-top: 20px;
-      @extend %df;
-      @extend %jcsb;
-    }
-  }
-}
-@include bp(1100px) {
   .c-special-modal {
-    padding: 0 15px 80px;
-    margin: 0 auto;
-    margin-top: 50px;
+    margin-left: 60px;
+    max-width: rem(574);
+    &__wrap {
+      &_top {
+        @extend %df;
+        @extend %aic;
+        margin-bottom: rem(60);
+      }
+
+      &_teacher {
+        margin-bottom: 60px;
+      }
+    }
     &__close {
-      display: none;
+      @extend %close-modal-btn;
+    }
+
+    &__title {
+      @extend %h3-title-bold;
+      color: $gray;
+      margin-left: rem(12);
+    }
+
+    &__wrapper-text {
+      margin-bottom: rem(40);
+    }
+
+    &__field {
+      width: calc(100% / 2);
+      margin-right: 10px;
+    }
+
+    &__text-title {
+      @extend %text-big;
+      color: $gray;
+      margin-bottom: rem(14);
+    }
+
+    &__textarea {
+      height: 120px;
+    }
+
+    &__user-data {
+      .c-input,
+      .c-base-phone {
+        width: 252px;
+      }
+      .c-input {
+        margin-right: 0px;
+      }
+    }
+
+    &__btn {
+      @extend %simple-btn-green;
+      margin-top: 37px;
+    }
+
+    &__data {
+      &-title {
+        margin-bottom: 14px;
+        font-size: 18px;
+        // font-weight: 700;
+        font-family: "Circe-Bold";
+        line-height: 27px;
+      }
+      &-wrap {
+        margin-top: 20px;
+        @extend %df;
+        @extend %jcsb;
+      }
+    }
+    @include bp(766px) {
+      width: 100vw;
+      .c-input {
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+      .c-special-modal__btn {
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+      .c-special-modal__title {
+        margin-top: 0px;
+      }
     }
   }
 }

@@ -368,7 +368,7 @@ export default {
   &__history-title {
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-student-modal-tech__modal {
     width: 100% !important;
   }

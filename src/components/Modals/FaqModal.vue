@@ -191,7 +191,7 @@ export default {
     padding-left: 20px;
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-faq-modal {
     padding: 35px;
     height: 100vh;

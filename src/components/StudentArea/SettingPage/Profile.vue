@@ -412,7 +412,7 @@ export default {
   padding-bottom: 35px;
   display: grid;
   border-radius: 2px;
-  width: 892px;
+  max-width: 892px;;
   .c-input-password__field-icon {
     width: auto;
   }
@@ -672,7 +672,7 @@ export default {
     display: none;
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-profile {
     &__field {
       width: 263px;

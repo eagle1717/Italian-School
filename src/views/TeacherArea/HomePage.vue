@@ -67,10 +67,10 @@ export default {
 <style lang="scss">
 .c-home {
   padding-top: rem(20);
-  width: 892px;
+  max-width: 892px;;
+  width: 100%;
   padding-bottom: 50px;
   margin: 0 auto;
-  padding-left: 0px;
   &__header {
     @extend %df;
     @extend %jcsb;
@@ -119,19 +119,17 @@ export default {
 }
 @include bp(1360px) {
   .c-home {
-    padding-right: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-home {
-    padding: 50px 0 0 0;
-    margin: 0 auto;
-    max-width: 750px;
+    // max-width: 100%;
   }
 }
 @include bp(766px) {
   .c-home {
-    max-width: 320px;
     &__header {
       flex-direction: column;
     }

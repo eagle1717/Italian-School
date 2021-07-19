@@ -17,8 +17,6 @@
 <style lang="scss">
 .c-check-email {
   margin-top: $mt;
-  padding: rem(20) rem(116) 0 rem(114);
-  height: 70%;
   &__login {
     @extend %df;
     @extend %jcfe;
@@ -35,7 +33,8 @@
     @extend %jcc;
     @extend %fdc;
     height: 100%;
-    width: rem(309);
+    max-width: 311px;
+    width: 100%;
     margin: auto;
 
     &-tag {
@@ -59,6 +58,28 @@
       @extend %text-middle;
       color: $green;
       cursor: pointer;
+    }
+  }
+  @media screen and (max-width: $mobile) {
+    .c-check-email__content {
+      max-width: 247px;
+      width: 247px;
+      &-tag {
+        font-size: 22px;
+        letter-spacing: 3%;
+      }
+      &-text,
+      &-question,
+      &-send {
+        font-size: 12px;
+      }
+      &-question {
+        margin-top: 12px;
+      }
+      &-text {
+        line-height: 18.05px;
+        width: 229px;
+      }
     }
   }
 }

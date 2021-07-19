@@ -60,26 +60,27 @@ export default {
     slides: {
       type: Array,
       required: true
-    },
-    perPage: {
-      type: Number,
-      default: 2
     }
   },
   data() {
     return {
       offset: 0,
-      back: false
+      back: false,
+      windowWidth: window.innerWidth,
+      perPage: 2
     };
   },
   computed: {
     activeSlides() {
+      if (this.windowWidth < 766) {
+        this.perPage = 1;
+      } else {
+        this.perPage = 2;
+      }
       let slides = [...this.slides].splice(this.offset, this.perPage);
-
       if (slides.length === this.perPage) {
         return slides;
       }
-
       return [
         ...slides,
         ...[...this.slides].splice(0, this.perPage - slides.length)
@@ -89,24 +90,32 @@ export default {
   methods: {
     nextSlide() {
       let offset = this.offset + 2;
-
       if (offset >= this.slides.length) {
         offset = 0;
       }
-
       this.offset = offset;
       this.back = false;
     },
     prevSlide() {
       let offset = this.offset - 1;
-
       if (offset < 0) {
         offset = this.slides.length - 1;
       }
-
       this.offset = offset;
       this.back = true;
+    },
+    onResize() {
+      this.windowWidth = window.innerWidth;
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
   }
 };
 </script>
@@ -139,6 +148,7 @@ export default {
       border-top: 1px solid $gray;
       border-bottom: 1px solid $gray;
       padding: 24px 27.5px 24px 22.5px;
+      background-color: $white;
       &:hover {
         background-color: $green;
         svg {
@@ -156,16 +166,17 @@ export default {
 }
 @include bp(766px) {
   .c-slider {
+    position: relative;
+    &__remote {
+      z-index: 1000;
+    }
     &__wrapper {
       flex-direction: column;
     }
-    &__navigation {
-      h2 {
-        font-size: rem(16);
-      }
-    }
-    &__remote-btn {
-      padding: 10px 13px;
+    .c-slider__remote {
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
     }
   }
 }

@@ -1,25 +1,25 @@
 <template>
-  <div class="c-special-page">
-    <figure class="c-special-page__header">
+  <div class="c-certificate-page">
+    <figure class="c-certificate-page__header">
       <img src="/img/ill/lavel-page/header.svg" alt="" />
     </figure>
-    <div class="c-special-page__container">
-      <figure class="c-special-page__wrap c-special-page__wrap_left">
+    <div class="c-certificate-page__container">
+      <figure class="c-certificate-page__wrap c-certificate-page__wrap_left">
         <img src="@/assets/img/ill/certificate/certificate.svg" alt="" />
       </figure>
-      <div class="c-special-page__wrap c-special-page__wrap_right">
-        <h1 class="c-special-page__title">Сдать экзамен на сертификат</h1>
-        <p class="c-special-page__text">
+      <div class="c-certificate-page__wrap c-certificate-page__wrap_right">
+        <h1 class="c-certificate-page__title">Сдать экзамен на сертификат</h1>
+        <p class="c-certificate-page__text">
           Если у вас есть какая-то конкретная задача, которая не вписывается в
           рамки обычных занятий языком, напишите об этом нам, и мы придумаем,
           как вам помочь! Написание резюме, подготовка к собеседованию,
           подготовка публичного выступления, презентации, экзаменационных
           речей...
         </p>
-        <a href="" class="c-special-page__link-out">
+        <a href="" class="c-certificate-page__link-out">
           Подробнее
         </a>
-        <button @click="openModal" class="c-special-page__btn">
+        <button @click="openModal" class="c-certificate-page__btn">
           <span>Заполнить анкету</span>
         </button>
       </div>
@@ -41,54 +41,31 @@ export default {
 </script>
 
 <style lang="scss">
-.c-special-page {
+.c-certificate-page {
   padding-top: rem(10);
   margin: 0 auto;
   width: 946px;
-  .c-special-page__header {
-    width: 946px;
+  .c-certificate-page__header {
+    max-width: 946px;
   }
-
   &__header {
     margin-bottom: rem(90);
   }
-
   &__container {
     @extend %df;
     @extend %jcsb;
     justify-content: space-between;
   }
-
-  // .c-special-page__wrap
-
-  &__wrap {
-    // .c-special-page__wrap_left
-
-    &_left {
-      // w
-    }
-
-    // .c-special-page__wrap_right
-  }
-
-  // .c-special-page__title
-
   &__title {
     @extend %h2-title-regular;
     color: $black;
     margin-bottom: rem(11);
   }
-
-  // .c-special-page__text
-
   &__text {
     @extend %text-middle;
     color: $gray;
     max-width: rem(390);
   }
-
-  // .c-special-page__link-out
-
   &__link-out {
     @extend %dib;
     @extend %text-big;
@@ -97,9 +74,6 @@ export default {
       color: $red;
     }
   }
-
-  // .c-special-page__btn
-
   &__btn {
     @extend %simple-btn-green;
     width: 167px;
@@ -109,40 +83,119 @@ export default {
     }
   }
 }
-@include bp(1360px) {
-  .c-special-page {
-    padding-right: 30px;
-    &__wrap {
-      &_left {
-        max-width: 340px;
+@include bp(1368px) {
+  .c-certificate-page {
+    max-width: 920px;
+  }
+}
+@include bp(1310px) {
+  .c-certificate-page {
+    max-width: 946px;
+    margin: auto;
+    .c-certificate-page__container {
+      padding-left: 0px;
+      margin: auto;
+      .c-certificate-page__text {
+        width: 352px;
       }
     }
   }
 }
-@include bp(1100px) {
-  .c-special-page {
-    padding: 50px 0 50px 0;
-    &__container {
-      max-width: 750px;
-      margin: 0 auto;
+@include bp(1000px) {
+  .c-certificate-page {
+    width: 800px;
+    .c-certificate-page__wrap_right {
+      width: 354px;
+      // height: 274px;
     }
-    &__wrap {
-      &_left {
-        width: 290px;
-      }
+    .c-certificate-page__wrap_left {
+      width: 371px;
+      height: 293px;
+    }
+    .c-certificate-page__header {
+      margin-bottom: 80px;
+    }
+    .c-certificate-page__container {
+      padding-left: 0px;
+      width: 750px;
+    }
+  }
+}
+@include bp(830px) {
+  .c-certificate-page {
+    max-width: 100%;
+    padding: 0 5px;
+    .c-certificate-page__header {
+      width: 100%;
     }
   }
 }
 @include bp(766px) {
-  .c-special-page {
-    &__container {
-      max-width: 320px;
+  .c-certificate-page {
+    .c-certificate-page__container {
+      margin-bottom: 50px;
       flex-direction: column;
+      padding-left: 0px;
+      margin-left: 20px;
+      max-width: max-content;
+      .c-certificate-page__text {
+        margin-top: 13px;
+        margin-bottom: 26px;
+      }
     }
     &__wrap {
       &_left {
-        margin-bottom: 30px;
+        margin-bottom: 50px;
       }
+    }
+  }
+}
+@include bp(620px) {
+  .c-certificate-page {
+    .c-certificate-page__header {
+      margin-bottom: 50px;
+    }
+    .c-certificate-page__container {
+      max-width: 320px;
+      .c-certificate-page__wrap_left {
+        width: 90%;
+        height: 82%;
+      }
+      .c-certificate-page__title {
+        font-size: 22px;
+        line-height: 24.84px;
+      }
+      .c-certificate-page__text {
+        font-size: 12px;
+        line-height: 18.05px;
+        max-width: 100%;
+        margin-bottom: 0px;
+      }
+      .c-certificate-page__link-out {
+        width: 202px;
+        height: 35px;
+        font-size: 12px;
+      }
+      .c-certificate-page__wrap_right {
+        width: 317px;
+        height: 245px;
+      }
+      .c-certificate-page__btn {
+        height: 35px;
+        font-size: 12px;
+        margin-top: 16px;
+      }
+    }
+  }
+}
+@include bp(355px) {
+  .c-certificate-page {
+    .c-certificate-page__container {
+      margin: 0px 5px;
+      max-width: 300px;
+    }
+    .c-certificate-page__wrap_right {
+      max-width: 300px;
     }
   }
 }

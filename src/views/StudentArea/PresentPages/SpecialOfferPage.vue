@@ -46,37 +46,21 @@ export default {
 .c-special-page {
   padding-top: rem(10);
   margin: 0 auto;
-  width: 946px;
-
+  max-width: 946px;
   &__header {
     margin-bottom: rem(90);
   }
-
-  // .c-special-page__container
-
   &__container {
     @extend %df;
     @extend %jcsb;
     max-width: rem(952);
   }
 
-  // .c-special-page__wrap
-
   &__wrap {
-    // .c-special-page__wrap_left
-
-    &_left {
-      // w
-    }
-
-    // .c-special-page__wrap_right
-
     &_right {
       max-width: rem(431);
     }
   }
-
-  // .c-special-page__title
 
   &__title {
     @extend %h2-title-regular;
@@ -84,16 +68,12 @@ export default {
     margin-bottom: rem(11);
   }
 
-  // .c-special-page__text
-
   &__text {
     @extend %text-middle;
     color: $gray;
     max-width: rem(390);
     line-height: 27.2px;
   }
-
-  // .c-special-page__link-out
 
   &__link-out {
     @extend %dib;
@@ -104,8 +84,6 @@ export default {
     }
   }
 
-  // .c-special-page__btn
-
   &__btn {
     @extend %simple-btn-green;
     width: rem(167);
@@ -115,40 +93,79 @@ export default {
     }
   }
 }
-@include bp(1360px) {
+@include bp(1000px) {
   .c-special-page {
-    padding-right: 30px;
-    &__wrap {
-      &_left {
-        max-width: 340px;
-      }
+    width: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+    .c-special-page__wrap_right {
+      max-width: 360px;
+    }
+    .c-special-page__header {
+      margin-bottom: 80px;
+    }
+    .c-special-page__container {
+      padding-left: 0px;
     }
   }
 }
-@include bp(1100px) {
-  .c-special-page {
-    padding: 50px 0 50px 0;
-    &__container {
-      max-width: 750px;
-      margin: 0 auto;
+.c-special-page {
+  .c-special-page__wrap_right {
+    @include bp(850px) {
+      max-width: 320px;
     }
-    &__wrap {
-      &_left {
-        width: 290px;
-      }
+    @include bp(825px) {
+      max-width: 300px;
     }
   }
 }
 @include bp(766px) {
   .c-special-page {
-    &__container {
-      max-width: 320px;
+    margin-bottom: 50px;
+    .c-special-page__container {
       flex-direction: column;
-    }
-    &__wrap {
-      &_left {
-        margin-bottom: 30px;
+      padding-left: 0px;
+      max-width: max-content;
+      .c-special-page__wrap {
+        max-width: 320px;
       }
+    }
+  }
+}
+@include bp(620px) {
+  .c-special-page {
+    .c-special-page__header {
+      margin-bottom: 40px;
+    }
+    .c-special-page__wrap_left {
+      width: 90%;
+      height: 82%;
+    }
+    .c-special-page__title {
+      font-size: 22px;
+      line-height: 24.84px;
+    }
+    .c-special-page__text,
+    .c-special-page__link-out {
+      font-size: 12px;
+      line-height: 18.05px;
+    }
+    button {
+      width: 167px;
+      height: 35px;
+      font-size: 12px;
+      margin-top: 35px;
+    }
+  }
+}
+@include bp(355px) {
+  .c-special-page {
+    width: fit-content !important;
+    height: fit-content !important;
+    padding: 0px 5px;
+    .c-special-page__wrap_right {
+      width: fit-content !important;
+      height: fit-content !important;
     }
   }
 }

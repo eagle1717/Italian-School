@@ -35,3 +35,15 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+@include bp(1310px) {
+  .c-default-layout {
+    nav {
+      display: none;
+    }
+  }
+  .c-default-layout.app {
+    padding-left: 0px;
+  }
+}
+</style>

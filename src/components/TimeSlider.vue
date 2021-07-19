@@ -192,7 +192,8 @@ export default {
         }
 
         timeEl.style.left = newLeft + "px";
-        this.currentLeft = newLeft;
+        const result = Math.round(newLeft / this.minutesPerBlock);
+        this.currentLeft = result * this.minutesPerBlock;
         this.update();
       };
 
@@ -228,7 +229,6 @@ export default {
 .c-time-slider {
   position: relative;
   display: inline-block;
-
   &__background {
     @extend %df;
     height: 59px;

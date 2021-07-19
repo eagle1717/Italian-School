@@ -154,7 +154,7 @@ export default {
     max-width: 60%;
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-message {
     &__content {
       padding: 20px;

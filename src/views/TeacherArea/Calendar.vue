@@ -60,7 +60,7 @@ export default {
   padding-bottom: rem(64);
   margin: 0 auto;
   padding-top: 42px;
-  width: 892px;
+  max-width: 892px;;
   padding-left: 0px !important;
   // // .c-calendar__header
 
@@ -240,7 +240,7 @@ export default {
     padding-right: 30px;
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-calendar-page {
     padding: 50px 0 0 0;
     margin: 0 auto;

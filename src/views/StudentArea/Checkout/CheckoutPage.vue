@@ -75,7 +75,10 @@
             <h4 class="c-checkout__form-total-title">К оплате:</h4>
             <p class="c-checkout__form-total-price">30 000 €</p>
           </div>
-          <router-link :to="`/purchase/package/${currentPath}/success`" class="route-btn">
+          <router-link
+            :to="`/purchase/package/${currentPath}/success`"
+            class="route-btn"
+          >
             <button class="c-checkout__form-btn">
               Выбрать пакет
             </button>
@@ -177,9 +180,9 @@ export default {
 .c-checkout {
   @extend %df;
   @extend %jcsb;
+  margin-bottom: 35px;
   padding-top: rem(36);
-  width: 892px;
-  padding-bottom: 50px;
+  max-width: 892px;
   margin: 0 auto;
   .select__value {
     color: $black;
@@ -187,21 +190,6 @@ export default {
   ul.select {
     width: 141px;
   }
-  // .c-checkout__wrap
-
-  &__wrap {
-    // .c-checkout__wrap_left
-
-    &_left {
-    }
-
-    // .c-checkout__wrap_right
-
-    &_right {
-    }
-  }
-
-  // .c-checkout__img
   .packageImg {
     margin-top: 8px;
   }
@@ -225,13 +213,6 @@ export default {
     max-width: rem(445);
     margin-bottom: rem(13);
   }
-
-  // .c-checkout__adtantages
-
-  &__adtantages {
-  }
-
-  // .c-checkout__adv-item
 
   &__adv-item {
     @extend %df;
@@ -306,19 +287,10 @@ export default {
     margin: rem(3) 0 rem(34) 0;
   }
 
-  // .c-checkout__form-wrap
-
-  &__form-wrap {
-  }
-
-  // .c-checkout__form-subtitle
-
   &__form-subtitle {
     @extend %text-middle;
     color: $black;
   }
-
-  // .c-checkout__form-select-wrapper
 
   &__form-select-wrapper {
     margin: rem(19) 0 0 0;
@@ -353,13 +325,6 @@ export default {
         }
       }
     }
-
-    // .c-checkout__form-select_quanity
-
-    &_quanity {
-    }
-
-    // .c-checkout__form-select_teacher
 
     &_teacher {
       .select {
@@ -415,7 +380,7 @@ export default {
     }
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-checkout {
     max-width: 750px;
     margin: 0 auto;
@@ -432,13 +397,69 @@ export default {
 }
 @include bp(766px) {
   .c-checkout {
-    max-width: 320px;
-    margin-bottom: 50px;
-    flex-direction: column;
-    &__wrap {
-      &_left {
-        margin-bottom: 50px;
+    padding: 20px;
+    .c-checkout__form-small-title {
+      font-size: 10px;
+    }
+    .c-checkout__text {
+      font-size: 12px;
+      line-height: 18.05px;
+      margin-top: 40px;
+      margin-bottom: 27px;
+      width: 318px;
+    }
+    .c-checkout__adtantages {
+      p {
+        font-size: 14px;
       }
+      li {
+        margin-bottom: 10px;
+        &:last-of-type {
+          margin-bottom: 0px;
+        }
+      }
+      img {
+        width: 17px;
+        height: 17.44px;
+      }
+    }
+    .c-checkout__learn-more {
+      margin-top: 32.56px;
+      width: 150px;
+      height: 30px;
+      padding: 0px;
+      font-size: 12px;
+    }
+    .c-checkout__form-total {
+      margin: 30px 0px;
+    }
+    .c-checkout__form-wrap {
+      ul.select {
+        width: 120px;
+        height: 35px;
+        span {
+          font-size: 12px;
+        }
+        svg {
+          width: 8px;
+          height: 4px;
+        }
+        .select__option {
+          margin-bottom: 0px;
+        }
+      }
+      li {
+        margin-top: 0px;
+      }
+    }
+    .c-checkout__form-total-title {
+      font-size: 14px;
+    }
+    .c-checkout__form-total-price {
+      font-size: 16px;
+    }
+    .c-checkout__form-wrappers {
+      width: 253px;
     }
     &__form {
       width: 100%;
@@ -489,6 +510,44 @@ export default {
         line-height: rem(16);
       }
     }
+  }
+}
+@include bp(685px) {
+  .c-checkout {
+    max-width: 360px;
+    flex-direction: column;
+    .select__options {
+      padding-left: 14px;
+      padding-bottom: 7px;
+      li {
+        margin-bottom: 0px;
+      }
+      .select__option-btn {
+        span {
+          font-size: 12px;
+        }
+      }
+    }
+    .c-checkout__wrap.c-checkout__wrap_right {
+      margin-top: 50px;
+    }
+    .c-checkout__form-title {
+      width: 210px;
+      margin-bottom: 25px;
+    }
+    .c-checkout__text {
+      width: 100%;
+    }
+  }
+}
+@include bp(355px) {
+  .c-checkout {
+    width: fit-content !important;
+    height: fit-content !important;
+    .c-checkout__text {
+      width: 100% !important;
+    }
+    // padding: 0px 5px;
   }
 }
 </style>

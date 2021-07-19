@@ -35,7 +35,7 @@ export default {
   padding-bottom: 48px;
   padding-left: 33px;
   padding-right: 80px;
-  width: 892px;
+  max-width: 892px;;
   border-radius: 2px;
   @extend %df;
   @extend %jcsb;

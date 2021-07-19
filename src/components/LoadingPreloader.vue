@@ -32,6 +32,10 @@ export default {
   @extend %evt-none;
   opacity: 0;
   z-index: 9999999;
+  .c-loading__logo {
+    width: 95px;
+    height: 48.36px;
+  }
   &.visible {
     opacity: 1;
     @extend %evt-all;

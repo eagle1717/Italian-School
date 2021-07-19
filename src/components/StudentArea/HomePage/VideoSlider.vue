@@ -66,8 +66,11 @@ export default {
   &__slide {
     @extend %df;
     @extend %fdc;
-    width: rem(430);
+    max-width: 48%;
     position: relative;
+    .c-home-video__slide-picture {
+      width: 100%;
+    }
     height: 242px;
     &-picture {
       border-radius: 5px;
@@ -84,33 +87,17 @@ export default {
     }
   }
 }
-@include bp(1360px) {
-  .c-home-video {
-    &__slide {
-      max-width: 400px;
-    }
-  }
-}
-@include bp(1100px) {
-  .c-home-video {
-    &__slide {
-      max-width: 365px;
-      &-picture {
-        height: 228px;
-      }
-    }
-  }
-}
 @include bp(766px) {
   .c-home-video {
-    margin-top: 0px;
+    margin-top: 50px;
     padding-top: 0;
-    &__slide {
-      width: 100%;
-      margin-bottom: 30px;
+    .c-home-video__slide-picture {
+      position: relative;
+      z-index: -1;
     }
-    &__slide-picture {
-      height: 180px;
+    &__slide {
+      max-width: 100%;
+      max-height: 180px;
     }
   }
 }

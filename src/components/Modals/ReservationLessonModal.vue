@@ -4,20 +4,19 @@
       <div class="c-reservation-lesson-modal__container">
         <div class="c-reservation-lesson-modal__header">
           <!--          <span class="c-reservation-lesson-modal__close">X</span>-->
-          <p class="c-reservation-lesson-modal__title">Запланировать занятие</p>
+          <p class="c-reservation-lesson-modal__title" id="plan-title">
+            Запланировать занятие
+          </p>
         </div>
         <div class="c-reservation-lesson-modal__teacher">
           <div class="c-reservation-lesson-modal__teacher-credentials">
             <div class="c-reservation-lesson-modal__teacher-avatar">
-              <template v-if="user_photo">
-                <img :src="user_photo" :alt="curator_name" />
-              </template>
-              <template v-else>
-                <img src="img/ill/default-photo.svg" :alt="curator_name" />
+              <template>
+                <img :src="require(`@/assets/${photo}.svg`)" alt="" />
               </template>
             </div>
             <div class="c-reservation-lesson-modal__teacher-name">
-              <p>{{ curator_name }}</p>
+              <p v-html="name"></p>
             </div>
           </div>
           <div class="c-reservation-lesson-modal__teacher-time">
@@ -37,7 +36,7 @@
                 Стоимость:
               </p>
               <p class="c-reservation-lesson-modal__teacher-time-price">
-                {{ price }}&nbsp;€
+                {{ price }}&nbsp;р.
               </p>
             </div>
           </div>
@@ -59,17 +58,6 @@
               placeholder="30 мин."
             />
           </div>
-        </div>
-        <div class="one-click-payment">
-          <button
-            v-for="btn in availableLessons"
-            :key="btn.slug"
-            @click="reservLesson(btn.id)"
-            :disabled="!time"
-          >
-            <img src="@/assets/img/ill/notifications/alert-great.svg" alt="" />
-            {{ btn.name }}
-          </button>
         </div>
         <template v-if="checkMobile">
           <TimeSlider
@@ -110,10 +98,7 @@
           />
         </div>
         <div class="c-reservation-lesson-modal__submit">
-          <button
-            @click="create_lesson"
-            class="c-reservation-lesson-modal__submit-btn"
-          >
+          <button class="c-reservation-lesson-modal__submit-btn">
             Назначить занятие
           </button>
         </div>
@@ -127,10 +112,7 @@ import TimeSlider from "@/components/TimeSlider";
 import BaseSelect from "@/components/Base/BaseSelect";
 import BaseTextArea from "@/components/Base/BaseTextArea";
 import { curator_mixins } from "@/mixins/mixins.js";
-import $http from "@/service/index.js";
-import { loadStripe } from "@stripe/stripe-js";
 import { mapActions, mapGetters } from "vuex";
-// import moment from 'moment'
 export default {
   name: "ReservationLessonModal",
   mixins: [curator_mixins],
@@ -146,6 +128,7 @@ export default {
   data() {
     return {
       time: null,
+      price: 30000,
       typeLesson: [
         {
           val: "firstLesson",
@@ -168,19 +151,25 @@ export default {
           text: "Пробное занятие"
         }
       ],
+      photo: "user2",
+      name: "Tomothy <br />Murphy",
       lessonType: "firstLesson",
       timeTrack: [
         {
+          val: 90,
+          text: "90 мин"
+        },
+        {
           val: 60,
-          text: "60"
+          text: "60 мин"
         },
         {
           val: 45,
-          text: "45"
+          text: "45 мин"
         },
         {
           val: 30,
-          text: "30"
+          text: "30 мин"
         }
       ],
       activeTime: 60,
@@ -197,107 +186,13 @@ export default {
       this.activeMobileTime.from = from;
       this.activeMobileTime.to = to;
       console.log(this.activeMobileTime);
-    },
-    reservLesson(id) {
-      const slug = this.lesson_types.filter(l => l.id === id)[0].slug;
-      const duration = this.balance.find(b => b.lesson_type_id === id);
-      const SendingData = {
-        day: this.day,
-        full_from: `${this.day} ${this.time.from.time}:00`,
-        full_to: `${this.day} ${this.time.to.time}:00`,
-        teacher: this.curator.id,
-        description: this.lesson_description,
-        lesson_type: slug,
-        lesson_type_id: id,
-        price: this.price * 100,
-        time: duration.lessonDuration
-      };
-      this.$store.dispatch("set_loading", true);
-      $http
-        .create_lesson(SendingData)
-        .then(() => {
-          this.$store.dispatch("user/get_lessons").then(() => {
-            this.$router.push({ name: "Calendar" });
-            this.$store.dispatch("set_loading", false);
-            // this.$store.dispatch("show_reservation_lesson_modal", {
-            //   data: { date: this.day },
-            //   modal_name: "lessons-modal"
-            // });
-          });
-        })
-        .catch(({ response }) => {
-          const { status } = response;
-          if (status === 400) {
-            this.$store.dispatch("error_handler", {
-              type: "danger",
-              text: "Время уже занято. Попробуйте другое"
-            });
-            return;
-          } else if (status === 422) {
-            this.$store.dispatch("error_handler", {
-              type: "danger",
-              text: "Заполните все поля!"
-            });
-            return;
-          }
-          this.$store.dispatch("error_handler", {
-            type: "danger",
-            text: "Не удалось назначить занятие! Попробуйте еще раз."
-          });
-        });
-    },
-    async create_lesson() {
-      const lessonType = this.lesson_types.filter(
-        l => l.slug === this.lessonType
-      )[0].id;
-      const slug = this.lesson_types.filter(l => l.slug === this.lessonType)[0]
-        .slug;
-      const SendingData = {
-        day: this.day,
-        full_from: `${this.day} ${this.time.from.time}:00`,
-        full_to: `${this.day} ${this.time.to.time}:00`,
-        teacher: this.curator.id,
-        description: this.lesson_description,
-        lesson_type_slug: slug,
-        lesson_type_id: lessonType,
-        price: this.price * 100,
-        time: this.activeTime
-      };
-      const { publicKey, sessionId } = await this.makeCheckoutOneLesson(
-        SendingData
-      );
-      const stripe = await loadStripe(publicKey);
-      const { error } = await stripe.redirectToCheckout({ sessionId });
-
-      if (error) {
-        console.log(error);
-      }
     }
   },
   computed: {
     ...mapGetters("user", ["balance"]),
     ...mapGetters(["lesson_types"]),
-    availableLessons() {
-      if (this.balance && this.balance.length) {
-        return this.lesson_types.filter(l =>
-          this.balance
-            .filter(bal => bal.lessonQty > 0)
-            .some(b => l.id === b.lesson_type_id)
-        );
-      }
-      return [];
-    },
     checkMobile() {
       return window.innerWidth > 1100;
-    },
-    price() {
-      let type;
-      for (let key in this.curator_about) {
-        if (key === this.lessonType) {
-          type = this.curator_about[key];
-        }
-      }
-      return (this.activeTime / 10) * type;
     },
     mobile_time() {
       let times = [];
@@ -326,26 +221,61 @@ export default {
       }
       return times;
     }
-  },
-  created() {
-    if (window.innerWidth > 1100) {
-      this.timeTrack.push({
-        val: 90,
-        text: "90"
-      });
-    }
   }
+  // created() {
+  //   if (window.innerWidth > 1100) {
+  //     this.timeTrack.push({
+  //       val: 90,
+  //       text: "90"
+  //     });
+  //   }
+  // }
 };
 </script>
 
 <style lang="scss">
+.c-reservation-lesson-modal__main-modal {
+  width: 859px !important;
+  font-family: "Circe-Regular";
+  .c-reservation-lesson-modal__select-type {
+    .select__options {
+      margin-top: 5px;
+      padding-left: 20px;
+      width: 100.6%;
+    }
+  }
+  .c-reservation-lesson-modal__select-time {
+    .select__options {
+      width: 100.7%;
+      margin-top: 5px;
+      padding-left: 20px;
+    }
+  }
+  #plan-title {
+    margin-left: 40px;
+  }
+  .c-time-slider {
+    margin-top: 40px;
+  }
+  .c-time-slider__timeline {
+    width: 600px;
+  }
+  .select__value {
+    color: #251c1c;
+  }
+  .select {
+    height: 50px;
+  }
+  .select__wrap-val {
+    padding-top: 15px;
+    padding-left: 20px;
+  }
+}
 .c-reservation-lesson-modal {
   margin-top: 46px;
-  &__main-modal {
-    width: 55vw;
-  }
+  padding-bottom: 66px;
   &__container {
-    max-width: 598px;
+    width: 678px;
     margin-left: 50px;
   }
 
@@ -363,8 +293,9 @@ export default {
     @extend %df;
     @extend %jcsb;
     padding: 30px;
-    background: $dark_white;
+    background: #f7f7f7;
     margin-top: 32px;
+    border-radius: 2px;
 
     &-name p {
       @extend %h2-title-regular;
@@ -415,7 +346,7 @@ export default {
   &__select {
     @extend %df;
     @extend %jcsb;
-    margin: 40px 0;
+    margin-top: 40px;
 
     &-type {
       width: 55%;
@@ -436,6 +367,9 @@ export default {
 
   &__ta-wrapper {
     margin-top: 40px;
+    color: #4b4b4b;
+    font-size: 16px;
+    line-height: 27px;
   }
 
   &__ta {
@@ -448,7 +382,12 @@ export default {
     &-btn {
       @extend %btn-text;
       @extend %btn-all-green;
-      padding: 10px 50px;
+      height: 50px;
+      width: 175px;
+      padding: 0px;
+      &:hover {
+        @extend %btn-darkgreen;
+      }
     }
   }
   &__list {
@@ -475,7 +414,7 @@ export default {
     padding-bottom: 50px;
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-reservation-lesson-modal {
     &__container {
       max-width: 320px;
@@ -507,34 +446,6 @@ export default {
         justify-content: space-between;
         flex-direction: row;
         margin-top: 18px;
-      }
-    }
-  }
-}
-.one-click-payment {
-  margin-bottom: 40px;
-  margin-top: -20px;
-  button {
-    margin-right: 15px;
-    font-size: rem(16);
-    line-height: rem(21);
-    border: 1px solid #d8d8d8;
-    padding: 15px 7px 15px 53px;
-    position: relative;
-    border-radius: 2px;
-    @extend %btn-text;
-    img {
-      position: absolute;
-      left: 20px;
-      height: 23px;
-      width: 23px;
-    }
-    &:hover {
-      color: #39b100;
-    }
-    &:disabled {
-      &:hover {
-        color: rgba(16, 16, 16, 0.3);
       }
     }
   }

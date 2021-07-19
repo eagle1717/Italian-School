@@ -87,7 +87,8 @@ export default {
   &__message-btn {
     width: rem(179);
     height: 35px;
-    font-weight: 700;
+    // font-weight: 700;
+    font-family: 'Circe-Bold';
   }
   &__not-found {
     /*<!--@extend  %df;-->*/
@@ -118,7 +119,7 @@ export default {
     padding-bottom: 50px;
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-help {
     padding: 50px 0 50px 0;
     margin: 0 auto;

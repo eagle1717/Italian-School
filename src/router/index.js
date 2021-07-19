@@ -37,6 +37,22 @@ const routes = [
     }
   },
   {
+    path: "/reset-password/:token",
+    name: "ResetPassword",
+    component: () => import("@/views/StudentArea/Auth/ResetPassword"),
+    meta: {
+      layout: "Empty"
+    }
+  },
+  {
+    path: "/password-recovery",
+    name: "PasswordRecovery",
+    component: () => import("@/views/StudentArea/Auth/PasswordRecovery"),
+    meta: {
+      layout: "Empty"
+    }
+  },
+  {
     path: "/home",
     name: "HomePage",
     component: () => import("@/views/StudentArea/HomePage/HomePage")
@@ -82,22 +98,6 @@ const routes = [
     path: "/level",
     name: "FindOutLevel",
     component: () => import("@/views/StudentArea/HomePage/FindOutLevel")
-  },
-  {
-    path: "/reset-password/:token",
-    name: "ResetPassword",
-    component: () => import("@/views/StudentArea/Auth/ResetPassword"),
-    meta: {
-      layout: "Empty"
-    }
-  },
-  {
-    path: "/password-recovery",
-    name: "PasswordRecovery",
-    component: () => import("@/views/StudentArea/Auth/PasswordRecovery"),
-    meta: {
-      layout: "Empty"
-    }
   },
   {
     path: "/support",
@@ -182,15 +182,7 @@ const routes = [
   {
     path: "/calendario",
     name: "Calendario",
-    component: () => import("@/components/Calendars/TimelineWeekCalendar"),
-    meta: {
-      layout: "Default2"
-    }
-  },
-  {
-    path: "/calendario2",
-    name: "Calendario2",
-    component: () => import("@/views/TeacherArea/Calendar"),
+    component: () => import("@/views/TeacherArea/TeacherTimeLine"),
     meta: {
       layout: "Default2"
     }

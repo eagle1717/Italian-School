@@ -157,6 +157,9 @@ export default {
   max-width: rem(525);
   margin: 0 auto;
   padding-top: 35px;
+  input {
+    padding-left: 18px;
+  }
   &__header {
     @extend %df;
     justify-content: flex-end;
@@ -203,7 +206,6 @@ export default {
       @extend %input-reset;
       @extend %text-small-big-line-height;
       color: $gray;
-      ;
     }
     button {
       width: 42px;
@@ -211,7 +213,7 @@ export default {
     }
   }
 }
-@media screen and (max-width: 1300px) and (min-width: 1100px) and (min-height: 600px) {
+@media screen and (max-width: 1300px) and (min-width: 1310px) and (min-height: 600px) {
   .c-help-chat {
     &__modal {
       overflow: scroll;

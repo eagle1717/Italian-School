@@ -55,7 +55,8 @@ export default {
     @extend %h2-title-regular;
     font-size: 20px;
     font-style: normal;
-    font-weight: 700;
+    // font-weight: 700;
+    font-family: 'Circe-Bold';
     line-height: 29px;
     letter-spacing: 0.03em;
     color: #4b4b4b;
@@ -70,7 +71,7 @@ export default {
     }
   }
 }
-@include bp(1100px) {
+@include bp(1310px) {
   .c-setting {
     padding-bottom: 50px;
     &__container {

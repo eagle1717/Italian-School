@@ -62,7 +62,6 @@ export default {
 .v-pass-recovery {
   margin-top: $mt;
   &__form {
-    width: min-content;
     margin: 0 auto;
   }
   &__title {
@@ -78,6 +77,18 @@ export default {
     width: 100%;
     &:hover {
       @extend %btn-darkgreen;
+    }
+  }
+  @media screen and (max-width: $mobile) {
+    &__title {
+      line-height: 100%;
+    }
+    &__btn {
+      height: 35px;
+      padding: 0px;
+    }
+    .v-pass-recovery__input {
+      margin-bottom: 0px;
     }
   }
 }

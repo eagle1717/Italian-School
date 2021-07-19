@@ -2,7 +2,7 @@
   <div class="c-reset-password">
     <div class="c-reset-password__container c-reset-password__content">
       <div class="c-reset-password__wrapper-form">
-        <h2 class="c-reset-password__tag">
+        <h2 class="c-reset-password__tag c-reset-modal__title">
           Восстановление пароля
         </h2>
         <form @submit.prevent="onSubmit" class="c-reset-password__form">
@@ -90,17 +90,21 @@ export default {
 <style lang="scss">
 .c-reset-password {
   margin-top: $mt;
+  .c-reset-modal__title {
+    line-height: 100%;
+    text-align: left;
+    margin-bottom: 26px;
+  }
   .c-reset-password__form-field {
     margin-bottom: 0px;
   }
   &__container {
-    max-width: rem(1035);
+    max-width: 340px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     .c-input-password__field-show-icon {
       position: absolute;
-      right: 28.5px;
     }
     .c-input-password {
       border-radius: 2px;
@@ -131,7 +135,7 @@ export default {
     @extend %df;
     @extend %jcc;
     @extend %fdc;
-    width: rem(340);
+    width: 100%;
     margin: 0 auto;
     height: auto;
     .c-input-password {
