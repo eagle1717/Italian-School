@@ -3,7 +3,10 @@
     <div class="c-help__wrap-title">
       <h3 class="c-help__wrap-title-tag">{{ pageTitle }}</h3>
     </div>
-    <div class="c-help__wrap-term">
+    <div
+      class="c-help__wrap-term"
+      :class="{ removeFlex: $route.name === 'Help' }"
+    >
       <BaseSearch placeholder="Ваш вопрос" class="quest" />
       <router-link
         :to="{ name: 'Help' }"
@@ -43,8 +46,21 @@ export default {
 
 <style lang="scss">
 .c-search__wrap-field {
+  input.c-search__field {
+    padding-right: 10px;
+  }
+}
+.c-help__message-btn {
+  font-family: "Circe-Bold" !important;
+}
+.c-search__wrap-field {
   border-radius: 2px;
   height: 35px;
+}
+.c-help__header {
+  @include bp(620px) {
+    margin-bottom: 0px !important;
+  }
 }
 .c-help {
   &__message-btn {
@@ -84,28 +100,64 @@ export default {
     }
   }
 }
-@include bp(766px) {
-  .c-help {
+.removeFlex {
+  @media screen and (max-width: 355px) {
+    display: initial;
+    .c-help__message-btn {
+      margin-top: 5px !important;
+      margin-left: 0px;
+    }
+  }
+}
+.c-help {
+  @include bp(766px) {
+    &__wrap-title {
+      margin-bottom: 21px;
+    }
     &__header {
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
     }
-    &__wrap-title {
-      margin-bottom: 21px;
-      &-tag {
-        font-size: rem(16);
+  }
+}
+@include bp(620px) {
+  .c-help__message-btn {
+    width: 127px !important;
+  }
+  .c-help__message-btn,
+  .c-search__wrap-field {
+    height: 30px !important;
+    font-size: 12px !important;
+    padding: 0px !important;
+  }
+  .c-help__wrap-title-tag {
+    font-size: rem(14) !important;
+  }
+  .c-search__wrap-field {
+    max-width: 183px;
+    padding: 10px !important;
+  }
+  .c-search__search-btn {
+    width: 10px;
+    height: 10px;
+  }
+  &__wrap-term {
+    .c-search {
+      &__wrap-field {
+        width: 100%;
+        font-size: rem(10);
       }
     }
-    &__wrap-term {
-      .c-search {
-        width: 183px;
-        &__wrap-field {
-          width: 100%;
-          font-size: rem(10);
-        }
-      }
-    }
+  }
+}
+.c-help__message-btn {
+  @include bp(375px) {
+    width: 100px !important;
+  }
+  @include bp(345px) {
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 </style>

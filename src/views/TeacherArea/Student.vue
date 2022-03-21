@@ -145,13 +145,19 @@ export default {
 <style lang="scss">
 .c-student {
   width: 100%;
-  height: rem(86);
-  background-color: $dark-white;
+  padding: 15px;
+  @media screen and (max-width: 620px) {
+    padding: 13px;
+  }
+  background-color: #f7f7f7;
   border-radius: 2px;
   @extend %df;
   @extend %aic;
   @extend %jcsb;
-  margin-bottom: 12px;
+  margin-bottom: 13px;
+  @media screen and (max-width: 766px) {
+    margin-bottom: 6.5px;
+  }
   .c-student__btn_green {
     width: 175px;
   }
@@ -174,6 +180,14 @@ export default {
     height: rem(56);
     border-radius: 50%;
     overflow: hidden;
+    @media screen and (max-width: 766px) {
+      width: 45px !important;
+      height: 45px !important;
+      img {
+        width: 45px !important;
+        height: 45px !important;
+      }
+    }
   }
 
   &__name-data {
@@ -189,9 +203,6 @@ export default {
     color: $gray;
     margin-top: 3px;
   }
-
-  // .c-student__btn
-
   &__btn {
     @extend %simple-btn-green;
     width: rem(189);
@@ -204,7 +215,7 @@ export default {
     }
   }
 }
-@include bp(766px) {
+@include bp(620px) {
   .c-student {
     &__photo {
       width: 45px;
@@ -224,11 +235,15 @@ export default {
       border: none;
       width: auto;
       height: 100%;
+      width: max-content !important;
       span {
         display: none;
       }
       svg {
         display: block;
+        path {
+          stroke: $green;
+        }
       }
     }
   }
@@ -306,7 +321,7 @@ export default {
     }
   }
 }
-@include bp(766px) {
+@include bp(620px) {
   .c-simple-student-card {
     width: 100%;
     margin: 0 auto;

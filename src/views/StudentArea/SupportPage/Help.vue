@@ -122,17 +122,9 @@ export default {
 @include bp(1310px) {
   .c-help {
     padding: 50px 0 50px 0;
-    margin: 0 auto;
-    max-width: 750px;
-  }
-}
-@include bp(766px) {
-  .c-help {
-    max-width: 320px;
-    &__message-btn {
-      width: 127px;
-      font-size: rem(12);
-    }
+    margin: 0 25px;
+    width: auto;
+    max-width: 100%;
   }
 }
 </style>

@@ -64,6 +64,9 @@ export default {
   overflow: hidden;
   cursor: pointer;
   transition: height 0.5s ease-in;
+  .c-accordion__content-holder-image {
+    align-self: center;
+  }
   .icon {
     width: 16px;
     height: 10px;
@@ -74,6 +77,10 @@ export default {
     stroke: $black;
     color: $black;
     transition: all 0.5s ease;
+    @media screen and (max-width: 766px) {
+      width: 12px;
+      height: 11px;
+    }
   }
   &.open {
     height: 100%;
@@ -148,18 +155,14 @@ export default {
     transition: max-height 0.5s ease;
   }
 }
-@include bp(1310px) {
-  .c-accordion {
-    &__content-holder-description {
-      margin-left: 30px;
-    }
-  }
-}
 @include bp(766px) {
   .c-accordion {
     padding: 12px;
+    height: auto;
+    max-height: 144px;
     &__content-holder-image {
-      max-width: 54px;
+      max-width: 45px;
+      max-height: 52px;
       img {
         max-width: inherit;
       }

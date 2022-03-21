@@ -41,10 +41,10 @@
                     </h3>
                   </div>
                   <div class="teacher2__itm-middle">
-                    <p
+                    <div
                       class="teacher2__text"
                       v-html="curatorInformation.desc"
-                    ></p>
+                    ></div>
                   </div>
                 </div>
                 <div class="teacher2__itm-right">
@@ -105,7 +105,7 @@
                 </div>
                 <div class="right">
                   <div>
-                    <a href="#" class="btn-green">Присоединится к группе</a>
+                    <a href="#" class="btn-green">Присоединится</a>
                   </div>
                 </div>
               </div>
@@ -179,46 +179,45 @@ export default {
 <style lang="scss">
 #teach-teacher2 {
   padding: 30px;
-  max-width: 525px;
-  width: 525px;
   margin: 30px 0px;
   min-height: 156px;
-  .teacher2__user {
-    &-name {
-      @extend %text-big;
-      color: $black;
-      font-size: 30px;
-      font-family: "Circe-Regular";
-    }
-    &-img {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      overflow: hidden;
+  @media screen and (max-width: 620px) {
+    padding: 10px;
+    min-height: 130px;
+  }
+}
+.teacher2__arrow {
+  svg {
+    @media screen and (max-width: 620px) {
+      width: 12px;
+      height: 11px;
     }
   }
 }
-@include bp(766px) {
-  .c-modal.c-video-modal.teacher2-course-group {
-    max-width: 100vw !important;
-    width: 100vw !important;
-    .about-lesson {
-      padding-left: 0px;
-      padding-right: 0px;
-      .entire-lessons {
-        margin: auto;
-      }
-    }
+.teacher2__user {
+  &-name {
+    @extend %text-big;
+    color: $black;
+    font-size: 30px;
+    font-family: "Circe-Regular";
+    max-width: 150px;
+    line-height: 25px;
   }
-}
-@include bp(620px) {
-  
+  &-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
 }
 .teacher2__itm-middle {
   max-height: 100%;
   width: 358px;
   margin-top: 12px;
   overflow: hidden;
+  @media screen and (max-width: 766px) {
+    width: 80%;
+  }
 }
 .teacher2__text {
   @extend %text-small-big-line-height;
@@ -239,42 +238,38 @@ export default {
   hr {
     margin: 30px 0px;
   }
-  .c-video {
-    width: 100%;
-  }
   .c-name {
     margin-top: 25px;
   }
   .kurs-prepoda {
     padding-top: 10px !important;
     font-size: 20px;
-    // font-weight: 700;
     font-family: "Circe-Bold";
     line-height: 29px;
     letter-spacing: 0.03em;
     color: #4b4b4b;
   }
-  .c-video,
-  .c-video__container,
-  .c-video-content {
-    padding-left: 0px !important;
+  .c-video__content {
+    margin: 0 auto;
   }
-  .top-side,
   .about-lesson {
-    padding-left: 60px;
+    padding: 0 60px;
+    @media screen and (max-width: 766px) {
+      padding: 0 25px;
+    }
   }
   .top-side {
     max-width: 525px;
-    width: 100%;
+    margin-left: 60px;
     @media screen and (max-width: 766px) {
       margin: auto;
-      padding-left: 0px;
+      max-width: 100%;
+      width: 100%;
+      padding: 0 25px;
     }
   }
   .c-video__container {
     margin: 0px;
-    width: 100%;
-    max-width: 100%;
   }
   .teacher2__user {
     margin-bottom: 0px;
@@ -282,6 +277,9 @@ export default {
   .curator-text {
     margin-left: 17px;
     margin-top: 12px;
+    @media screen and (max-width: 620px) {
+      margin-left: 10px;
+    }
   }
   .teacher2__itm-right {
     margin-top: 9px;
@@ -322,6 +320,9 @@ export default {
       }
       .each-lesson:nth-child(even) {
         margin-left: 20px;
+        @media screen and (max-width: 620px) {
+          margin-left: 0px;
+        }
       }
     }
   }
@@ -331,8 +332,6 @@ export default {
     -moz-box-shadow: 0px -5px 20px -10px rgba(0, 0, 0, 0.2);
     padding-top: 20px;
     .entire-lessons {
-      max-width: 525px;
-      width: 100%;
       .more-descsription-about {
         margin-top: 20px;
         a {
@@ -397,7 +396,7 @@ export default {
       transition: all 0.5s ease;
       border-radius: 2px;
       @extend %simple-btn-green;
-      width: 217px;
+      width: 153px;
       &:hover {
         transition: all 0.5s ease;
         @extend %btn-darkgreen;
@@ -417,6 +416,30 @@ export default {
     line-height: 29px;
     letter-spacing: 0.03em;
     margin-left: 5px;
+  }
+}
+@include bp(766px) {
+  .c-modal.c-video-modal.teacher2-course-group {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    .about-lesson {
+      .entire-lessons {
+        margin: auto;
+      }
+    }
+  }
+}
+@include bp(620px) {
+  #teacher-group-modal {
+    .teacher2__user .teacher2__user-img {
+      width: 57px;
+      height: 57px;
+    }
+    .schedule-block {
+      .times {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+    }
   }
 }
 </style>

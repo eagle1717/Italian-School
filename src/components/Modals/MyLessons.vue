@@ -72,7 +72,7 @@ export default {
           id: 1,
           curator: {
             name: "Tomothy Murphy",
-            photo: "user.svg"
+            photo: "robert"
           }
         }
       ]
@@ -82,14 +82,26 @@ export default {
 </script>
 
 <style lang="scss">
-.c-homework {
-  width: 705px;
+.c-my-lessons__modal.c-modal {
+  width: 705px !important;
+}
+.c-my-lessons__modal {
+  overflow-y: hidden !important;
 }
 .c-my-lessons {
   @extend %pagept;
   padding-top: 36px;
   padding-left: 60px;
   width: 705px;
+  @media screen and (max-width: 766px) {
+    width: 100%;
+    max-width: 100%;
+  }
+  @media screen and (max-width: 620px) {
+    .c-my-lessons__header-holder-info-title {
+      font-size: 16px;
+    }
+  }
   &__container {
     max-width: 525px;
   }
@@ -136,21 +148,21 @@ export default {
     }
   }
 }
-@include bp(1310px) {
+@include bp(766px) {
+  .c-my-lessons__modal.c-modal {
+    width: 100vw !important;
+  }
   .c-my-lessons {
-    &__modal {
-      width: 100% !important;
-    }
-    &__container {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    &__header-holder-info-close {
-      display: none;
-    }
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 0 auto;
+  }
+  .c-my-lessons__container {
+    width: 100%;
+    max-width: 100%;
   }
 }
-@include bp(766px) {
+@include bp(620px) {
   .c-my-lessons {
     padding-top: 36px;
     padding-left: 0;
@@ -158,10 +170,14 @@ export default {
       padding-left: 10px;
     }
     &__header-holder-option {
-      display: none;
+      a {
+        padding: 6.4px 23px;
+        font-size: 12px;
+      }
     }
     &__container {
-      max-width: 320px;
+      max-width: 100%;
+      width: 100%;
       margin: 0 auto;
     }
   }

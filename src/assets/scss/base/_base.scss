@@ -63,19 +63,6 @@ $mt: 91px;
     @extend %aic;
     margin-right: rem(47);
   }
-
-  // .c-calendar__btn
-
-  &__btn {
-    // .c-calendar__btns-left
-
-    &-left {
-    }
-    // .c-calendar__btns-right
-
-    &-right {
-    }
-  }
   &__curator {
     &-btns {
       @extend %df;
@@ -393,6 +380,54 @@ $mt: 91px;
     width: 100%;
     &__item {
       height: 80px;
+    }
+  }
+}
+%calendar {
+  .c-calendar__wrap {
+    @media screen and (max-width: 620px) {
+      padding: 18px;
+    }
+    @media screen and (max-width: 340px) {
+      padding: 18px 9px;
+    }
+  }
+  .c-calendar__btns {
+    margin-right: 0px;
+  }
+  @media screen and (max-width: 620px) {
+    .c-calendar__item {
+      width: 40px !important;
+      height: 34px !important;
+    }
+    .c-calendar__name-days {
+      padding: 0px;
+      justify-content: center;
+      max-width: 40px;
+    }
+    .c-calendar__item-data {
+      right: 7px;
+      top: 5px;
+    }
+    .c-calendar__name-days {
+      span {
+        font-size: 12px;
+      }
+    }
+    .c-calendar__month-name {
+      font-size: 16px;
+      margin: 0 13px;
+    }
+    .c-calendar__title {
+      font-size: 16px;
+    }
+    .c-calendar__header {
+      margin-bottom: 21px;
+    }
+  }
+  @media screen and (max-width: 380px) {
+    .c-calendar__item {
+      width: 35px !important;
     }
   }
 }

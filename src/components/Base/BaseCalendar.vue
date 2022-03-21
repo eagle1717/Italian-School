@@ -210,3 +210,11 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.c-calendar__wrap {
+  @media screen and (max-width: 766px) {
+    padding: 18px;
+  }
+}
+</style>

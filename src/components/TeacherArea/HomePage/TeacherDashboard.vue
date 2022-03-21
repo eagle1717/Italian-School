@@ -103,6 +103,9 @@ export default {
       width: 100%;
       margin-top: 35px;
     }
+    .c-teacher-dashboard__info {
+      justify-content: space-between;
+    }
   }
 }
 </style>

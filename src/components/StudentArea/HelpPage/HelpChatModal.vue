@@ -1,10 +1,16 @@
 <template>
   <BaseModal class="c-help-chat__modal">
     <div class="c-help-chat">
-      <div class="c-help-chat__header">
-        <router-link :to="{ name: 'Help' }" class="c-help-chat__faq-btn">
-          <span>FAQ</span>
-        </router-link>
+      <div class="chat-navbar flex justify-between">
+        <button class="go-back-button" @click="hideModal">
+          <div><img src="@/assets/arrow-left.svg" alt="arrow" /></div>
+          <div class="go-back-text">Назад</div>
+        </button>
+        <div class="c-help-chat__header">
+          <router-link :to="{ name: 'Help' }" class="c-help-chat__faq-btn">
+            <span>FAQ</span>
+          </router-link>
+        </div>
       </div>
       <div class="c-help-chat__chat">
         <div class="c-help-chat__chat-header">
@@ -27,7 +33,10 @@
             v-model="new_message"
             placeholder="Ваше сообщение..."
           />
-          <div v-tooltip="{ text: 'Отправьте сообщение' }">
+          <div
+            v-tooltip="{ text: 'Отправьте сообщение' }"
+            class="msg-icon-wrapper"
+          >
             <button>
               <svg
                 width="22"
@@ -54,6 +63,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "HelpChatModal",
   props: {
@@ -83,8 +93,12 @@ export default {
     this.$refs.chatWindow.scrollTop = this.$refs.chatWindow.scrollHeight;
   },
   methods: {
+    ...mapMutations(["HIDE_MODAL"]),
     checkScroll(ths) {
       return ths.scrollTop + ths.clientHeight;
+    },
+    hideModal() {
+      this.HIDE_MODAL();
     }
   }
 };
@@ -93,6 +107,22 @@ export default {
 <style lang="scss">
 .c-help-chat__modal {
   width: 705px !important;
+  .mobile-nav__burger {
+    display: none;
+  }
+  .go-back-button {
+    display: flex;
+    align-items: center;
+    .go-back-text {
+      margin-left: 12px;
+      font-family: "Circe-Bold";
+    }
+    @media screen and (max-width: 620px) {
+      .go-back-text {
+        font-size: 12px;
+      }
+    }
+  }
   .c-tooltip {
     position: fixed;
     border: 1px solid $gray;
@@ -133,6 +163,13 @@ export default {
     @extend %simple-btn-red-border;
     width: 147px;
     height: 35px;
+    @media screen and (max-width: 620px) {
+      height: 30px;
+      width: 127px;
+      span {
+        font-size: 12px;
+      }
+    }
   }
   .c-help-chat__faq-btn {
     span {
@@ -149,24 +186,28 @@ export default {
   &__chat {
     &-header {
       width: 100%;
-      height: 60px;
+      min-height: 60px;
       @extend %df;
       @extend %aic;
-      padding-left: 26px;
       border: 1px solid #d8d8d8;
       border-radius: 2px 2px 0px 0px;
       margin-top: 25px;
+      padding: 6px 26px;
+      @media screen and (max-width: 620px) {
+        min-height: 37px;
+      }
     }
     &-title {
       @extend %text-big;
       color: $black;
     }
     &-main {
-      background-color: $dark_white;
+      background-color: #f7f7f7;
       height: 450px;
       overflow: scroll;
-      padding: 12px 20px 26px;
+      padding: 12px 10px 26px;
       width: 100%;
+      @extend %reset-scroll-bar;
     }
   }
   &__form {
@@ -177,16 +218,37 @@ export default {
     @extend %jcsb;
     border: 1px solid #d8d8d8;
     border-radius: 0px 0px 2px 2px;
+    position: relative;
+    @media screen and (max-width: 620px) {
+      height: 35px;
+    }
     input {
       width: 90%;
       height: 100%;
       @extend %input-reset;
       @extend %text-small-big-line-height;
       color: $gray;
+      @media screen and (max-width: 620px) {
+        font-size: 10px;
+      }
     }
-    button {
-      width: 42px;
-      height: 100%;
+    .msg-icon-wrapper {
+      position: absolute;
+      right: 20px;
+      @media screen and (max-width: 620px) {
+        right: 13px;
+      }
+      button {
+        vertical-align: middle;
+        svg {
+          width: 22px;
+          height: 22px;
+          @media screen and (max-width: 620px) {
+            width: 13.5px;
+            height: 13.5px;
+          }
+        }
+      }
     }
   }
 }
@@ -197,10 +259,13 @@ export default {
     }
   }
 }
-@include bp(766px) {
+@include bp(620px) {
   .c-help-chat {
-    max-width: rem(320);
-    overflow: scroll;
+    padding-left: 25px;
+    padding-right: 25px;
+    .c-help-chat__chat-title {
+      font-size: 14px;
+    }
   }
 }
 </style>

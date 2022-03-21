@@ -1,66 +1,72 @@
 <template>
   <BaseModal class="c-student-modal-tech__modal">
-    <div v-if="user" class="c-student-modal-tech">
-      <div class="c-student-modal-tech__wrap c-student-modal-tech__wrap_top">
-        <h2 class="c-student-modal-tech__title">Profilo studente</h2>
-      </div>
-      <div class="c-student-modal-tech__wrap c-student-modal-tech__wrap_user">
-        <div class="c-student-modal">
-          <div class="c-student-modal__user-data">
-            <figure class="c-student-modal__photo">
-              <template>
-                <img
-                  :src="require(`@/assets/${user.photo}.svg`)"
-                  :alt="user.name"
-                />
-              </template>
-            </figure>
-            <h2
-              class="c-student-modal__name"
-              v-html="user.name + '' + '<br/>' + user.surname"
-            ></h2>
+    <div class="c-student-modal-tech">
+      <div class="entire-modal-content">
+        <div class="c-student-modal-tech__wrap c-student-modal-tech__wrap_top">
+          <h2 class="c-student-modal-tech__title">Profilo studente</h2>
+        </div>
+        <div class="c-student-modal-tech__wrap c-student-modal-tech__wrap_user">
+          <div class="c-student-modal">
+            <div class="c-student-modal__user-data">
+              <figure class="c-student-modal__photo">
+                <template>
+                  <img
+                    :src="require(`@/assets/${user.photo}.svg`)"
+                    :alt="user.name"
+                  />
+                </template>
+              </figure>
+              <h2
+                class="c-student-modal__name"
+                v-html="user.name + '' + '<br/>' + user.surname"
+              ></h2>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="c-student-modal-tech__wrap c-student-modal-tech__wrap_level">
-        <ModalUserLevel :level="user.level.val" />
-      </div>
-      <div
-        class="c-student-modal-tech__wrap c-student-modal-tech__wrap_calendar"
-      >
-        <h2 class="c-student-modal-tech-h2__title">Lezioni:</h2>
-        <BaseWeekCalendar
-          class="c-student-modal-tech__calendar"
-          :lessons="lessons"
-          :isModal="true"
-        />
-      </div>
-      <div
-        class="c-student-modal-tech__wrap c-student-modal-tech__wrap_lessons"
-      >
-        <h2 class="c-student-modal-tech-h2__title">Piano studi livello A1:</h2>
-        <ul class="c-student-modal-tech__lessons">
-          <li v-for="itm in lessonItems" :key="itm.id">
-            <label class="c-student-modal-tech__checkbox">
-              <input type="checkbox" :checked="itm.done" />
-              <div class="c-student-modal-tech__chex-text">
-                {{ itm.text }}
-              </div>
-            </label>
-          </li>
-        </ul>
-      </div>
-      <div class="c-student-modal__history">
-        <h2 class="c-student-modal-tech-h2__title">
-          Attività:
-        </h2>
-        <StudentLessonsHistory
-          v-for="itm of history"
-          :key="itm.id"
-          :iconName="itm.iconName"
-          :duration="itm.duration"
-          :date="itm.date"
-        />
+        <div
+          class="c-student-modal-tech__wrap c-student-modal-tech__wrap_level"
+        >
+          <ModalUserLevel :level="user.level.val" />
+        </div>
+        <div
+          class="c-student-modal-tech__wrap c-student-modal-tech__wrap_calendar"
+        >
+          <h2 class="c-student-modal-tech-h2__title">Lezioni:</h2>
+          <BaseWeekCalendar
+            class="c-student-modal-tech__calendar"
+            :lessons="lessons"
+            :isModal="true"
+          />
+        </div>
+        <div
+          class="c-student-modal-tech__wrap c-student-modal-tech__wrap_lessons"
+        >
+          <h2 class="c-student-modal-tech-h2__title">
+            Piano studi livello A1:
+          </h2>
+          <ul class="c-student-modal-tech__lessons">
+            <li v-for="itm in lessonItems" :key="itm.id">
+              <label class="c-student-modal-tech__checkbox">
+                <input type="checkbox" :checked="itm.done" />
+                <div class="c-student-modal-tech__chex-text">
+                  {{ itm.text }}
+                </div>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="c-student-modal__history">
+          <h2 class="c-student-modal-tech-h2__title">
+            Attività:
+          </h2>
+          <StudentLessonsHistory
+            v-for="itm of history"
+            :key="itm.id"
+            :iconName="itm.iconName"
+            :duration="itm.duration"
+            :date="itm.date"
+          />
+        </div>
       </div>
     </div>
   </BaseModal>
@@ -186,13 +192,44 @@ export default {
 </script>
 
 <style lang="scss">
+@media screen and (max-width: 766px) {
+  &::-webkit-scrollbar,
+  &::-webkit-resizer,
+  &::-webkit-scrollbar-button {
+    width: 2px !important;
+  }
+  .c-student-modal-tech__wrap_top {
+    margin-left: 20px;
+  }
+}
 .c-student-modal-tech {
   height: max-content;
   @extend %reset-scroll-bar;
-  width: rem(677);
+  max-width: 678px;
+  width: 100%;
   padding: rem(44) 0 rem(50) 0;
-  margin-left: rem(65);
-  // .c-student-modal-tech__modal
+  margin: 0 auto;
+  overflow-x: hidden !important;
+  .entire-modal-content {
+    margin: 0 20px;
+    @media screen and (max-width:859px) {
+      width: 90% !important;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+  }
+  .select__options {
+    width: 102.9%;
+  }
+  .c-student-modal-tech__lessons {
+    margin-bottom: 0px !important;
+  }
+  .c-student-modal-tech__wrap_lessons {
+    margin-bottom: 60px;
+  }
+  .c-student-modal__user-data {
+    margin-bottom: 0px;
+  }
   .c-modal-level__wrap.c-modal-level__wrap_right {
     p {
       text-align: center;
@@ -203,51 +240,26 @@ export default {
     overflow-y: scroll;
   }
 
-  // .c-student-modal-tech__wrap
-
   &__wrap {
-    // .c-student-modal-tech__wrap_top
-
     &_top {
       @extend %df;
       @extend %aic;
       margin-bottom: rem(33);
     }
-
-    // .c-student-modal-tech__wrap_user
-
     &_user {
       margin-bottom: rem(20);
     }
-
-    // .c-student-modal-tech__wrap_level
-
     &_level {
       margin-bottom: rem(60);
     }
-
-    // .c-student-modal-tech__wrap_calendar
-
     &_calendar {
       margin-bottom: rem(60);
-      // width: rem(677);
-    }
-
-    // .c-student-modal-tech__wrap_lessons
-
-    &_lessons {
     }
   }
-
-  // .c-student-modal-tech__close
-
   &__close {
     @extend %close-modal-btn;
     margin-right: rem(18);
   }
-
-  // .c-student-modal-tech__title
-
   &__title {
     @extend %h3-title-bold;
     color: $gray;
@@ -262,7 +274,6 @@ export default {
   }
 
   &__calendar {
-    // max-width: 610px;
     width: 100%;
     .c-calendar-week__wrap {
       min-width: 100%;
@@ -272,9 +283,6 @@ export default {
       height: rem(85);
     }
   }
-
-  // .c-student-modal-tech__lessons
-
   &__lessons {
     width: 100%;
     max-width: 99%;
@@ -305,9 +313,6 @@ export default {
       }
     }
   }
-
-  // .c-student-modal-tech__checkbox
-
   &__checkbox {
     input {
       position: absolute;
@@ -323,9 +328,6 @@ export default {
       }
     }
   }
-
-  // .c-student-modal-tech__chex-text
-
   &__chex-text {
     position: relative;
     padding: 0 0 0 44px;
@@ -357,56 +359,158 @@ export default {
     }
   }
 }
-.c-student-modal {
-  // .c-student-modal__history
-
-  &__history {
-  }
-
-  // .c-student-modal__history-title
-
-  &__history-title {
-  }
-}
-@include bp(1310px) {
-  .c-student-modal-tech__modal {
-    width: 100% !important;
-  }
-  .c-student-modal-tech {
-    width: 100%;
-    max-width: 576px;
-    margin: 0 auto;
-    &__close {
-      display: none;
-    }
-    &__calendar {
-      .c-calendar-week__item {
-        width: 100%;
-        height: 75px;
-      }
-    }
-  }
-}
 @include bp(766px) {
-  .c-student-modal-tech {
-    max-width: 320px;
-    &__calendar {
-      .c-calendar-week__item {
-        height: 60px;
+  .c-student-modal-tech__checkbox input {
+    width: 17px;
+    height: 17px;
+    margin: 0px !important;
+    top: -4px;
+  }
+  .c-student-modal-tech__lessons {
+    li {
+      margin-bottom: 25px;
+      // &:last-of-type() {
+      //   margin-bottom: 0px;
+      // }
+    }
+  }
+  .c-student-modal-tech__wrap_lessons,
+  .c-student-modal-tech__wrap_level,
+  .c-student-modal-tech__wrap_calendar {
+    margin-bottom: 40px !important;
+  }
+  .c-student-modal-tech__chex-text {
+    padding-left: 24px;
+  }
+  .c-student-modal-tech__lessons li:after {
+    height: 12.59px;
+    left: 8px;
+    top: -23px;
+  }
+  .c-student-modal-tech__wrap_top {
+    margin-bottom: 25px;
+  }
+  .c-student-modal-tech__chex-text {
+    font-size: 10px;
+    line-height: 17px !important;
+    &::before {
+      width: 17px;
+      height: 17px;
+    }
+    &::after {
+      height: 6.93px;
+      width: 6.3px;
+      left: 5.04px;
+      top: 2.02px;
+    }
+  }
+  .c-student-modal-tech__modal {
+    .c-student-modal__photo {
+      width: 64px;
+      height: 64px;
+    }
+    .select {
+      height: 52px !important;
+    }
+    .c-modal-level {
+      flex-direction: initial;
+    }
+    .c-modal-level__progress {
+      margin-top: 0px;
+    }
+    .c-modal-level__wrap-item {
+      font-size: 10px;
+      text-align: center;
+    }
+    .c-modal-level__title,
+    .c-student-modal-tech-h2__title {
+      font-size: 14px;
+    }
+    .select__option-btn,
+    .select__wrap-val {
+      img {
+        width: 53px;
+        height: 23px;
       }
     }
-    &__lessons {
-      padding: 15px;
-      li {
-        margin-bottom: 20px;
-        &:after {
-          display: none;
-        }
-      }
+    .select__option {
+      margin-bottom: 16px;
     }
-    &__check-text {
-      font-size: rem(16);
+    .select {
+      width: 115px;
+    }
+    .donut {
+      width: 69px;
+      height: 69px;
+    }
+    .c-modal-level__progress {
+      margin-top: 0.5rem;
+    }
+    .c-circle-progress__percent {
+      font-size: 10px;
+      left: 48%;
+      top: 48%;
+    }
+    .c-modal-level__wrap_right {
+      margin-left: 0px;
+    }
+    .c-modal-level__progress {
+      margin-left: 47px;
+    }
+    .c-student-modal__name {
+      font-size: 22px;
+      line-height: 24.84px;
+      margin-left: 18px;
+    }
+    .c-student-modal-tech__title {
+      font-size: 16px;
     }
   }
 }
+@include bp(340px) {
+  .c-modal-level__progress {
+    margin-left: 20px !important;
+  }
+}
+// @include bp(1310px) {
+//   .c-student-modal-tech__modal {
+//     width: 100% !important;
+//   }
+//   .c-student-modal-tech {
+//     width: 100%;
+//     max-width: 576px;
+//     margin: 0 auto;
+//     &__close {
+//       display: none;
+//     }
+//     &__calendar {
+//       .c-calendar-week__item {
+//         width: 100%;
+//         height: 75px;
+//       }
+//     }
+//   }
+// }
+// @include bp(766px) {
+//   .c-student-modal-tech {
+//     max-width: 320px;
+//     &__calendar {
+//       .c-calendar-week__item {
+//         height: 60px;
+//       }
+//     }
+//     &__lessons {
+//       padding: 15px;
+//       li {
+//         margin-bottom: 20px;
+//         &:after {
+//           display: none;
+//         }
+//       }
+//     }
+//     &__check-text {
+//       font-size: rem(16);
+//     }
+//   }
+// }
 </style>

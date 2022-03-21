@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState } from "vuex";
 import DefaultLayout from "@/components/Layout/DefaultLayout";
 import Default2Layout from "@/components/Layout/Default2Layout";
 import EmptyLayout from "@/components/Layout/EmptyLayout";
@@ -105,7 +105,7 @@ export default {
       return this.width < 1310;
     },
     onResize() {
-      this.windowWidth = window.innerWidth;
+      this.width = window.innerWidth;
     }
   },
   mounted() {
@@ -203,9 +203,6 @@ button {
   overflow: hidden;
   height: 100vh;
 }
-.app {
-  // padding-left: 398px;
-}
 .c-profile__field {
   border-radius: 2px;
   background-color: $white;
@@ -223,7 +220,7 @@ button {
   width: 100%;
   height: 100vh;
   background-color: rgba($color: $black, $alpha: 0.2);
-  z-index: 100;
+  z-index: 100000;
   opacity: 0;
   transition: all 0.5s ease;
   @extend %evt-none;
@@ -238,12 +235,6 @@ button {
     padding-left: 338px;
   }
 }
-// @include bp(1310px) {
-//   %container {
-//     max-width: 750px;
-//     margin: 0 auto;
-//   }
-// }
 </style>
 <style>
 .flex {
@@ -274,7 +265,7 @@ body {
 .make-transitions {
   //
   position: relative;
-  max-height: 5000px;
+  max-height: 500000px;
   background-color: #f7f7f7;
   border-radius: 2px;
   cursor: pointer;
@@ -338,19 +329,6 @@ body {
       margin-top: 20px;
     }
   }
-
-  // &.open {
-  //   max-height: 100%;
-  //   cursor: default;
-  //   padding-bottom: 34px;
-  //   .teacher {
-  //     &__text {
-  //       max-height: 100%;
-  //       transition: max-height 0.5s ease;
-  //       overflow: hidden;
-  //     }
-  //   }
-  // }
 }
 </style>
 <style lang="scss">

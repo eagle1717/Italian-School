@@ -1,6 +1,6 @@
 <template>
   <div id="enter-content-wrapper">
-    <TopNavbar />
+    <!-- <TopNavbar /> -->
     <div class="main">
       <div class="container">
         <div class="hello-page__first" v-show="current === 'hello'">

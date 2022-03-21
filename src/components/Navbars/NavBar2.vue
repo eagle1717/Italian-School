@@ -3,9 +3,7 @@ nav.navigation.left-nav#teacher( :class="{ show: isHidden }")
   template(v-if="isHidden")
     .mobile-nav__burger
       button.mobile-nav__btn.active(@click="hideNavigation")
-        span
-        span
-        span
+        img(src="@/assets/close.svg", alt="Logotype")
   .nav
     .nav__logo-soc
       a(href="https://studiait.it/", target="_blank")
@@ -34,11 +32,11 @@ nav.navigation.left-nav#teacher( :class="{ show: isHidden }")
           span.nav__menu-text {{ itm.name }}
         </router-link>
       li.nav__menu-item.exit
-        <button class="nav__menu-link.svg">
+        <button class="nav__menu-link svg exit">
         <div class="inline-block">
         img(src="@/assets/close4.svg", alt="Logotype")
         </div>
-          span.nav__menu-text.inline-block Uscire
+          span.nav__menu-text.inline-block.uscire Uscire
           </button>
 </template>
 
@@ -76,11 +74,13 @@ export default {
       ]
     };
   },
-  logout() {
-    this.$router.push({ name: "Login" });
-  },
-  hideNavigation() {
-    this.$emit("showNav", !this.isHidden);
+  methods: {
+    logout() {
+      this.$router.push({ name: "Login" });
+    },
+    hideNavigation() {
+      this.$emit("showNav", !this.isHidden);
+    }
   }
 };
 </script>
@@ -95,25 +95,39 @@ export default {
   background-color: $white;
   border-right: 1px solid $black;
   padding-left: 120px;
+  @media screen and (max-width:766px) {
+    padding-left: 100px;
+  }
   padding-top: 17px;
   z-index: 99;
   overflow-y: scroll;
+  .mobile-nav__burger {
+    position: absolute;
+    left: 26px;
+    top: 15px;
+    width: 19px;
+    height: 19px;
+  }
   .inline-block {
     display: inline-block;
+  }
+  &.show {
+    z-index: 1000000;
   }
   .exit {
     position: absolute;
     bottom: 27px;
-    left: 0;
-    right: 0;
+    left: 75px;
     margin: auto;
     width: max-content;
     line-height: 21px;
+    @media screen and (max-width:766px) {
+      left: 65px;
+    }
     span {
       margin-left: 5px;
       color: $black;
       font-size: 16px;
-      // font-weight: 700;
       font-family: "Circe-Bold";
     }
   }
@@ -145,6 +159,9 @@ export default {
         margin-left: 14px;
       }
     }
+  }
+  .nav__menu-item.exit {
+    margin-top: 0px !important;
   }
 }
 .nav {
@@ -255,40 +272,6 @@ export default {
         }
       }
     }
-    // &-icon {
-    //   &_преподаватели {
-    //     width: 25px;
-    //     height: 32px;
-    //     margin-right: 13px;
-    //   }
-    //   &_мой {
-    //     width: 23px;
-    //     height: 19px;
-    //     margin-right: 16px;
-    //   }
-    //   &_настройки {
-    //     width: 22px;
-    //     height: 14px;
-    //     margin-right: 17px;
-    //   }
-    //   &_поддержка {
-    //     width: 27px;
-    //     height: 18px;
-    //     margin-right: 14px;
-    //   }
-    //   &_новые {
-    //     margin-right: rem(25);
-    //   }
-    //   &_домашние {
-    //     margin-right: rem(21);
-    //   }
-    //   &_ученики {
-    //     margin-right: rem(16);
-    //   }
-    //   &_календарь {
-    //     margin-right: rem(15);
-    //   }
-    // }
     &-link {
       @extend %df;
       @extend %aic;
@@ -315,43 +298,13 @@ export default {
       transition: all 0.3s ease;
     }
   }
-  &__offer {
-    // display: block;
-    // max-width: 290px;
-    // position: absolute;
-    // left: 0;
-    // bottom: unset !important;
-    // z-index: -1;
-  }
 }
-// @include bp(1360px) {
-//   .navigation {
-//     padding-left: 60px;
-//     width: 338px;
-//   }
-//   .nav {
-//     &__offer {
-//       max-width: 200px;
-//       bottom: 117px;
-//     }
-//     &__menu {
-//       &-item {
-//         position: relative;
-//         z-index: 5;
-//         &_поддержка {
-//           margin-top: 150px;
-//         }
-//       }
-//     }
-//   }
-// }
 @include bp(1310px) {
   .navigation {
     z-index: 9999;
   }
   .mobile-navbar {
     width: 390px;
-    padding-left: 78px;
     transform: translateX(-100%);
     transition: all 0.5s ease;
     &.show {
@@ -371,71 +324,54 @@ export default {
     }
   }
 }
-// @media screen and (max-width: 1300px) and (min-width: 1310px) and (min-height: 600px) {
-//   .nav {
-//     &__user {
-//       margin-bottom: 15px;
-//     }
-//     &__menu-item_поддержка {
-//       margin-top: 100px;
-//     }
-//   }
-// }
 @include bp(766px) {
-  .navigation {
-    width: 100%;
+  .nav__menu-link {
+    margin-top: 20px;
   }
-  .mobile-navbar {
-    padding-left: 45px;
+  .nav__user-photo {
+    width: 37px;
+    height: 37px;
   }
-  .nav {
-    &__user {
-      margin-bottom: 30px;
-    }
-    /*<!--&__offer {-->*/
-    /*<!--  transform: translateY(-50%);-->*/
-    /*<!--  bottom: 102px;-->*/
-    /*<!--}-->*/
-    &__offer {
-      display: none;
-    }
-    &__menu {
-      &-item {
-        &_поддержка {
-          margin-top: 70px;
-        }
-      }
-    }
+  .nav__menu-text {
+    font-size: 16px;
   }
-}
-@include bp(360px) {
-  .mobile-navbar {
-    padding-left: 25px;
+  .nav__user-name {
+    font-size: 14px;
+    line-height: 14px;
+    margin-top: 0px;
   }
-  .nav {
-    &__offer {
-      left: -43px;
+  .notification-icon {
+    width: auto;
+    height: 12px;
+  }
+  .nav__user {
+    height: 69px;
+  }
+  .nav__menu-text {
+    font-size: 16px;
+  }
+  .nav__menu-icon_lezioni {
+    img {
+      width: 12px;
+      height: 20px;
     }
   }
-}
-@media screen and (max-width: 450px) and (min-height: 700px) {
-  .nav {
-    &__offer {
-      bottom: 261px;
+  .nav__menu-icon_compiti {
+    img {
+      width: 15.25px;
+      height: 20.07px;
     }
   }
-}
-@media screen and (max-width: 450px) and (min-height: 600px) {
-  .nav {
-    &__offer {
-      bottom: 111px;
+  .nav__menu-icon_studenti {
+    img {
+      width: 21.58px;
+      height: 14.45px;
     }
   }
-}
-@media screen and (max-width: 450px) and (max-height: 600px) {
-  .nav {
-    &__offer {
-      bottom: 5px;
+  .nav__menu-icon_calendario {
+    img {
+      width: 18px;
+      height: 14.54px;
     }
   }
 }

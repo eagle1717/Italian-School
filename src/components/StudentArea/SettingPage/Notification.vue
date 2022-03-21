@@ -35,7 +35,7 @@ export default {
   padding-bottom: 48px;
   padding-left: 33px;
   padding-right: 80px;
-  max-width: 892px;;
+  max-width: 100%;
   border-radius: 2px;
   @extend %df;
   @extend %jcsb;
@@ -74,13 +74,21 @@ export default {
       width: 100%;
       margin-bottom: 30px;
     }
-    &__title {
-      font-size: rem(14);
-      line-height: rem(14);
-    }
+    // &__title {
+    //   font-size: rem(14);
+    //   line-height: rem(14);
+    // }
     &__wrap-switch {
       width: 100%;
     }
+  }
+}
+@include bp($mobile) {
+  .c-setting-notification__title {
+    font-size: 14px;
+  }
+  .c-setting-notification {
+    padding: 32px;
   }
 }
 </style>

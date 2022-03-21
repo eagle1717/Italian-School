@@ -38,5 +38,5 @@ export default [
         meta: {
             layout: "Default2"
         }
-    },
-]
+    }
+];

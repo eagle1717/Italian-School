@@ -168,13 +168,22 @@ export default {
   .no-tasks {
     margin-top: 66px;
   }
+  .c-student {
+    @media screen and (max-width: 620px) {
+      margin-bottom: 6.5px;
+    }
+    @media screen and (max-width: 620px) {
+      .c-student__btn:hover {
+        background-color: transparent !important;
+      }
+    }
+  }
   .student-card-wrapper {
     margin-bottom: 13px;
     display: block;
   }
   &__title {
     font-size: 20px;
-    // font-weight: 700;
     font-family: "Circe-Bold";
     height: min-content;
     letter-spacing: 0.03em;
@@ -197,7 +206,6 @@ export default {
       margin-bottom: 15px;
       font-size: 20px;
       font-style: normal;
-      // font-weight: 700;
       font-family: "Circe-Bold";
       line-height: 21px;
       letter-spacing: 0.03em;
@@ -212,18 +220,40 @@ export default {
 @include bp(1310px) {
   .v-teacher-classess {
     padding: 50px 0 0 0;
-    max-width: 750px;
     margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    .entire-teacher-class {
+      margin: 0 50px;
+    }
   }
 }
-@include bp(766px) {
+.v-teacher-classess {
+  @media screen and (max-width: 766px) {
+    padding: 25px 0 0 0;
+    .entire-teacher-class {
+      margin: 0 25px;
+    }
+  }
+}
+@include bp(620px) {
   .v-teacher-classess {
-    max-width: 320px;
     &__wrapper {
       flex-direction: column;
     }
     &__content {
       margin-left: 0;
+    }
+    .v-teacher-classess__title {
+      font-size: 16px;
+    }
+    #wr-stud-card {
+      margin-top: 25px;
+    }
+    .c-student__name-data {
+      .c-student__data {
+        margin-top: 0px !important;
+      }
     }
   }
 }

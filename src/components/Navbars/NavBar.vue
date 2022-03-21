@@ -1,12 +1,11 @@
 <template lang="pug">
 nav.navigation.left-nav#student( :class="{ show: isHidden }")
- div.entire-nav
+ div
   template(v-if="isHidden")
     .mobile-nav__burger
       button.mobile-nav__btn.active(@click="hideNavigation")
-        span
-        span
-        span
+        img(src="@/assets/close.svg", alt="Logotype")
+ div.entire-nav
   .nav
     .nav__logo-soc
       a(href="https://studiait.it/", target="_blank")
@@ -28,6 +27,7 @@ nav.navigation.left-nav#student( :class="{ show: isHidden }")
         v-for="itm of menu_student",
         :key="itm.name",
         :class="'nav__menu-item_' + itm.name.toLowerCase().split(' ')[0]"
+        @click="hideNavigation"
       )
         <router-link class="nav__menu-link" :to="{ name: itm.route }">
           figure.nav__menu-icon(
@@ -42,7 +42,7 @@ nav.navigation.left-nav#student( :class="{ show: isHidden }")
        <h4>Ищешь что-то особенное?</h4>
       </div>
     </div>
-    <div>
+    <div  @click="hideNavigation">
         <router-link class="nav__menu-link" id="support-link" :to="{name: menu2.route }">
           figure.nav__menu-icon
             img(:src="require(`@/assets/img/ill/${menu2.icon}.svg`)", :alt="menu2.name")
@@ -50,8 +50,9 @@ nav.navigation.left-nav#student( :class="{ show: isHidden }")
         </router-link>
     </div>
       li.nav__menu-item
-        button.nav__menu-link.svg
+        button.nav__menu-link.svg.exit
           svg(
+            class="exit-svg-button"
             style="margin-right: 25px",
             width="12",
             height="9",
@@ -69,7 +70,7 @@ nav.navigation.left-nav#student( :class="{ show: isHidden }")
           span.nav__menu-text Выйти
     </div>
       // Navigation offer
-      .nav__offer()
+      .nav__offer(@click="hideNavigation")
         <router-link :to="{name: 'SpecialOfferPage'}" class="nav__offer-img">
           img(src="@/assets/NavCat.svg", alt="Offer illustration")
         </router-link>
@@ -114,12 +115,14 @@ export default {
       }
     };
   },
+  methods: {
   logout() {
     this.$router.push({ name: "Login" });
   },
   hideNavigation() {
     this.$emit("showNav", !this.isHidden);
   }
+}
 };
 </script>
 
@@ -133,15 +136,37 @@ export default {
   overflow: hidden;
   border-right: 1px solid $black;
   background-color: $white;
-  z-index: 99;
   padding-top: 17px;
+  .mobile-nav__burger {
+    position: absolute;
+    left: 26px;
+    top: 15px;
+    width:19px;
+    height:19px;
+    img {
+      width:19px;
+      height:19px;
+    }
+  }
+  &.show {
+    z-index: 1000000;
+  }
+  @media screen and (max-width:766px) {
+    .exit-svg-button {
+      width: 10px !important;
+      height: 8px !important;
+      margin-right: 14.1px !important;   
+    }
+  }
   .entire-nav {
     position: relative;
     height: max-content;
     padding-left: 120px;
+    @media screen and (max-width:766px) {
+      padding-left: 100px;
+    }
   }
   .text-bg-wrapper {
-    // position: absolute;
     z-index: 1000;
     left: 25%;
     right: 0;
@@ -151,11 +176,16 @@ export default {
       width: 27px;
       height: 18px;
       margin-right: 14px;
+        @media screen and (max-width:766px) {
+         width: 17.85px;
+         height: 11.9px;
+         margin-right: 10.2px;
+       }
     }
   }
   .text-bg {
     background-image: url("~@/assets/textBg.svg");
-    width: 222px;
+    background-size: 222px;
     margin-top: 27px;
     margin-bottom: 59.12px;
     height: 66px;
@@ -163,6 +193,9 @@ export default {
     z-index: 1000;
     position: relative;
     margin-left: -16px;
+    @media screen and (max-width:766px) {
+      background-size: 166px;
+    }
     h4 {
       position: absolute;
       left: 0;
@@ -172,9 +205,14 @@ export default {
       font-size: 14px;
       line-height: 20px;
       width: max-content;
-      margin: auto;
+      margin-left: calc(5% + 12px);
       color: rgba(75, 75, 75, 1);
       user-select: none;
+      @media screen and (max-width:766px) {
+      font-size: 10px;
+      line-height: 19.6px;
+      padding-top: 13.5px;
+      }
     }
   }
   .nav__menu {
@@ -232,6 +270,12 @@ export default {
       @extend %jcc;
     }
   }
+  
+  @media screen and (max-width:766px) {
+    .nav__menu-link {
+        margin-top: 20px;
+      }
+    }
   &__user {
     position: relative;
     @extend %df;
@@ -242,6 +286,9 @@ export default {
     border-radius: 2px;
     margin: 76px 0 49px 0;
     padding: 0 0 0 17px;
+    @media screen and (max-width:360px) {
+     width: 200px !important;
+    }
     &-notification {
       position: absolute;
       top: 15px;
@@ -306,21 +353,41 @@ export default {
     &-icon {
       &_групповые {
         margin-right: 14px;
+         @media screen and (max-width:766px) {
+          width: 16px;
+          height: 26px;
+          margin-right: 12.3px;
+        }
       }
       &_преподаватели {
         width: 25.19px;
         height: 32.81px;
         margin-right: 13.27px;
+        @media screen and (max-width:766px) {
+          width: 17.51px;
+          height: 22.81px;
+          margin-right: 11px;
+        }
       }
       &_мой {
         width: 23px;
         height: 19px;
         margin-right: 16px;
+         @media screen and (max-width:766px) {
+          width: 18.2px;
+          height: 15.16px;
+          margin-right: 10.2px;
+        }
       }
       &_настройки {
         width: 22px;
         height: 14px;
         margin-right: 17px;
+        @media screen and (max-width:766px) {
+         width: 18px;
+         height: 12.11px;
+         margin-right: 10.2px;
+       }
       }
     }
     &-link {
@@ -354,34 +421,17 @@ export default {
     z-index: 100;
   }
 }
-// @include bp(1360px) {
-//   .navigation {
-//     padding-left: 60px;
-//     width: 338px;
-//   }
-//   .nav {
-//     &__offer {
-//       max-width: 200px;
-//       bottom: 117px;
-//     }
-//     &__menu {
-//       &-item {
-//         position: relative;
-//         z-index: 5;
-//         &_поддержка {
-//           margin-top: 150px;
-//         }
-//       }
-//     }
-//   }
-// }
+ .nav__menu-link.svg.exit {
+   @media screen and (max-width:766px) {
+     margin-top: 10px !important;
+   }
+  }
 @include bp(1310px) {
   .navigation {
     z-index: 9999;
   }
   .mobile-navbar {
     width: 390px;
-    padding-left: 78px;
     transform: translateX(-100%);
     transition: all 0.5s ease;
     &.show {
@@ -401,79 +451,33 @@ export default {
     }
   }
 }
-// @media screen and (max-width: 1300px) and (min-width: 1310px) and (min-height: 600px) {
-//   .nav {
-//     &__user {
-//       margin-bottom: 15px;
-//     }
-//     &__menu-item_поддержка {
-//       margin-top: 100px;
-//     }
-//   }
-// }
 @include bp(766px) {
-  .navigation {
-    width: 100%;
+  nav.navigation.left-nav#student {
+  .nav__user-photo {
+    width: 37px;
+    height: 37px;
   }
-  .mobile-navbar {
-    padding-left: 45px;
+  .nav__menu-text {
+    font-size: 16px;
   }
-  .nav {
-    &__user {
-      margin-bottom: 30px;
-    }
-    /*<!--&__offer {-->*/
-    /*<!--  transform: translateY(-50%);-->*/
-    /*<!--  bottom: 102px;-->*/
-    /*<!--}-->*/
-    &__offer {
-      display: none;
-    }
-    &__menu {
-      &-item {
-        &_поддержка {
-          margin-top: 70px;
-        }
-      }
+  .nav__user-name {
+    font-size: 14px;
+    line-height: 14px;
+    margin-top: 0px;
+  }
+  .nav__offer-img {
+    img {
+      width: 78px;
+      height:162px;
     }
   }
-}
-.nav__menu-link.svg {
- svg {
-   path {
-     transition: all 0.3s ease;
-   }
- }
-}
-@include bp(360px) {
-  .mobile-navbar {
-    padding-left: 25px;
+  .notification-icon {
+    width: auto;
+    height: 12px;
   }
-  .nav {
-    &__offer {
-      left: -43px;
-    }
+  .nav__user {
+    height: 69px;
   }
-}
-@media screen and (max-width: 450px) and (min-height: 700px) {
-  .nav {
-    &__offer {
-      bottom: 261px;
-    }
-  }
-}
-@media screen and (max-width: 450px) and (min-height: 600px) {
-  .nav {
-    &__offer {
-      bottom: 111px;
-    }
-  }
-}
-@media screen and (max-width: 450px) and (max-height: 600px) {
-  .nav {
-    &__offer {
-      bottom: 5px;
-    }
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <BaseModal>
+  <BaseModal id="home-work-modal">
     <div class="c-homework">
       <div class="c-homework__container">
         <div class="c-homework__content">
@@ -31,14 +31,44 @@ export default {
   }
 };
 </script>
-
 <style lang="scss">
+#home-work-modal {
+  width: 705px !important;
+  @media screen and (max-width:766px) {
+    width: 100vw !important;
+  }
+}
 .c-homework {
   @extend %pagept;
+  @media screen and (max-width: 766px) {
+    padding-left: 0px;
+    width: max-content;
+    margin: 0 auto;
+  }
   &__container {
     max-width: 475px;
+    width: 100%;
+    width: 100%;
     padding-left: 60px;
-    // @extend %m0a;
+    @media screen and (max-width: 766px) {
+      // padding-left: 25px;
+      // padding-right: 25px;
+      padding-left: 0px;
+    }
+    @media screen and (max-width: 620px) {
+      .c-homework__content {
+        img {
+          width: 185px;
+          height: 102px;
+        }
+        .c-homework__content-title {
+          font-size: 18px;
+          line-height: 30px;
+          max-width: 200px;
+          margin-top: 25px;
+        }
+      }
+    }
   }
   &__header {
     cursor: pointer;

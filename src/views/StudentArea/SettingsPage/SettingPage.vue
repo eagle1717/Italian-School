@@ -42,7 +42,15 @@ export default {
 .c-setting {
   margin: 0 auto;
   margin-bottom: 91px;
-  width: rem(892);
+  width: 892px;
+  .c-input,
+  .c-input-password {
+    border-radius: 2px;
+    padding-right: 20px;
+  }
+  @media screen and (max-width: 1310px) {
+    width: 100%;
+  }
   &__title1 {
     margin-top: 42px;
     margin-bottom: 34px;
@@ -55,8 +63,7 @@ export default {
     @extend %h2-title-regular;
     font-size: 20px;
     font-style: normal;
-    // font-weight: 700;
-    font-family: 'Circe-Bold';
+    font-family: "Circe-Bold";
     line-height: 29px;
     letter-spacing: 0.03em;
     color: #4b4b4b;
@@ -64,31 +71,31 @@ export default {
 }
 @include bp(1360px) {
   .c-setting {
-    padding-right: 30px;
-    ;
     padding-bottom: 50px;
-    &__container {
-    }
   }
 }
 @include bp(1310px) {
   .c-setting {
     padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
     &__container {
-      max-width: 750px;
       padding: 0;
       margin: 0 auto;
     }
   }
 }
-@include bp(766px) {
+@include bp(900px) {
   .c-setting {
-    &__container {
-      max-width: 320px;
-    }
-    &__title {
-      font-size: rem(16);
-      line-height: rem(16);
+    padding: 0 15px !important;
+  }
+}
+@include bp($mobile) {
+  .c-setting {
+    .c-setting__title {
+      font-size: 16px;
+      line-height: 16px;
+      margin-bottom: 25px;
     }
   }
 }

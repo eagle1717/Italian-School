@@ -2,8 +2,11 @@
   <div class="c-teacher-page">
     <div class="entire-padding-teach">
       <div class="c-teacher-page__header">
-        <router-link :to="{ name: 'Teachers' }" class="c-teacher-page__back">
-          <div class="inline-block">
+        <router-link
+          :to="{ name: 'Teachers' }"
+          class="c-teacher-page__back flex"
+        >
+          <div>
             <svg
               width="8"
               height="13"
@@ -20,13 +23,13 @@
               />
             </svg>
           </div>
-          <div class="inline-block">Назад</div>
+          <div class="back-text-link">Назад</div>
         </router-link>
       </div>
       <div class="c-teacher-page__teacher-card" id="indiv-teacher">
         <TeacherCard
-          :hideContentOnClick="false"
-          class="open"
+          v-if="currentState !== null"
+          :hideContentOnClick="currentState"
           :curator_nation="curator.nation"
           :curator_name="curator.name"
           :curator_photo="curator.photo"
@@ -56,7 +59,9 @@ export default {
     return {
       lessons: [],
       reserved_times: [],
+      windowWidth: window.innerWidth,
       daysOff: [],
+      currentState: null,
       curator: {
         name: "Tomothy Murphy",
         nation: "Итальянец",
@@ -99,6 +104,14 @@ export default {
           type: "danger",
           text: "Занятие с преподавателем в этот день невозможно."
         });
+      }
+    },
+    onResize() {
+      this.windowWidth = window.innerWidth;
+      if (this.windowWidth < 766) {
+        this.currentState = true;
+      } else {
+        this.currentState = false;
       }
     }
   },
@@ -149,15 +162,113 @@ export default {
     this.daysOff = dayOff;
     this.lessons = result;
     this.reserved_times = reserved_times;
+  },
+  // watch: {
+  //   windowWidth(arg) {
+  //     console.log(arg);
+  //   }
+  // },
+  mounted() {
+    this.onResize();
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
   }
 };
 </script>
 
 <style lang="scss">
+// #indiv-teacher .hide {
+//   max-height: 500000px;
+//   height: auto;
+//   min-height: auto;
+// }
 #indiv-teacher {
-  .hide,
-  .teacher__text {
+  // .open {
+  // }
+  // .hide {
+  //   max-height: auto !important;
+  //   height: auto;
+  //   min-height: auto;
+  // }
+  .make-transitions.hide {
     max-height: 100%;
+    @media screen and (max-width: 766px) {
+      max-height: 90px;
+    }
+  }
+  .hide {
+    .teacher__arrow {
+      svg {
+        transform: rotate(0deg) !important;
+        transition: transform 0.5s ease;
+      }
+    }
+  }
+  .teacher__arrow {
+    svg {
+      transform: rotate(180deg);
+      transition: transform 0.5s ease;
+    }
+  }
+  .teacher__btn-video {
+    margin-bottom: 0px;
+  }
+  .teacher__text {
+    min-height: 100%;
+    height: 100%;
+    max-height: 100%;
+  }
+  .up-teacher-wrapper {
+    @media screen and (max-width: 766px) {
+      padding: 15px 18px 25px;
+    }
+  }
+  .teacher__itm-middle {
+    height: 100%;
+    min-height: 100%;
+    @media screen and (max-width: 766px) {
+      width: 100%;
+      margin-left: 0px !important;
+    }
+  }
+  @media screen and (max-width: 620px) {
+    .teacher__user-nation {
+      line-height: 18.5px;
+    }
+    .teacher__user-name {
+      line-height: 13.92px;
+    }
+    .teacher__itm-right {
+      padding-right: 36px;
+    }
+  }
+  .teacher__user {
+    align-items: center;
+    .teacher__user-info {
+      margin-top: 0px;
+    }
+  }
+  .buttons-teacher-card {
+    @media screen and (max-width: 766px) {
+      padding-left: 0px;
+    }
+  }
+  .small-devices-wrapper {
+    @media screen and (max-width: 766px) {
+      // display: none;
+    }
+  }
+  .hide {
+    // max-height: 100%;
+    min-height: 100%;
+    height: 100%;
+    @media screen and (max-width: 766px) {
+      max-height: 90px;
+    }
   }
   .teacher__contest {
     z-index: 1000;
@@ -168,6 +279,10 @@ export default {
   margin: 0 auto;
   margin-bottom: 31px;
   padding-left: 0px;
+  @media screen and (max-width: 1310px) {
+    width: 100%;
+    max-width: 100%;
+  }
   .entire-padding-teach {
     @media screen and (max-width: 1310px) {
       margin: 0px 25px;
@@ -175,8 +290,12 @@ export default {
   }
   .teacher__arrow {
     display: none;
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 620px) {
       display: initial;
+      svg {
+        width: 10px !important;
+        height: 9px !important;
+      }
     }
   }
   .teacher__itm-middle {
@@ -184,6 +303,7 @@ export default {
     overflow: visible;
     @media screen and (max-width: 766px) {
       overflow: hidden;
+      margin-top: 0px;
     }
   }
   .makeLessonBtn {
@@ -192,12 +312,23 @@ export default {
   &__header {
     margin-bottom: rem(32);
   }
+  .curator-buttons {
+    @media screen and (max-width: 766px) {
+      width: 100%;
+    }
+  }
   &__back {
     @extend %btn-text;
     color: $gray;
     transition: all 0.5s ease;
+    align-items: center;
     svg {
       margin-right: 10px;
+      @media screen and (max-width: 620px) {
+        width: 6px;
+        height: 11px;
+        margin-right: 8px;
+      }
       path {
         transition: all 0.5s ease;
       }
@@ -210,9 +341,24 @@ export default {
         }
       }
     }
+    @media screen and (max-width: 620px) {
+      .back-text-link {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
   }
   &__teacher-card {
     margin-bottom: 67px;
+    @media screen and (max-width: 766px) {
+      margin-bottom: 50px;
+    }
   }
+  @media screen and (max-width: 766px) {
+    .c-teacher-page__header {
+      margin-bottom: 25px;
+    }
+  }
+  @extend %calendar;
 }
 </style>

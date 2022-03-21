@@ -45,7 +45,7 @@ export default {
   width: 50vw;
   top: 0;
   right: 0;
-  z-index: 999;
+  z-index: 9999999999;
   background: $white;
   overflow-y: scroll;
   .mobile-nav__btn {
@@ -60,14 +60,13 @@ export default {
   }
 }
 .c-modal {
-  width: 56vw;
   .mobile-nav__burger {
     top: 43px;
   }
 }
 @include bp(766px) {
   .c-modal {
-    width: 100vw;
+    width: 100vw !important;
   }
 }
 </style>

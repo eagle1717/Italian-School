@@ -59,6 +59,7 @@
             <button
               class="m-new-lesson-teacher__btn"
               :class="{ confirmed: confirmLesson }"
+              @click="confirmLesson = true"
             >
               <span>
                 {{
@@ -83,6 +84,7 @@
             />
             <button
               class="m-new-lesson-teacher__btn"
+              @click="confirmHomeWork = true"
               :class="{ confirmed: confirmHomeWork }"
             >
               <span>{{
@@ -146,11 +148,22 @@ export default {
 </script>
 <style lang="scss">
 .m-new-lesson-teacher__modal {
-  width: rem(859) !important;
+  max-width: 859px !important;
+  width: 100% !important;
   overflow-y: scroll;
   font-family: "Circe-Regular";
   .c-input-wrapper {
     height: 50px;
+    @media screen and (max-width: 620px) {
+      height: 35px;
+      .c-input {
+        height: 35px;
+        padding-left: 13px;
+        input {
+          font-size: 12px;
+        }
+      }
+    }
   }
   .c-input {
     border-radius: 2px !important;
@@ -169,7 +182,7 @@ export default {
     font-weight: 350;
   }
   .c-student-modal {
-    height: 138px;
+    min-height: 138px;
     padding: 25px 25px 25px 33px;
     button {
       width: 260px;
@@ -177,94 +190,61 @@ export default {
   }
 }
 .m-new-lesson-teacher {
-  width: 678px;
+  max-width: 678px;
+  width: 100%;
   padding: rem(44) 0 rem(50) 0;
   margin: 0 auto;
   @extend %reset-scroll-bar;
-  // .m-new-lesson-teacher__wrap
   &__wrap {
-    // .m-new-lesson-teacher__wrap_top
-
     &_top {
       @extend %df;
       @extend %aic;
       margin-bottom: rem(32);
       margin-left: 18px;
+      @media screen and (max-width: 805px) {
+        margin-left: 30px;
+      }
     }
-
-    // .m-new-lesson-teacher__wrap_user
-
     &_user {
       margin-bottom: rem(40);
     }
-
     .m-new-lesson-teacher__wrap_link-lesson {
       width: 678px;
     }
-
-    &_link-lesson {
-    }
-
-    // .m-new-lesson-teacher__wrap_lesson-type
-
     &_lesson-type {
       .m-new-lesson-teacher__type-label {
         margin-bottom: 5px;
       }
     }
   }
-
-  // .m-new-lesson-teacher__close
-
   &__close {
     @extend %close-modal-btn;
     margin-right: rem(18);
   }
-
-  // .m-new-lesson-teacher__title
-
   &__title {
     @extend %h3-title-bold;
     color: $gray;
   }
-
-  // .m-new-lesson-teacher__inp-wrapper
-
   &__inp-wrapper {
     margin-bottom: rem(40);
     .m-new-lesson-teacher__wrapper-title {
       margin-bottom: 9px;
     }
   }
-
-  // .m-new-lesson-teacher__wrapper-title
-
   &__wrapper-title {
     @extend %text-middle;
     color: $gray;
   }
-
-  // .m-new-lesson-teacher__inp-flex
-
   &__inp-flex {
     @extend %df;
     @extend %aic;
   }
-
-  // .m-new-lesson-teacher__input
-
   &__input {
     width: rem(371);
   }
-
-  // .m-new-lesson-teacher__homework-link
-
   &__homework-link {
     width: 100%;
   }
-
-  // .m-new-lesson-teacher__btn
-
   &__btn {
     @extend %simple-btn-green;
     width: 100%;
@@ -272,6 +252,10 @@ export default {
     &.confirmed {
       @extend %simple-btn-green-border;
       width: 100%;
+      @media screen and (max-width: 620px) {
+        height: 35px;
+        font-size: 12px;
+      }
       &:hover {
         background-color: transparent;
         color: $green;
@@ -279,47 +263,23 @@ export default {
       }
     }
   }
-
-  // .m-new-lesson-teacher__type-label
-
   &__type-label {
     @extend %text-middle;
     color: $gray;
   }
-
-  // .m-new-lesson-teacher__type-title
-
   &__type-title {
     @extend %h3-title-bold;
     color: $black;
     margin-bottom: rem(40);
   }
-
-  // .m-new-lesson-teacher__commet-title
-
   &__commet-title {
     @extend %text-big;
     color: $black;
     margin-bottom: rem(16);
   }
-
-  // .m-new-lesson-teacher__commet-text
-
   &__commet-text {
     @extend %text-small;
     color: $gray;
-  }
-}
-@include bp(1360px) {
-}
-@include bp(1310px) {
-  .m-new-lesson-teacher__modal {
-    width: 100% !important;
-  }
-  .m-new-lesson-teacher {
-    &__close {
-      display: none;
-    }
   }
 }
 @include bp(766px) {
@@ -327,21 +287,73 @@ export default {
     overflow-x: scroll;
   }
   .m-new-lesson-teacher {
-    max-width: 320px;
+    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
-    padding: 40px 0 0 0;
+    padding: 40px 50px 0;
     &__inp-flex {
       flex-direction: column;
     }
-    &__input {
+    .c-input-wrapper,
+    .c-input {
       width: 100%;
+      max-width: 100%;
     }
+    .c-input-wrapper {
+      margin-bottom: 10px;
+    }
+    &__btn {
+      margin-left: 0px;
+    }
+  }
+  .c-student-modal {
+    min-height: 138px;
+    padding: 25px 25px 25px 33px;
+    @media screen and (max-width: 766px) {
+      padding: 25px 25px 25px 33px !important;
+    }
+  }
+}
+@include bp(620px) {
+  .c-student-modal {
+    padding: 15px 18px 21px !important;
+    min-height: min-content;
+  }
+  .m-new-lesson-teacher__title {
+    font-size: 16px;
+  }
+  .m-new-lesson-teacher__wrap_top {
+    margin-bottom: 25px !important;
+  }
+  .m-new-lesson-teacher__type-label {
+    font-size: 12px;
+    margin-bottom: 0px !important;
+  }
+  .m-new-lesson-teacher__type-title {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  .m-new-lesson-teacher__commet-title {
+    font-size: 14px;
+    margin-bottom: 11px;
+  }
+  .m-new-lesson-teacher__commet-text {
+    font-size: 10px;
+    line-height: 14px;
+  }
+  .m-new-lesson-teacher {
     &__btn {
       width: 100%;
       height: 35px;
       font-size: rem(12);
-      margin: 15px 0 0 0;
     }
+    .m-new-lesson-teacher__wrap {
+      margin-bottom: 32px;
+    }
+  }
+  .m-new-lesson-teacher__wrapper-title {
+    font-size: 12px;
+    margin-bottom: 7px !important;
   }
 }
 </style>

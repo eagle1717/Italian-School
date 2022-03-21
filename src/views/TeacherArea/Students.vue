@@ -32,7 +32,7 @@
             <a
               href="https://google.com"
               target="_blank"
-              class="c-simple-student-card__btn c-simple-student-card__btn_red"
+              class="c-simple-student-card__btn c-simple-student-card__btn_red btn-width-change"
             >
               <span>
                 Correggere compito
@@ -42,7 +42,7 @@
           <template v-else-if="!it.link_to_lesson">
             <a
               @click="openModal2"
-              class="c-simple-student-card__btn c-simple-student-card__btn_green2"
+              class="c-simple-student-card__btn c-simple-student-card__btn_green2 btn-width-change"
             >
               <span>
                 Aggiungere link
@@ -53,7 +53,7 @@
             <a
               href="https://google.com"
               target="_blank"
-              class="c-simple-student-card__btn c-simple-student-card__btn_green"
+              class="c-simple-student-card__btn c-simple-student-card__btn_green btn-width-change"
             >
               <span>
                 Alla lezione
@@ -180,6 +180,7 @@ export default {
       @extend %df;
       @extend %jcsb;
       @extend %aic;
+      align-items: baseline;
     }
     &_bot {
       display: grid;
@@ -206,13 +207,14 @@ export default {
 }
 @include bp(1310px) {
   .v-students-page {
-    max-width: 750px;
+    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
   }
 }
 @include bp(766px) {
   .v-students-page {
-    max-width: 320px;
+    max-width: 100%;
   }
   .v-students {
     &__wrap {
@@ -220,7 +222,12 @@ export default {
         flex-direction: column;
       }
       &_bot {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 9px;
+        .c-simple-student-card {
+          width: 44vw;
+        }
       }
     }
     &__select {
@@ -248,12 +255,19 @@ export default {
 }
 </style>
 <style lang="scss">
+@media screen and (max-width: 1310px) {
+  .v-students {
+    width: 96vw;
+  }
+}
 .c-simple-student-card {
-  background-color: $dark_white;
+  background-color: #f7f7f7;
   border-radius: 2px;
   width: 277px;
   height: 300px;
   overflow: hidden;
+  padding-left: 15px;
+  padding-right: 15px;
   $border-width2: 2.5;
   &:hover {
     .c-simple-student-card {
@@ -261,6 +275,10 @@ export default {
         margin-top: 25px;
       }
     }
+  }
+  @media screen and (max-width: 1310px) {
+    max-width: 100%;
+    width: 100%;
   }
   &__main-data {
     cursor: pointer;
@@ -289,7 +307,7 @@ export default {
     }
     &:hover {
       .c-simple-student-card {
-        background-color: $dark-white;
+        background-color: #f7f7f7;
         &__img {
           border: $border-width2 + px solid $green;
           transition: all 0.5s ease;
@@ -348,13 +366,51 @@ export default {
     }
   }
 }
+@include bp(1310px) {
+  .c-simple-student-card {
+    &__btn {
+      margin-top: 25px;
+    }
+    .btn-width-change {
+      @media screen and (max-width: 1310px) {
+        width: 100%;
+      }
+    }
+  }
+}
 @include bp(766px) {
   .c-simple-student-card {
     width: 100%;
     margin: 0 auto;
-    &__btn {
-      margin-top: 25px;
-    }
+  }
+}
+@include bp(620px) {
+  .btn-width-change {
+    font-size: 12px;
+    height: 30px;
+    margin-top: 13px;
+  }
+  .c-simple-student-card {
+    height: max-content;
+    padding-bottom: 20px;
+  }
+  .c-simple-student-card__name {
+    font-size: 14px;
+    margin-top: 7px;
+  }
+  .c-simple-student-card__img {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  .c-simple-student-card__level,
+  .c-simple-student-card__next-lesson {
+    font-size: 12px;
+  }
+  .c-simple-student-card__next-lesson {
+    line-height: 16px;
+  }
+  .c-simple-student-card__level {
+    margin-bottom: 8px;
   }
 }
 </style>

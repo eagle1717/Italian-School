@@ -4,7 +4,7 @@
       <div>
         <figure class="c-history-item__img">
           <img
-            :src="`img/ill/history-lessons/${iconName}.svg`"
+            :src="require(`@/assets/img/ill/history-lessons/${iconName}.svg`)"
             :alt="iconName"
           />
         </figure>
@@ -58,7 +58,7 @@ export default {
 <style lang="scss">
 .c-history-item {
   width: 100%;
-  background-color: $dark_white;
+  background-color: #f7f7f7;
   height: 82px;
   border-radius: 2px;
   margin-bottom: rem(10);
@@ -66,8 +66,6 @@ export default {
   @extend %aic;
   padding-left: rem(17);
   position: relative;
-  // .c-history-item__img
-
   &__img {
     max-width: rem(54);
   }
@@ -105,7 +103,7 @@ export default {
   .c-history-item {
     position: relative;
     &__img {
-      max-width: 30px;
+      max-width: 35px;
     }
     &__title {
       font-size: rem(14);

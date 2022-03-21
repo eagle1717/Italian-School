@@ -2,7 +2,12 @@
   <div class="c-mobile-layout">
     <template v-if="!isEmptylayout">
       <MobileNavigation @showNav="showNavigation" />
-      <NavBar
+      <!-- <NavBar
+        class="mobile-navbar"
+        @showNav="showNavigation"
+        :isHidden="showNavbar"
+      /> -->
+      <NavBar2
         class="mobile-navbar"
         @showNav="showNavigation"
         :isHidden="showNavbar"
@@ -22,6 +27,7 @@
 
 <script>
 import NavBar from "@/components/Navbars/NavBar.vue";
+import NavBar2 from "@/components/Navbars/NavBar2.vue";
 import MobileNavigation from "@/components/Navbars/MobileNavigation";
 import { mapState } from "vuex";
 import DefaultNavBar from "@/components/Navbars/DefaultNavBar";
@@ -30,7 +36,8 @@ export default {
   components: {
     DefaultNavBar,
     MobileNavigation,
-    NavBar
+    NavBar,
+    NavBar2,
   },
   data() {
     return {
@@ -41,7 +48,6 @@ export default {
     ...mapState(["show_overlay"]),
     isEmptylayout() {
       const { meta } = this.$route;
-
       return meta.layout && meta.layout === "Empty";
     }
   },

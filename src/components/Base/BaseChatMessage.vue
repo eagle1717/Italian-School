@@ -10,12 +10,15 @@
       <div class="c-help-chat__user-img">
         <template v-if="!isAnswer">
           <template v-if="user_photo">
-            <figure class="c-help-chat__img">
-              <img :src="user_photo" :alt="user_name" />
+            <figure class="c-help-chat__img img-red-border">
+              <img
+                :src="require(`@/assets/${user_photo}.svg`)"
+                :alt="user_name"
+              />
             </figure>
           </template>
           <template v-else>
-            <figure class="c-help-chat__img">
+            <figure class="c-help-chat__img img-red-border">
               <img src="@/assets/img/ill/default-photo.svg" :alt="user_name" />
             </figure>
           </template>
@@ -50,12 +53,13 @@
         </h2>
       </div>
     </div>
-    {{ description }}
+    <div class="answer-text">
+      {{ description }}
+    </div>
   </li>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
   name: "BaseChatMessage",
   props: {
@@ -66,11 +70,16 @@ export default {
       type: String
     }
   },
+  data() {
+    return {
+      user_photo: "robert",
+      user_name: "Robert Robert"
+    };
+  },
   computed: {
     isAnswer() {
       return this.type === "answer";
-    },
-    ...mapGetters("user", ["user_photo", "user_name"])
+    }
   }
 };
 </script>
@@ -82,15 +91,24 @@ export default {
     padding: 16px;
     max-width: 327px;
     margin-bottom: 13px;
+    @media screen and (max-width: 620px) {
+      padding: 10px;
+      max-width: 201px;
+    }
+    .c-help-chat__img {
+      border-radius: 50%;
+      overflow: hidden;
+      width: 32px;
+      height: 32px;
+      img {
+        object-fit: cover !important;
+      }
+    }
     &.question {
       margin-left: auto;
       border-radius: 10px 10px 0px 10px;
       .c-help-chat {
-        &__img {
-          border-radius: 50%;
-          overflow: hidden;
-          width: 32px;
-          height: 32px;
+        &__img.img-red-border {
           border: 1px solid $red;
         }
       }
@@ -109,6 +127,26 @@ export default {
       @extend %btn-text;
       color: $gray;
       margin-left: 10px;
+    }
+  }
+  @media screen and (max-width: 620px) {
+    &__message {
+      .c-help-chat {
+        &__img,
+        &__img svg {
+          width: 20px !important;
+          height: 20px !important;
+          object-fit: cover !important;
+        }
+      }
+      .c-help-chat__user-name {
+        font-size: 12px;
+        line-height: 15.95px;
+      }
+      .answer-text {
+        font-size: 10px;
+        line-height: 14px;
+      }
     }
   }
 }

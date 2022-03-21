@@ -129,6 +129,7 @@ export default {
     return {
       time: null,
       price: 30000,
+      width: window.innerWidth,
       typeLesson: [
         {
           val: "firstLesson",
@@ -192,6 +193,7 @@ export default {
     ...mapGetters("user", ["balance"]),
     ...mapGetters(["lesson_types"]),
     checkMobile() {
+      this.width = window.innerWidth;
       return window.innerWidth > 1100;
     },
     mobile_time() {
@@ -221,7 +223,7 @@ export default {
       }
       return times;
     }
-  }
+  },
   // created() {
   //   if (window.innerWidth > 1100) {
   //     this.timeTrack.push({
@@ -230,12 +232,21 @@ export default {
   //     });
   //   }
   // }
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.checkMobile);
+    });
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("resize", this.checkMobile);
+  }
 };
 </script>
 
 <style lang="scss">
 .c-reservation-lesson-modal__main-modal {
-  width: 859px !important;
+  width: 805px !important;
   font-family: "Circe-Regular";
   .c-reservation-lesson-modal__select-type {
     .select__options {
@@ -275,7 +286,8 @@ export default {
   margin-top: 46px;
   padding-bottom: 66px;
   &__container {
-    width: 678px;
+    max-width: 678px;
+    width: 100%;
     margin-left: 50px;
   }
 
@@ -408,46 +420,111 @@ export default {
     }
   }
 }
-@include bp(1360px) {
+@media screen and (max-width: 859px) {
   .c-reservation-lesson-modal__main-modal {
-    overflow-y: scroll;
-    padding-bottom: 50px;
+    width: 100vw !important;
+    padding: 0 25px;
+  }
+  .c-reservation-lesson-modal__container {
+    margin: 0px auto;
   }
 }
-@include bp(1310px) {
-  .c-reservation-lesson-modal {
-    &__container {
-      max-width: 320px;
-      margin: 0 auto;
+@media screen and (max-width: 766px) {
+  .c-reservation-lesson-modal__teacher-avatar {
+    width: 64px;
+    height: 64px;
+  }
+  .c-reservation-lesson-modal__teacher-name {
+    p {
+      font-size: 22px;
+      line-height: 25px;
     }
-    &__title {
-      margin-left: 0;
+  }
+  .c-reservation-lesson-modal__select-type,
+  .select {
+    height: 35px !important;
+  }
+  .select__wrap-val {
+    padding-top: 0px !important;
+  }
+  .select__value,
+  .select__option {
+    font-size: 12px;
+  }
+  .c-reservation-lesson-modal__submit-btn {
+    height: 35px;
+    font-size: 12px;
+    width: 259px;
+  }
+  .c-reservation-lesson-modal__submit {
+    margin-top: 40px;
+  }
+  .c-text-area {
+    height: 69px;
+    margin-top: 0px;
+    textarea {
+      font-size: 12px;
     }
-    &__teacher {
-      padding: 15px;
-      flex-direction: column;
-      &-credentials {
-        width: 100%;
-      }
-      &-avatar {
-        width: 64px;
-        height: 64px;
-        margin-right: 18px;
-      }
-      &-name {
-        p {
-          font-size: rem(22);
-          line-height: rem(25);
-        }
-      }
-      &-time {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        margin-top: 18px;
-      }
+  }
+  .c-reservation-lesson-modal__teacher-time-title {
+    font-size: 12px;
+  }
+  .c-reservation-lesson-modal__teacher-time-price,
+  .c-reservation-lesson-modal__teacher-time-chose {
+    font-size: 16px;
+    margin-top: 0px;
+  }
+  .select__wrap-val .icon {
+    width: 9px;
+    height: 8px;
+  }
+  .c-reservation-lesson-modal__main-modal .select__wrap-val {
+    padding-left: 14px;
+  }
+  .select__option-btn {
+    span {
+      font-size: 12px;
     }
+  }
+  .c-reservation-lesson-modal__teacher {
+    margin-top: 25px;
+  }
+  .c-reservation-lesson-modal__teacher {
+    padding: 15px;
+  }
+  .c-reservation-lesson-modal__teacher-credentials,
+  .c-reservation-lesson-modal__teacher-time {
+    width: max-content !important;
+  }
+  .c-reservation-lesson-modal__list {
+    margin-top: 10px;
+  }
+  .select__options {
+    padding-left: 14px !important;
+    margin-top: -5px !important;
+  }
+  .c-reservation-lesson-modal__title {
+    font-size: 16px;
+  }
+  .select__option {
+    margin-bottom: 0px;
+  }
+  .c-reservation-lesson-modal__ta-wrapper {
+    p {
+      font-size: 12px;
+    }
+  }
+}
+@media screen and (max-width: $mobile) {
+  .c-reservation-lesson-modal__teacher {
+    flex-direction: column;
+  }
+  .c-reservation-lesson-modal__teacher-time {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100% !important;
   }
 }
 </style>

@@ -12,15 +12,12 @@
         </div>
       </div>
       <div class="c-notification__wrapper-link">
-        <a
-          class="c-notification__wrapper-link-item flex"
-          href=""
-          target="_blank"
-          ><div v-html="linkText" class="link-text"></div>
+        <div class="c-notification__wrapper-link-item flex" target="_blank">
+          <div v-html="linkText" class="link-text"></div>
           <div class="arrow-wrapper-link">
             <img src="@/assets/img/icons/arrow-right.svg" alt="arrow-right" />
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </div>
@@ -106,7 +103,7 @@ export default {
           font-size: 10px;
         }
         .arrow-wrapper-link {
-          display: none
+          display: none;
         }
       }
     }

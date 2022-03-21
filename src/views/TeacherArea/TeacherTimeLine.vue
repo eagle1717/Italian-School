@@ -520,24 +520,68 @@ export default {
     }
   }
 }
-@include bp(766px) {
+@include bp(1310px) {
   .c-teacher-calendar {
     &__container {
-      max-width: 320px;
-      padding-left: 0;
+      padding: 0 50px;
+    }
+  }
+}
+@include bp(766px) {
+  .c-calendar__curator-btns {
+    button {
+      height: 20px;
+      width: 20px;
+    }
+    .c-calendar__change {
+      svg {
+        width: 8.69px;
+        height: 8.69px;
+      }
+    }
+    .c-calendar__hour-mode {
+      span {
+        width: 12px;
+        height: 1px;
+        margin-bottom: 4px;
+        &:nth-child(1) {
+          margin-top: 3px;
+        }
+        &:nth-last-of-type() {
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+  .c-teacher-calendar {
+    &__container {
       padding-top: 40px;
       margin: 0 auto;
+      padding-left: 25px;
+      padding-right: 25px;
     }
     &__time-lines {
       padding-left: 10px;
       padding-right: 10px;
     }
   }
+  .c-timeline-week__wd-itm {
+    font-size: 7px;
+  }
+  .c-timeline-week__days-itm {
+    span {
+      font-size: 8px;
+    }
+  }
+  .current {
+    width: 18px;
+    height: 18px;
+  }
   .c-teacher-calendar__timeline
     .vue-slider-marks
     .vue-slider-mark
     .vue-slider-mark-label {
-    font-size: 5px;
+    font-size: 7px;
   }
   .c-teacher-calendar__timeline {
     padding: 0 15px;

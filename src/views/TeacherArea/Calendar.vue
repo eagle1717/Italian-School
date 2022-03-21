@@ -244,12 +244,8 @@ export default {
   .c-calendar-page {
     padding: 50px 0 0 0;
     margin: 0 auto;
-    max-width: 750px;
-  }
-}
-@include bp(766px) {
-  .c-calendar-page {
-    max-width: 320px;
+    max-width: 100%;
+    width: 100%;
   }
 }
 // .c-calendar__items {

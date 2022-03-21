@@ -48,9 +48,29 @@ export default {
 h2 {
   padding-top: 3px !important;
 }
+#teacher-video-modal {
+  max-width: 805px !important;
+  width: 100% !important;
+  @media screen and (max-width: 766px) {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  @media screen and (max-width: 620px) {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+
+.c-video__content-holder-title {
+  color: rgba(37, 28, 28, 1) !important;
+}
 .c-video__curator {
   height: 381px;
-  width: 678px;
+  max-width: 678px;
+  width: 100%;
+  @media screen and (max-width: 766px) {
+    max-width: 100%;
+  }
 }
 .c-video__content-holder-about {
   p:nth-child(2) {
@@ -60,21 +80,16 @@ h2 {
 .c-video-modal {
   padding-left: 60px;
   padding-top: 43px;
-  overflow-y: scroll;
-  // width: 100vw;
+  overflow-x: hidden !important;
 }
 .c-video {
   margin-bottom: 30px;
-  width: 678px;
   &__container {
-    width: 678px;
     @extend %m0a;
   }
 
   &__curator {
     margin-top: 31px;
-  }
-  iframe {
     border-radius: 2px;
   }
   &__header {
@@ -93,7 +108,6 @@ h2 {
   }
   .individualName {
     color: rgba(37, 28, 28, 1);
-    // font-weight: 700;
     font-family: "Circe-Bold";
   }
   &__content {
@@ -115,19 +129,11 @@ h2 {
     }
   }
 }
-@include bp(1310px) {
-  .c-video {
-    &__container {
-      max-width: 750px;
-      padding-left: 0;
-      padding-top: 50px;
-    }
-  }
-}
-
 @include bp(766px) {
-  .c-video {
+  .c-video-modal {
     width: 100vw;
+  }
+  .c-video {
     &-modal {
       overflow-x: scroll;
     }
@@ -143,7 +149,16 @@ h2 {
     }
   }
 }
-.c-video__content-holder-title {
-  color: rgba(37, 28, 28, 1) !important;
+@include bp(620px) {
+  .c-video__header-teacher,
+  .c-video__content-holder-title {
+    font-size: 16px;
+  }
+  .c-video__content-holder-about {
+    font-size: 10px;
+    p:nth-child(2) {
+      margin-top: 14px;
+    }
+  }
 }
 </style>

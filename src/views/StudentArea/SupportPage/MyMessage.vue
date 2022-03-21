@@ -98,7 +98,13 @@ export default {
             "          quia quibusdam quod ullam vitae! Accusantium, alias autem culpa\n" +
             "          doloremque excepturi ipsa iste iusto possimus quam quidem rerum vitae?",
           title: "Ваш вопрос 1",
-          isAnswer: true
+          isAnswer: true,
+          messages: [
+            {
+              type: "answer",
+              description: "Test"
+            }
+          ]
         },
         {
           id: 3,
@@ -233,26 +239,56 @@ export default {
 @include bp(1310px) {
   .c-my-message {
     padding: 50px 0 50px 0;
-    margin: 0 auto;
-    max-width: 750px;
+    margin: 0 25px;
+    width: auto;
+    max-width: 100%;
   }
 }
 @include bp(766px) {
   .c-my-message {
-    max-width: 320px;
-    &__question-title-tag {
-      font-size: rem(16);
-      line-height: rem(17);
+    max-width: max-content;
+    width: auto;
+    margin: 0 auto;
+  }
+}
+@include bp(620px) {
+  .c-my-message {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+  .c-faq__content-title {
+    font-size: rem(16);
+  }
+  .c-my-message__question-title-tag {
+    font-size: 14px !important;
+  }
+  .c-faq__content {
+    img {
+      width: 228px;
+      height: 174px;
     }
-    &__question-btn-item {
-      width: 127px;
-      height: 30px;
-      font-size: rem(12);
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  }
+  .c-faq__content-title {
+    margin-bottom: 16px;
+    font-size: 14px;
+    margin-top: 0px;
+  }
+  .c-faq__content {
+    margin-top: 41px;
+    img {
+      margin-bottom: 32px;
     }
+  }
+  .c-faq__content-info {
+    font-size: 12px;
+    line-height: 18.05px;
+  }
+  .c-faq__content-btn {
+    margin-top: 32px;
+    height: 35px;
+    width: 192px;
+    font-size: 12px;
+    padding: 0px;
   }
 }
 </style>

@@ -53,7 +53,7 @@ export default [
         name: "Qviz",
         component: () => import("@/views/StudentArea/Auth/Qviz.vue"),
         meta: {
-            layout: "No"
+            layout: "Empty"
         }
     },
     // main pages
@@ -142,5 +142,5 @@ export default [
         path: "/calendar",
         name: "Calendar",
         component: () => import("@/views/StudentArea/CalendarPage/Calendar")
-    },
-]
+    }
+];

@@ -46,17 +46,17 @@ export default {
           img: "NotificationLesson.svg",
           text:
             "<div>Lezione con <a href='#' class='teacher-name'>Анна Батьковна</a> comincia in 30 minuti.</div>",
-          linkText: "<a href='https://google.com'>Avanti</a>"
+          linkText: "<a href='https://google.com' target='_blank'>Avanti</a>"
         },
         {
           img: "NotificationCat.svg",
           text: "<div>Conferma nuove lezioni con 5 studenti.</div>",
-          linkText: "<a href='https://google.com'>Avanti</a>"
+          linkText: "<a href='https://google.com' target='_blank'>Avanti</a>"
         },
         {
           img: "NotificationBook.svg",
           text: "<div>Correggi i compiti di 2 studenti.</div>",
-          linkText: "<a href='https://google.com'>Avanti</a>"
+          linkText: "<a href='https://google.com' target='_blank'>Avanti</a>"
         }
       ]
     };
@@ -67,7 +67,7 @@ export default {
 <style lang="scss">
 .c-home {
   padding-top: rem(20);
-  max-width: 892px;;
+  max-width: 892px;
   width: 100%;
   padding-bottom: 50px;
   margin: 0 auto;
@@ -123,11 +123,6 @@ export default {
     padding-right: 25px;
   }
 }
-@include bp(1310px) {
-  .c-home {
-    // max-width: 100%;
-  }
-}
 @include bp(766px) {
   .c-home {
     &__header {
@@ -149,6 +144,36 @@ export default {
     &__notifications {
       font-size: rem(16);
     }
+  }
+}
+@media screen and (max-width: 620px) {
+  .c-home__notifications-title,
+  .c-home__calendar-title {
+    font-size: 16px !important;
+  }
+  .c-teacher-dashboard__title {
+    font-size: 14px !important;
+  }
+  .c-teacher-dashboard__info-text {
+    font-size: 22px;
+  }
+  .c-teacher-dashboard__info-title {
+    margin-bottom: 0px;
+  }
+  .c-teacher-dashboard__title {
+    margin-bottom: 14px;
+  }
+  .c-teacher-dashboard {
+    padding: 16px;
+  }
+  .c-teacher-dashboard__chart {
+    margin-top: 12px;
+  }
+  .c-home__calendar {
+    margin-top: 50px;
+  }
+  .c-home__notifications {
+    padding-top: 50px;
   }
 }
 </style>

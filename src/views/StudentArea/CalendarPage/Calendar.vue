@@ -62,9 +62,15 @@ export default {
 .c-calendar-page {
   padding-top: rem(40);
   padding-bottom: rem(64);
-  max-width: 892px;;
+  max-width: 892px;
   margin: 0 auto;
-
+  @media screen and (max-width: 1310px) {
+    padding: 40px 25px;
+  }
+  @media screen and (max-width: 330px) {
+    padding: 40px 5px;
+  }
+  @extend %calendar;
   // // .c-calendar__header
 
   // &__header {
@@ -237,23 +243,6 @@ export default {
   //   color: $green;
   //   text-align: center;
   // }
-}
-@include bp(1360px) {
-  .c-calendar-page {
-    padding-right: 30px;
-  }
-}
-@include bp(1310px) {
-  .c-calendar-page {
-    padding: 50px 0 0 0;
-    margin: 0 auto;
-    max-width: 750px;
-  }
-}
-@include bp(766px) {
-  .c-calendar-page {
-    max-width: 320px;
-  }
 }
 // .c-calendar__items {
 

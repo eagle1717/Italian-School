@@ -196,6 +196,11 @@ export default {
     .big-device {
       display: none;
     }
+    .teacher__contest-menu {
+      span {
+        font-size: 12px;
+      }
+    }
     .small-device {
       margin-top: 20px;
       display: block;
@@ -251,7 +256,7 @@ export default {
     position: absolute;
     right: 24px;
     top: 0px;
-    z-index: 1000;
+    z-index: 999;
     @extend %df;
     top: 42px;
     color: #4b4b4b;

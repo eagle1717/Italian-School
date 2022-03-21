@@ -125,16 +125,24 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     height: auto;
-    padding: 18px;
     &__user-data {
       margin-bottom: 18px;
     }
-    &__photo {
+  }
+}
+@include bp(620px) {
+  .c-student-modal {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 18px;
+    .c-student-modal__photo {
       width: 64px;
       height: 64px;
     }
     &__time-title {
       font-size: rem(12);
+      margin-bottom: 0px;
     }
     &__val {
       font-size: rem(16);

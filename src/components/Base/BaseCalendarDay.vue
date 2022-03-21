@@ -299,8 +299,8 @@ export default {
 @include bp(1310px) {
   .c-calendar {
     &__item {
-      max-height: 80px;
-      max-width: 80px;
+      max-height: 100%;
+      max-width: 100%;
     }
     .c-calendar-week__wrap {
       margin-left: 0px;
@@ -335,7 +335,7 @@ export default {
       left: 55px;
     }
     &:nth-child(7) {
-      left: 170px;
+      left: 130px;
     }
   }
   .c-calendar-week__items {
@@ -344,103 +344,44 @@ export default {
     row-gap: 50px !important;
   }
 }
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 620px) {
+  .c-calendar__item-data {
+    font-size: 10px !important;
+  }
   .c-calendar-week__name-days {
+    span {
+      font-size: 12px !important;
+    }
+  }
+}
+@media screen and (max-width: 448px) {
+  .c-calendar-week__name-days {
+    &:nth-child(6),
+    &:nth-child(7) {
+      top: 135px;
+      position: absolute;
+    }
     &:nth-child(6) {
       left: 45px;
     }
     &:nth-child(7) {
-      left: 160px;
+      left: 110px;
     }
   }
 }
-@media screen and (max-width: 500px) {
-  .c-calendar__item.is_week {
-    width: 64px;
-    height: 64px;
-  }
-  .c-calendar-week__wrap,
-  .c-calendar-week__name-days {
-    min-width: auto !important;
-  }
-  .c-calendar__item-data {
-    font-size: 16px !important;
-  }
+@media screen and (max-width: 389px) {
   .c-calendar-week__name-days {
     &:nth-child(6),
     &:nth-child(7) {
-      top: 120px !important;
-    }
-  }
-  .c-calendar-week__items {
-    width: min-content;
-  }
-  .c-calendar-week__name-days {
-    &:nth-child(6) {
-      left: 35px;
-    }
-    &:nth-child(7) {
-      left: 120px;
-    }
-  }
-}
-@media screen and (max-width: 400px) {
-  .c-calendar-week__items {
-    width: min-content;
-    column-gap: 0px !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-  }
-  .c-calendar-week__static-days {
-    grid-template-columns: repeat(4, 1fr) !important;
-  }
-  .c-calendar-week__name-days {
-    &:nth-child(6),
-    &:nth-child(7),
-    &:nth-child(5) {
-      top: 120px !important;
-    }
-    &:nth-child(5) {
-      left: 35px;
+      top: 135px;
       position: absolute;
     }
     &:nth-child(6) {
-      left: 105px;
+      left: 35px;
     }
     &:nth-child(7) {
-      left: 180px;
+      left: 90px;
     }
   }
-  .c-calendar-week__wrap {
-    width: 280px !important;
-  }
 }
-// @include bp(766px) {
-//   .c-calendar {
-//     &__item {
-//       width: 40px;
-//       height: 40px;
-//       &-data {
-//         top: 4px;
-//         right: 6px;
-//         font-size: rem(8);
-//       }
-//     }
-//     &__lesson-ico {
-//       bottom: 4px;
-//       left: 3px;
-//       display: flex;
-//       align-items: flex-end;
-//       span {
-//         display: inline-block;
-//         font-size: rem(6);
-//         margin-bottom: 0;
-//         line-height: rem(9);
-//       }
-//       img {
-//         width: rem(15);
-//         margin-bottom: 0;
-//       }
-//     }
-//   }
-// }
 </style>

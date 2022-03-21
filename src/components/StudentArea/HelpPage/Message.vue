@@ -10,7 +10,11 @@
           src="@/assets/img/ill/faq/question-pased.svg"
           alt="wait"
         />
-        <img v-else src="@/assets/img/ill/faq/question-waiting.svg" alt="wait" />
+        <img
+          v-else
+          src="@/assets/img/ill/faq/question-waiting.svg"
+          alt="wait"
+        />
       </div>
       <div class="c-message__text">
         <h2 class="c-message__title">{{ title }}</h2>
@@ -74,7 +78,7 @@ export default {
             messages: this.messages,
             title: this.title,
             id: this.id,
-            first_message: this.description
+            first_message: this.description,
           },
           modal_name: "chat-modal"
         });
@@ -98,6 +102,9 @@ export default {
     transition: all 0.3s ease;
     border: 1px solid transparent;
     cursor: pointer;
+    .c-message__img {
+      align-self: center;
+    }
     &--answer {
       background: $light-green;
 
@@ -154,30 +161,27 @@ export default {
     max-width: 60%;
   }
 }
-@include bp(1310px) {
-  .c-message {
-    &__content {
-      padding: 20px;
-    }
-    &__img {
-      width: 65px;
-    }
-    &__text {
-      max-width: 400px;
-      min-width: auto;
-    }
-  }
-}
 @include bp(766px) {
+  .c-my-message__question-title-tag {
+    font-size: 18px !important;
+  }
+  .c-help__wrap-term {
+    width: 100%;
+  }
   .c-message {
     position: relative;
+    .c-message__img {
+      img {
+        width: 61px;
+        height: 44px;
+      }
+    }
     &__content {
       padding: 8px 12px;
       height: 90px;
     }
     &__text {
       padding-right: 42px;
-      margin-left: 15px;
     }
     &__title {
       font-size: rem(14);
@@ -202,6 +206,18 @@ export default {
         font-size: rem(10);
       }
     }
+  }
+  .c-my-message {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+}
+.c-my-message__question-btn-item {
+  @include bp(620px) {
+    height: 30px;
+    width: 127px;
+    font-size: 12px !important;
+    padding: 0px !important;
   }
 }
 </style>
