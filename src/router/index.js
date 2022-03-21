@@ -5,6 +5,13 @@ import user from "./user";
 import teacher from "./teacher";
 Vue.use(VueRouter);
 const routes = [
+  {
+    path: "/",
+    redirect: { name: "HomePage" },
+    meta: {
+      layout: "Empty"
+    }
+  },
   ...user,
   ...teacher
 ];

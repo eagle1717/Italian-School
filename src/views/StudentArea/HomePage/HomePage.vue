@@ -40,8 +40,8 @@
       <BaseWeekCalendar />
     </div>
     <template>
-      <Articles />
-      <VideoSlider />
+      <!-- <Articles /> -->
+      <!-- <VideoSlider /> -->
     </template>
   </div>
 </template>
@@ -51,13 +51,13 @@ import UserLevel from "@/components/StudentArea/LevelPage/LevelCard";
 import Promotion from "@/components/StudentArea/HomePage/Promotion";
 import SpecialOffer from "@/components/StudentArea/HomePage/SpecialOffer";
 import Notifications from "@/components/Notification";
-import Articles from "@/components/StudentArea/HomePage/Articles";
-import VideoSlider from "@/components/StudentArea/HomePage/VideoSlider";
+// import Articles from "@/components/StudentArea/HomePage/Articles";
+// import VideoSlider from "@/components/StudentArea/HomePage/VideoSlider";
 export default {
   name: "HomePage",
   components: {
-    VideoSlider,
-    Articles,
+    // VideoSlider,
+    // Articles,
     Notifications,
     UserLevel,
     Promotion,
